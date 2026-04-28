@@ -1,0 +1,274 @@
+.page { 
+  padding: 3rem 1.5rem 8rem; 
+  min-height: 100vh; 
+  position: relative;
+  background: transparent;
+}
+
+.header { 
+  display: flex; 
+  align-items: center; 
+  gap: 1.5rem; 
+  margin-bottom: 4rem; 
+  animation: animate-enter 0.8s var(--p-spring-heavy);
+}
+
+.header h1 { 
+  font-size: 3.5rem; 
+  font-weight: 950; 
+  color: var(--color-text);
+  letter-spacing: -0.06em;
+  line-height: 0.85;
+  font-family: var(--font-spatial-display);
+}
+
+/* ============================================================
+   Refractive Crystal Form Substrate
+   ============================================================ */
+.formCard { 
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-substrate);
+  -webkit-backdrop-filter: var(--z-blur-substrate);
+  border-radius: 48px; 
+  padding: 3rem; 
+  border: var(--z-border-glass);
+  box-shadow: var(--shadow-spatial), var(--z-inner-glow);
+  display: flex; 
+  flex-direction: column; 
+  gap: 2.5rem; 
+  animation: animate-enter 1s var(--p-spring-heavy) both;
+}
+
+.priceRow { 
+  display: flex; 
+  gap: 2rem; 
+}
+
+/* ============================================================
+   Kinetic Validation Banners
+   ============================================================ */
+.discountBanner { 
+  padding: 1.5rem 2rem; 
+  border-radius: 28px; 
+  font-size: 1.1rem; 
+  font-weight: 850; 
+  border: var(--z-border-glass);
+  transition: all 0.5s var(--p-spring-hyper);
+  animation: animate-enter 0.6s var(--p-spring-heavy);
+  box-shadow: var(--shadow-spatial);
+}
+
+.discountGood { 
+  background: oklch(48% 0.16 210 / 0.1); 
+  color: var(--z-teal); 
+  border-color: var(--z-teal);
+}
+
+.discountBad { 
+  background: oklch(65% 0.18 65 / 0.1); 
+  color: var(--z-amber); 
+  border-color: var(--z-amber);
+}
+
+/* ============================================================
+   Allergen Matrix (Refractive Chips)
+   ============================================================ */
+.allergenChips { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 1rem; 
+  margin-top: 1rem;
+}
+
+.allergenChip { 
+  padding: 1rem 2rem; 
+  border-radius: 20px; 
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-element);
+  border: var(--z-border-glass); 
+  font-size: 1rem; 
+  font-weight: 900; 
+  color: oklch(45% 0.01 210); 
+  cursor: pointer; 
+  transition: all 0.4s var(--p-spring-hyper); 
+  text-transform: capitalize; 
+}
+
+.allergenChip:hover {
+  transform: translateY(-6px) scale(1.05);
+  background: white;
+  border-color: var(--z-amber);
+  color: var(--z-amber);
+  box-shadow: 0 12px 24px -6px oklch(65% 0.18 65 / 0.3);
+}
+
+.allergenActive { 
+  background: white; 
+  border-color: var(--z-amber); 
+  color: var(--z-amber); 
+  box-shadow: 0 16px 32px -10px oklch(65% 0.18 65 / 0.4);
+}
+
+.errorBanner { 
+  background: oklch(50% 0.18 25 / 0.1); 
+  color: var(--z-coral); 
+  border: var(--z-border-glass);
+  border-color: var(--z-coral);
+  border-radius: 28px; 
+  padding: 1.5rem 2rem; 
+  font-size: 1.1rem; 
+  font-weight: 900; 
+  margin-bottom: 3rem; 
+  box-shadow: var(--shadow-spatial);
+  animation: animate-enter 0.5s var(--p-spring-heavy);
+}
+
+@media (max-width: 768px) {
+  .priceRow {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .header h1 {
+    font-size: 2.25rem;
+  }
+  .formCard {
+    padding: 2rem;
+    border-radius: 36px;
+  }
+}
+
+/* Form Elements */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.inputLabel {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: oklch(45% 0.01 210);
+}
+
+.input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  border: var(--z-border-glass);
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-element);
+  -webkit-backdrop-filter: var(--z-blur-element);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  color: var(--color-text);
+  transition: all 0.3s var(--p-spring-heavy);
+  outline: none;
+}
+
+.input:focus {
+  background: var(--z-glass-floating);
+  box-shadow: var(--z-border-glass-strong);
+  transform: translateY(-2px);
+}
+
+.input::placeholder {
+  color: oklch(45% 0.01 210 / 0.5);
+}
+
+.required {
+  color: var(--z-coral);
+}
+
+.select {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  border: var(--z-border-glass);
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-element);
+  -webkit-backdrop-filter: var(--z-blur-element);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  color: var(--color-text);
+  transition: all 0.3s var(--p-spring-heavy);
+  outline: none;
+  cursor: pointer;
+}
+
+.select:focus {
+  background: var(--z-glass-floating);
+  box-shadow: var(--z-border-glass-strong);
+}
+
+.textarea {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  border: var(--z-border-glass);
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-element);
+  -webkit-backdrop-filter: var(--z-blur-element);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  color: var(--color-text);
+  transition: all 0.3s var(--p-spring-heavy);
+  outline: none;
+  resize: vertical;
+}
+
+.textarea:focus {
+  background: var(--z-glass-floating);
+  box-shadow: var(--z-border-glass-strong);
+}
+
+.submitBtn {
+  background: var(--z-teal);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  font-weight: 800;
+  height: 56px;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s var(--p-spring-hyper);
+  box-shadow: 0 12px 24px -6px oklch(48% 0.16 210 / 0.4);
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px -10px oklch(48% 0.16 210 / 0.5);
+}
+
+.submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.selectWrapper {
+  position: relative;
+  flex: 1;
+}
+
+/* Back button */
+.backBtn {
+  background: var(--z-glass-deep);
+  color: var(--z-teal);
+  padding: 0.75rem 1.5rem;
+  border: var(--z-border-glass);
+  border-radius: 999px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.4s var(--p-spring-hyper);
+}
+
+.backBtn:hover {
+  background: var(--z-teal);
+  color: white;
+  transform: translateY(-2px);
+}

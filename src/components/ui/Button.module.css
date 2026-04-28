@@ -1,0 +1,108 @@
+.button {
+  border: none;
+  font-family: var(--font-family, inherit);
+  font-weight: 800;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: all 0.5s var(--physics-spring);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: oklch(100% 0 0 / 0);
+  transition: background 0.2s ease;
+}
+
+.button:active::after {
+  background: oklch(100% 0 0 / 0.15);
+}
+
+.button:active {
+  transform: scale(0.96);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Variants */
+.primary {
+  background: var(--z-teal);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 12px 24px -6px oklch(48% 0.16 210 / 0.4);
+}
+
+.primary:hover:not(:disabled) {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px -10px oklch(48% 0.16 210 / 0.5);
+}
+
+.secondary {
+  background: var(--z-amber);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 12px 24px -6px oklch(68% 0.22 65 / 0.4);
+}
+
+.secondary:hover:not(:disabled) {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px -10px oklch(68% 0.22 65 / 0.5);
+}
+
+.outline {
+  background: transparent;
+  color: var(--z-teal);
+  padding: 1rem 2rem;
+  border: 2px solid var(--z-teal);
+}
+
+.outline:hover:not(:disabled) {
+  background: var(--z-teal);
+  color: white;
+  transform: translateY(-4px) scale(1.02);
+}
+
+.ghost {
+  background: var(--z-glass-deep);
+  backdrop-filter: var(--z-blur-element);
+  -webkit-backdrop-filter: var(--z-blur-element);
+  color: var(--z-teal);
+  padding: 0.75rem 1.5rem;
+  border: var(--z-border-glass);
+}
+
+.ghost:hover:not(:disabled) {
+  background: oklch(100% 0 0 / 1);
+  transform: translateY(-2px);
+}
+
+/* Sizes */
+.sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.md {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+.lg {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.125rem;
+}
+
+/* Full Width */
+.full {
+  width: 100%;
+}

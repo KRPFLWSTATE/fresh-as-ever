@@ -1,0 +1,297 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 120px;
+}
+
+.header {
+  padding: 3rem 1.5rem 1rem;
+  background: var(--z-teal);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  animation: entrance-physics 0.8s var(--p-spring-heavy);
+}
+
+.header h1 {
+  font-size: 2.25rem;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.topSection {
+  background: var(--z-teal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem 6rem;
+  color: white;
+  border-bottom-left-radius: 48px;
+  border-bottom-right-radius: 48px;
+  box-shadow: 0 24px 64px oklch(45% 0.18 160 / 0.3), inset 0 -4px 12px oklch(0% 0 0 / 0.1);
+  position: relative;
+  animation: entrance-physics 1s var(--p-spring-heavy);
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 40px;
+  background-color: white;
+  color: var(--z-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-xl);
+  border: 4px solid oklch(100% 0 0 / 0.2);
+  transform: rotate(-3deg);
+  animation: entrance-physics 1.2s var(--p-spring-hyper);
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.04em;
+}
+
+.phone {
+  font-size: 1.125rem;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.content {
+  padding: 0 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: -60px;
+  position: relative;
+  z-index: 5;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: entrance-physics 1.4s var(--p-spring-heavy) both;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   Impact Substrate Grid
+   ============================================================ */
+.impactGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.impactCard {
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-substrate);
+  -webkit-backdrop-filter: var(--z-blur-substrate);
+  border-radius: 28px;
+  padding: 1.75rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: var(--z-border-glass);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s var(--p-spring-hyper);
+}
+
+.impactCard:hover {
+  transform: translateY(-8px) scale(1.05);
+  background: white;
+  box-shadow: var(--shadow-lg), var(--z-border-glass-strong);
+}
+
+.impactIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(0 8px 16px oklch(0% 0 0 / 0.1));
+}
+
+.impactValue {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--z-teal);
+  margin-bottom: 0.25rem;
+}
+
+.impactLabel {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   Refractive Action List
+   ============================================================ */
+.listGroup {
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-substrate);
+  -webkit-backdrop-filter: var(--z-blur-substrate);
+  border-radius: 32px;
+  border: var(--z-border-glass);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.75rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid oklch(0% 0 0 / 0.05);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-text);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s var(--p-spring-hyper);
+}
+
+.listItem:last-child {
+  border-bottom: none;
+}
+
+.listItem:hover {
+  background: white;
+  padding-left: 2.25rem;
+  color: var(--z-teal);
+}
+
+.listItem:active {
+  transform: scale(0.98);
+}
+
+.chevron {
+  color: var(--color-text-tertiary);
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: transform 0.3s var(--p-spring-hyper);
+}
+
+.listItem:hover .chevron {
+  transform: translateX(8px);
+  color: var(--z-teal);
+}
+
+.logoutBtn {
+  color: var(--z-coral);
+}
+
+.logoutBtn:hover {
+  color: white;
+  background: var(--z-coral);
+}
+
+@media (max-width: 640px) {
+  .impactGrid { grid-template-columns: 1fr; }
+  .header h1 { font-size: 1.75rem; }
+  .avatar { width: 100px; height: 100px; font-size: 2.5rem; }
+}
+
+/* Skeleton */
+.skeleton {
+  background: linear-gradient(90deg, 
+    oklch(95% 0 0 / 0.1), 
+    oklch(100% 0 0 / 0.2), 
+    oklch(95% 0 0 / 0.1)
+  );
+  background-size: 200% 100%;
+  animation: skeleton-wave 1.5s infinite linear;
+}
+
+@keyframes skeleton-wave {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeletonHero {
+  height: 30vh;
+  width: 100%;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+}
+
+.skeletonAvatar {
+  height: 100px;
+  width: 100%;
+  margin-bottom: 16px;
+  border-radius: 20px;
+}
+
+.skeletonText {
+  height: 60px;
+  width: 100%;
+  border-radius: 24px;
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20vh;
+  padding: 2rem;
+}
+
+.emptyStateIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.emptyState h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.emptyState p {
+  color: oklch(45% 0.01 210);
+  margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.secondaryBtn {
+  background: var(--z-amber);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s var(--p-spring-hyper);
+  box-shadow: 0 12px 24px -6px oklch(68% 0.22 65 / 0.4);
+}
+
+.secondaryBtn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px -10px oklch(68% 0.22 65 / 0.5);
+}

@@ -1,0 +1,661 @@
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(admin)/admin/complaints/page.js
+  12:21  error    Error: Cannot access variable before it is declared
+
+`loadComplaints` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  10 |   const [filter, setFilter] = useState('open');
+  11 |
+> 12 |   useEffect(() => { loadComplaints(); }, [filter]);
+     |                     ^^^^^^^^^^^^^^ `loadComplaints` accessed before it is declared
+  13 |
+  14 |   const loadComplaints = async () => {
+  15 |     setLoading(true);
+
+  12 |   useEffect(() => { loadComplaints(); }, [filter]);
+  13 |
+> 14 |   const loadComplaints = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 15 |     setLoading(true);
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 16 |     let query = supabase.from('complaints').select('*, reporter:reporter_id(full_name), order:order_id(reservation_code, outlet:outlet_id(name))');
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 24 |     setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 25 |   };
+     | ^^^^^ `loadComplaints` is declared here
+  26 |
+  27 |   const handleResolve = async (id, resolutionStr) => {
+  28 |     const res = prompt(`Enter resolution notes for complaint #${id.slice(0,6)}:`);  react-hooks/immutability
+  12:42  warning  React Hook useEffect has a missing dependency: 'loadComplaints'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               react-hooks/exhaustive-deps
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(admin)/admin/dashboard/page.js
+  19:21   error    Error: Cannot access variable before it is declared
+
+`loadDashboard` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  17 |   const [loading, setLoading] = useState(true);
+  18 |
+> 19 |   useEffect(() => { loadDashboard(); }, []);
+     |                     ^^^^^^^^^^^^^ `loadDashboard` accessed before it is declared
+  20 |
+  21 |   const loadDashboard = async () => {
+  22 |     try {
+
+  19 |   useEffect(() => { loadDashboard(); }, []);
+  20 |
+> 21 |   const loadDashboard = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 22 |     try {
+     | ^^^^^^^^^
+> 23 |       // Very simple aggregations for MVP dashboard
+     …
+     | ^^^^^^^^^
+> 47 |     }
+     | ^^^^^^^^^
+> 48 |   };
+     | ^^^^^ `loadDashboard` is declared here
+  49 |
+  50 |   if (loading) {
+  51 |     return <div style={{ padding: '2rem', textAlign: 'center' }}>Loading dashboard...</div>;  react-hooks/immutability
+  19:41   warning  React Hook useEffect has a missing dependency: 'loadDashboard'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  react-hooks/exhaustive-deps
+  76:107  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react/no-unescaped-entities
+  80:107  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react/no-unescaped-entities
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(admin)/admin/merchants/[id]/page.js
+  16:21  error    Error: Cannot access variable before it is declared
+
+`loadMerchant` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  14 |   const [actionLoading, setActionLoading] = useState(false);
+  15 |
+> 16 |   useEffect(() => { loadMerchant(); }, []);
+     |                     ^^^^^^^^^^^^ `loadMerchant` accessed before it is declared
+  17 |
+  18 |   const loadMerchant = async () => {
+  19 |     const { data } = await supabase
+
+  16 |   useEffect(() => { loadMerchant(); }, []);
+  17 |
+> 18 |   const loadMerchant = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 19 |     const { data } = await supabase
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 20 |       .from('merchants')
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 21 |       .select('*, profiles:owner_id(full_name, email, phone), outlets(*)')
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 22 |       .eq('id', id)
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 23 |       .single();
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 24 |     setMerchant(data);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 25 |     setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 26 |   };
+     | ^^^^^ `loadMerchant` is declared here
+  27 |
+  28 |   const updateStatus = async (status, activateOutlets = false) => {
+  29 |     if (!confirm(`Are you sure you want to change status to ${status}?`)) return;  react-hooks/immutability
+  16:40  warning  React Hook useEffect has a missing dependency: 'loadMerchant'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               react-hooks/exhaustive-deps
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(admin)/admin/merchants/page.js
+  13:21  error    Error: Cannot access variable before it is declared
+
+`loadMerchants` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  11 |   const [filter, setFilter] = useState('pending');
+  12 |
+> 13 |   useEffect(() => { loadMerchants(); }, [filter]);
+     |                     ^^^^^^^^^^^^^ `loadMerchants` accessed before it is declared
+  14 |
+  15 |   const loadMerchants = async () => {
+  16 |     setLoading(true);
+
+  13 |   useEffect(() => { loadMerchants(); }, [filter]);
+  14 |
+> 15 |   const loadMerchants = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 16 |     setLoading(true);
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 17 |     let query = supabase.from('merchants').select('*, profiles:owner_id(full_name, email)');
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 25 |     setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 26 |   };
+     | ^^^^^ `loadMerchants` is declared here
+  27 |
+  28 |   const statusBadge = (s) => {
+  29 |     switch (s) {  react-hooks/immutability
+  13:41  warning  React Hook useEffect has a missing dependency: 'loadMerchants'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/exhaustive-deps
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(admin)/admin/orders/page.js
+  13:21  error    Error: Cannot access variable before it is declared
+
+`loadOrders` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  11 |   const [filter, setFilter] = useState('all');
+  12 |
+> 13 |   useEffect(() => { loadOrders(); }, [filter]);
+     |                     ^^^^^^^^^^ `loadOrders` accessed before it is declared
+  14 |
+  15 |   const loadOrders = async () => {
+  16 |     setLoading(true);
+
+  13 |   useEffect(() => { loadOrders(); }, [filter]);
+  14 |
+> 15 |   const loadOrders = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 16 |     setLoading(true);
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 17 |     let query = supabase.from('orders').select('*, bag:bag_id(title), customer:customer_id(full_name), outlet:outlet_id(name)');
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 25 |     setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 26 |   };
+     | ^^^^^ `loadOrders` is declared here
+  27 |
+  28 |   const statusBadge = (s) => ({
+  29 |     reserved: 'badge-primary', paid: 'badge-primary', awaiting_pickup: 'badge-warning',  react-hooks/immutability
+  13:38  warning  React Hook useEffect has a missing dependency: 'loadOrders'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/exhaustive-deps
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(admin)/admin/promos/page.js
+  13:21  error    Error: Cannot access variable before it is declared
+
+`loadPromos` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  11 |   const [formData, setFormData] = useState({ code: '', discount_type: 'percentage', discount_value: '', valid_until: '' });
+  12 |
+> 13 |   useEffect(() => { loadPromos(); }, []);
+     |                     ^^^^^^^^^^ `loadPromos` accessed before it is declared
+  14 |
+  15 |   const loadPromos = async () => {
+  16 |     setLoading(true);
+
+  13 |   useEffect(() => { loadPromos(); }, []);
+  14 |
+> 15 |   const loadPromos = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 16 |     setLoading(true);
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 17 |     const { data } = await supabase.from('promo_codes').select('*').order('created_at', { ascending: false });
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 18 |     setPromos(data || []);
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 19 |     setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 20 |   };
+     | ^^^^^ `loadPromos` is declared here
+  21 |
+  22 |   const handleCreate = async (e) => {
+  23 |     e.preventDefault();  react-hooks/immutability
+  13:38  warning  React Hook useEffect has a missing dependency: 'loadPromos'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      react-hooks/exhaustive-deps
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(admin)/admin/settlements/page.js
+  11:21  error    Error: Cannot access variable before it is declared
+
+`loadSettlements` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+   9 |   const [loading, setLoading] = useState(true);
+  10 |
+> 11 |   useEffect(() => { loadSettlements(); }, []);
+     |                     ^^^^^^^^^^^^^^^ `loadSettlements` accessed before it is declared
+  12 |
+  13 |   const loadSettlements = async () => {
+  14 |     const { data } = await supabase.from('settlements').select('*, merchant:merchant_id(business_name, payout_method, bank_details)').order('period_end', { ascending: false });
+
+  11 |   useEffect(() => { loadSettlements(); }, []);
+  12 |
+> 13 |   const loadSettlements = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 14 |     const { data } = await supabase.from('settlements').select('*, merchant:merchant_id(business_name, payout_method, bank_details)').order('period_end', { ascending: false });
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 15 |     setSettlements(data || []);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 16 |     setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 17 |   };
+     | ^^^^^ `loadSettlements` is declared here
+  18 |
+  19 |   const handleExportCSV = () => {
+  20 |     if (settlements.length === 0) return;  react-hooks/immutability
+  11:43  warning  React Hook useEffect has a missing dependency: 'loadSettlements'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/exhaustive-deps
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(customer)/bags/[id]/page.js
+   22:5  error    Error: Cannot access variable before it is declared
+
+`fetchBagDetails` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  20 |
+  21 |   useEffect(() => {
+> 22 |     fetchBagDetails();
+     |     ^^^^^^^^^^^^^^^ `fetchBagDetails` accessed before it is declared
+  23 |
+  24 |     const channel = supabase
+  25 |       .channel(`bag-${params.id}`)
+
+  36 |   }, [params.id]);
+  37 |
+> 38 |   const fetchBagDetails = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 39 |     try {
+     | ^^^^^^^^^
+> 40 |       setLoading(true);
+     …
+     | ^^^^^^^^^
+> 63 |     }
+     | ^^^^^^^^^
+> 64 |   };
+     | ^^^^^ `fetchBagDetails` is declared here
+  65 |
+  66 |   const handleReserve = () => {
+  67 |     // Navigate to checkout passing the bag id  react-hooks/immutability
+   36:6  warning  React Hook useEffect has missing dependencies: 'fetchBagDetails' and 'supabase'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    react-hooks/exhaustive-deps
+  107:9  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @next/next/no-img-element
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(customer)/checkout/page.js
+  33:5   error    Error: Cannot access variable before it is declared
+
+`fetchBagDetails` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  31 |       return;
+  32 |     }
+> 33 |     fetchBagDetails();
+     |     ^^^^^^^^^^^^^^^ `fetchBagDetails` accessed before it is declared
+  34 |   }, [bagId]);
+  35 |
+  36 |   const fetchBagDetails = async () => {
+
+  34 |   }, [bagId]);
+  35 |
+> 36 |   const fetchBagDetails = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 37 |     try {
+     | ^^^^^^^^^
+> 38 |       setLoading(true);
+     …
+     | ^^^^^^^^^
+> 55 |     }
+     | ^^^^^^^^^
+> 56 |   };
+     | ^^^^^ `fetchBagDetails` is declared here
+  57 |
+  58 |   const applyPromoCode = async () => {
+  59 |     // In a real flow, query the promo_codes table via Supabase RPC  react-hooks/immutability
+  34:6   warning  React Hook useEffect has missing dependencies: 'fetchBagDetails' and 'router'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     react-hooks/exhaustive-deps
+  79:20  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  77 |       }
+  78 |
+> 79 |       const code = Math.random().toString(36).substring(2, 8).toUpperCase();
+     |                    ^^^^^^^^^^^^^ Cannot call impure function
+  80 |       const totalCost = bag.rescue_price - discount;
+  81 |
+  82 |       // 1. Create order as reserved                                                                                                                                                                                                                                        react-hooks/purity
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(customer)/discover/page.js
+   32:11  error    Error: Cannot access variable before it is declared
+
+`fetchNearbyBags` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  30 |           });
+  31 |           setLocStatus('granted');
+> 32 |           fetchNearbyBags(position.coords.latitude, position.coords.longitude);
+     |           ^^^^^^^^^^^^^^^ `fetchNearbyBags` accessed before it is declared
+  33 |         },
+  34 |         (error) => {
+  35 |           console.warn('Location access denied, falling back to default (Colombo).', error);
+
+  77 |   }, [supabase]);
+  78 |
+> 79 |   const fetchNearbyBags = async (lat, lng) => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 80 |     try {
+     | ^^^^^^^^^
+> 81 |       setLoading(true);
+     …
+     | ^^^^^^^^^
+> 95 |     }
+     | ^^^^^^^^^
+> 96 |   };
+     | ^^^^^ `fetchNearbyBags` is declared here
+  97 |
+  98 |   return (
+  99 |     <div className={`bento-container ${styles.container}`}>  react-hooks/immutability
+   41:7   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  39 |       );
+  40 |     } else {
+> 41 |       setLocStatus('denied');
+     |       ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  42 |       fetchNearbyBags(location.lat, location.lng);
+  43 |     }
+  44 |   }, []);                                                       react-hooks/set-state-in-effect
+   44:6   warning  React Hook useEffect has missing dependencies: 'fetchNearbyBags', 'location.lat', and 'location.lng'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               react-hooks/exhaustive-deps
+  176:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @next/next/no-img-element
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(customer)/favourites/page.js
+  9:48  error  Parsing error: Unexpected token (9:48)
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(customer)/orders/[id]/page.js
+   20:5   error    Error: Cannot access variable before it is declared
+
+`fetchOrderDetails` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  18 |
+  19 |   useEffect(() => {
+> 20 |     fetchOrderDetails();
+     |     ^^^^^^^^^^^^^^^^^ `fetchOrderDetails` accessed before it is declared
+  21 |   }, [params.id]);
+  22 |
+  23 |   const fetchOrderDetails = async () => {
+
+  21 |   }, [params.id]);
+  22 |
+> 23 |   const fetchOrderDetails = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 24 |     try {
+     | ^^^^^^^^^
+> 25 |       setLoading(true);
+     …
+     | ^^^^^^^^^
+> 44 |     }
+     | ^^^^^^^^^
+> 45 |   };
+     | ^^^^^ `fetchOrderDetails` is declared here
+  46 |
+  47 |   if (loading) {
+  48 |     return (  react-hooks/immutability
+   21:6   warning  React Hook useEffect has a missing dependency: 'fetchOrderDetails'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             react-hooks/exhaustive-deps
+  122:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @next/next/no-img-element
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(customer)/orders/page.js
+   21:5  error    Error: Cannot access variable before it is declared
+
+`fetchOrders` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  19 |
+  20 |   useEffect(() => {
+> 21 |     fetchOrders();
+     |     ^^^^^^^^^^^ `fetchOrders` accessed before it is declared
+  22 |   }, []);
+  23 |
+  24 |   const fetchOrders = async () => {
+
+  22 |   }, []);
+  23 |
+> 24 |   const fetchOrders = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 25 |     try {
+     | ^^^^^^^^^
+> 26 |       setLoading(true);
+     …
+     | ^^^^^^^^^
+> 52 |     }
+     | ^^^^^^^^^
+> 53 |   };
+     | ^^^^^ `fetchOrders` is declared here
+  54 |
+  55 |   if (loading) {
+  56 |     return (  react-hooks/immutability
+   22:6  warning  React Hook useEffect has a missing dependency: 'fetchOrders'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 react-hooks/exhaustive-deps
+  132:7  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                        @next/next/no-img-element
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(customer)/profile/page.js
+  21:5  error    Error: Cannot access variable before it is declared
+
+`fetchProfileData` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  19 |
+  20 |   useEffect(() => {
+> 21 |     fetchProfileData();
+     |     ^^^^^^^^^^^^^^^^ `fetchProfileData` accessed before it is declared
+  22 |   }, []);
+  23 |
+  24 |   const fetchProfileData = async () => {
+
+  22 |   }, []);
+  23 |
+> 24 |   const fetchProfileData = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 25 |     try {
+     | ^^^^^^^^^
+> 26 |       setLoading(true);
+     …
+     | ^^^^^^^^^
+> 74 |     }
+     | ^^^^^^^^^
+> 75 |   };
+     | ^^^^^ `fetchProfileData` is declared here
+  76 |
+  77 |   const handleLogout = async () => {
+  78 |     await supabase.auth.signOut();  react-hooks/immutability
+  22:6  warning  React Hook useEffect has a missing dependency: 'fetchProfileData'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              react-hooks/exhaustive-deps
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(customer)/profile/support/page.js
+  17:17  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(merchant)/merchant/bags/[id]/edit/page.js
+  16:21  error    Error: Cannot access variable before it is declared
+
+`loadBag` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  14 |   const [error, setError] = useState(null);
+  15 |
+> 16 |   useEffect(() => { loadBag(); }, []);
+     |                     ^^^^^^^ `loadBag` accessed before it is declared
+  17 |
+  18 |   const loadBag = async () => {
+  19 |     const { data } = await supabase.from('rescue_bags').select('*').eq('id', id).single();
+
+  16 |   useEffect(() => { loadBag(); }, []);
+  17 |
+> 18 |   const loadBag = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 19 |     const { data } = await supabase.from('rescue_bags').select('*').eq('id', id).single();
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 20 |     if (data) {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 21 |       // Format datetimes for input fields
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 22 |       data.pickup_start_local = data.pickup_start ? new Date(data.pickup_start).toISOString().slice(0, 16) : '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 23 |       data.pickup_end_local = data.pickup_end ? new Date(data.pickup_end).toISOString().slice(0, 16) : '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 24 |       setBag(data);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 25 |     }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 26 |     setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 27 |   };
+     | ^^^^^ `loadBag` is declared here
+  28 |
+  29 |   const update = (field, value) => setBag(prev => ({ ...prev, [field]: value }));
+  30 |  react-hooks/immutability
+  16:35  warning  React Hook useEffect has a missing dependency: 'loadBag'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           react-hooks/exhaustive-deps
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(merchant)/merchant/bags/create/page.js
+   30:5   error    Error: Cannot access variable before it is declared
+
+`loadOutlets` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  28 |
+  29 |   useEffect(() => {
+> 30 |     loadOutlets();
+     |     ^^^^^^^^^^^ `loadOutlets` accessed before it is declared
+  31 |   }, []);
+  32 |
+  33 |   const loadOutlets = async () => {
+
+  31 |   }, []);
+  32 |
+> 33 |   const loadOutlets = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |     const { data: { user } } = await supabase.auth.getUser();
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 35 |     if (!user) return;
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 47 |     }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 48 |   };
+     | ^^^^^ `loadOutlets` is declared here
+  49 |
+  50 |   const updateField = (field, value) => setForm(prev => ({ ...prev, [field]: value }));
+  51 |  react-hooks/immutability
+   31:6   warning  React Hook useEffect has a missing dependency: 'loadOutlets'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          react-hooks/exhaustive-deps
+  162:46  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react/no-unescaped-entities
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(merchant)/merchant/bags/page.js
+  18:55  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(merchant)/merchant/dashboard/page.js
+   16:5   error    Error: Cannot access variable before it is declared
+
+`loadDashboard` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  14 |
+  15 |   useEffect(() => {
+> 16 |     loadDashboard();
+     |     ^^^^^^^^^^^^^ `loadDashboard` accessed before it is declared
+  17 |   }, []);
+  18 |
+  19 |   const loadDashboard = async () => {
+
+  17 |   }, []);
+  18 |
+> 19 |   const loadDashboard = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 20 |     try {
+     | ^^^^^^^^^
+> 21 |       const { data: { user } } = await supabase.auth.getUser();
+     …
+     | ^^^^^^^^^
+> 84 |     }
+     | ^^^^^^^^^
+> 85 |   };
+     | ^^^^^ `loadDashboard` is declared here
+  86 |
+  87 |   if (loading) {
+  88 |     return (  react-hooks/immutability
+   17:6   warning  React Hook useEffect has a missing dependency: 'loadDashboard'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       react-hooks/exhaustive-deps
+  105:74  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        react/no-unescaped-entities
+  161:51  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        react/no-unescaped-entities
+  165:51  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        react/no-unescaped-entities
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(merchant)/merchant/finance/page.js
+  19:21  error    Error: Cannot access variable before it is declared
+
+`loadFinance` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  17 |   const [merchant, setMerchant] = useState(null);
+  18 |
+> 19 |   useEffect(() => { loadFinance(); }, []);
+     |                     ^^^^^^^^^^^ `loadFinance` accessed before it is declared
+  20 |
+  21 |   const loadFinance = async () => {
+  22 |     try {
+
+  19 |   useEffect(() => { loadFinance(); }, []);
+  20 |
+> 21 |   const loadFinance = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 22 |     try {
+     | ^^^^^^^^^
+> 23 |       const { data: { user } } = await supabase.auth.getUser();
+     …
+     | ^^^^^^^^^
+> 81 |     }
+     | ^^^^^^^^^
+> 82 |   };
+     | ^^^^^ `loadFinance` is declared here
+  83 |
+  84 |   if (loading) {
+  85 |     return <div className={styles.loadingContainer}><div className={styles.spinner}/></div>;  react-hooks/immutability
+  19:39  warning  React Hook useEffect has a missing dependency: 'loadFinance'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react-hooks/exhaustive-deps
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(merchant)/merchant/orders/page.js
+   21:21  error    Error: Cannot access variable before it is declared
+
+`loadOrders` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  19 |   const [verifyResult, setVerifyResult] = useState(null);
+  20 |
+> 21 |   useEffect(() => { loadOrders(); }, [filter]);
+     |                     ^^^^^^^^^^ `loadOrders` accessed before it is declared
+  22 |
+  23 |   useEffect(() => {
+  24 |     // Listen for new orders and order status changes to keep the queue live
+
+  37 |   }, [filter]);
+  38 |
+> 39 |   const loadOrders = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 40 |     try {
+     | ^^^^^^^^^
+> 41 |       setLoading(true);
+     …
+     | ^^^^^^^^^
+> 71 |     }
+     | ^^^^^^^^^
+> 72 |   };
+     | ^^^^^ `loadOrders` is declared here
+  73 |
+  74 |   const handleVerifyPickup = async () => {
+  75 |     if (!verifyCode.trim()) return;  react-hooks/immutability
+   21:38  warning  React Hook useEffect has a missing dependency: 'loadOrders'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/exhaustive-deps
+   37:6   warning  React Hook useEffect has missing dependencies: 'loadOrders' and 'supabase'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        react-hooks/exhaustive-deps
+  157:60  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       react/no-unescaped-entities
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/(merchant)/merchant/profile/page.js
+  15:21  error    Error: Cannot access variable before it is declared
+
+`loadProfile` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  13 |   const [loading, setLoading] = useState(true);
+  14 |
+> 15 |   useEffect(() => { loadProfile(); }, []);
+     |                     ^^^^^^^^^^^ `loadProfile` accessed before it is declared
+  16 |
+  17 |   const loadProfile = async () => {
+  18 |     const { data: { user } } = await supabase.auth.getUser();
+
+  15 |   useEffect(() => { loadProfile(); }, []);
+  16 |
+> 17 |   const loadProfile = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 18 |     const { data: { user } } = await supabase.auth.getUser();
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 19 |     if (!user) return;
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 27 |     setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 28 |   };
+     | ^^^^^ `loadProfile` is declared here
+  29 |
+  30 |   const handleSignOut = async () => {
+  31 |     await supabase.auth.signOut();  react-hooks/immutability
+  15:39  warning  React Hook useEffect has a missing dependency: 'loadProfile'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     react-hooks/exhaustive-deps
+
+/Users/kawinperera/Fresh as Ever/fresh-as-ever/src/app/page.js
+  165:23  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  172:64  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  204:31  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  221:57  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+✖ 59 problems (35 errors, 24 warnings)
+

@@ -1,0 +1,345 @@
+.container {
+  padding: 4rem;
+  animation: animate-enter 0.8s var(--p-spring-heavy);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  padding: 2.5rem;
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-substrate);
+  border-radius: 40px;
+  border: var(--z-border-glass);
+  box-shadow: var(--shadow-spatial), var(--z-inner-glow);
+}
+
+.titleWrapper {
+  flex: 1;
+}
+
+.titleWrapper h1 {
+  font-family: var(--font-spatial-display);
+  font-size: 3rem;
+  font-weight: 950;
+  letter-spacing: -0.06em;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+  line-height: 0.85;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 3rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.card {
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-substrate);
+  border-radius: 36px;
+  padding: 2.5rem;
+  border: var(--z-border-glass);
+  box-shadow: var(--z-inner-glow);
+  transition: all 0.5s var(--p-spring-hyper);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  background: white;
+  box-shadow: var(--shadow-spatial);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 950;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: -0.04em;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2.5rem;
+}
+
+.infoItem label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: oklch(45% 0.01 210);
+  margin-bottom: 0.75rem;
+}
+
+.infoItem span {
+  font-size: 1.125rem;
+  font-weight: 850;
+  color: var(--color-text);
+}
+
+/* Outlets Matrix */
+.outletCard {
+  background: white;
+  border-radius: 28px;
+  padding: 2rem;
+  border: var(--z-border-glass);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px oklch(0% 0 0 / 0.02);
+  transition: all 0.4s var(--p-spring-hyper);
+}
+
+.outletCard:hover {
+  transform: scale(1.02);
+  border-color: var(--z-teal);
+  box-shadow: 0 12px 24px -12px oklch(48% 0.16 210 / 0.3);
+}
+
+.outletHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.outletName {
+  font-weight: 950;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+}
+
+.outletCategory {
+  font-weight: 700;
+  color: oklch(45% 0.01 210);
+  font-size: 1rem;
+}
+
+/* Command Sidebar */
+.actionCard {
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-substrate);
+  border-radius: 40px;
+  padding: 3rem;
+  border: var(--z-border-glass);
+  position: sticky;
+  top: 3rem;
+  box-shadow: var(--shadow-spatial);
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.btnAction {
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: none;
+  font-weight: 950;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.4s var(--p-spring-hyper);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnApprove {
+  background: var(--z-teal);
+  color: white;
+  box-shadow: 0 12px 24px -6px oklch(48% 0.16 210 / 0.4);
+}
+
+.btnApprove:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px oklch(48% 0.16 210 / 0.5);
+}
+
+.btnReject {
+  background: transparent;
+  color: oklch(50% 0.18 20);
+  border: 4px solid oklch(50% 0.18 20 / 0.1);
+}
+
+.btnReject:hover {
+  background: oklch(50% 0.18 20 / 0.1);
+  transform: translateY(-4px);
+}
+
+.payoutGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.payoutItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid oklch(15% 0.01 210 / 0.05);
+}
+
+.payoutItem strong {
+  font-weight: 900;
+  color: oklch(45% 0.01 210);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+}
+
+.payoutItem span {
+  font-weight: 850;
+  color: var(--color-text);
+}
+
+@media (max-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.loadingOverlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 1rem;
+}
+
+.loadingTitle {
+  font-weight: 950;
+  font-size: 2rem;
+  letter-spacing: -0.06em;
+}
+
+.loadingSubtitle {
+  font-weight: 800;
+  opacity: 0.6;
+}
+
+.centerCard {
+  text-align: center;
+  padding: 4rem;
+}
+
+.voidTitle {
+  font-weight: 950;
+  font-size: 3rem;
+  letter-spacing: -0.06em;
+}
+
+.voidSubtitle {
+  font-weight: 800;
+  opacity: 0.6;
+  margin-bottom: 2rem;
+}
+
+.btnTeal {
+  background: var(--z-teal);
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  font-weight: 900;
+}
+
+.btnBack {
+  background: white;
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 14px;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.subtitle {
+  font-weight: 850;
+  color: oklch(45% 0.01 210);
+}
+
+.statusBadge {
+  padding: 0.5rem 1.5rem;
+  border-radius: 100px;
+  font-weight: 950;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: white;
+}
+
+.statusBadge.approved { background: var(--z-teal); }
+.statusBadge.pending { background: var(--z-amber); }
+.statusBadge.suspended, .statusBadge.rejected { background: var(--z-coral); }
+
+.refLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: oklch(45% 0.01 210);
+}
+
+.outletCount {
+  background: var(--color-text);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.outletStatus {
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+  font-weight: 900;
+  font-size: 0.7rem;
+}
+
+.outletStatus.online {
+  background: var(--z-teal);
+  color: white;
+}
+
+.outletStatus.offline {
+  background: oklch(15% 0.01 210 / 0.1);
+  color: oklch(45% 0.01 210);
+}
+
+.pickupInstructions {
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: oklch(45% 0.01 210);
+}
+
+.btnSuspend {
+  background: oklch(65% 0.18 65 / 0.1);
+  color: var(--z-amber);
+  border: none;
+}
+
+.fiscalCard {
+  margin-top: 2rem;
+}

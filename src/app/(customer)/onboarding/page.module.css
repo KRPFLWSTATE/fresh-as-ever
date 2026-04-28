@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-teal-900);
+  background: linear-gradient(180deg, var(--color-teal-50) 0%, white 100%);
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+
+.skipContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+.skipButton {
+  background: none;
+  border: none;
+  font-weight: 600;
+  color: var(--color-gray-500);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.carousel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconCircle {
+  width: 120px;
+  height: 120px;
+  background-color: var(--color-primary-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 12px 30px rgba(1, 105, 111, 0.15);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-gray-900);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--color-gray-600);
+  line-height: 1.6;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.bottomControls {
+  margin-top: auto;
+  padding-bottom: 2rem;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--color-gray-300);
+  transition: all 0.3s ease;
+}
+
+.activeDot {
+  width: 24px;
+  background-color: var(--color-primary-600);
+}

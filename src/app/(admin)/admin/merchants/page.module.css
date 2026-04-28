@@ -1,0 +1,187 @@
+.page {
+  padding: 3rem;
+  animation: animate-enter 0.8s var(--p-spring-heavy);
+}
+
+.header {
+  margin-bottom: 4rem;
+}
+
+.header h1 {
+  font-family: var(--font-spatial-display);
+  font-size: 3.5rem;
+  font-weight: 950;
+  letter-spacing: -0.06em;
+  line-height: 0.85;
+  color: var(--color-text);
+}
+
+/* ============================================================
+   Refracted Filter Matrix
+   ============================================================ */
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding: 8px;
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-substrate);
+  border: var(--z-border-glass);
+  border-radius: 24px;
+  width: fit-content;
+  box-shadow: var(--shadow-sm);
+}
+
+.filterChip {
+  padding: 0.75rem 1.5rem;
+  border-radius: 16px;
+  border: none;
+  background: transparent;
+  color: oklch(45% 0.01 210);
+  font-weight: 900;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.4s var(--p-spring-hyper);
+}
+
+.filterChip:hover {
+  background: oklch(15% 0.01 210 / 0.05);
+  color: var(--color-text);
+}
+
+.active {
+  background: white !important;
+  color: var(--z-teal) !important;
+  box-shadow: 0 8px 16px -4px oklch(48% 0.16 210 / 0.2);
+}
+
+/* ============================================================
+   Command Table Substrate
+   ============================================================ */
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.merchantRow {
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-substrate);
+  -webkit-backdrop-filter: var(--z-blur-substrate);
+  border: var(--z-border-glass);
+  border-radius: 28px;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s var(--p-spring-hyper);
+  box-shadow: var(--z-inner-glow);
+}
+
+.merchantRow:hover {
+  transform: translateX(12px) scale(1.02);
+  background: white;
+  box-shadow: var(--shadow-spatial);
+  border-color: var(--z-teal);
+}
+
+.businessName {
+  font-size: 1.5rem;
+  font-weight: 950;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.ownerDetail {
+  font-weight: 800;
+  color: oklch(45% 0.01 210);
+  font-size: 1rem;
+}
+
+.statusIndicator {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.actionBtn {
+  text-decoration: none;
+  padding: 1rem 2rem;
+  background: var(--z-teal);
+  color: white;
+  border-radius: 18px;
+  font-weight: 900;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.4s var(--p-spring-hyper);
+}
+
+.actionBtn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -6px oklch(48% 0.16 210 / 0.4);
+}
+
+@media (max-width: 768px) {
+  .merchantRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .statusIndicator {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .header h1 {
+    font-size: 2.25rem;
+  }
+}
+
+.headerSubtitle {
+  color: var(--color-text-secondary);
+  font-weight: 800;
+  margin-top: 0.25rem;
+}
+
+.loadingState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+  color: var(--color-text-secondary);
+  font-weight: 800;
+}
+
+.ownerMeta {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.emptyState {
+  padding: 4rem;
+  text-align: center;
+  background: var(--z-glass-base);
+  border-radius: 32px;
+  border: var(--z-border-glass);
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.emptyTitle {
+  font-weight: 900;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.emptySubtitle {
+  color: var(--color-text-secondary);
+  font-weight: 700;
+}

@@ -1,0 +1,203 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 120px;
+  animation: animate-enter 0.8s var(--p-spring-heavy);
+}
+
+.header {
+  padding: 3rem 1.5rem 2rem;
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-substrate);
+  -webkit-backdrop-filter: var(--z-blur-substrate);
+  border-bottom: var(--z-border-glass);
+}
+
+.header h1 {
+  font-family: var(--font-spatial-display);
+  font-size: 2.5rem;
+  font-weight: 950;
+  letter-spacing: -0.06em;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.content {
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-spatial-display);
+  font-size: 1.25rem;
+  font-weight: 950;
+  color: oklch(45% 0.01 210);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ============================================================
+   Matrix Card (Zenith Standard)
+   ============================================================ */
+.card {
+  display: flex;
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-substrate);
+  border-radius: 28px;
+  overflow: hidden;
+  border: var(--z-border-glass);
+  cursor: pointer;
+  transition: all 0.5s var(--p-spring-hyper);
+}
+
+.card:hover {
+  transform: scale(1.02) translateY(-4px);
+  background: white;
+  box-shadow: var(--shadow-spatial);
+  border-color: var(--z-teal);
+}
+
+.cardActive {
+  border-color: var(--z-teal);
+  box-shadow: 0 0 0 4px oklch(48% 0.16 180 / 0.1);
+}
+
+.cardImage {
+  width: 120px;
+  height: auto;
+  object-fit: cover;
+  border-right: var(--z-border-glass);
+}
+
+.cardContent {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.bagTitle {
+  font-size: 1.25rem;
+  font-weight: 950;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.orderStatus {
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 0.8rem;
+  border-radius: 100px;
+  border: 1px solid currentColor;
+}
+
+.orderStatus[data-status='reserved'] { color: var(--z-teal); background: oklch(95% 0.05 180); }
+.orderStatus[data-status='completed'] { color: oklch(45% 0.01 210); background: oklch(95% 0.01 210); }
+.orderStatus[data-status='cancelled'] { color: var(--z-coral); background: oklch(95% 0.05 25); }
+
+.outletName {
+  font-weight: 800;
+  color: oklch(45% 0.01 210);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.pickupTime {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 900;
+  color: var(--z-teal);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.icon { font-size: 1rem; }
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid oklch(0% 0 0 / 0.05);
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.orderDate {
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: oklch(65% 0.01 210);
+}
+
+.orderTotal {
+  font-weight: 950;
+  color: var(--color-text);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 640px) {
+  .header h1 { font-size: 1.75rem; }
+  .cardImage { width: 90px; }
+  .cardContent { padding: 1rem; }
+  .bagTitle { font-size: 1.1rem; }
+}
+
+/* Loading */
+.loadingText {
+  font-weight: 800;
+  opacity: 0.6;
+  text-align: center;
+}
+
+/* Empty wrapper */
+.emptyWrapper {
+  margin-top: 10vh;
+}
+
+/* Primary button */
+.primaryBtn {
+  background: var(--z-teal);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.5s var(--p-spring-hyper);
+  box-shadow: 0 12px 24px -6px oklch(48% 0.16 210 / 0.4);
+}
+
+.primaryBtn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px -10px oklch(48% 0.16 210 / 0.5);
+}

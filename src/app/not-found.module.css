@@ -1,0 +1,19 @@
+.notFoundContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--brand-teal-void);
+}
+
+.notFoundCard {
+  background: var(--spatial-floating);
+  backdrop-filter: var(--blur-substrate);
+  border-radius: 32px;
+  border: var(--border-glass-strong);
+  padding: 3rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: var(--shadow-spatial);
+}

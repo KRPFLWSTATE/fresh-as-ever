@@ -1,0 +1,261 @@
+.page {
+  animation: animate-enter 0.8s var(--p-spring-heavy);
+  padding-bottom: 5rem;
+}
+
+.header {
+  padding: 3rem 1.5rem 2rem;
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-substrate);
+  -webkit-backdrop-filter: var(--z-blur-substrate);
+  border-bottom: var(--z-border-glass);
+}
+
+.header h1 {
+  font-family: var(--font-spatial-display);
+  font-size: 2.5rem;
+  font-weight: 950;
+  letter-spacing: -0.06em;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ============================================================
+   Capital Core: Main Balance Nexus
+   ============================================================ */
+.balanceCard {
+  background: var(--color-text);
+  color: white;
+  margin: 2rem 1.5rem;
+  padding: 3rem 2.5rem;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 80px -20px oklch(0% 0 0 / 0.4);
+}
+
+.balanceCard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 100%;
+  height: 200%;
+  background: radial-gradient(circle at center, oklch(48% 0.16 210 / 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.balanceLabel {
+  font-size: 0.85rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  opacity: 0.6;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.balanceAmount {
+  font-family: var(--font-spatial-display);
+  font-size: 4rem;
+  font-weight: 950;
+  letter-spacing: -0.06em;
+  margin-bottom: 2rem;
+  line-height: 1;
+}
+
+.balanceBreakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: oklch(100% 0 0 / 0.05);
+  padding: 1.5rem;
+  border-radius: 24px;
+  border: 1px solid oklch(100% 0 0 / 0.1);
+}
+
+.breakdownItem {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 850;
+  font-size: 0.9rem;
+}
+
+.breakdownItem span:first-child {
+  opacity: 0.6;
+}
+
+/* ============================================================
+   Settings & Control Substrates
+   ============================================================ */
+.settingsCard {
+  background: var(--z-glass-base);
+  backdrop-filter: var(--z-blur-substrate);
+  margin: 0 1.5rem 2.5rem;
+  padding: 2rem;
+  border-radius: 32px;
+  border: var(--z-border-glass);
+}
+
+.settingsCard h3 {
+  font-size: 1rem;
+  font-weight: 950;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.settingsRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid oklch(0% 0 0 / 0.05);
+  font-weight: 850;
+}
+
+.settingsRow:last-child { border: none; }
+
+/* ============================================================
+   Ledger Substrate: Past Settlements
+   ============================================================ */
+.sectionTitle {
+  padding: 0 1.5rem 1rem;
+  font-family: var(--font-spatial-display);
+  font-size: 1.25rem;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 1.5rem;
+}
+
+.row {
+  background: white;
+  border: var(--z-border-glass);
+  border-radius: 20px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.4s var(--p-spring-hyper);
+}
+
+.row:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--z-teal);
+}
+
+.rowDate {
+  font-weight: 900;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.rowAmount {
+  font-family: var(--font-spatial-display);
+  font-weight: 950;
+  font-size: 1.25rem;
+  color: var(--color-text);
+}
+
+.rowMeta {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: oklch(45% 0.01 210);
+}
+
+@media (max-width: 640px) {
+  .balanceAmount { font-size: 2.5rem; }
+  .balanceCard { padding: 2rem 1.5rem; }
+}
+
+/* Loading */
+.loadingState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  color: var(--color-text);
+  font-weight: 950;
+}
+
+.loadingContent {
+  text-align: center;
+}
+
+.loadingTitle {
+  font-size: 1.5rem;
+  letter-spacing: -0.06em;
+}
+
+.loadingText {
+  font-weight: 800;
+  opacity: 0.6;
+}
+
+/* Cash due */
+.cashDue {
+  color: var(--z-coral);
+}
+
+/* Withdraw button */
+.withdrawBtn {
+  width: 100%;
+  margin-top: 2rem;
+  background: white;
+  color: var(--color-text);
+  height: 64px;
+  font-size: 1.125rem;
+  font-weight: 950;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s var(--p-spring-hyper);
+}
+
+.withdrawBtn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 24px -6px oklch(0% 0 0 / 0.2);
+}
+
+/* Uppercase text */
+.uppercaseText {
+  text-transform: uppercase;
+}
+
+/* Empty state */
+.emptyState {
+  padding: 4rem 1.5rem;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.emptyTitle {
+  font-weight: 950;
+}
+
+.emptyText {
+  font-weight: 800;
+}
+
+/* Small badge */
+.smallBadge {
+  background: var(--z-teal);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Row right aligned */
+.rowRight {
+  text-align: right;
+}

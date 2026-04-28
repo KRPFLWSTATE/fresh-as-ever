@@ -1,0 +1,36 @@
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.25rem;
+  border: 1px solid oklch(92% 0 0);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  transition: all 0.6s var(--physics-spring);
+  position: relative;
+  overflow: hidden;
+}
+
+.interactive {
+  cursor: pointer;
+}
+
+.interactive:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-spatial);
+}
+
+.interactive:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* Padding Variants */
+.compact {
+  padding: 1rem;
+}
+
+.default {
+  padding: 1.25rem;
+}
+
+.spacious {
+  padding: 2rem;
+}
