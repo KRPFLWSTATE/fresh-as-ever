@@ -1,27 +1,13 @@
 'use client';
-import { useEffect } from 'react';
-import ZeroState from '@/components/spatial/ZeroState';
-import styles from './error.module.css';
 
-export default function Error({ error, reset }) {
-  useEffect(() => {
-    console.error(error);
-  }, [error]);
-
+export default function ErrorPage({ error, reset }) {
   return (
-    <div className={styles.errorContainer}>
-      <div className={styles.errorCard}>
-        <ZeroState 
-          icon="⚡"
-          title="System Anomaly"
-          description={error?.message || "A kinetic instability has compromised the current substrate. The error has been logged for remediation."}
-          action={
-            <button onClick={() => reset()} className={`btn btn-primary ${styles.recalibrateBtn}`}>
-              Recalibrate Matrix
-            </button>
-          }
-        />
-      </div>
+    <div className="stub-page">
+      <h1>Something went wrong</h1>
+      <p>{error?.message || 'An unexpected error occurred.'}</p>
+      <button onClick={reset} style={{ marginTop: '1rem', color: '#01696f', fontWeight: 600 }}>
+        Try again
+      </button>
     </div>
   );
 }
