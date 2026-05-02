@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Fresh As Ever - Discover</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed-dim": "#85d3da",
+                        "divider": "#e2dfd9",
+                        "accent-hover": "#c55700",
+                        "accent-highlight": "#fde8cc",
+                        "success": "#437a22",
+                        "on-tertiary-container": "#ffceb5",
+                        "inverse-on-surface": "#eef1f1",
+                        "surface-container-highest": "#e0e3e3",
+                        "error-container": "#ffdad6",
+                        "dark-primary": "#4f98a3",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "tertiary-container": "#8b4f2a",
+                        "primary-fixed": "#a1f0f6",
+                        "accent": "#da7101",
+                        "tertiary-fixed": "#ffdbc9",
+                        "secondary-container": "#fc8b27",
+                        "secondary": "#944b00",
+                        "inverse-primary": "#85d3da",
+                        "surface": "#ffffff",
+                        "text": "#1a1a1a",
+                        "background": "#f7f6f2",
+                        "secondary-fixed-dim": "#ffb783",
+                        "secondary-fixed": "#ffdcc5",
+                        "surface-bright": "#f7fafa",
+                        "outline-variant": "#bec8c9",
+                        "surface-tint": "#01696f",
+                        "surface-container": "#ebeeee",
+                        "dark-background": "#141412",
+                        "dark-accent": "#fdab43",
+                        "on-background": "#181c1d",
+                        "outline": "#6f797a",
+                        "surface-container-high": "#e6e9e9",
+                        "on-secondary-fixed-variant": "#703700",
+                        "on-primary-container": "#97e6ec",
+                        "on-primary-fixed": "#002022",
+                        "on-secondary-fixed": "#301400",
+                        "surface-2": "#f3f0ec",
+                        "surface-variant": "#e0e3e3",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#181c1d",
+                        "primary": "#004f54",
+                        "inverse-surface": "#2d3131",
+                        "primary-container": "#01696f",
+                        "on-tertiary-fixed": "#331200",
+                        "on-secondary-container": "#633000",
+                        "dark-surface-2": "#252420",
+                        "primary-hover": "#0c4e54",
+                        "primary-highlight": "#d0e8e6",
+                        "text-muted": "#6b6762",
+                        "text-faint": "#b5b2ad",
+                        "primary-active": "#0f3638",
+                        "dark-surface": "#1c1b18",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d7dbda",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-error": "#ffffff",
+                        "tertiary": "#6e3815",
+                        "on-surface-variant": "#3f4949",
+                        "surface-container-low": "#f1f4f4",
+                        "on-tertiary": "#ffffff",
+                        "error": "#c0392b",
+                        "on-error-container": "#93000a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "lg": "24px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "page-margin-desktop": "32px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "page-margin-mobile": "16px"
+                    },
+                    fontFamily: {
+                        "price-original": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "price": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    fontSize: {
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        
+        /* Hide scrollbar for horizontal scrolling but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-text font-body-md antialiased pb-[80px] md:pb-0 md:pl-[240px]">
+<!-- Shared NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-screen z-40 h-full w-[240px] border-r border-stone-200 dark:border-stone-800 border-r border-stone-100 dark:border-stone-800 bg-white dark:bg-stone-900 text-[#01696f] dark:text-teal-400 font-['Plus_Jakarta_Sans'] text-sm">
+<div class="p-6">
+<h1 class="text-[#01696f] font-extrabold text-lg tracking-tight"><img alt="Fresh As Ever Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uie60JdkzC900B8W6Lq2tvLovHTvtcRuIWGVDUAlqSD5xMuoBKopz9pTUoK3n2SYBCuTf0VXarGG4NLD031Vafgnl7lxPbdQqPHAFv3ecBEO28tcGBPcV_GrQWjS0-oumHN4Kim9wFJ6i-EO84YkjK0dALtFlrl_0bVjHeWrj7vN1PXXrztAd767sD5bqFr5xx5Ntt3qPBmfTjNH038oWQTJnEKh7miF99TY487BnyhyZrW5RGE_A5bkleTXJhZnP4YDs_XclcD8Q"/></h1>
+</div>
+<div class="px-4 pb-6 flex items-center gap-3">
+<img alt="Merchant Profile" class="w-10 h-10 rounded-full object-cover" data-alt="professional headshot of a smiling woman with warm lighting and a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7m-f7LZCie8YwCf45dITSRs5Hv6NSSYaAu5xL2TZTO2cXdCSpg88bb71735QPgsfv3T0junZZuLrp8qY7kt_XmhDosud-miJKeMCnrdQJZCX5BfRCLnpMyExlEuIPlkrVt-KlcjA0w4AoRWj2wnTx5BIL1JNxksHRmi_IOtGGTwMvjP1LfDzMFTAEi2lAHQ7HZIt1j-OHvDvKCtyDvq8m0EVVhRrw7F-Dj-xGrXT2BZ5CWt-ldXEBk8KkSGFWrrnUr-QUPMRcoWM"/>
+<div>
+<p class="font-h3 text-h3 text-text">Ceylon Delights</p>
+<p class="font-body-sm text-body-sm text-text-muted">Merchant Admin</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-1 px-2">
+<a class="flex items-center gap-3 bg-[#01696f]/5 dark:bg-teal-900/20 text-[#01696f] dark:text-teal-400 border-l-[3px] border-[#01696f] px-4 py-3 font-semibold duration-200 ease-in-out hover:bg-stone-50 dark:hover:bg-stone-800 transition-all" href="#">
+<span class="material-symbols-outlined icon-fill">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 duration-200 ease-in-out hover:bg-stone-50 dark:hover:bg-stone-800 transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 duration-200 ease-in-out hover:bg-stone-50 dark:hover:bg-stone-800 transition-all" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 duration-200 ease-in-out hover:bg-stone-50 dark:hover:bg-stone-800 transition-all" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 duration-200 ease-in-out hover:bg-stone-50 dark:hover:bg-stone-800 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</nav>
+<!-- Top App Bar (Mobile) -->
+<header class="md:hidden flex justify-between items-center px-4 h-16 w-full docked full-width top-0 border-b border-stone-200 dark:border-stone-800 bg-[#f7f6f2] dark:bg-stone-950 text-[#01696f] dark:text-teal-400 font-['Plus_Jakarta_Sans'] font-semibold sticky z-30">
+<button class="p-2 -ml-2 text-[#01696f] dark:text-teal-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors scale-95 duration-150 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex flex-col items-center"><img alt="Fresh As Ever Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uie60JdkzC900B8W6Lq2tvLovHTvtcRuIWGVDUAlqSD5xMuoBKopz9pTUoK3n2SYBCuTf0VXarGG4NLD031Vafgnl7lxPbdQqPHAFv3ecBEO28tcGBPcV_GrQWjS0-oumHN4Kim9wFJ6i-EO84YkjK0dALtFlrl_0bVjHeWrj7vN1PXXrztAd767sD5bqFr5xx5Ntt3qPBmfTjNH038oWQTJnEKh7miF99TY487BnyhyZrW5RGE_A5bkleTXJhZnP4YDs_XclcD8Q"/></div>
+<button class="p-1 -mr-1 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors scale-95 duration-150 rounded-full">
+<img alt="User profile photo" class="w-8 h-8 rounded-full object-cover" data-alt="professional headshot of a smiling woman with warm lighting and a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb4Y8WRqyeVbgiZO_SkxE6Lg3lo_hXlMj8VJob18AYNRDggZtrUdPb-8QvCAXB9e6GWQya-3fAFmgLJM237fDBpmGcYhEH-VCL4Seo-_Hu8h7_bOMC65A2AUsmhc3HLnFkek3G3pGClukdNdVMVHAvs6T0YtgmaJ-lDcWwratzlwLjdXxvbTkzdrkIQp3pyXdwe-CIjzDwbaA0Sa5EN7oi1OCtyvrNM3RM3-CkrzMoshUC2y5ne9JktC0hc45iUlLO-aEOebf98N4"/>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="w-full max-w-7xl mx-auto p-page-margin-mobile md:p-page-margin-desktop">
+<!-- Location Header -->
+<div class="flex items-center gap-2 mb-lg">
+<span class="material-symbols-outlined text-primary-container text-xl">location_on</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-text-muted uppercase">Current Location</span>
+<button class="flex items-center gap-1 font-h3 text-h3 text-text">
+                    Colombo, LK
+                    <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Category Chips -->
+<div class="flex overflow-x-auto hide-scrollbar gap-sm mb-lg pb-2 -mx-page-margin-mobile px-page-margin-mobile md:mx-0 md:px-0">
+<button class="flex-shrink-0 px-4 py-2 rounded-full bg-primary-container text-on-primary font-label text-label flex items-center gap-2 active:scale-[0.97] transition-transform duration-120 shadow-[0_2px_8px_rgba(30,27,20,0.08)]">
+<span class="material-symbols-outlined text-[18px] icon-fill">restaurant</span>
+                All
+            </button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full bg-surface text-text font-label text-label border border-divider flex items-center gap-2 active:scale-[0.97] transition-transform duration-120 shadow-[0_2px_8px_rgba(30,27,20,0.04)]">
+<span class="material-symbols-outlined text-[18px]">bakery_dining</span>
+                Bakery
+            </button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full bg-surface text-text font-label text-label border border-divider flex items-center gap-2 active:scale-[0.97] transition-transform duration-120 shadow-[0_2px_8px_rgba(30,27,20,0.04)]">
+<span class="material-symbols-outlined text-[18px]">local_cafe</span>
+                Cafe
+            </button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full bg-surface text-text font-label text-label border border-divider flex items-center gap-2 active:scale-[0.97] transition-transform duration-120 shadow-[0_2px_8px_rgba(30,27,20,0.04)]">
+<span class="material-symbols-outlined text-[18px]">lunch_dining</span>
+                Meals
+            </button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full bg-surface text-text font-label text-label border border-divider flex items-center gap-2 active:scale-[0.97] transition-transform duration-120 shadow-[0_2px_8px_rgba(30,27,20,0.04)]">
+<span class="material-symbols-outlined text-[18px]">local_pizza</span>
+                Groceries
+            </button>
+</div>
+<!-- Section Title -->
+<div class="flex justify-between items-end mb-md">
+<div>
+<h2 class="font-h2 text-h2 text-text mb-1">Rescue Near You</h2>
+<p class="font-body-sm text-body-sm text-text-muted">Save food and money from local spots.</p>
+</div>
+<button class="font-label text-label text-primary-container active:scale-[0.97] transition-transform duration-120">See all</button>
+</div>
+<!-- Rescue Bag Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md md:gap-lg mb-xxl">
+<!-- Card 1 -->
+<div class="bg-surface rounded-lg shadow-[0_4px_24px_rgba(30,27,20,0.06)] overflow-hidden flex flex-col active:scale-[0.99] transition-transform duration-200 cursor-pointer group">
+<div class="relative h-[200px] w-full overflow-hidden p-2">
+<img alt="Freshly baked artisan sourdough bread" class="w-full h-full object-cover rounded-[10px] group-hover:scale-105 transition-transform duration-500" data-alt="close up of rustic crusty artisan sourdough bread loaves on a wooden bakery counter with warm soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWXsCN3OAyp83RMaXKzlqpJn2hxyrTDR4gL8TKcD5P17EEZKknu11kId_8OpUh-g3PN-SJtYkPSn7lF-L5WiwDAzeUv3dri-pHYzzC0qYqEcm0oF-jPx7YxoDFDmm339ser8FHqM7MVEEYdJK89RmCq0dyGYznqAKVmHWc5WbT0EZ_IepJsXtoMqWX3qO6BvAYo3wRPRu7Zi5cZqBIusne-OtkTZbQ6IHWrIrdTdKUh8yVh6n1aT_V_Nlgi9HiNkslQoKkWNQsHTc"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-primary-container font-label-caps text-label-caps flex items-center gap-1 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+                        4 Left
+                    </div>
+<button class="absolute top-4 right-4 w-8 h-8 rounded-full bg-surface/90 backdrop-blur-sm flex items-center justify-center text-text-muted hover:text-accent transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-0.5">The Bread Company</p>
+<h3 class="font-h3 text-h3 text-text line-clamp-1">Artisan Bread Surprise Bag</h3>
+</div>
+</div>
+<div class="flex items-center gap-1 text-text-muted font-body-sm text-body-sm mb-4 mt-auto">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Pickup today: 18:00 - 20:00</span>
+</div>
+<div class="flex justify-between items-end border-t border-divider pt-3 mt-auto">
+<div class="flex items-center gap-1 text-text-muted font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span>1.2 km</span>
+</div>
+<div class="text-right">
+<p class="font-price-original text-price-original text-text-muted line-through decoration-divider decoration-2 mb-0">Rs 2,500</p>
+<p class="font-price text-price text-accent m-0 leading-none">Rs 850</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface rounded-lg shadow-[0_4px_24px_rgba(30,27,20,0.06)] overflow-hidden flex flex-col active:scale-[0.99] transition-transform duration-200 cursor-pointer group">
+<div class="relative h-[200px] w-full overflow-hidden p-2">
+<img alt="Assorted cafe pastries and coffee" class="w-full h-full object-cover rounded-[10px] group-hover:scale-105 transition-transform duration-500" data-alt="assortment of delicate flaky croissants and pastries in a brightly lit modern cafe setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCch6YzxuBihCyEM-OVS5SGcvexlxdzqW06IZN7_7dL5Mdgb2LEutzw-nJND5yhvwFBXTIx4LMRO-pcu0DFO0Z76Zy_4MS6Qoh19L2Eistg_sOvQG2WXxeOhmj9KoHVe2POqhPjcfThE8ltiRcM6PkTD-i9A0HeRhHZN_wEbjrLczSqVgjc-N8_nbKzancjEU9dPGtOKr7xNxHjXCJGnpqsZ_sgzj6eyozn7evznjboommb_q4Ttufx0lsMycrBBNV9OwXI1LHddMI"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-primary-container font-label-caps text-label-caps flex items-center gap-1 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-accent"></span>
+                        2 Left
+                    </div>
+<button class="absolute top-4 right-4 w-8 h-8 rounded-full bg-surface/90 backdrop-blur-sm flex items-center justify-center text-text-muted hover:text-accent transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-0.5">Cafe Kumbuk</p>
+<h3 class="font-h3 text-h3 text-text line-clamp-1">Pastry &amp; Savoury Mix</h3>
+</div>
+</div>
+<div class="flex items-center gap-1 text-text-muted font-body-sm text-body-sm mb-4 mt-auto">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Pickup today: 16:30 - 17:30</span>
+</div>
+<div class="flex justify-between items-end border-t border-divider pt-3 mt-auto">
+<div class="flex items-center gap-1 text-text-muted font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span>2.4 km</span>
+</div>
+<div class="text-right">
+<p class="font-price-original text-price-original text-text-muted line-through decoration-divider decoration-2 mb-0">Rs 3,200</p>
+<p class="font-price text-price text-accent m-0 leading-none">Rs 1,100</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface rounded-lg shadow-[0_4px_24px_rgba(30,27,20,0.06)] overflow-hidden flex flex-col active:scale-[0.99] transition-transform duration-200 cursor-pointer group">
+<div class="relative h-[200px] w-full overflow-hidden p-2">
+<img alt="Healthy salad bowl" class="w-full h-full object-cover rounded-[10px] group-hover:scale-105 transition-transform duration-500" data-alt="vibrant healthy salad bowl with fresh greens quinoa avocado and roasted vegetables top down view bright lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa4JgiNQrLlREikLzMHoTTu-srMT1-hE4bcEXs2kh9TfhusQcFIYM7Pf3PdRZRsNs3AhJqHgiO3nsxg0AN0tbWdw7Fg6Yx0ALFdmj_Jlhg55wJHD6sBLvSCVwrEau1HQnwuU-pioz2hnGF1nSM8XVlAngMQlLMcvzbtr4xlqJcK4SgWIqXTFppqDAghwMZj2uS-5ZLZj38aFPolOhAg-BwwwOPswCrG4AMSLJYnTaOSfhK1_pWfgUuXdUlYisTlERqALkU230kDY0"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-primary-container font-label-caps text-label-caps flex items-center gap-1 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+                        5+ Left
+                    </div>
+<button class="absolute top-4 right-4 w-8 h-8 rounded-full bg-surface/90 backdrop-blur-sm flex items-center justify-center text-text-muted hover:text-accent transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-0.5">The Mango Tree</p>
+<h3 class="font-h3 text-h3 text-text line-clamp-1">Lunch Buffet Box</h3>
+</div>
+</div>
+<div class="flex items-center gap-1 text-text-muted font-body-sm text-body-sm mb-4 mt-auto">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Pickup today: 14:00 - 15:00</span>
+</div>
+<div class="flex justify-between items-end border-t border-divider pt-3 mt-auto">
+<div class="flex items-center gap-1 text-text-muted font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span>3.1 km</span>
+</div>
+<div class="text-right">
+<p class="font-price-original text-price-original text-text-muted line-through decoration-divider decoration-2 mb-0">Rs 1,800</p>
+<p class="font-price text-price text-accent m-0 leading-none">Rs 600</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-[64px] border-t border-stone-100 dark:border-stone-800 bg-white dark:bg-stone-900 shadow-[0_-4px_20px_rgba(30,27,20,0.04)] font-['Plus_Jakarta_Sans'] text-[11px] font-medium">
+<a class="flex flex-col items-center justify-center text-[#01696f] dark:text-teal-400 active:scale-95 transition-transform scale-97 duration-120 w-16" href="#">
+<span class="material-symbols-outlined text-2xl mb-1 icon-fill">explore</span>
+<span>Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 active:scale-95 transition-transform scale-97 duration-120 w-16" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">shopping_bag</span>
+<span>Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 active:scale-95 transition-transform scale-97 duration-120 w-16" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">favorite</span>
+<span>Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 active:scale-95 transition-transform scale-97 duration-120 w-16" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">person</span>
+<span>Profile</span>
+</a>
+</nav>
+</body></html>

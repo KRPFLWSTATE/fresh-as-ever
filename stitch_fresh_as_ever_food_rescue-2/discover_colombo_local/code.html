@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Colombo Discover</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#bec8c9",
+                      "error-container": "#ffdad6",
+                      "background": "#f7f6f2",
+                      "text-muted": "#6b6762",
+                      "surface-container": "#ebeeee",
+                      "on-tertiary-container": "#ffceb5",
+                      "outline": "#6f797a",
+                      "on-error-container": "#93000a",
+                      "on-surface-variant": "#3f4949",
+                      "surface-container-highest": "#e0e3e3",
+                      "on-surface": "#181c1d",
+                      "secondary-fixed": "#ffdcc5",
+                      "on-primary-fixed": "#002022",
+                      "inverse-on-surface": "#eef1f1",
+                      "accent-hover": "#c55700",
+                      "surface-2": "#f3f0ec",
+                      "secondary": "#944b00",
+                      "tertiary-fixed": "#ffdbc9",
+                      "surface-variant": "#e0e3e3",
+                      "dark-surface-2": "#252420",
+                      "primary-container": "#01696f",
+                      "accent": "#da7101",
+                      "surface-dim": "#d7dbda",
+                      "divider": "#e2dfd9",
+                      "on-tertiary": "#ffffff",
+                      "primary-hover": "#0c4e54",
+                      "text": "#1a1a1a",
+                      "inverse-surface": "#2d3131",
+                      "on-tertiary-fixed": "#331200",
+                      "on-secondary": "#ffffff",
+                      "primary-active": "#0f3638",
+                      "primary": "#004f54",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#a1f0f6",
+                      "surface-container-high": "#e6e9e9",
+                      "on-secondary-fixed": "#301400",
+                      "error": "#c0392b",
+                      "surface-bright": "#f7fafa",
+                      "surface-container-low": "#f1f4f4",
+                      "tertiary": "#6e3815",
+                      "on-primary-fixed-variant": "#004f54",
+                      "dark-primary": "#4f98a3",
+                      "primary-highlight": "#d0e8e6",
+                      "on-secondary-fixed-variant": "#703700",
+                      "on-error": "#ffffff",
+                      "dark-accent": "#fdab43",
+                      "secondary-fixed-dim": "#ffb783",
+                      "surface": "#ffffff",
+                      "dark-surface": "#1c1b18",
+                      "tertiary-fixed-dim": "#ffb68d",
+                      "on-tertiary-fixed-variant": "#6e3815",
+                      "tertiary-container": "#8b4f2a",
+                      "dark-background": "#141412",
+                      "inverse-primary": "#85d3da",
+                      "on-primary-container": "#97e6ec",
+                      "text-faint": "#b5b2ad",
+                      "on-background": "#181c1d",
+                      "on-secondary-container": "#633000",
+                      "accent-highlight": "#fde8cc",
+                      "secondary-container": "#fc8b27",
+                      "success": "#437a22",
+                      "primary-fixed-dim": "#85d3da",
+                      "surface-tint": "#01696f",
+                      "surface-container-lowest": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "xxl": "48px",
+                      "lg": "24px",
+                      "page-margin-desktop": "32px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "page-margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "price-original": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "h3": ["Plus Jakarta Sans"],
+                      "h2": ["Plus Jakarta Sans"],
+                      "h1": ["Plus Jakarta Sans"],
+                      "price": ["Plus Jakarta Sans"],
+                      "label-caps": ["Plus Jakarta Sans"],
+                      "body-sm": ["Plus Jakarta Sans"],
+                      "display": ["Plus Jakarta Sans"],
+                      "label": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "price-original": ["0.9375rem", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "body-lg": ["1rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h3": ["1.125rem", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "h2": ["1.25rem", {"lineHeight": "1.35", "fontWeight": "600"}],
+                      "h1": ["1.5rem", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "price": ["1.375rem", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "label-caps": ["0.75rem", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-sm": ["0.875rem", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "display": ["2rem", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "label": ["0.875rem", {"lineHeight": "1.4", "fontWeight": "500"}],
+                      "body-md": ["0.9375rem", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased pt-20 pb-24 md:pb-12 min-h-screen selection:bg-primary-highlight">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-4 h-16 bg-[#f7f6f2] dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 font-['Plus_Jakarta_Sans'] antialiased">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 -ml-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900 active:scale-[0.97] transition-transform duration-120 flex items-center justify-center text-[#01696f] dark:text-teal-400">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">menu</span>
+</button>
+<span class="text-xl font-bold tracking-tight text-[#01696f] dark:text-teal-500">Rescue Bag</span>
+</div>
+<!-- Desktop Nav Cluster -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="flex items-center gap-2 text-[#01696f] font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-900 px-3 py-2 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+<span class="font-label text-label">Discover</span>
+</a>
+<a class="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-900 px-3 py-2 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span class="font-label text-label">Orders</span>
+</a>
+<a class="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-900 px-3 py-2 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="font-label text-label">Alerts</span>
+</a>
+</nav>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant hover:opacity-80 transition-opacity">
+<img alt="merchant_profile_photo" class="w-full h-full object-cover" data-alt="Close up portrait of a young professional woman with natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh1uA-h0V-O6nFWtdDbWn-LoQ0OPLdG3-g6CNo1F8DPcpojG6sUo0c4r5TOLyvv52FF6QIxB1Nih93CbzRk5pCffrX7TW1xuOjdwbaW0rwTLg_0u5u2zLJVz_gEU2u2WY18Q6a-K_6D_HqnhlWBRhjyVneEgmMOL6pJhVhC6IhSXAKHFhwoycfgmta8Fz7qGFFc98BClNIbvD5-zHP6B-VaGjcAW8W5EBTAf-WFGdzmxwAMKNV4tD5tz-jyoOq_EzcJFPXM28Hjgk"/>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-page-margin-mobile md:px-page-margin-desktop">
+<!-- Page Header & Filters -->
+<section class="flex flex-col gap-sm mb-lg">
+<h1 class="font-display text-display text-on-surface tracking-tight">Discover Colombo</h1>
+<p class="font-body-lg text-body-lg text-text-muted max-w-2xl">Find hyper-local rescues from your favorite spots. Premium quality, responsible pricing.</p>
+<div class="flex items-center gap-3 overflow-x-auto pb-4 pt-2 snap-x scrollbar-hide">
+<button class="snap-start whitespace-nowrap px-5 py-2.5 rounded-full bg-primary text-on-primary font-label text-label active:scale-[0.97] transition-all duration-120 shadow-[0_4px_12px_rgba(30,27,20,0.08)]">
+                    All Rescues
+                </button>
+<button class="snap-start whitespace-nowrap px-5 py-2.5 rounded-full bg-surface border border-outline-variant text-on-surface font-label text-label hover:bg-surface-variant active:scale-[0.97] transition-all duration-120">
+                    Bakery
+                </button>
+<button class="snap-start whitespace-nowrap px-5 py-2.5 rounded-full bg-surface border border-outline-variant text-on-surface font-label text-label hover:bg-surface-variant active:scale-[0.97] transition-all duration-120">
+                    Café
+                </button>
+<button class="snap-start whitespace-nowrap px-5 py-2.5 rounded-full bg-surface border border-outline-variant text-on-surface font-label text-label hover:bg-surface-variant active:scale-[0.97] transition-all duration-120">
+                    Mixed Meals
+                </button>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg lg:gap-xl">
+<!-- Featured Card (Spans 2 columns on desktop) -->
+<article class="md:col-span-2 bg-surface rounded-xl p-md flex flex-col md:flex-row gap-md shadow-[0_8px_32px_rgba(30,27,20,0.06)] overflow-hidden relative group">
+<div class="w-full md:w-1/2 aspect-video md:aspect-auto rounded-lg overflow-hidden relative bg-surface-container isolate">
+<img alt="Pastry display" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Warm sunlight illuminating a display of golden flaky butter croissants and artisan sourdough bread on a rustic wooden cafe counter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJv7NqPvKTtQk8DC83y8b2KlYPfkym8oEOtoWW9H03XsGfXuvn9bUFm1c7Ftdd1Y-yRkahancOw1bmqfL4j6xYSxtC95YbGqjz5Yf4u4Gwau2_-lwNP1V9lb-Z3FlEJMExZcxzpdALViRf-rfPeBnL1T1eZu0d9ltYFXjAKWYgWwbPZ6Hp5B6PfgmtN5EHQfuyzzk8hrt5XaedV0Uik8tqMc3Dt9K4f7V34EXihGd6PJlAafxH-I1FM64kQsYsKnzPOIkyHpm9030"/>
+<div class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded text-label-caps font-label-caps text-on-surface shadow-sm">
+                        Bakery
+                    </div>
+</div>
+<div class="flex flex-col flex-1 py-1 md:py-2">
+<div class="flex flex-col gap-1 mb-4">
+<div class="flex justify-between items-start gap-4">
+<span class="font-body-sm text-body-sm text-text-muted">The Bread Company (Kollupitiya)</span>
+<span class="inline-flex items-center gap-1 text-primary-container bg-primary-highlight/50 px-2 py-0.5 rounded-full font-label-caps text-label-caps whitespace-nowrap">
+<span class="material-symbols-outlined text-[14px]">location_on</span>Colombo 03
+                            </span>
+</div>
+<h2 class="font-h2 text-h2 text-on-surface mt-1">Artisan Morning Pastry Box</h2>
+</div>
+<div class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant mb-auto bg-surface-container-low w-fit px-3 py-1.5 rounded-lg border border-divider">
+<span class="material-symbols-outlined text-[18px] text-primary">schedule</span>
+<span>Pickup Today, 17:30 - 19:00</span>
+</div>
+<div class="mt-6 flex items-end justify-between border-t border-divider pt-4">
+<div class="flex flex-col">
+<span class="font-price-original text-price-original text-text-muted line-through decoration-text-muted/50">Rs. 1,800</span>
+<span class="font-price text-price text-accent tracking-tight">Rs. 850</span>
+</div>
+<button class="bg-primary text-on-primary h-12 px-8 rounded-lg font-label text-label hover:bg-primary-hover active:scale-[0.97] transition-all duration-120 shadow-[0_4px_12px_rgba(0,79,84,0.2)]">
+                            Reserve Now
+                        </button>
+</div>
+</div>
+</article>
+<!-- Standard Card 1 -->
+<article class="bg-surface rounded-xl p-md flex flex-col gap-sm shadow-[0_4px_24px_rgba(30,27,20,0.04)] group">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-container">
+<img alt="Coffee and dessert" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A steaming cup of cappuccino next to a decadent chocolate cake slice on a marble table with soft window light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrdh2LQfwbQDC3-Jqauv4P4ezn3o9tbmLjc-LXIupZIYh1U4s89otUOz_MASe2piggccpAEYxcjCl50nWRL9gqizr5un5jm6dS858zTXlEOYFZb4bCsW5VCACXHjzNWPm2TizEQYS1_HpxG6XRXVzhUuHcP-sU_89dIONXrfij3M3ROuIp8BFYA9w0nwidkreCwJnGYQoKhTiWWHGc_CBP20J2cnVzUgPUn4rzi8J2NlQd5x9K3RrR2_jV8KkIBQdN2MlmTSTkHvE"/>
+<div class="absolute top-sm left-sm bg-white/90 backdrop-blur-md px-2 py-1 rounded text-label-caps font-label-caps text-on-surface shadow-sm">
+                        Café
+                    </div>
+</div>
+<div class="flex flex-col gap-1 mt-2">
+<div class="flex justify-between items-start gap-2">
+<span class="font-body-sm text-body-sm text-text-muted line-clamp-1">Java Lounge (Bambalapitiya)</span>
+<span class="inline-flex items-center text-primary-container font-label-caps text-label-caps whitespace-nowrap">
+<span class="material-symbols-outlined text-[14px]">location_on</span>Col 04
+                        </span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface line-clamp-1">Evening Brew &amp; Bite</h3>
+<div class="flex items-center gap-1.5 font-body-sm text-body-sm text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Today, 18:00 - 20:00</span>
+</div>
+</div>
+<div class="mt-auto pt-4 flex items-end justify-between border-t border-divider">
+<div class="flex flex-col">
+<span class="font-price-original text-price-original text-text-muted line-through">Rs. 1,500</span>
+<span class="font-price text-price text-accent">Rs. 650</span>
+</div>
+<button class="bg-transparent border-[1.5px] border-primary text-primary h-10 px-5 rounded-lg font-label text-label hover:bg-primary-highlight/20 active:scale-[0.97] transition-all duration-120">
+                        Reserve
+                    </button>
+</div>
+</article>
+<!-- Standard Card 2 -->
+<article class="bg-surface rounded-xl p-md flex flex-col gap-sm shadow-[0_4px_24px_rgba(30,27,20,0.04)] group">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-container">
+<img alt="Rice and curry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Vibrant Sri Lankan rice and curry wrapped in banana leaf featuring rich colorful sambals under warm ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK5jI7xs0aBRkejDeUBNBoG-OXTB6DPnHxW3k8CQmKNC24SsqXx5m5MeGEKJGc7avNTFxn0qGNR6EKkZS9DlOytusPQ2EXRXN6u6S4yBkhle9YpwMj3aJ_NRZe0MwWyUhxic4yWvnhbzc6t3hPPUlaNmLx8DFY-rj8JK-DOuBwQlxtsnV837KvIZRlR6ga-PssZnHONku753NXwFUzUYbQ-R2se7UMgZKr6Hg4MPa9uJsXA3-rlBIxrTxw3-Okc9qNFnSyasOe_t0"/>
+<div class="absolute top-sm left-sm bg-white/90 backdrop-blur-md px-2 py-1 rounded text-label-caps font-label-caps text-on-surface shadow-sm">
+                        Mixed Meals
+                    </div>
+</div>
+<div class="flex flex-col gap-1 mt-2">
+<div class="flex justify-between items-start gap-2">
+<span class="font-body-sm text-body-sm text-text-muted line-clamp-1">Crescat Food Court</span>
+<span class="inline-flex items-center text-primary-container font-label-caps text-label-caps whitespace-nowrap">
+<span class="material-symbols-outlined text-[14px]">location_on</span>Col 03
+                        </span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface line-clamp-1">Executive Lunch Surplus</h3>
+<div class="flex items-center gap-1.5 font-body-sm text-body-sm text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Today, 14:30 - 15:30</span>
+</div>
+</div>
+<div class="mt-auto pt-4 flex items-end justify-between border-t border-divider">
+<div class="flex flex-col">
+<span class="font-price-original text-price-original text-text-muted line-through">Rs. 1,200</span>
+<span class="font-price text-price text-accent">Rs. 500</span>
+</div>
+<button class="bg-transparent border-[1.5px] border-primary text-primary h-10 px-5 rounded-lg font-label text-label hover:bg-primary-highlight/20 active:scale-[0.97] transition-all duration-120">
+                        Reserve
+                    </button>
+</div>
+</article>
+<!-- Standard Card 3 -->
+<article class="bg-surface rounded-xl p-md flex flex-col gap-sm shadow-[0_4px_24px_rgba(30,27,20,0.04)] group">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-surface-container">
+<img alt="Cake slices" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="An array of premium frosted cake slices in a glass pastry case showcasing detailed textures and rich colors in soft light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYjdQnJ-vm4X6-PZ-gYjPGEZ0O97F4UnJ0c5kcvSwBt_TORKZk067RR9xJ1PtUXVeBP0aqbssrKBUAunAWstkX42fp-po85Xef5uZRpWDMcQs8SqCcee_c9VqA4NekKGwPA7MSCVDDFYesb1S70q_O3OLVytJwieFtKjtgAQBe8QZDbRSeEsRVL3JsyptP8u3rsjSzHNbDJUjavRiGZxaSNamxMEGu0XNDF1ITYZaU-SvpiDx86L9orJFHWxIsScXk1yOIqTbDtpc"/>
+<div class="absolute top-sm left-sm bg-white/90 backdrop-blur-md px-2 py-1 rounded text-label-caps font-label-caps text-on-surface shadow-sm">
+                        Bakery
+                    </div>
+</div>
+<div class="flex flex-col gap-1 mt-2">
+<div class="flex justify-between items-start gap-2">
+<span class="font-body-sm text-body-sm text-text-muted line-clamp-1">Butter Boutique</span>
+<span class="inline-flex items-center text-primary-container font-label-caps text-label-caps whitespace-nowrap">
+<span class="material-symbols-outlined text-[14px]">location_on</span>Col 07
+                        </span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface line-clamp-1">Signature Slice Selection</h3>
+<div class="flex items-center gap-1.5 font-body-sm text-body-sm text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Today, 19:00 - 20:30</span>
+</div>
+</div>
+<div class="mt-auto pt-4 flex items-end justify-between border-t border-divider">
+<div class="flex flex-col">
+<span class="font-price-original text-price-original text-text-muted line-through">Rs. 2,200</span>
+<span class="font-price text-price text-accent">Rs. 950</span>
+</div>
+<button class="bg-transparent border-[1.5px] border-primary text-primary h-10 px-5 rounded-lg font-label text-label hover:bg-primary-highlight/20 active:scale-[0.97] transition-all duration-120">
+                        Reserve
+                    </button>
+</div>
+</article>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full h-16 z-50 flex justify-around items-center bg-white dark:bg-zinc-900 px-2 shadow-[0_-4px_12px_rgba(30,27,20,0.04)] border-t border-zinc-100 dark:border-zinc-800 pb-safe">
+<a class="flex flex-col items-center justify-center text-[#01696f] dark:text-teal-400 w-full h-full active:scale-[0.97] transition-all duration-120" href="#">
+<span class="material-symbols-outlined text-[24px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="text-[11px] font-medium font-['Plus_Jakarta_Sans'] mt-0.5">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 w-full h-full hover:opacity-80 active:scale-[0.97] transition-all duration-120" href="#">
+<span class="material-symbols-outlined text-[24px]">receipt_long</span>
+<span class="text-[11px] font-medium font-['Plus_Jakarta_Sans'] mt-0.5">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 w-full h-full hover:opacity-80 active:scale-[0.97] transition-all duration-120 relative" href="#">
+<div class="absolute top-2 right-6 w-2 h-2 rounded-full bg-error border border-white"></div>
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+<span class="text-[11px] font-medium font-['Plus_Jakarta_Sans'] mt-0.5">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 w-full h-full hover:opacity-80 active:scale-[0.97] transition-all duration-120" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="text-[11px] font-medium font-['Plus_Jakarta_Sans'] mt-0.5">Profile</span>
+</a>
+</nav>
+</body></html>

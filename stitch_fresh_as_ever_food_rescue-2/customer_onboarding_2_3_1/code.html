@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Onboarding</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#6f797a",
+                    "on-tertiary-container": "#ffceb5",
+                    "success": "#437a22",
+                    "text": "#1a1a1a",
+                    "error": "#c0392b",
+                    "secondary-fixed": "#ffdcc5",
+                    "primary-fixed": "#a1f0f6",
+                    "dark-background": "#141412",
+                    "primary-active": "#0f3638",
+                    "on-surface-variant": "#3f4949",
+                    "dark-accent": "#fdab43",
+                    "on-background": "#181c1d",
+                    "on-primary-fixed": "#002022",
+                    "on-secondary-container": "#633000",
+                    "background": "#f7f6f2",
+                    "on-primary-fixed-variant": "#004f54",
+                    "divider": "#e2dfd9",
+                    "tertiary-container": "#8b4f2a",
+                    "text-faint": "#b5b2ad",
+                    "tertiary": "#6e3815",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "dark-primary": "#4f98a3",
+                    "on-error": "#ffffff",
+                    "primary-container": "#01696f",
+                    "on-secondary-fixed": "#301400",
+                    "on-secondary-fixed-variant": "#703700",
+                    "accent": "#da7101",
+                    "text-muted": "#6b6762",
+                    "surface-container-low": "#f1f4f4",
+                    "dark-surface": "#1c1b18",
+                    "accent-highlight": "#fde8cc",
+                    "accent-hover": "#c55700",
+                    "inverse-primary": "#85d3da",
+                    "surface-tint": "#01696f",
+                    "surface-container": "#ebeeee",
+                    "surface-bright": "#f7fafa",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ffdbc9",
+                    "secondary": "#944b00",
+                    "on-surface": "#181c1d",
+                    "surface-2": "#f3f0ec",
+                    "secondary-container": "#fc8b27",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#6e3815",
+                    "surface-container-highest": "#e0e3e3",
+                    "primary-highlight": "#d0e8e6",
+                    "secondary-fixed-dim": "#ffb783",
+                    "on-tertiary-fixed": "#331200",
+                    "primary": "#004f54",
+                    "on-secondary": "#ffffff",
+                    "dark-surface-2": "#252420",
+                    "surface": "#ffffff",
+                    "surface-container-high": "#e6e9e9",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e0e3e3",
+                    "surface-dim": "#d7dbda",
+                    "outline-variant": "#bec8c9",
+                    "inverse-on-surface": "#eef1f1",
+                    "inverse-surface": "#2d3131",
+                    "primary-fixed-dim": "#85d3da",
+                    "primary-hover": "#0c4e54",
+                    "on-primary-container": "#97e6ec"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "xxl": "48px",
+                    "lg": "24px",
+                    "page-margin-mobile": "16px",
+                    "page-margin-desktop": "32px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "h1": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "label-caps": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "price-original": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-sm": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "h3": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "h2": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "price": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "label": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "display": [
+                            "Plus Jakarta Sans"
+                    ]
+            },
+            "fontSize": {
+                    "h1": [
+                            "1.5rem",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "0.75rem",
+                            {
+                                    "lineHeight": "1.4",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "1rem",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "price-original": [
+                            "0.9375rem",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-sm": [
+                            "0.875rem",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "h3": [
+                            "1.125rem",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "h2": [
+                            "1.25rem",
+                            {
+                                    "lineHeight": "1.35",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "price": [
+                            "1.375rem",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "0.9375rem",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label": [
+                            "0.875rem",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display": [
+                            "2rem",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .material-symbols-outlined {
+                font-family: 'Material Symbols Outlined';
+                font-weight: normal;
+                font-style: normal;
+                font-size: 24px;
+                line-height: 1;
+                letter-spacing: normal;
+                text-transform: none;
+                display: inline-block;
+                white-space: nowrap;
+                word-wrap: normal;
+                direction: ltr;
+                -webkit-font-smoothing: antialiased;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen font-['Plus_Jakarta_Sans'] text-text flex flex-col justify-center selection:bg-primary-highlight">
+<div class="max-w-md mx-auto w-full min-h-screen flex flex-col bg-background shadow-none sm:shadow-[0_4px_40px_rgba(30,27,20,0.04)] overflow-hidden relative">
+<!-- TopAppBar (From Shared Components) -->
+<header class="w-full top-0 sticky z-50 flex justify-between items-center px-4 h-16 bg-[#f7f6f2] dark:bg-stone-900 border-none transition-colors duration-200">
+<button aria-label="Go back" class="flex items-center justify-center w-10 h-10 text-[#01696f] dark:text-teal-500 hover:opacity-80 transition-opacity active:scale-95 duration-120">
+<span class="material-symbols-outlined" data-icon="arrow_back" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] text-xl font-bold text-[#01696f] tracking-tight">Fresh As Ever</h1>
+<button class="font-['Plus_Jakarta_Sans'] font-semibold text-base text-stone-400 hover:opacity-80 transition-opacity active:scale-95 duration-120 px-2">
+                Skip
+            </button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col pt-sm pb-xl px-page-margin-mobile">
+<!-- Hero Image Visual -->
+<div class="w-full aspect-[4/5] sm:aspect-square relative rounded-xl overflow-hidden shadow-[0_8px_24px_rgba(30,27,20,0.06)] bg-surface-2 mt-sm shrink-0">
+<img alt="Customer receiving food" class="w-full h-full object-cover object-center" data-alt="warm-lit photograph of a cozy Sri Lankan cafe interior with a smiling customer happily receiving a brown paper rescue bag across a wooden counter, soft sunlight pouring in, premium ambiance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg_c5734kppJSZ4skic_mS08X57Jt-1DCYQL8dkXmyWn7IiHvIrccvnhR1pgnTabJi5EjN_qR4kZBJIjsdKY2nnuuJYzFAQAatVRdxSTch9tMqsiWNm1RNKaRXjp2ilIYM0o0a4La6peq1VvGJ4Q0ETvfXiFfdNUHsf4pDXN0KG80tHyeG6HoAPs-JrGYYqIjSDCIMTghPpyYNxTT8W83HVnjk4ktb8qziccxBzS0kIgRwz69umTD_rNe9DrXL2PIBrHc2i4MYikg"/>
+</div>
+<!-- Content Canvas -->
+<div class="flex flex-col items-center flex-1 mt-xl">
+<!-- Progress Indicators (Step 2 of 3) -->
+<div aria-label="Step 2 of 3" class="flex items-center justify-center gap-xs mb-lg">
+<div class="h-2 w-2 rounded-full bg-surface-variant transition-all duration-300"></div>
+<div class="h-2 w-6 rounded-full bg-primary-container transition-all duration-300 shadow-sm"></div>
+<div class="h-2 w-2 rounded-full bg-surface-variant transition-all duration-300"></div>
+</div>
+<!-- Text Lockup -->
+<h2 class="font-display text-display text-text text-center tracking-tight mb-md">
+                    Reserve with Ease
+                </h2>
+<p class="font-body-lg text-body-lg text-text-muted text-center max-w-[320px] mx-auto">
+                    Secure a delicious rescue bag with a single tap before they vanish. It's fast, rewarding, and saves perfect food.
+                </p>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<footer class="w-full p-page-margin-mobile mt-auto shrink-0 bg-background/80 backdrop-blur-md pb-8 sm:pb-page-margin-mobile z-40">
+<button class="w-full h-[48px] bg-primary-container text-on-primary font-label text-label rounded-DEFAULT flex items-center justify-center transition-all duration-120 hover:bg-primary-hover active:scale-[0.97] shadow-[0_4px_12px_rgba(1,105,111,0.15)]">
+                Next
+            </button>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Merchant Payout Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2d3131",
+                        "dark-background": "#141412",
+                        "on-secondary-fixed": "#301400",
+                        "inverse-on-surface": "#eef1f1",
+                        "dark-primary": "#4f98a3",
+                        "text": "#1a1a1a",
+                        "surface-container-high": "#e6e9e9",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-error": "#ffffff",
+                        "primary-active": "#0f3638",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "on-error-container": "#93000a",
+                        "text-faint": "#b5b2ad",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#85d3da",
+                        "divider": "#e2dfd9",
+                        "tertiary-container": "#8b4f2a",
+                        "surface-dim": "#d7dbda",
+                        "on-secondary-container": "#633000",
+                        "error": "#c0392b",
+                        "on-surface-variant": "#3f4949",
+                        "secondary-fixed-dim": "#ffb783",
+                        "outline": "#6f797a",
+                        "surface-container": "#ebeeee",
+                        "surface-container-low": "#f1f4f4",
+                        "error-container": "#ffdad6",
+                        "primary": "#004f54",
+                        "dark-accent": "#fdab43",
+                        "dark-surface": "#1c1b18",
+                        "accent": "#da7101",
+                        "surface-variant": "#e0e3e3",
+                        "primary-hover": "#0c4e54",
+                        "primary-fixed-dim": "#85d3da",
+                        "accent-highlight": "#fde8cc",
+                        "tertiary": "#6e3815",
+                        "surface-2": "#f3f0ec",
+                        "on-tertiary-fixed": "#331200",
+                        "on-primary-container": "#97e6ec",
+                        "secondary-container": "#fc8b27",
+                        "surface-bright": "#f7fafa",
+                        "on-tertiary-container": "#ffceb5",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "primary-container": "#01696f",
+                        "dark-surface-2": "#252420",
+                        "secondary-fixed": "#ffdcc5",
+                        "primary-highlight": "#d0e8e6",
+                        "on-primary-fixed": "#002022",
+                        "background": "#f7f6f2",
+                        "primary-fixed": "#a1f0f6",
+                        "surface-tint": "#01696f",
+                        "on-secondary-fixed-variant": "#703700",
+                        "on-background": "#181c1d",
+                        "on-surface": "#181c1d",
+                        "success": "#437a22",
+                        "text-muted": "#6b6762",
+                        "accent-hover": "#c55700",
+                        "outline-variant": "#bec8c9",
+                        "secondary": "#944b00",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#ffffff",
+                        "surface-container-highest": "#e0e3e3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "page-margin-mobile": "16px",
+                        "page-margin-desktop": "32px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "price-original": ["Plus Jakarta Sans"],
+                        "price": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-6 py-4 sticky top-0 z-30 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-md">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 scale-97 duration-120ms text-teal-700 dark:text-teal-400">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="font-h1 text-h1 text-teal-700 dark:text-teal-400 font-extrabold tracking-tight">Payout Detail</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="close up headshot of professional person with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfNyGFClNpNnI_za6sdgz_-AS8GnzK7EzZnKwcQpFCSXKjgdrguMv9U9GPq8oR_0jpmP9SqDr_NDg2-l_qScj9O4VQKeDpGhI6b2XpHAgF9F13AHC4eVawTGVjRyXlV8Caa2Y1u9z9ZFKFIdaVTAHj92_wWxCxRZE7B10w8dR7LwHsr9o6FUkFF2JG-AKqIQg8F5yyCBHfMyoZTDl2NY1M48wsNnVdCxiL74XtlOLKg1WAjFp1L9NU4keC4XraKeIhO33ZMxUyHg8"/>
+</div>
+</header>
+<div class="flex">
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 w-60 border-r border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 pt-20">
+<div class="px-6 mb-8">
+<h2 class="text-lg font-bold text-teal-800 dark:text-teal-200">Admin Console</h2>
+<p class="font-body-sm text-body-sm text-text-muted">Food Rescue HQ</p>
+</div>
+<ul class="flex flex-col gap-1 w-full font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors scale-97 duration-120ms ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors scale-97 duration-120ms ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span>Audit Logs</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-teal-700 dark:text-teal-300 bg-teal-50/50 dark:bg-teal-900/20 border-l-[3px] border-teal-600 scale-97 duration-120ms ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="payments" data-weight="fill">payments</span>
+<span>Payouts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors scale-97 duration-120ms ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span>Merchants</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors scale-97 duration-120ms ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:pl-60 px-page-margin-mobile md:px-page-margin-desktop py-lg max-w-5xl mx-auto">
+<!-- Settlement Period Header -->
+<div class="mb-lg">
+<p class="font-label-caps text-label-caps text-text-muted mb-xs">SETTLEMENT PERIOD</p>
+<h2 class="font-h2 text-h2 text-on-surface">Oct 16 - Oct 22, 2023</h2>
+<div class="flex items-center gap-2 mt-2">
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-2 text-primary font-label text-label border border-divider">
+<span class="material-symbols-outlined text-[16px] mr-1">check_circle</span>
+                        Settled
+                    </span>
+<span class="font-body-sm text-body-sm text-text-muted">Ref: TRN-9284-AX</span>
+</div>
+</div>
+<!-- Bento Grid Summary -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+<!-- Net Payout (Hero Stat) -->
+<div class="col-span-1 md:col-span-3 bg-surface rounded-xl p-lg shadow-[0_4px_24px_rgba(30,27,20,0.06)] border border-transparent">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<p class="font-label text-label text-text-muted mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+                                Net Payout Transferred
+                            </p>
+<p class="font-display text-display text-primary">LKR 42,500.00</p>
+<p class="font-body-sm text-body-sm text-text-muted mt-1">Transferred to Bank of Ceylon ending in *4920</p>
+</div>
+<button class="bg-primary hover:bg-primary-hover text-on-primary font-label text-label px-6 py-3 rounded scale-97 duration-120ms transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Download Receipt
+                        </button>
+</div>
+</div>
+<!-- Gross Revenue -->
+<div class="bg-surface rounded-xl p-md shadow-[0_2px_12px_rgba(30,27,20,0.04)] border border-transparent">
+<p class="font-label text-label text-text-muted mb-xs">Gross Revenue</p>
+<p class="font-h2 text-h2 text-on-surface">LKR 50,000.00</p>
+<p class="font-body-sm text-body-sm text-text-muted mt-2">From 25 rescued bags</p>
+</div>
+<!-- Platform Commission -->
+<div class="bg-surface rounded-xl p-md shadow-[0_2px_12px_rgba(30,27,20,0.04)] border border-transparent">
+<p class="font-label text-label text-text-muted mb-xs flex items-center gap-1 justify-between">
+                        Platform Commission
+                        <span class="text-xs bg-surface-2 px-1.5 py-0.5 rounded text-text-muted">15%</span>
+</p>
+<p class="font-h2 text-h2 text-accent">- LKR 7,500.00</p>
+<p class="font-body-sm text-body-sm text-text-muted mt-2">Deducted at source</p>
+</div>
+<!-- Bank Info -->
+<div class="bg-surface rounded-xl p-md shadow-[0_2px_12px_rgba(30,27,20,0.04)] border border-transparent flex items-start gap-3">
+<div class="w-10 h-10 rounded bg-surface-2 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface">Bank of Ceylon</p>
+<p class="font-body-sm text-body-sm text-text-muted mt-1">Branch: Colombo 03</p>
+<p class="font-body-sm text-body-sm text-text-muted">Acct: ****4920</p>
+</div>
+</div>
+</div>
+<!-- Transaction List -->
+<div class="mb-xl">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-h3 text-h3 text-on-surface">Included Transactions</h3>
+<p class="font-body-sm text-body-sm text-text-muted">25 items</p>
+</div>
+<div class="bg-surface rounded-xl shadow-[0_2px_12px_rgba(30,27,20,0.04)] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-bright border-b border-divider">
+<th class="font-label-caps text-label-caps text-text-muted py-3 px-4 font-semibold">Date &amp; Time</th>
+<th class="font-label-caps text-label-caps text-text-muted py-3 px-4 font-semibold">Item</th>
+<th class="font-label-caps text-label-caps text-text-muted py-3 px-4 font-semibold">Order ID</th>
+<th class="font-label-caps text-label-caps text-text-muted py-3 px-4 font-semibold text-right">Merchant Share</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-divider font-body-sm text-body-sm">
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3 px-4 text-on-surface">Oct 22, 14:30</td>
+<td class="py-3 px-4 text-on-surface">Surprise Bakery Bag</td>
+<td class="py-3 px-4 text-text-muted">#ORD-092-A</td>
+<td class="py-3 px-4 text-on-surface text-right font-medium">LKR 1,700.00</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3 px-4 text-on-surface">Oct 22, 12:15</td>
+<td class="py-3 px-4 text-on-surface">Lunch Special Rescue</td>
+<td class="py-3 px-4 text-text-muted">#ORD-091-B</td>
+<td class="py-3 px-4 text-on-surface text-right font-medium">LKR 2,125.00</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3 px-4 text-on-surface">Oct 21, 19:45</td>
+<td class="py-3 px-4 text-on-surface">Dinner Pastry Box</td>
+<td class="py-3 px-4 text-text-muted">#ORD-090-C</td>
+<td class="py-3 px-4 text-on-surface text-right font-medium">LKR 1,700.00</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3 px-4 text-on-surface">Oct 21, 14:00</td>
+<td class="py-3 px-4 text-on-surface">Surprise Bakery Bag</td>
+<td class="py-3 px-4 text-text-muted">#ORD-089-A</td>
+<td class="py-3 px-4 text-on-surface text-right font-medium">LKR 1,700.00</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3 px-4 text-on-surface">Oct 20, 18:30</td>
+<td class="py-3 px-4 text-on-surface">Evening Sandwiches</td>
+<td class="py-3 px-4 text-text-muted">#ORD-088-B</td>
+<td class="py-3 px-4 text-on-surface text-right font-medium">LKR 1,275.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-divider text-center">
+<button class="font-label text-label text-primary hover:text-primary-hover transition-colors">View All Transactions</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-16 bg-white/90 dark:bg-stone-900/90 backdrop-blur-lg border-t border-stone-100 dark:border-stone-800 shadow-[0_-4px_20px_rgba(30,27,20,0.04)] rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 py-2 active:bg-stone-50 dark:active:bg-stone-800 scale-95 duration-120ms" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="home">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 py-2 active:bg-stone-50 dark:active:bg-stone-800 scale-95 duration-120ms" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="history">history</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold mt-1">Logs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-teal-700 dark:text-teal-400 py-2 active:bg-stone-50 dark:active:bg-stone-800 scale-95 duration-120ms" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="account_balance_wallet" data-weight="fill">account_balance_wallet</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold mt-1">Payouts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 py-2 active:bg-stone-50 dark:active:bg-stone-800 scale-95 duration-120ms" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="more_horiz">more_horiz</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-semibold mt-1">More</span>
+</a>
+</nav>
+</body></html>

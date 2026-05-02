@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Platform Configuration - Admin</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Toggle Switch Styles */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #01696f; /* surface-tint */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #01696f; /* surface-tint */
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+        .toggle-label {
+            width: 44px;
+            height: 24px;
+            background-color: #e0e3e3; /* surface-variant */
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .toggle-label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.2s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#ffceb5",
+                      "dark-surface-2": "#252420",
+                      "primary-fixed": "#a1f0f6",
+                      "on-tertiary-fixed": "#331200",
+                      "dark-accent": "#fdab43",
+                      "primary-fixed-dim": "#85d3da",
+                      "primary-hover": "#0c4e54",
+                      "inverse-on-surface": "#eef1f1",
+                      "surface-container": "#ebeeee",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#ffb783",
+                      "on-secondary": "#ffffff",
+                      "primary-highlight": "#d0e8e6",
+                      "text-faint": "#b5b2ad",
+                      "surface-variant": "#e0e3e3",
+                      "on-error": "#ffffff",
+                      "on-surface-variant": "#3f4949",
+                      "on-secondary-container": "#633000",
+                      "success": "#437a22",
+                      "divider": "#e2dfd9",
+                      "surface-bright": "#f7fafa",
+                      "dark-primary": "#4f98a3",
+                      "on-secondary-fixed": "#301400",
+                      "text": "#1a1a1a",
+                      "dark-background": "#141412",
+                      "surface-tint": "#01696f",
+                      "on-primary": "#ffffff",
+                      "dark-surface": "#1c1b18",
+                      "accent-highlight": "#fde8cc",
+                      "surface-dim": "#d7dbda",
+                      "secondary-fixed": "#ffdcc5",
+                      "accent": "#da7101",
+                      "on-tertiary-fixed-variant": "#6e3815",
+                      "on-primary-container": "#97e6ec",
+                      "outline": "#6f797a",
+                      "text-muted": "#6b6762",
+                      "on-primary-fixed-variant": "#004f54",
+                      "surface": "#ffffff",
+                      "tertiary": "#6e3815",
+                      "on-primary-fixed": "#002022",
+                      "background": "#f7f6f2",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#e0e3e3",
+                      "secondary": "#944b00",
+                      "tertiary-container": "#8b4f2a",
+                      "primary-active": "#0f3638",
+                      "error": "#c0392b",
+                      "inverse-surface": "#2d3131",
+                      "secondary-container": "#fc8b27",
+                      "accent-hover": "#c55700",
+                      "surface-2": "#f3f0ec",
+                      "tertiary-fixed": "#ffdbc9",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed-dim": "#ffb68d",
+                      "on-background": "#181c1d",
+                      "on-secondary-fixed-variant": "#703700",
+                      "inverse-primary": "#85d3da",
+                      "surface-container-high": "#e6e9e9",
+                      "on-surface": "#181c1d",
+                      "error-container": "#ffdad6",
+                      "primary": "#004f54",
+                      "primary-container": "#01696f",
+                      "surface-container-low": "#f1f4f4",
+                      "outline-variant": "#bec8c9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xxl": "48px",
+                      "xl": "32px",
+                      "page-margin-desktop": "32px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "page-margin-mobile": "16px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "price-original": ["Plus Jakarta Sans"],
+                      "h3": ["Plus Jakarta Sans"],
+                      "h2": ["Plus Jakarta Sans"],
+                      "label": ["Plus Jakarta Sans"],
+                      "price": ["Plus Jakarta Sans"],
+                      "h1": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-caps": ["Plus Jakarta Sans"],
+                      "body-sm": ["Plus Jakarta Sans"],
+                      "display": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                      "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                      "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                      "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                      "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                      "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }],
+                      "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                      "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text font-body-md antialiased min-h-screen">
+<!-- NavigationDrawer (Shared Component) -->
+<nav class="w-60 h-screen fixed left-0 top-0 border-r border-stone-200/60 bg-[#f7f6f2] font-['Plus_Jakarta_Sans'] antialiased flex flex-col h-full py-6 z-50">
+<!-- Header Profile -->
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-tint text-on-primary flex items-center justify-center font-bold text-lg overflow-hidden">
+<img alt="Ceylon Brews Logo" class="w-full h-full object-cover" data-alt="close up of a modern minimalist coffee cup logo on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEao-qJJnHDa5jlkjUpt31Rj8wDLKWLHSv-_NSCqFo79ngpwGPJYz_gZqgvuqtou0Ab11h6sJ7EFj52S9L9A7JAy__cyzVZpyrY3xlpnUHAgm1vgScVKuBJMCvYR5J-S9oY1S4J2w2GFUSN2l7Dmrov3TXHGkn6Q3jcCBix4oKbBTcGQzFzGAAJ6BuPXXAKJbcQ9U-WRTnMHuE807vB9KfNGHgKJQWoQxTG0Cr5tFeibK1aXhSF4GbqKo3QRc0hDw5t5Y2gdiqy7o"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xl font-bold tracking-tight text-[#01696f]">Ceylon Brews</span>
+<span class="text-xs font-medium text-stone-500">Verified Merchant</span>
+<span class="text-[10px] font-semibold text-surface-tint mt-0.5 uppercase tracking-wider">Admin Console</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-1 px-3">
+<!-- Dashboard (Inactive) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-500 font-medium hover:bg-stone-100 transition-colors active:scale-[0.97] transition-transform duration-120" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Finance (Inactive) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-500 font-medium hover:bg-stone-100 transition-colors active:scale-[0.97] transition-transform duration-120" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span>Finance</span>
+</a>
+<!-- Analytics (Inactive) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-500 font-medium hover:bg-stone-100 transition-colors active:scale-[0.97] transition-transform duration-120" href="#">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+<span>Analytics</span>
+</a>
+<!-- Settings (Active) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg border-l-[3px] border-[#01696f] bg-teal-50/50 text-[#01696f] font-semibold active:scale-[0.97] transition-transform duration-120" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Settings</span>
+</a>
+<!-- Support (Inactive) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-500 font-medium hover:bg-stone-100 transition-colors active:scale-[0.97] transition-transform duration-120 mt-auto absolute bottom-6 w-[calc(100%-24px)]" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span>Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="ml-60 flex flex-col min-h-screen">
+<!-- TopAppBar (Shared Component) -->
+<header class="sticky top-0 w-full z-40 bg-white/80 backdrop-blur-md border-b border-stone-100 shadow-[0_2px_15px_-3px_rgba(30,27,20,0.04)] font-['Plus_Jakarta_Sans'] text-sm font-semibold flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-4">
+<button class="text-[#01696f] hover:opacity-80 transition-opacity active:scale-95 transition-all duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-lg font-bold text-[#01696f]">Operations Overview</h1>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-stone-500 font-medium hidden sm:inline-block">Admin User</span>
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden border border-divider">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="professional headshot of a man with short hair wearing a navy blue shirt against a neutral gray background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClZTI4y4BZfAmEaI4p-ECjIEC__D2eOhO9667gN51xqlPwdMfrigM0MoAHodcKlZqTWcwukuwaFReT3rk84_wfYzdJ7pf23GP0zO2GNPLzpzucx20965fbRo61J6SXb2PbdGOLAK04drye8GzD0iHptxEh4C5QR90NkyCyxoYsA-_xXleceZR59VBRIatEvnq0xD4fJn8LSN8jDHhdD5Jyvw_vg2YYJ1twwQhSdH_R6064mPqGaa5_zobGvJMTE1YNS6OStFQeoqU"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 p-page-margin-desktop w-full max-w-[1400px] mx-auto">
+<!-- Page Header -->
+<div class="mb-lg flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<h2 class="font-h1 text-h1 text-text mb-1">Platform Configuration</h2>
+<p class="font-body-md text-body-md text-text-muted">Manage core system parameters, commission structures, and global controls.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2.5 rounded-lg border-[1.5px] border-surface-tint text-surface-tint font-label text-label hover:bg-primary-highlight/20 transition-colors active:scale-[0.97] duration-120 bg-transparent flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                        Audit Log
+                    </button>
+<button class="px-5 py-2.5 rounded-lg bg-surface-tint text-on-primary font-label text-label hover:bg-primary-hover transition-colors active:scale-[0.97] duration-120 flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                        Save Changes
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-lg">
+<!-- System Health (Span Full) -->
+<div class="xl:col-span-3 bg-surface rounded-xl p-md flex flex-col sm:flex-row items-center justify-between gap-4 shadow-[0_4px_24px_rgba(30,27,20,0.03)] border border-transparent">
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<div class="w-12 h-12 rounded-full bg-surface-bright flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-success text-[24px]">cloud_done</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-text flex items-center gap-2">
+                                System Status: Optimal
+                                <span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-success"></span>
+</span>
+</h3>
+<p class="font-body-sm text-body-sm text-text-muted">All core services are operational.</p>
+</div>
+</div>
+<div class="flex gap-8 w-full sm:w-auto overflow-x-auto pb-2 sm:pb-0">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-text-muted">API Uptime</span>
+<span class="font-price text-price text-text">99.99%</span>
+</div>
+<div class="w-[1px] h-10 bg-divider hidden sm:block"></div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-text-muted">Database Latency</span>
+<span class="font-price text-price text-text">24ms</span>
+</div>
+<div class="w-[1px] h-10 bg-divider hidden sm:block"></div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-text-muted">Active Workers</span>
+<span class="font-price text-price text-text">1,204</span>
+</div>
+</div>
+</div>
+<!-- Commission Rates (Span 2) -->
+<div class="xl:col-span-2 bg-surface rounded-xl p-lg flex flex-col gap-6 shadow-[0_4px_24px_rgba(30,27,20,0.03)]">
+<div class="flex justify-between items-center pb-4 border-b border-divider">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-surface-tint">account_balance</span>
+<h3 class="font-h2 text-h2 text-text">Commission Structures</h3>
+</div>
+<span class="px-2.5 py-1 rounded-md bg-surface-variant font-label-caps text-label-caps text-on-surface-variant">Global Default</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Standard Rate -->
+<div class="p-4 rounded-lg bg-surface-bright border border-surface-container flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-h3 text-h3 text-text">Standard Tier</h4>
+<p class="font-body-sm text-body-sm text-text-muted mt-1">Default rate applied to new merchants.</p>
+</div>
+<span class="material-symbols-outlined text-text-muted">storefront</span>
+</div>
+<div class="mt-2">
+<label class="block font-label text-label text-text mb-2">Platform Fee (%)</label>
+<div class="relative">
+<input class="w-full bg-surface border-outline-variant rounded-md px-4 py-2.5 font-body-md text-text focus:border-surface-tint focus:ring-2 focus:ring-primary-highlight outline-none transition-all" placeholder="0.0" type="number" value="15.0"/>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-[16px] text-text-muted">info</span>
+<span class="font-body-sm text-body-sm text-text-muted">Effective next billing cycle.</span>
+</div>
+</div>
+<!-- Premium Rate -->
+<div class="p-4 rounded-lg bg-[#fff8f3] border border-[#ffe4d1] flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-h3 text-h3 text-secondary-container">Premium Tier</h4>
+<p class="font-body-sm text-body-sm text-text-muted mt-1">For high-volume partners &amp; chains.</p>
+</div>
+<span class="material-symbols-outlined text-secondary-container">star</span>
+</div>
+<div class="mt-2">
+<label class="block font-label text-label text-text mb-2">Platform Fee (%)</label>
+<div class="relative">
+<input class="w-full bg-surface border-outline-variant rounded-md px-4 py-2.5 font-body-md text-text focus:border-surface-tint focus:ring-2 focus:ring-primary-highlight outline-none transition-all" placeholder="0.0" type="number" value="12.5"/>
+</div>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-body-sm text-body-sm text-text-muted">Min. volume required:</span>
+<span class="font-label text-label text-text">LKR 500k/mo</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Payout Cycles (Span 1) -->
+<div class="xl:col-span-1 bg-surface rounded-xl p-lg flex flex-col gap-6 shadow-[0_4px_24px_rgba(30,27,20,0.03)]">
+<div class="flex items-center gap-3 pb-4 border-b border-divider">
+<span class="material-symbols-outlined text-surface-tint">update</span>
+<h3 class="font-h2 text-h2 text-text">Payout Cycles</h3>
+</div>
+<div class="flex flex-col gap-5">
+<div>
+<label class="block font-label text-label text-text mb-2">Settlement Frequency</label>
+<select class="w-full bg-surface border border-outline-variant rounded-md px-4 py-2.5 font-body-md text-text focus:border-surface-tint focus:ring-2 focus:ring-primary-highlight outline-none appearance-none cursor-pointer">
+<option>Weekly (Every Monday)</option>
+<option>Bi-Weekly (1st &amp; 15th)</option>
+<option>Monthly (1st)</option>
+</select>
+</div>
+<div>
+<label class="block font-label text-label text-text mb-2">Minimum Payout Threshold</label>
+<div class="relative flex items-center">
+<span class="absolute left-4 font-body-md text-text-muted">LKR</span>
+<input class="w-full bg-surface border border-outline-variant rounded-md pl-14 pr-4 py-2.5 font-body-md text-text focus:border-surface-tint focus:ring-2 focus:ring-primary-highlight outline-none transition-all" type="number" value="5000"/>
+</div>
+</div>
+<div class="bg-surface-bright p-4 rounded-lg mt-2 flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-text-muted">Next Scheduled Batch:</span>
+<span class="font-label text-label text-text">Oct 24, 2023</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-text-muted">Est. Volume:</span>
+<span class="font-label text-label text-text">LKR 4.2M</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Promo Controls (Span 2) -->
+<div class="xl:col-span-2 bg-surface rounded-xl p-lg flex flex-col gap-6 shadow-[0_4px_24px_rgba(30,27,20,0.03)]">
+<div class="flex items-center gap-3 pb-4 border-b border-divider">
+<span class="material-symbols-outlined text-surface-tint">sell</span>
+<h3 class="font-h2 text-h2 text-text">Global Promotions</h3>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Promo Item 1 -->
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface border border-divider hover:border-outline-variant transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-md bg-accent-highlight flex items-center justify-center text-accent shrink-0">
+<span class="material-symbols-outlined">celebration</span>
+</div>
+<div>
+<h4 class="font-label text-label text-text">First Order Discount (Welcome10)</h4>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">10% off up to LKR 500 for new users.</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex flex-col items-end mr-4">
+<span class="font-label-caps text-label-caps text-text-muted">Budget Used</span>
+<span class="font-body-sm text-body-sm text-text font-medium">42% (LKR 210k)</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-checkbox" type="checkbox"/>
+<div class="toggle-label"></div>
+</label>
+</div>
+</div>
+<!-- Promo Item 2 -->
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface border border-divider hover:border-outline-variant transition-colors opacity-75">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-md bg-surface-variant flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined">rainy</span>
+</div>
+<div>
+<h4 class="font-label text-label text-text">Monsoon Special (RainyDayFree)</h4>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Free delivery during extreme weather.</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only toggle-checkbox" type="checkbox"/>
+<div class="toggle-label"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Danger Zone (Span 1) -->
+<div class="xl:col-span-1 bg-surface rounded-xl p-lg flex flex-col gap-6 shadow-[0_4px_24px_rgba(30,27,20,0.03)] border-t-[3px] border-error">
+<div class="flex items-center gap-3 pb-4 border-b border-divider">
+<span class="material-symbols-outlined text-error">warning</span>
+<h3 class="font-h2 text-h2 text-text">System Controls</h3>
+</div>
+<div class="flex flex-col gap-5">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="font-label text-label text-text">Maintenance Mode</label>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only toggle-checkbox" type="checkbox"/>
+<div class="toggle-label"></div>
+</label>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Suspends all customer ordering and merchant access. Admin access remains active.</p>
+</div>
+<div class="w-full h-[1px] bg-divider my-1"></div>
+<div class="flex flex-col gap-3">
+<label class="font-label text-label text-text">Force Cache Clear</label>
+<p class="font-body-sm text-body-sm text-text-muted mb-2">Clears Redis cache for product catalogs and pricing rules globally.</p>
+<button class="w-full py-2.5 rounded-lg border-[1.5px] border-error text-error font-label text-label hover:bg-error-container/30 transition-colors active:scale-[0.97] duration-120 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">delete_sweep</span>
+                                Purge Cache
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

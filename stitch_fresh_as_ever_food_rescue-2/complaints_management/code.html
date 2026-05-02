@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Admin Complaints</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffdbc9",
+                    "tertiary": "#6e3815",
+                    "primary-fixed-dim": "#85d3da",
+                    "on-tertiary-container": "#ffceb5",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#fc8b27",
+                    "accent-highlight": "#fde8cc",
+                    "divider": "#e2dfd9",
+                    "primary": "#004f54",
+                    "primary-fixed": "#a1f0f6",
+                    "dark-accent": "#fdab43",
+                    "surface-container-highest": "#e0e3e3",
+                    "outline-variant": "#bec8c9",
+                    "success": "#437a22",
+                    "on-secondary-fixed-variant": "#703700",
+                    "on-surface": "#181c1d",
+                    "inverse-primary": "#85d3da",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "surface-tint": "#01696f",
+                    "primary-container": "#01696f",
+                    "primary-highlight": "#d0e8e6",
+                    "on-tertiary-fixed": "#331200",
+                    "on-surface-variant": "#3f4949",
+                    "dark-primary": "#4f98a3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#ebeeee",
+                    "primary-hover": "#0c4e54",
+                    "dark-background": "#141412",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#301400",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#004f54",
+                    "text-muted": "#6b6762",
+                    "accent-hover": "#c55700",
+                    "on-tertiary-fixed-variant": "#6e3815",
+                    "dark-surface-2": "#252420",
+                    "text-faint": "#b5b2ad",
+                    "tertiary-container": "#8b4f2a",
+                    "secondary-fixed": "#ffdcc5",
+                    "on-primary-fixed": "#002022",
+                    "on-primary-container": "#97e6ec",
+                    "accent": "#da7101",
+                    "error": "#c0392b",
+                    "background": "#f7f6f2",
+                    "on-background": "#181c1d",
+                    "secondary": "#944b00",
+                    "inverse-surface": "#2d3131",
+                    "surface-variant": "#e0e3e3",
+                    "surface-bright": "#f7fafa",
+                    "dark-surface": "#1c1b18",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "primary-active": "#0f3638",
+                    "surface-container-high": "#e6e9e9",
+                    "inverse-on-surface": "#eef1f1",
+                    "surface-2": "#f3f0ec",
+                    "surface": "#ffffff",
+                    "secondary-fixed-dim": "#ffb783",
+                    "text": "#1a1a1a",
+                    "surface-dim": "#d7dbda",
+                    "outline": "#6f797a",
+                    "surface-container-low": "#f1f4f4",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#633000"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "page-margin-desktop": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "page-margin-mobile": "16px",
+                    "xxl": "48px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "h3": ["Plus Jakarta Sans"],
+                    "price-original": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"],
+                    "display": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "h2": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "price": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "h1": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                    "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                    "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                    "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                    "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                    "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                    "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                    "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                    "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text font-body-lg text-body-lg flex h-screen overflow-hidden antialiased">
+<!-- TopAppBar (Mobile Only) -->
+<header class="md:hidden fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-[#f7f6f2] dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 transition-colors">
+<button class="text-[#01696f] dark:text-teal-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors active:scale-95 transition-transform duration-120 p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="text-xl font-extrabold text-[#01696f] tracking-tight">
+            Fresh As Ever
+        </div>
+<button class="w-8 h-8 rounded-full overflow-hidden hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors active:scale-95 transition-transform duration-120">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="close up portrait of a professional man looking directly at camera with neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbx9xeoRnMHybuioVzozuapYjtlwHrfzIaTDtEEvuCGWQuNDNiScxGRJbJ6oZqEBE072UhIyHG8edsnoKY3gguAXd5gofWkPBalcF5C1jipjblLMWmLWLBzFaGqnfgqV4U3NYthXBZJPt5E6U4R9SHqh3BuhDv6VWXi4XCczcGVoe4Zlua-m2bJp8LSNyCqbG01KmvlnjW08Y0ImL0Y0l3rz0PkaGJ5g29Akzwg6kzNcEzr22n9OKhA1nCKq_6WHs9AWIqzr0FWeA"/>
+</button>
+</header>
+<!-- NavigationDrawer (Desktop Only) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full w-[240px] z-40 bg-white dark:bg-stone-900 border-r border-stone-200 dark:border-stone-800">
+<div class="flex items-center justify-start px-6 py-8">
+<span class="text-[#01696f] font-black text-2xl tracking-tight">Fresh As Ever</span>
+</div>
+<div class="px-6 pb-6 flex items-center gap-3">
+<img alt="Merchant Admin Avatar" class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="close up portrait of a professional man looking directly at camera with neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvSZQpto6OtGq9ui6h8_LAaazFhSnFXNJ4AZCipi3MmahGsvLIlaqb6fI_QrldGp87fUSR1pCtuj7CreVu3A7a-E8GtclwantkMiBsHYzOuvNJagQ6GFVR8FtsxA0FnmMOgF4kcpyoQVh_l_ubjwZjH_kFZ2H9T0d_O27zZyBU76xsh6-R9DPIt0lRNC0I1qTzhO4PWbuSqrGctHVbtPbrkf8EhgCQFn556HQA24B43LO8KHwCeYJx-XlZqmkC8_j-wnHki8TBCJQ"/>
+<div>
+<p class="font-h3 text-h3 text-on-surface">Fresh Admin</p>
+<p class="font-body-sm text-body-sm text-text-muted">Manage Surplus</p>
+</div>
+</div>
+<ul class="flex flex-col py-2 font-['Plus_Jakarta_Sans'] text-sm font-medium w-full">
+<li>
+<a class="flex items-center gap-3 px-6 py-3 w-full text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all active:scale-[0.98] duration-120" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 w-full text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all active:scale-[0.98] duration-120" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                    Create Bag
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 w-full text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all active:scale-[0.98] duration-120" href="#">
+<span class="material-symbols-outlined" data-icon="store">store</span>
+                    Merchant Details
+                </a>
+</li>
+<!-- Active Tab -->
+<li>
+<a class="flex items-center gap-3 px-6 py-3 w-full bg-teal-50/50 dark:bg-teal-900/20 text-[#01696f] dark:text-teal-400 border-l-4 border-[#01696f] font-bold transition-all active:scale-[0.98] duration-120" href="#">
+<span class="material-symbols-outlined" data-icon="report" style="font-variation-settings: 'FILL' 1;">report</span>
+                    Complaints
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 w-full text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all active:scale-[0.98] duration-120" href="#">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+                    Promos
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 w-full text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all active:scale-[0.98] duration-120" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full h-full overflow-y-auto mt-16 md:mt-0 md:ml-[240px] bg-background">
+<div class="max-w-5xl mx-auto p-page-margin-mobile md:p-page-margin-desktop">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface mb-xs">Active Complaints</h1>
+<p class="font-body-md text-body-md text-text-muted">Review and resolve customer issues regarding rescue bags.</p>
+</div>
+<!-- Filter Controls -->
+<div class="flex gap-sm overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface font-label text-label whitespace-nowrap active:scale-[0.97] transition-transform duration-120">
+                        All Open (12)
+                    </button>
+<button class="px-4 py-2 rounded-full bg-surface text-text-muted font-label text-label whitespace-nowrap active:scale-[0.97] transition-transform duration-120 shadow-[0_2px_4px_rgba(30,27,20,0.02)]">
+                        Unresolved
+                    </button>
+<button class="px-4 py-2 rounded-full bg-surface text-text-muted font-label text-label whitespace-nowrap active:scale-[0.97] transition-transform duration-120 shadow-[0_2px_4px_rgba(30,27,20,0.02)]">
+                        Escalated
+                    </button>
+</div>
+</div>
+<!-- Complaints List (Bento-inspired Cards) -->
+<div class="flex flex-col gap-lg">
+<!-- Complaint Card 1 (High Priority) -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_12px_rgba(30,27,20,0.04)] flex flex-col md:flex-row gap-lg md:items-center relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-accent"></div>
+<div class="flex flex-col gap-xs min-w-[200px]">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-accent-highlight text-accent">
+<span class="material-symbols-outlined text-sm">warning</span>
+</span>
+<span class="font-label-caps text-label-caps text-accent uppercase">High Priority</span>
+</div>
+<span class="font-label text-label text-text-muted">Reported 2 hrs ago</span>
+</div>
+<div class="flex-1 flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-h3 text-h3 text-on-surface">Missing Items in Bag</h3>
+<span class="font-label text-label text-on-surface-variant bg-surface-container px-2 py-1 rounded">#ORD-9821</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Customer reported that the rescue bag from <span class="font-medium">The Artisan Bakery</span> was missing two of the promised pastries.
+                        </p>
+<div class="flex items-center gap-3 mt-2">
+<img alt="Customer" class="w-6 h-6 rounded-full object-cover" data-alt="headshot of a smiling young woman outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2aejhE7ZnKTw3o0ucmwuJRROcIgH9a-B7oL-dyhhGZqcpxUI12511wIydCYpQJJx5eCUd8KGSfKtp_2EYMYlRZgGaDYKxFauI3GlSI04c7a6ELARUUn3i2UukEDMlAvEkYzMlmpBAxUELG_X-AMINELZ_fl7WZ_2ZOzZuaV3qwxPv6rv9jozR7jO3qzjKRh36feUD0jA7qwS2bG_8Gd1t8i4k5RWpdfPPVkbmflFDklYl954gXSlOI39shBN9ZN4gdNC9BTvBSV0"/>
+<span class="font-label text-label text-on-surface">Sarah J.</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm md:w-[160px]">
+<button class="w-full h-[48px] bg-primary text-on-primary font-label text-label rounded-lg active:scale-[0.97] transition-transform duration-120 flex items-center justify-center gap-2">
+                            Resolve
+                        </button>
+<button class="w-full h-[48px] bg-transparent border-[1.5px] border-primary text-primary font-label text-label rounded-lg active:scale-[0.97] transition-transform duration-120">
+                            View Details
+                        </button>
+</div>
+</div>
+<!-- Complaint Card 2 (Medium Priority) -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_12px_rgba(30,27,20,0.04)] flex flex-col md:flex-row gap-lg md:items-center relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-dark-accent"></div>
+<div class="flex flex-col gap-xs min-w-[200px]">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-surface-container text-dark-accent">
+<span class="material-symbols-outlined text-sm">schedule</span>
+</span>
+<span class="font-label-caps text-label-caps text-dark-accent uppercase">Standard</span>
+</div>
+<span class="font-label text-label text-text-muted">Reported 5 hrs ago</span>
+</div>
+<div class="flex-1 flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-h3 text-h3 text-on-surface">Pickup Window Closed Early</h3>
+<span class="font-label text-label text-on-surface-variant bg-surface-container px-2 py-1 rounded">#ORD-9744</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Arrived at <span class="font-medium">Colombo City Cafe</span> during the stated pickup window, but the store was already closed.
+                        </p>
+<div class="flex items-center gap-3 mt-2">
+<div class="w-6 h-6 rounded-full bg-surface-dim flex items-center justify-center text-xs font-bold text-on-surface">M</div>
+<span class="font-label text-label text-on-surface">Michael T.</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm md:w-[160px]">
+<button class="w-full h-[48px] bg-primary text-on-primary font-label text-label rounded-lg active:scale-[0.97] transition-transform duration-120 flex items-center justify-center gap-2">
+                            Resolve
+                        </button>
+<button class="w-full h-[48px] bg-transparent border-[1.5px] border-primary text-primary font-label text-label rounded-lg active:scale-[0.97] transition-transform duration-120">
+                            View Details
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

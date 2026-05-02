@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard - Fresh As Ever</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#ffb68d",
+                      "text": "#1a1a1a",
+                      "surface-container-high": "#e6e9e9",
+                      "on-primary-fixed-variant": "#004f54",
+                      "dark-primary": "#4f98a3",
+                      "primary-active": "#0f3638",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#eef1f1",
+                      "dark-background": "#141412",
+                      "inverse-surface": "#2d3131",
+                      "on-secondary-fixed": "#301400",
+                      "surface-container": "#ebeeee",
+                      "on-secondary-container": "#633000",
+                      "error": "#c0392b",
+                      "tertiary-container": "#8b4f2a",
+                      "surface-dim": "#d7dbda",
+                      "secondary-fixed-dim": "#ffb783",
+                      "outline": "#6f797a",
+                      "on-surface-variant": "#3f4949",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#85d3da",
+                      "divider": "#e2dfd9",
+                      "text-faint": "#b5b2ad",
+                      "on-tertiary": "#ffffff",
+                      "surface-variant": "#e0e3e3",
+                      "primary-hover": "#0c4e54",
+                      "primary": "#004f54",
+                      "dark-accent": "#fdab43",
+                      "dark-surface": "#1c1b18",
+                      "accent": "#da7101",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f1f4f4",
+                      "on-tertiary-fixed-variant": "#6e3815",
+                      "secondary-container": "#fc8b27",
+                      "surface-bright": "#f7fafa",
+                      "on-tertiary-container": "#ffceb5",
+                      "tertiary": "#6e3815",
+                      "on-primary-container": "#97e6ec",
+                      "surface-2": "#f3f0ec",
+                      "on-tertiary-fixed": "#331200",
+                      "primary-fixed-dim": "#85d3da",
+                      "accent-highlight": "#fde8cc",
+                      "primary-fixed": "#a1f0f6",
+                      "primary-highlight": "#d0e8e6",
+                      "on-primary-fixed": "#002022",
+                      "background": "#f7f6f2",
+                      "primary-container": "#01696f",
+                      "secondary-fixed": "#ffdcc5",
+                      "dark-surface-2": "#252420",
+                      "success": "#437a22",
+                      "on-surface": "#181c1d",
+                      "surface-tint": "#01696f",
+                      "on-secondary-fixed-variant": "#703700",
+                      "on-background": "#181c1d",
+                      "secondary": "#944b00",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#bec8c9",
+                      "text-muted": "#6b6762",
+                      "accent-hover": "#c55700",
+                      "surface-container-highest": "#e0e3e3",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#ffffff",
+                      "tertiary-fixed": "#ffdbc9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "page-margin-mobile": "16px",
+                      "page-margin-desktop": "32px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "xxl": "48px"
+              },
+              "fontFamily": {
+                      "h2": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-caps": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "price-original": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "price": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "h3": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "h1": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "h2": [
+                              "1.25rem",
+                              {
+                                      "lineHeight": "1.35",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "0.9375rem",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "0.75rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label": [
+                              "0.875rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display": [
+                              "2rem",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "price-original": [
+                              "0.9375rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "price": [
+                              "1.375rem",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "1rem",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h3": [
+                              "1.125rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "0.875rem",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h1": [
+                              "1.5rem",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f7f6f2; /* background */
+            color: #1a1a1a; /* text */
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e2dfd9; /* divider */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #bec8c9; /* outline-variant */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text font-body-md min-h-screen flex antialiased">
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-screen z-50 w-60 border-r rounded-none border-divider bg-surface">
+<div class="p-md flex items-center gap-sm border-b border-divider h-16">
+<span class="material-symbols-outlined text-primary-container text-[24px]">eco</span>
+<span class="text-lg font-extrabold text-primary-container font-h2">Fresh As Ever</span>
+</div>
+<div class="p-md flex items-center gap-md border-b border-divider">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden shrink-0">
+<img alt="Admin Profile" class="w-full h-full object-cover" data-alt="close up professional headshot of an executive in a modern bright office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4oiVJc2LHiH0rdsJmYmM0qHc4Q-akGcnprtwhCV3Ye_KPMokVpMIkiRsWXAIc17t67N15eVk37BRRb0UB8_NoiRAuDxlWu_HIOoX6ZlKqJ4OswfSaxv2Ks6mtg7bnPJhZb0_DQ8gBf60Dkz_w4A8KDSPojbJVa7WKc0GWLrImTcL606MgCriU_FIlSZ1oZDZXgzQxpBgNNSMbHT2-8UwEVy4ymQYVzRBC09_TSFVD4PjKFBeiNTaHSQNiVEoYL90oNSM1ns-o9Z0"/>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="font-label text-label text-on-surface truncate">Platform Admin</span>
+<span class="font-label-caps text-label-caps text-text-muted truncate">System Operations</span>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto py-sm">
+<a class="flex items-center gap-3 bg-primary-container/5 text-primary-container border-l-4 border-primary-container py-3 px-4 font-label text-label transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 font-label text-label hover:bg-surface-2 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+                Orders
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 font-label text-label hover:bg-surface-2 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+                Rescue Bags
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 font-label text-label hover:bg-surface-2 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant py-3 px-4 font-label text-label hover:bg-surface-2 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-60 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-4 h-16 sticky top-0 z-40 bg-background/90 backdrop-blur-md flat no shadows border-b border-divider">
+<div class="flex items-center gap-sm md:hidden">
+<span class="material-symbols-outlined text-primary-container text-[24px]">eco</span>
+<span class="text-xl font-bold text-primary-container font-h2">Fresh As Ever</span>
+</div>
+<div class="hidden md:flex items-center">
+<h1 class="font-h2 text-h2 text-on-surface">Platform Overview</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-2 transition-all duration-120 active:scale-[0.97]">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant md:hidden overflow-hidden">
+<img alt="Admin Profile" class="w-full h-full object-cover" data-alt="close up professional headshot of an executive in a modern bright office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuActw3b2yu2DWRdjV35GADFtUb3kEaaq1xPfYiCcWtORedQiBUqvs-QYdZ4N6wQG_ehMK1C5psRhvbfKAWhNMNPH2uiLqj4jxHuI4nRh8gnpwjsL6qi359n9hh2im9_1iNftBRA1DkWeUBjy0yX5URQqsMfQ0KWcimkzG54qsvgCycr07ZSKuHpN_N32ENkRFPjCol3ftmt0oY3LS1ui9JsZGvf-gPu-7NYY1fCV8SeHzv2M7_W4WnOeQaw_Y0SIJq1dctlgaj37Ww"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<div class="p-page-margin-mobile md:p-page-margin-desktop flex-1 flex flex-col gap-lg pb-24 md:pb-page-margin-desktop">
+<!-- Date & Quick Actions -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-md">
+<div>
+<h2 class="font-h3 text-h3 text-on-surface">Today's Pulse</h2>
+<p class="font-body-sm text-body-sm text-text-muted">Thursday, October 26, 2023</p>
+</div>
+<div class="flex gap-sm w-full sm:w-auto">
+<button class="flex-1 sm:flex-none px-md py-sm rounded-md bg-surface border border-outline-variant text-primary font-label text-label hover:bg-surface-2 transition-all duration-120 active:scale-[0.97] flex items-center justify-center gap-xs shadow-[0_2px_8px_rgba(30,27,20,0.04)]">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Export Report
+                    </button>
+</div>
+</div>
+<!-- KPI Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- KPI Card 1: Revenue -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_16px_rgba(30,27,20,0.03)] flex flex-col justify-between">
+<div class="flex justify-between items-start mb-md">
+<div class="w-10 h-10 rounded-lg bg-primary-highlight flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="font-label-caps text-label-caps text-success flex items-center gap-xs bg-success/10 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                            +12.5%
+                        </span>
+</div>
+<div>
+<p class="font-label text-label text-text-muted mb-xs">Today's Platform Revenue</p>
+<p class="font-price text-price text-on-surface">LKR 45,250</p>
+</div>
+</div>
+<!-- KPI Card 2: Active Merchants -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_16px_rgba(30,27,20,0.03)] flex flex-col justify-between">
+<div class="flex justify-between items-start mb-md">
+<div class="w-10 h-10 rounded-lg bg-accent-highlight flex items-center justify-center text-accent">
+<span class="material-symbols-outlined">storefront</span>
+</div>
+<span class="font-label-caps text-label-caps text-success flex items-center gap-xs bg-success/10 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                            +3
+                        </span>
+</div>
+<div>
+<p class="font-label text-label text-text-muted mb-xs">Active Merchants</p>
+<p class="font-price text-price text-on-surface">128</p>
+</div>
+</div>
+<!-- KPI Card 3: Total Users -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_16px_rgba(30,27,20,0.03)] flex flex-col justify-between">
+<div class="flex justify-between items-start mb-md">
+<div class="w-10 h-10 rounded-lg bg-surface-2 flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined">group</span>
+</div>
+<span class="font-label-caps text-label-caps text-success flex items-center gap-xs bg-success/10 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                            +45
+                        </span>
+</div>
+<div>
+<p class="font-label text-label text-text-muted mb-xs">Total Users</p>
+<p class="font-price text-price text-on-surface">12,450</p>
+</div>
+</div>
+<!-- KPI Card 4: Open Complaints -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_16px_rgba(30,27,20,0.03)] flex flex-col justify-between border-l-4 border-error">
+<div class="flex justify-between items-start mb-md">
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined">report_problem</span>
+</div>
+<span class="font-label-caps text-label-caps text-error flex items-center gap-xs bg-error/10 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                            +2
+                        </span>
+</div>
+<div>
+<p class="font-label text-label text-text-muted mb-xs">Open Complaints</p>
+<p class="font-price text-price text-on-surface">7</p>
+</div>
+</div>
+</div>
+<!-- Charts & Complex Data Area -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-md">
+<!-- Main Chart (Takes up 2 columns on lg) -->
+<div class="lg:col-span-2 bg-surface rounded-xl p-md shadow-[0_4px_16px_rgba(30,27,20,0.03)] flex flex-col min-h-[300px]">
+<div class="flex justify-between items-center mb-lg">
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Platform Growth</h3>
+<p class="font-body-sm text-body-sm text-text-muted">Rescue bags saved over the last 7 days</p>
+</div>
+<select class="bg-surface-2 border-none text-on-surface font-label text-label rounded-md py-1 px-3 focus:ring-1 focus:ring-primary-container outline-none">
+<option>Last 7 Days</option>
+<option>This Month</option>
+<option>This Year</option>
+</select>
+</div>
+<!-- Faux Line Chart Graphic using CSS for demonstration -->
+<div class="flex-1 relative w-full h-full flex items-end pt-8 pb-4">
+<!-- Y-Axis Labels -->
+<div class="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-text-faint font-label-caps text-label-caps w-8 h-full pb-8">
+<span>400</span>
+<span>300</span>
+<span>200</span>
+<span>100</span>
+<span>0</span>
+</div>
+<!-- Grid Lines -->
+<div class="absolute left-10 right-0 top-0 bottom-8 flex flex-col justify-between">
+<div class="w-full h-px bg-surface-variant"></div>
+<div class="w-full h-px bg-surface-variant"></div>
+<div class="w-full h-px bg-surface-variant"></div>
+<div class="w-full h-px bg-surface-variant"></div>
+<div class="w-full h-px bg-divider"></div>
+</div>
+<!-- Chart SVG representation -->
+<div class="absolute left-10 right-0 top-0 bottom-8">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<defs>
+<lineargradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#01696f" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#01696f" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Fill -->
+<polygon fill="url(#gradient)" points="0,100 0,60 16,50 33,65 50,40 66,45 83,20 100,10 100,100"></polygon>
+<!-- Line -->
+<polyline fill="none" points="0,60 16,50 33,65 50,40 66,45 83,20 100,10" stroke="#01696f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline>
+<!-- Points -->
+<circle cx="83" cy="20" fill="#ffffff" r="3" stroke="#01696f" stroke-width="2"></circle>
+<circle cx="100" cy="10" fill="#ffffff" r="3" stroke="#01696f" stroke-width="2"></circle>
+</svg>
+</div>
+<!-- X-Axis Labels -->
+<div class="absolute left-10 right-0 bottom-0 flex justify-between text-text-faint font-label-caps text-label-caps pt-2">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+</div>
+<!-- Secondary Panel -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_16px_rgba(30,27,20,0.03)] flex flex-col">
+<div class="mb-md">
+<h3 class="font-h3 text-h3 text-on-surface">Recent Alerts</h3>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Alert Item -->
+<div class="flex gap-md p-sm rounded-lg hover:bg-surface-2 transition-colors cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-error-container text-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">priority_high</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface">Merchant Onboarding Failed</p>
+<p class="font-body-sm text-body-sm text-text-muted line-clamp-1">Colombo Bakers missing tax documents.</p>
+<p class="font-label-caps text-label-caps text-text-faint mt-1">10 mins ago</p>
+</div>
+</div>
+<!-- Alert Item -->
+<div class="flex gap-md p-sm rounded-lg hover:bg-surface-2 transition-colors cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-accent-highlight text-accent flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">support_agent</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface">New Support Ticket #402</p>
+<p class="font-body-sm text-body-sm text-text-muted line-clamp-1">User requested refund for cancelled bag.</p>
+<p class="font-label-caps text-label-caps text-text-faint mt-1">1 hr ago</p>
+</div>
+</div>
+<!-- Alert Item -->
+<div class="flex gap-md p-sm rounded-lg hover:bg-surface-2 transition-colors cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface">System Backup Complete</p>
+<p class="font-body-sm text-body-sm text-text-muted line-clamp-1">Daily automated database snapshot successful.</p>
+<p class="font-label-caps text-label-caps text-text-faint mt-1">4 hrs ago</p>
+</div>
+</div>
+</div>
+<button class="mt-auto pt-md text-primary font-label text-label text-center hover:text-primary-hover transition-colors w-full">
+                        View All Alerts
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 pb-safe z-50 bg-surface/90 backdrop-blur-md border-t border-divider shadow-[0_-4px_12px_rgba(30,27,20,0.04)]">
+<a class="flex flex-col items-center justify-center text-primary-container py-2 w-full active:bg-surface-2 active:scale-[0.95] transition-transform duration-120" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-caps text-[10px] font-bold mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-faint py-2 w-full active:bg-surface-2 active:scale-[0.95] transition-transform duration-120" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-caps text-[10px] font-bold mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-faint py-2 w-full active:bg-surface-2 active:scale-[0.95] transition-transform duration-120" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-caps text-[10px] font-bold mt-1">Bags</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-faint py-2 w-full active:bg-surface-2 active:scale-[0.95] transition-transform duration-120" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-[10px] font-bold mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

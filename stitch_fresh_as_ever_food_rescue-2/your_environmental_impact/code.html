@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Environmental Impact</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e0e3e3",
+                        "outline-variant": "#bec8c9",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eef1f1",
+                        "dark-accent": "#fdab43",
+                        "surface-container-low": "#f1f4f4",
+                        "primary-fixed": "#a1f0f6",
+                        "on-surface": "#181c1d",
+                        "on-primary-fixed-variant": "#004f54",
+                        "primary": "#004f54",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#ffceb5",
+                        "accent-highlight": "#fde8cc",
+                        "surface-bright": "#f7fafa",
+                        "secondary-fixed": "#ffdcc5",
+                        "dark-background": "#141412",
+                        "surface-container-high": "#e6e9e9",
+                        "secondary-fixed-dim": "#ffb783",
+                        "primary-fixed-dim": "#85d3da",
+                        "on-surface-variant": "#3f4949",
+                        "on-secondary-fixed-variant": "#703700",
+                        "tertiary-fixed": "#ffdbc9",
+                        "tertiary-container": "#8b4f2a",
+                        "on-secondary": "#ffffff",
+                        "primary-hover": "#0c4e54",
+                        "on-background": "#181c1d",
+                        "on-secondary-fixed": "#301400",
+                        "surface-container-highest": "#e0e3e3",
+                        "tertiary": "#6e3815",
+                        "on-secondary-container": "#633000",
+                        "success": "#437a22",
+                        "inverse-surface": "#2d3131",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#fc8b27",
+                        "text-faint": "#b5b2ad",
+                        "outline": "#6f797a",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#01696f",
+                        "text": "#1a1a1a",
+                        "primary-highlight": "#d0e8e6",
+                        "dark-surface": "#1c1b18",
+                        "surface-container": "#ebeeee",
+                        "surface": "#ffffff",
+                        "text-muted": "#6b6762",
+                        "on-tertiary-fixed": "#331200",
+                        "on-primary": "#ffffff",
+                        "accent-hover": "#c55700",
+                        "surface-2": "#f3f0ec",
+                        "dark-surface-2": "#252420",
+                        "surface-dim": "#d7dbda",
+                        "divider": "#e2dfd9",
+                        "surface-tint": "#01696f",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "primary-active": "#0f3638",
+                        "inverse-primary": "#85d3da",
+                        "accent": "#da7101",
+                        "on-primary-container": "#97e6ec",
+                        "background": "#f7f6f2",
+                        "secondary": "#944b00",
+                        "error": "#c0392b",
+                        "error-container": "#ffdad6",
+                        "dark-primary": "#4f98a3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "page-margin-mobile": "16px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "xxl": "48px",
+                        "lg": "24px",
+                        "page-margin-desktop": "32px",
+                        "sm": "8px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "price-original": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "price": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-8">
+<!-- TopAppBar -->
+<header class="bg-stone-50 dark:bg-stone-950 font-['Plus_Jakarta_Sans'] text-sm font-semibold tracking-tight docked full-width top-0 border-b-0 border-stone-200 dark:border-stone-800 shadow-[0_4px_20px_-4px_rgba(30,27,20,0.08)] sticky z-50">
+<div class="flex justify-between items-center w-full h-16 px-4 max-w-screen-xl mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-teal-700 dark:text-teal-400">restaurant</span>
+<span class="text-xl font-extrabold text-teal-800 dark:text-teal-300 tracking-tighter">SavvySavor</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-teal-700 dark:text-teal-400 text-2xl">account_circle</span>
+</div>
+</div>
+</header>
+<main class="max-w-screen-md mx-auto px-page-margin-mobile md:px-page-margin-desktop py-lg space-y-xl">
+<!-- Header Section -->
+<section class="text-center space-y-sm">
+<h1 class="font-h1 text-h1 text-primary">Your Environmental Impact</h1>
+<p class="font-body-lg text-body-lg text-text-muted">Every meal rescued is a step towards a greener planet. Here is the difference you've made.</p>
+</section>
+<!-- Impact Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Bags Rescued Card -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_20px_-4px_rgba(30,27,20,0.05)] border border-divider col-span-1 flex flex-col justify-between h-48">
+<div class="flex justify-between items-start">
+<div class="bg-primary-highlight p-sm rounded-full">
+<i class="ph ph-shopping-bag text-primary text-2xl"></i>
+</div>
+<span class="font-label-caps text-label-caps text-text-muted">LIFETIME</span>
+</div>
+<div>
+<h2 class="font-display text-display text-primary">42</h2>
+<p class="font-h3 text-h3 text-on-surface">Bags Rescued</p>
+</div>
+</div>
+<!-- CO2 Prevented Card -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_20px_-4px_rgba(30,27,20,0.05)] border border-divider col-span-1 flex flex-col justify-between h-48">
+<div class="flex justify-between items-start">
+<div class="bg-accent-highlight p-sm rounded-full">
+<i class="ph ph-cloud-sun text-accent text-2xl"></i>
+</div>
+<span class="font-label-caps text-label-caps text-text-muted">ESTIMATED</span>
+</div>
+<div>
+<div class="flex items-baseline gap-xs">
+<h2 class="font-display text-display text-accent">105</h2>
+<span class="font-h3 text-h3 text-accent">kg</span>
+</div>
+<p class="font-h3 text-h3 text-on-surface">CO2e Prevented</p>
+</div>
+</div>
+<!-- Money Saved Card - Spans full width on mobile -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_20px_-4px_rgba(30,27,20,0.05)] border border-divider col-span-1 md:col-span-2 flex flex-col md:flex-row justify-between items-start md:items-center h-auto md:h-32 gap-md">
+<div class="flex items-center gap-md">
+<div class="bg-primary-highlight p-sm rounded-full">
+<i class="ph ph-wallet text-primary text-2xl"></i>
+</div>
+<div>
+<p class="font-h3 text-h3 text-on-surface">Money Saved</p>
+<p class="font-body-sm text-body-sm text-text-muted">Money kept in your pocket</p>
+</div>
+</div>
+<div class="text-left md:text-right w-full md:w-auto">
+<h2 class="font-display text-display text-primary">Rs. 18,500</h2>
+</div>
+</div>
+</section>
+<!-- Equivalence Visualization -->
+<section class="bg-surface-2 rounded-xl p-lg shadow-[0_4px_20px_-4px_rgba(30,27,20,0.05)] border border-divider">
+<h3 class="font-h2 text-h2 text-primary mb-md">What does this mean?</h3>
+<p class="font-body-md text-body-md text-on-surface mb-lg">Your prevented CO2 emissions are equivalent to:</p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-md">
+<div class="flex flex-col items-center text-center p-sm bg-surface rounded-lg border border-divider">
+<i class="ph ph-car text-text-muted text-3xl mb-xs"></i>
+<span class="font-h3 text-h3 text-on-surface">400 km</span>
+<span class="font-body-sm text-body-sm text-text-muted">Driven in a car</span>
+</div>
+<div class="flex flex-col items-center text-center p-sm bg-surface rounded-lg border border-divider">
+<i class="ph ph-device-mobile text-text-muted text-3xl mb-xs"></i>
+<span class="font-h3 text-h3 text-on-surface">12,000</span>
+<span class="font-body-sm text-body-sm text-text-muted">Smartphones charged</span>
+</div>
+<div class="flex flex-col items-center text-center p-sm bg-surface rounded-lg border border-divider">
+<i class="ph ph-tree text-text-muted text-3xl mb-xs"></i>
+<span class="font-h3 text-h3 text-on-surface">5</span>
+<span class="font-body-sm text-body-sm text-text-muted">Tree seedlings grown for 10 years</span>
+</div>
+</div>
+</section>
+<!-- Methodology Section -->
+<section class="space-y-sm">
+<h3 class="font-h2 text-h2 text-primary border-b border-divider pb-xs">Our Methodology</h3>
+<div class="space-y-md">
+<div>
+<h4 class="font-label text-label text-on-surface mb-xs">How we calculate CO2e</h4>
+<p class="font-body-sm text-body-sm text-text-muted">We use a standardized conversion factor where 1 kg of rescued food averts approximately 2.5 kg of CO2 equivalents (CO2e). This accounts for the emissions saved from preventing food waste in landfills and the energy conserved from agricultural production, transportation, and preparation.</p>
+</div>
+<div>
+<h4 class="font-label text-label text-on-surface mb-xs">Bag Weight Estimation</h4>
+<p class="font-body-sm text-body-sm text-text-muted">For simplicity, we estimate that each 'Rescue Bag' contains an average of 1 kg of food. Actual weights may vary depending on the merchant and the specific items rescued.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-white dark:bg-stone-900 font-['Plus_Jakarta_Sans'] text-[11px] font-medium fixed bottom-0 w-full h-16 rounded-t-lg border-t border-stone-100 dark:border-stone-800 shadow-[0_-4px_20px_-4px_rgba(30,27,20,0.1)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 md:hidden">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:bg-stone-50 dark:hover:bg-stone-800 active:scale-[0.97] transition-transform duration-120 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1">storefront</span>
+            Explore
+        </a>
+<a class="flex flex-col items-center justify-center text-teal-700 dark:text-teal-400 font-bold hover:bg-stone-50 dark:hover:bg-stone-800 active:scale-[0.97] transition-transform duration-120 w-full h-full relative" href="#">
+<div class="absolute inset-x-0 top-0 h-1 bg-teal-700 dark:bg-teal-400 rounded-b"></div>
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">eco</span>
+            Impact
+        </a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:bg-stone-50 dark:hover:bg-stone-800 active:scale-[0.97] transition-transform duration-120 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1">favorite</span>
+            Saved
+        </a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:bg-stone-50 dark:hover:bg-stone-800 active:scale-[0.97] transition-transform duration-120 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+            Profile
+        </a>
+</nav>
+</body></html>

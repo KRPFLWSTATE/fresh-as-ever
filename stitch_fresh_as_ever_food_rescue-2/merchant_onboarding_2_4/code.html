@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Merchant Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdbc9",
+                        "tertiary": "#6e3815",
+                        "primary-fixed-dim": "#85d3da",
+                        "on-tertiary-container": "#ffceb5",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#fc8b27",
+                        "accent-highlight": "#fde8cc",
+                        "divider": "#e2dfd9",
+                        "primary": "#004f54",
+                        "primary-fixed": "#a1f0f6",
+                        "dark-accent": "#fdab43",
+                        "surface-container-highest": "#e0e3e3",
+                        "outline-variant": "#bec8c9",
+                        "success": "#437a22",
+                        "on-secondary-fixed-variant": "#703700",
+                        "on-surface": "#181c1d",
+                        "inverse-primary": "#85d3da",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "surface-tint": "#01696f",
+                        "primary-container": "#01696f",
+                        "primary-highlight": "#d0e8e6",
+                        "on-tertiary-fixed": "#331200",
+                        "on-surface-variant": "#3f4949",
+                        "dark-primary": "#4f98a3",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#ebeeee",
+                        "primary-hover": "#0c4e54",
+                        "dark-background": "#141412",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#301400",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#004f54",
+                        "text-muted": "#6b6762",
+                        "accent-hover": "#c55700",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "dark-surface-2": "#252420",
+                        "text-faint": "#b5b2ad",
+                        "tertiary-container": "#8b4f2a",
+                        "secondary-fixed": "#ffdcc5",
+                        "on-primary-fixed": "#002022",
+                        "on-primary-container": "#97e6ec",
+                        "accent": "#da7101",
+                        "error": "#c0392b",
+                        "background": "#f7f6f2",
+                        "on-background": "#181c1d",
+                        "secondary": "#944b00",
+                        "inverse-surface": "#2d3131",
+                        "surface-variant": "#e0e3e3",
+                        "surface-bright": "#f7fafa",
+                        "dark-surface": "#1c1b18",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "primary-active": "#0f3638",
+                        "surface-container-high": "#e6e9e9",
+                        "inverse-on-surface": "#eef1f1",
+                        "surface-2": "#f3f0ec",
+                        "surface": "#ffffff",
+                        "secondary-fixed-dim": "#ffb783",
+                        "text": "#1a1a1a",
+                        "surface-dim": "#d7dbda",
+                        "outline": "#6f797a",
+                        "surface-container-low": "#f1f4f4",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#633000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "page-margin-desktop": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "page-margin-mobile": "16px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "price-original": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "price": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col">
+<header class="w-full px-page-margin-mobile md:px-page-margin-desktop py-lg flex justify-between items-center bg-transparent z-10 relative">
+<div class="text-primary-container font-h2 text-h2 tracking-tight font-extrabold flex items-center gap-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+            Fresh As Ever
+        </div>
+<div class="flex items-center gap-sm">
+<div class="h-1 w-12 bg-primary rounded-full"></div>
+<div class="h-1 w-12 bg-primary rounded-full"></div>
+<div class="h-1 w-12 bg-surface-dim rounded-full"></div>
+<div class="h-1 w-12 bg-surface-dim rounded-full"></div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center px-page-margin-mobile md:px-page-margin-desktop py-xl">
+<div class="w-full max-w-xl flex flex-col space-y-xl">
+<div>
+<h1 class="font-display text-display text-on-surface mb-sm tracking-tight">Outlet Details</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Where will customers pick up their rescue bags? Provide the specifics for this location.</p>
+</div>
+<div class="bg-surface p-xl rounded-xl shadow-[0_8px_24px_rgba(30,27,20,0.04)] space-y-xl border border-divider/40">
+<form class="space-y-lg">
+<div class="space-y-xs">
+<label class="block font-label text-label text-on-surface-variant" for="outletName">Outlet Name</label>
+<input class="w-full h-[48px] px-md rounded-lg border border-outline-variant bg-surface text-on-surface focus:border-primary focus:ring-4 focus:ring-primary-highlight outline-none transition-all placeholder:text-text-faint font-body-md text-body-md" id="outletName" placeholder="e.g. Fresh Bakery - Colombo 03" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="block font-label text-label text-on-surface-variant flex items-center justify-between">
+<span>Location</span>
+<span class="text-text-muted font-body-sm text-body-sm flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">my_location</span> Auto-detect</span>
+</label>
+<div class="relative w-full h-[240px] rounded-lg overflow-hidden border border-outline-variant bg-surface-container-low group">
+<img class="w-full h-full object-cover opacity-60 mix-blend-multiply group-hover:opacity-70 transition-opacity" data-alt="Abstract minimal map view of city streets with warm neutral tones and a subtle grid pattern" data-location="Colombo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAownKoPByj-r9yEGpujzDfweJsBaWrGc2s1alklo5LJMIGx2V21rfMcdS4NN9RxYzLHYNy3M6BkhwWavVcBWD-gqiU5wJScd7o8OnSALwlyAb-hkj1NFdsRIe0IHI1vFJkv3e1t2ifCbBCF5ZVZRxUso97WpVbeBnBjy1yQN-qQDcfHlbmyDJTXg4odiWsdyTvice3R7YfnCHdtBdSzUIDFYRfBr8WerYfioqEnh72BuDdBILSG98SxYobOICIPleVUFRDMCYa_MU"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="relative">
+<span class="material-symbols-outlined text-[40px] text-primary-container drop-shadow-md" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-3 h-1 bg-black/20 rounded-full blur-[2px]"></div>
+</div>
+</div>
+<div class="absolute top-sm left-sm right-sm">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-text-muted">search</span>
+<input class="w-full h-[44px] pl-[40px] pr-md rounded-lg bg-surface/90 backdrop-blur-sm shadow-[0_2px_8px_rgba(30,27,20,0.08)] border border-divider/50 text-on-surface font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" type="text" value="Galle Road, Colombo 03"/>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-xs pt-sm border-t border-divider">
+<label class="block font-label text-label text-on-surface-variant mb-sm">Standard Operating Hours</label>
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="block font-label-caps text-label-caps text-text-muted uppercase" for="openTime">Opens At</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-text-muted">schedule</span>
+<select class="w-full h-[48px] pl-[40px] pr-md rounded-lg border border-outline-variant bg-surface text-on-surface focus:border-primary focus:ring-4 focus:ring-primary-highlight outline-none transition-all font-body-md text-body-md appearance-none" id="openTime">
+<option>08:00 AM</option>
+<option>09:00 AM</option>
+<option selected="">10:00 AM</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-text-muted pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="block font-label-caps text-label-caps text-text-muted uppercase" for="closeTime">Closes At</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-text-muted">schedule</span>
+<select class="w-full h-[48px] pl-[40px] pr-md rounded-lg border border-outline-variant bg-surface text-on-surface focus:border-primary focus:ring-4 focus:ring-primary-highlight outline-none transition-all font-body-md text-body-md appearance-none" id="closeTime">
+<option>06:00 PM</option>
+<option>07:00 PM</option>
+<option selected="">08:00 PM</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-text-muted pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+<div class="flex flex-col-reverse md:flex-row gap-md justify-between pt-lg">
+<button class="w-full md:w-auto h-[48px] px-xl rounded-lg border-[1.5px] border-primary text-primary bg-transparent font-label text-label hover:bg-primary-highlight/30 transition-colors active:scale-[0.97] duration-120 flex items-center justify-center gap-xs" type="button">
+                    Back
+                </button>
+<button class="w-full md:w-auto h-[48px] px-xl rounded-lg bg-primary text-on-primary font-label text-label shadow-[0_4px_12px_rgba(0,79,84,0.15)] hover:bg-primary-hover transition-colors active:scale-[0.97] duration-120 flex items-center justify-center gap-xs" type="button">
+                    Continue to Inventory
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

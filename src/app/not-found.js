@@ -5,7 +5,7 @@ export default function NotFound() {
     <div className="stub-page">
       <h1>Page not found</h1>
       <p>The page you're looking for doesn't exist.</p>
-      <Link href="/" style={{ marginTop: '1rem', color: '#01696f', fontWeight: 600 }}>
+      <Link href="/" className="mt-4 text-primary font-semibold">
         Go home
       </Link>
     </div>

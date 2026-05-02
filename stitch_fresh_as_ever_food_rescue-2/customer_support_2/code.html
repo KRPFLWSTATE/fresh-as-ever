@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Customer Support</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-tertiary-container": "#ffceb5",
+                "surface-dim": "#d7dbda",
+                "on-error": "#ffffff",
+                "on-tertiary-fixed": "#331200",
+                "error": "#c0392b",
+                "surface-container-low": "#f1f4f4",
+                "outline": "#6f797a",
+                "error-container": "#ffdad6",
+                "tertiary-fixed-dim": "#ffb68d",
+                "text-faint": "#b5b2ad",
+                "dark-surface": "#1c1b18",
+                "primary-hover": "#0c4e54",
+                "on-primary-container": "#97e6ec",
+                "secondary-container": "#fc8b27",
+                "inverse-primary": "#85d3da",
+                "secondary": "#944b00",
+                "surface-bright": "#f7fafa",
+                "on-tertiary-fixed-variant": "#6e3815",
+                "on-error-container": "#93000a",
+                "on-background": "#181c1d",
+                "divider": "#e2dfd9",
+                "inverse-surface": "#2d3131",
+                "surface-variant": "#e0e3e3",
+                "dark-primary": "#4f98a3",
+                "tertiary": "#6e3815",
+                "tertiary-container": "#8b4f2a",
+                "dark-accent": "#fdab43",
+                "primary": "#004f54",
+                "on-surface": "#181c1d",
+                "surface-container-highest": "#e0e3e3",
+                "accent-hover": "#c55700",
+                "primary-active": "#0f3638",
+                "on-secondary": "#ffffff",
+                "tertiary-fixed": "#ffdbc9",
+                "primary-container": "#01696f",
+                "accent-highlight": "#fde8cc",
+                "on-primary": "#ffffff",
+                "surface-container": "#ebeeee",
+                "surface-tint": "#01696f",
+                "surface-container-high": "#e6e9e9",
+                "primary-fixed-dim": "#85d3da",
+                "on-primary-fixed-variant": "#004f54",
+                "success": "#437a22",
+                "on-secondary-container": "#633000",
+                "on-secondary-fixed-variant": "#703700",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed-dim": "#ffb783",
+                "on-surface-variant": "#3f4949",
+                "surface-container-lowest": "#ffffff",
+                "outline-variant": "#bec8c9",
+                "on-primary-fixed": "#002022",
+                "secondary-fixed": "#ffdcc5",
+                "dark-background": "#141412",
+                "background": "#f7f6f2",
+                "primary-highlight": "#d0e8e6",
+                "inverse-on-surface": "#eef1f1",
+                "accent": "#da7101",
+                "dark-surface-2": "#252420",
+                "text-muted": "#6b6762",
+                "primary-fixed": "#a1f0f6",
+                "on-secondary-fixed": "#301400",
+                "surface": "#ffffff",
+                "text": "#1a1a1a",
+                "surface-2": "#f3f0ec"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "lg": "24px",
+                "page-margin-desktop": "32px",
+                "xxl": "48px",
+                "xs": "4px",
+                "page-margin-mobile": "16px",
+                "md": "16px",
+                "xl": "32px",
+                "sm": "8px"
+        },
+        "fontFamily": {
+                "h1": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-lg": [
+                        "Plus Jakarta Sans"
+                ],
+                "price": [
+                        "Plus Jakarta Sans"
+                ],
+                "label": [
+                        "Plus Jakarta Sans"
+                ],
+                "display": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-sm": [
+                        "Plus Jakarta Sans"
+                ],
+                "label-caps": [
+                        "Plus Jakarta Sans"
+                ],
+                "h3": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-md": [
+                        "Plus Jakarta Sans"
+                ],
+                "h2": [
+                        "Plus Jakarta Sans"
+                ],
+                "price-original": [
+                        "Plus Jakarta Sans"
+                ]
+        },
+        "fontSize": {
+                "h1": [
+                        "1.5rem",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "1rem",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "price": [
+                        "1.375rem",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label": [
+                        "0.875rem",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "500"
+                        }
+                ],
+                "display": [
+                        "2rem",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-sm": [
+                        "0.875rem",
+                        {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-caps": [
+                        "0.75rem",
+                        {
+                                "lineHeight": "1.4",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "h3": [
+                        "1.125rem",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "0.9375rem",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "h2": [
+                        "1.25rem",
+                        {
+                                "lineHeight": "1.35",
+                                "fontWeight": "600"
+                        }
+                ],
+                "price-original": [
+                        "0.9375rem",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+  body {
+    background-color: theme('colors.background');
+    color: theme('colors.text');
+  }
+</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col relative pb-20 md:pb-0 md:flex-row">
+<!-- Desktop Sidebar -->
+<aside class="hidden md:flex flex-col h-screen w-[280px] border-r border-stone-200 dark:border-stone-800 bg-[#f7f6f2] dark:bg-stone-950 flex-shrink-0 sticky top-0 divide-y divide-stone-100 dark:divide-stone-800 py-6 font-plus-jakarta text-sm transition-all duration-200 ease-in-out z-40">
+<div class="px-6 pb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB7ihXMy-Vt9aWHceLHN1r15sAJjVzWneEi9M2NM0Ya0Rb-sX3DAfilXbmbnm6-92UW40u6cLk6Xu5heZQTMQG9ZWJ6k5KSgoJR1F347DmLKsbEmqpaWu2iQWsgK9_MtUeCDdQ4QG3EWkcs5--X2pPaDsxAAaL86Pf8lHs6h_zkdHjefP__UmNONYKMNgjeqc-q_hHYYx-Gp0KVr14sKkMF1M_hegvMny7yZc-gwkCKU7frVM1r1TFF8pHfWhGV170SelV6ADKf44"/>
+</div>
+<div>
+<div class="font-bold text-[#01696f] dark:text-teal-400">Sahan Perera</div>
+<div class="text-xs text-stone-500">Premium Member</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1 px-4 py-4">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-900 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>Personal Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-900 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span>Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-900 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span>Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md bg-teal-50/50 dark:bg-teal-900/20 text-[#01696f] dark:text-teal-400 border-l-4 border-[#01696f] font-semibold transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="headset_mic" style="font-variation-settings: 'FILL' 1;">headset_mic</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-900 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="store">store</span>
+<span>Merchant Portal</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-900 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Admin Console</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 border-b border-stone-200 dark:border-stone-800 bg-[#f7f6f2] dark:bg-stone-950 flex justify-between items-center w-full px-4 h-16 sticky z-30">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-[#01696f] dark:text-teal-500 hover:bg-stone-100 dark:hover:bg-stone-900 p-2 rounded-full active:scale-95 transition-transform duration-120">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-plus-jakarta text-xl font-bold text-[#01696f] dark:text-teal-400 tracking-tighter">Fresh As Ever</span>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-stone-200">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeemawErrBYd4DpTOCcAHnuxBRXAD_P3mwRTZA_cS-LlXqk4plAhUQfm-Ed9S7dQ_MFaF55vVd8t1FzKuWT565n-jF5C6x2Y6gLd2fpaJ2WhdDRIvb584wZEQcb7zvbj97mqTOz0xLFy8UyUo9r-Tlzvjn6Vl0enis2fOjczdR8yuimm1GAifD21k-HTJOedtMRjoz1FEjFBvlS2hQBD28Gqbts5e5tTqwqR6n18EFsc2u332Mo3VCdOdGNAqMlwoKAbMMfjUxjQg"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="flex-1 p-page-margin-mobile md:p-page-margin-desktop max-w-4xl mx-auto w-full">
+<div class="mb-8">
+<h1 class="font-h1 text-h1 text-on-surface mb-2">Help &amp; Support</h1>
+<p class="font-body-lg text-body-lg text-text-muted">How can we assist you today?</p>
+</div>
+<!-- Search Bar -->
+<div class="relative mb-xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-muted" data-icon="search">search</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface rounded-lg border-outline-variant focus:border-surface-tint focus:ring-primary-highlight font-body-md text-body-md shadow-sm transition-all" placeholder="Search for answers..." type="text"/>
+</div>
+<!-- Categories -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+<!-- Order Issues -->
+<a class="bg-surface p-6 rounded-xl shadow-[0_4px_20px_rgba(30,27,20,0.03)] hover:shadow-[0_8px_30px_rgba(30,27,20,0.06)] transition-all flex flex-col gap-4 group" href="#">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-highlight transition-colors">
+<span class="material-symbols-outlined text-surface-tint" data-icon="local_mall">local_mall</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Order Issues</h3>
+<p class="font-body-sm text-body-sm text-text-muted">Missing items, wrong orders, or delivery delays.</p>
+</div>
+</a>
+<!-- Payments -->
+<a class="bg-surface p-6 rounded-xl shadow-[0_4px_20px_rgba(30,27,20,0.03)] hover:shadow-[0_8px_30px_rgba(30,27,20,0.06)] transition-all flex flex-col gap-4 group" href="#">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-highlight transition-colors">
+<span class="material-symbols-outlined text-surface-tint" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Payments</h3>
+<p class="font-body-sm text-body-sm text-text-muted">Refunds, failed transactions, and billing inquiries.</p>
+</div>
+</a>
+<!-- Merchant Policies -->
+<a class="bg-surface p-6 rounded-xl shadow-[0_4px_20px_rgba(30,27,20,0.03)] hover:shadow-[0_8px_30px_rgba(30,27,20,0.06)] transition-all flex flex-col gap-4 group" href="#">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center group-hover:bg-primary-highlight transition-colors">
+<span class="material-symbols-outlined text-surface-tint" data-icon="policy">policy</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Merchant Policies</h3>
+<p class="font-body-sm text-body-sm text-text-muted">Pickup rules, cancellations, and merchant ratings.</p>
+</div>
+</a>
+</div>
+<!-- Chat CTA -->
+<div class="bg-surface p-8 rounded-xl shadow-[0_4px_20px_rgba(30,27,20,0.03)] flex flex-col items-center text-center max-w-lg mx-auto">
+<span class="material-symbols-outlined text-4xl text-surface-tint mb-4" data-icon="forum">forum</span>
+<h2 class="font-h2 text-h2 text-on-surface mb-2">Still need help?</h2>
+<p class="font-body-md text-body-md text-text-muted mb-6">Our support team is available from 8 AM to 8 PM to assist you with any inquiries.</p>
+<button class="w-full md:w-auto px-8 h-[48px] bg-primary text-on-primary font-label text-label rounded flex items-center justify-center gap-2 active:scale-97 transition-transform duration-120 hover:bg-primary-hover">
+<span class="material-symbols-outlined text-sm" data-icon="chat">chat</span>
+          Chat with Us
+        </button>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-white dark:bg-stone-900 border-t border-stone-100 dark:border-stone-800 shadow-[0_-4px_12px_rgba(30,27,20,0.04)] rounded-t-lg font-plus-jakarta text-[10px] font-medium">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-teal-700 active:scale-[0.97] transition-all duration-120 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="storefront">storefront</span>
+      Discover
+    </a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-teal-700 active:scale-[0.97] transition-all duration-120 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="receipt">receipt</span>
+      Orders
+    </a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-teal-700 active:scale-[0.97] transition-all duration-120 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="bar_chart">bar_chart</span>
+      Analytics
+    </a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-teal-700 active:scale-[0.97] transition-all duration-120 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="payments">payments</span>
+      Finance
+    </a>
+<a class="flex flex-col items-center justify-center text-[#01696f] dark:text-teal-400 transition-colors hover:text-teal-700 active:scale-[0.97] duration-120 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+      Settings
+    </a>
+</nav>
+</body></html>

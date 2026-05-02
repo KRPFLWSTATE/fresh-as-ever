@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Admin Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#fc8b27",
+                        "on-primary-fixed": "#002022",
+                        "primary-highlight": "#d0e8e6",
+                        "primary-active": "#0f3638",
+                        "on-background": "#181c1d",
+                        "outline": "#6f797a",
+                        "on-tertiary-fixed": "#331200",
+                        "inverse-on-surface": "#eef1f1",
+                        "on-primary": "#ffffff",
+                        "surface": "#ffffff",
+                        "dark-surface-2": "#252420",
+                        "surface-variant": "#e0e3e3",
+                        "surface-container-lowest": "#ffffff",
+                        "accent-highlight": "#fde8cc",
+                        "text-faint": "#b5b2ad",
+                        "surface-container": "#ebeeee",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e6e9e9",
+                        "secondary-fixed-dim": "#ffb783",
+                        "primary-container": "#01696f",
+                        "secondary-fixed": "#ffdcc5",
+                        "primary-fixed": "#a1f0f6",
+                        "surface-2": "#f3f0ec",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "on-primary-fixed-variant": "#004f54",
+                        "inverse-surface": "#2d3131",
+                        "accent": "#da7101",
+                        "on-surface-variant": "#3f4949",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#85d3da",
+                        "divider": "#e2dfd9",
+                        "error": "#c0392b",
+                        "text-muted": "#6b6762",
+                        "dark-primary": "#4f98a3",
+                        "on-secondary-container": "#633000",
+                        "accent-hover": "#c55700",
+                        "on-secondary-fixed": "#301400",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-tint": "#01696f",
+                        "outline-variant": "#bec8c9",
+                        "tertiary-container": "#8b4f2a",
+                        "success": "#437a22",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#6e3815",
+                        "secondary": "#944b00",
+                        "primary-hover": "#0c4e54",
+                        "background": "#f7f6f2",
+                        "on-secondary-fixed-variant": "#703700",
+                        "primary": "#004f54",
+                        "surface-container-low": "#f1f4f4",
+                        "on-tertiary-container": "#ffceb5",
+                        "on-surface": "#181c1d",
+                        "dark-accent": "#fdab43",
+                        "surface-bright": "#f7fafa",
+                        "inverse-primary": "#85d3da",
+                        "surface-container-highest": "#e0e3e3",
+                        "dark-background": "#141412",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d7dbda",
+                        "on-primary-container": "#97e6ec",
+                        "error-container": "#ffdad6",
+                        "text": "#1a1a1a",
+                        "dark-surface": "#1c1b18"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xxl": "48px",
+                        "sm": "8px",
+                        "page-margin-desktop": "32px",
+                        "page-margin-mobile": "16px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "price": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "price-original": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text min-h-screen flex flex-col md:flex-row antialiased">
+<!-- JSON Component: TopAppBar (Used as Global Header on Mobile, suppressed structurally on Desktop sidebar layout if needed, but keeping it as brand anchor globally) -->
+<header class="bg-[#f7f6f2] dark:bg-zinc-900 text-[#01696f] dark:text-teal-400 font-['Plus_Jakarta_Sans'] font-medium tracking-tight shadow-[0_2px_15px_-3px_rgba(30,27,20,0.07)] border-none flex items-center justify-between px-4 h-16 w-full sticky top-0 z-50 md:hidden">
+<div class="flex items-center gap-sm">
+<img alt="User profile photo" class="w-8 h-8 rounded-full object-cover" data-alt="professional portrait of a young urban professional woman with warm natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGLPcWIHoK0CaxRkBJrR9GDQRnqF5h4i8LXvL5236f-AqSx2U2B1_Wg_gKt3kj79hV1R04sSqv0bZgtAS3RVWLQrlVP_5KHnCZBacCMX7deKOjGlsSoRHqv8421EuivgNjS9w2szKubsS766Vyp5PNmIsNHU1FW-_fmbfsGrBuDD_lGnc24O2C0oMjlxDN9Srbbi8I13ROQbdyvvZyRVnVn0U16aO0SDcj47w9YGoKo6KkzUoJklAHy4fz3w24YDMAqyN1AP1rUEo"/>
+</div>
+<div class="text-lg font-extrabold text-[#01696f] tracking-tighter">Fresh As Ever</div>
+<div class="text-stone-400 dark:text-zinc-500 hover:opacity-80 transition-opacity active:scale-[0.97] duration-120 cursor-pointer">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+</header>
+<!-- Desktop Sidebar (Admin specific rule implementation) -->
+<aside class="hidden md:flex flex-col w-[240px] bg-surface h-screen sticky top-0 border-r border-divider/50 z-40">
+<div class="h-16 flex items-center px-lg border-b border-divider/50">
+<div class="text-lg font-extrabold text-primary-container tracking-tighter">Fresh As Ever</div>
+</div>
+<nav class="flex-1 py-lg flex flex-col gap-sm">
+<a class="flex items-center gap-md px-lg py-sm bg-primary-highlight border-l-[3px] border-primary-container text-primary-active font-label text-label transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-lg py-sm text-text-muted hover:bg-surface-container-low font-label text-label transition-colors" href="#">
+<span class="material-symbols-outlined">storefront</span>
+                Merchants
+            </a>
+<a class="flex items-center gap-md px-lg py-sm text-text-muted hover:bg-surface-container-low font-label text-label transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-md px-lg py-sm text-text-muted hover:bg-surface-container-low font-label text-label transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="p-lg border-t border-divider/50">
+<div class="flex items-center gap-sm">
+<img alt="User profile photo" class="w-8 h-8 rounded-full object-cover" data-alt="professional portrait of a young urban professional woman with warm natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnnin_1gfgn5ayGdzRV3boDIbw_GT9FeBhyKtWF8pqdEV7QYhKpzWDuotcevvpYiVqyPGKlP5blUQpSwhzHrSNZprf3vDP2pFZRbezdizXmIJhU6FbvoWvPMB8ME52l0VTLGTVx27GhXXOzSyO4WdOoqzn2vbrvbb4tC_yNSm-3KlAFnFrG0nJ2EGtYRoKbe4fWgDP2ROVjI9UEAOl8skqQR9UxtvH5gVHMUXu8hJqPzhhGqZh51nzRDfXd2EFtccxmoAYke1hAP8"/>
+<div class="flex flex-col">
+<span class="font-label text-label text-on-surface">Admin User</span>
+<span class="font-body-sm text-body-sm text-text-faint">Colombo Region</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-page-margin-mobile md:p-page-margin-desktop overflow-y-auto">
+<!-- Page Header -->
+<div class="mb-xl flex flex-col gap-xs">
+<h1 class="font-h1 text-h1 text-on-surface">Colombo Operations</h1>
+<p class="font-body-md text-body-md text-text-muted">Real-time platform metrics and top performing partners.</p>
+</div>
+<!-- Bento Grid KPIs -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md mb-xl">
+<!-- Primary KPI -->
+<div class="md:col-span-8 bg-surface rounded-xl p-lg shadow-[0_4px_20px_-4px_rgba(30,27,20,0.05)] border-none flex flex-col justify-between relative overflow-hidden">
+<div class="absolute right-0 top-0 w-64 h-64 bg-accent-highlight rounded-full blur-[80px] -mr-32 -mt-32 opacity-60"></div>
+<div class="relative z-10 mb-xl">
+<div class="flex items-center gap-sm text-text-muted mb-sm">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="font-label-caps text-label-caps tracking-widest uppercase">Colombo 03 Hub</span>
+</div>
+<h2 class="font-display text-display text-on-surface">2,845</h2>
+<p class="font-body-md text-body-md text-text-muted">Total Rescues This Month</p>
+</div>
+<div class="relative z-10 flex gap-md">
+<div class="bg-surface-container-low px-md py-sm rounded-lg flex items-center gap-xs">
+<span class="material-symbols-outlined text-success text-[16px]">trending_up</span>
+<span class="font-label text-label text-success">+12% vs last week</span>
+</div>
+</div>
+</div>
+<!-- Secondary KPI Stack -->
+<div class="md:col-span-4 flex flex-col gap-md">
+<div class="flex-1 bg-primary-container text-on-primary rounded-xl p-md shadow-[0_4px_20px_-4px_rgba(30,27,20,0.05)] flex flex-col justify-center">
+<span class="font-label-caps text-label-caps text-primary-fixed mb-xs uppercase tracking-widest">Active Merchants</span>
+<span class="font-h1 text-h1">142</span>
+</div>
+<div class="flex-1 bg-surface rounded-xl p-md shadow-[0_4px_20px_-4px_rgba(30,27,20,0.05)] flex flex-col justify-center">
+<span class="font-label-caps text-label-caps text-text-muted mb-xs uppercase tracking-widest">CO2 Saved (kg)</span>
+<span class="font-h1 text-h1 text-accent">8,400</span>
+</div>
+</div>
+</div>
+<!-- Section Title -->
+<div class="mb-lg flex justify-between items-end">
+<h2 class="font-h2 text-h2 text-on-surface">Top Performing Merchants</h2>
+<button class="font-label text-label text-primary-container hover:text-primary-hover transition-colors flex items-center gap-xs">
+                View All <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Asymmetric Glassmorphism Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Merchant 1 -->
+<div class="relative rounded-xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(30,27,20,0.05)] group h-[280px]">
+<img alt="The Bread Company" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="freshly baked artisan sourdough bread loaves perfectly lined up in a warm, rustic bakery setting in colombo with dramatic side lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJfKdHXqHbfcSJVqahY0eInGQUgSdoLs0XtJ72Kps6kaOJtuDShRnAcB_iM1BRjVjLEmddtU-MCSEtWhBELcMaRirxm0mN4V2TaV-cvxCQqKmF3u7mcMdFFj1Qk0YFy1R5cKQAiaUkzt5BL4hw8qfpWvEeEQhESt8bYDNihnpSOEr1KBYiN1LXEpWxjrM7muYchqE8YhFiclUjWESrYjuRVUVWNutEnwzuJQJ1QckmBtxj2xxS3cTHN5Gky9gv9f_hlUJJLFjG1js"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full p-md">
+<div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-md flex justify-between items-center">
+<div>
+<div class="flex items-center gap-xs mb-xs">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span class="font-label-caps text-label-caps text-white/90 uppercase tracking-widest">Bakery</span>
+</div>
+<h3 class="font-h3 text-h3 text-white">The Bread Company</h3>
+<p class="font-body-sm text-body-sm text-white/70">Colombo 07</p>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-accent-highlight block mb-xs">Revenue</span>
+<span class="font-price text-price text-white">Rs. 450k</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Merchant 2 -->
+<div class="relative rounded-xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(30,27,20,0.05)] group h-[280px]">
+<img alt="Butter Boutique" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="decadent chocolate cake slice on a pristine white ceramic plate in a bright modern cafe setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZu1mzM-NozPHp2U4i2Upb8QqsFbEIyg-lAYDqii9Yk73UBrnqgtx4EHilO_v16xo4YRsiG4cNmNeeRd4rqyQMxLaVebtjPgU2om8AkZEQCQgmZmAwGIwboMECVUvfriX4kmEUXJPo-JKdQDTpx8p4RRTSxhT5pIm1VeUhKECRu7u0d2LsfcxylGE1FQvMYRgDlFJl1B0p-JGoOPEqHnf3RYqXxNwuSC2xoxixiu3VKgZxcOJ93QVlOIcjKzgD42U1Zg_d_fT_zAg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full p-md">
+<div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-md flex justify-between items-center">
+<div>
+<div class="flex items-center gap-xs mb-xs">
+<span class="w-2 h-2 rounded-full bg-success"></span>
+<span class="font-label-caps text-label-caps text-white/90 uppercase tracking-widest">Desserts</span>
+</div>
+<h3 class="font-h3 text-h3 text-white">Butter Boutique</h3>
+<p class="font-body-sm text-body-sm text-white/70">Colombo 03</p>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-accent-highlight block mb-xs">Revenue</span>
+<span class="font-price text-price text-white">Rs. 380k</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Safe Space for Mobile if needed, but no bottom nav on this admin view -->
+<div class="h-lg md:hidden"></div>
+</main>
+</body></html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Notifications - Fresh As Ever</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#ffceb5",
+                        "surface-dim": "#d7dbda",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#331200",
+                        "error": "#c0392b",
+                        "surface-container-low": "#f1f4f4",
+                        "outline": "#6f797a",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "text-faint": "#b5b2ad",
+                        "dark-surface": "#1c1b18",
+                        "primary-hover": "#0c4e54",
+                        "on-primary-container": "#97e6ec",
+                        "secondary-container": "#fc8b27",
+                        "inverse-primary": "#85d3da",
+                        "secondary": "#944b00",
+                        "surface-bright": "#f7fafa",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "on-error-container": "#93000a",
+                        "on-background": "#181c1d",
+                        "divider": "#e2dfd9",
+                        "inverse-surface": "#2d3131",
+                        "surface-variant": "#e0e3e3",
+                        "dark-primary": "#4f98a3",
+                        "tertiary": "#6e3815",
+                        "tertiary-container": "#8b4f2a",
+                        "dark-accent": "#fdab43",
+                        "primary": "#004f54",
+                        "on-surface": "#181c1d",
+                        "surface-container-highest": "#e0e3e3",
+                        "accent-hover": "#c55700",
+                        "primary-active": "#0f3638",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdbc9",
+                        "primary-container": "#01696f",
+                        "accent-highlight": "#fde8cc",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#ebeeee",
+                        "surface-tint": "#01696f",
+                        "surface-container-high": "#e6e9e9",
+                        "primary-fixed-dim": "#85d3da",
+                        "on-primary-fixed-variant": "#004f54",
+                        "success": "#437a22",
+                        "on-secondary-container": "#633000",
+                        "on-secondary-fixed-variant": "#703700",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb783",
+                        "on-surface-variant": "#3f4949",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#bec8c9",
+                        "on-primary-fixed": "#002022",
+                        "secondary-fixed": "#ffdcc5",
+                        "dark-background": "#141412",
+                        "background": "#f7f6f2",
+                        "primary-highlight": "#d0e8e6",
+                        "inverse-on-surface": "#eef1f1",
+                        "accent": "#da7101",
+                        "dark-surface-2": "#252420",
+                        "text-muted": "#6b6762",
+                        "primary-fixed": "#a1f0f6",
+                        "on-secondary-fixed": "#301400",
+                        "surface": "#ffffff",
+                        "text": "#1a1a1a",
+                        "surface-2": "#f3f0ec"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "page-margin-desktop": "32px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "page-margin-mobile": "16px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "price": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "price-original": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #f7f6f2; /* background */
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen text-text">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-4 h-16 bg-background fixed top-0 left-0 z-40 transition-transform duration-120 active:scale-95">
+<div class="flex items-center gap-md">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-stone-100 transition-colors">
+<span class="material-symbols-outlined text-text">arrow_back</span>
+</button>
+<h1 class="font-h1 text-h1 text-text tracking-tight">Notifications</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-2 overflow-hidden shadow-[0_4px_12px_rgba(30,27,20,0.04)]">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="Close up portrait of a young professional woman with natural warm lighting and a soft neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzFG3VQ63JfRPF7ZmefwYtbVBNf8LKy-HTkxTciQn_4AAHsjWu9LPbkPlPGjnKcH3E4ZDRMoyDzMvyclw9dzobi7QoITpYWPhAMiRMrXma7-8WHbjyY9FNAXLGjZxK4Ky42aB1bOH_JFbB28s35GBGd5Ozz5RHJT9KlaIOmCUyNcxZfV5roUOeKy2w-yK3EHmilvN_FblwIRjoAKrS7QihiJhfm79uiXN9zYdrpIudbiVgdfabAqROrVngEB_axtBV00b3uaW7BKw"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-24 px-page-margin-mobile md:px-page-margin-desktop max-w-2xl mx-auto">
+<!-- Empty State Illustration -->
+<div class="flex flex-col items-center text-center mt-lg mb-xl">
+<div class="w-56 h-56 rounded-full bg-surface-2 flex items-center justify-center mb-lg shadow-[0_8px_24px_rgba(30,27,20,0.04)] overflow-hidden relative">
+<!-- Decorative warm gradient backdrop for illustration -->
+<div class="absolute inset-0 bg-gradient-to-br from-accent-highlight to-surface-2 opacity-50"></div>
+<img class="w-full h-full object-cover opacity-90 mix-blend-multiply" data-alt="Soft conceptual 3d illustration of floating paper airplanes and glowing notifications bells in warm amber and teal hues" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOf6iEkVsvsITYI6Z_7B7-4WvwS7mjZL5aI9BpEK88JcjBL5-5s-exqIfKTdZ85UBEX0G3eRqBscLFC_k2APxQdEHlwhbA1p1rLhiTfSYeqPor6v0mESqcAJg3WcFDK84JVBJTrDL5nEZCm47BMUQ8Zp3H_15llmcbq5T-0V7XtKk-_7hbDIF1JiPmUlbFdRvA9yonEs4uYnRop-Q6UDlnxBGsatPrL5GcQE5eaeIsZV4kZu0hy4zhgUBEsqGNdQSkOR8VvGZqXgI"/>
+</div>
+<h2 class="font-h2 text-h2 text-text mb-sm">All caught up</h2>
+<p class="font-body-md text-body-md text-text-muted max-w-xs">You have no new alerts at the moment. Manage how we reach you below.</p>
+</div>
+<!-- Notification Preferences -->
+<section class="mt-xl">
+<h3 class="font-label-caps text-label-caps text-text-muted mb-md pl-sm">Alert Preferences</h3>
+<div class="bg-surface rounded-xl shadow-[0_4px_12px_rgba(30,27,20,0.04)] overflow-hidden">
+<!-- Push Toggle -->
+<div class="flex justify-between items-center p-md border-b border-divider/50 hover:bg-surface-bright transition-colors">
+<div class="flex flex-col gap-1">
+<span class="font-h3 text-h3 text-text">Push Notifications</span>
+<span class="font-body-sm text-body-sm text-text-muted">Instant updates on your device</span>
+</div>
+<!-- Active Toggle UI -->
+<div class="w-12 h-6 bg-primary-container rounded-full relative flex items-center px-1 cursor-pointer transition-colors duration-200 shrink-0 shadow-inner">
+<div class="w-5 h-5 bg-surface rounded-full absolute right-1 shadow-sm transition-transform duration-200"></div>
+</div>
+</div>
+<!-- Email Toggle -->
+<div class="flex justify-between items-center p-md border-b border-divider/50 hover:bg-surface-bright transition-colors">
+<div class="flex flex-col gap-1">
+<span class="font-h3 text-h3 text-text">Email Alerts</span>
+<span class="font-body-sm text-body-sm text-text-muted">Daily summaries and special offers</span>
+</div>
+<!-- Active Toggle UI -->
+<div class="w-12 h-6 bg-primary-container rounded-full relative flex items-center px-1 cursor-pointer transition-colors duration-200 shrink-0 shadow-inner">
+<div class="w-5 h-5 bg-surface rounded-full absolute right-1 shadow-sm transition-transform duration-200"></div>
+</div>
+</div>
+<!-- SMS Toggle -->
+<div class="flex justify-between items-center p-md hover:bg-surface-bright transition-colors">
+<div class="flex flex-col gap-1">
+<span class="font-h3 text-h3 text-text">SMS Messages</span>
+<span class="font-body-sm text-body-sm text-text-muted">Urgent order tracking only</span>
+</div>
+<!-- Inactive Toggle UI -->
+<div class="w-12 h-6 bg-surface-dim rounded-full relative flex items-center px-1 cursor-pointer transition-colors duration-200 shrink-0 shadow-inner">
+<div class="w-5 h-5 bg-surface rounded-full absolute left-1 shadow-sm transition-transform duration-200"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-surface rounded-t-lg shadow-[0_-4px_12px_rgba(30,27,20,0.04)] md:hidden">
+<button class="flex flex-col items-center justify-center text-text-faint hover:text-primary-container active:scale-[0.97] transition-all duration-120 w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">storefront</span>
+<span class="font-label text-[10px] font-medium">Discover</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-faint hover:text-primary-container active:scale-[0.97] transition-all duration-120 w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">receipt</span>
+<span class="font-label text-[10px] font-medium">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-faint hover:text-primary-container active:scale-[0.97] transition-all duration-120 w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">bar_chart</span>
+<span class="font-label text-[10px] font-medium">Analytics</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-faint hover:text-primary-container active:scale-[0.97] transition-all duration-120 w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">payments</span>
+<span class="font-label text-[10px] font-medium">Finance</span>
+</button>
+<!-- Active Item (Settings/Notifications context) -->
+<button class="flex flex-col items-center justify-center text-primary-container active:scale-[0.97] transition-all duration-120 w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label text-[10px] font-medium">Settings</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Merchant Analytics</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#ffceb5",
+                    "dark-surface-2": "#252420",
+                    "primary-fixed": "#a1f0f6",
+                    "on-tertiary-fixed": "#331200",
+                    "dark-accent": "#fdab43",
+                    "primary-fixed-dim": "#85d3da",
+                    "primary-hover": "#0c4e54",
+                    "inverse-on-surface": "#eef1f1",
+                    "surface-container": "#ebeeee",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb783",
+                    "on-secondary": "#ffffff",
+                    "primary-highlight": "#d0e8e6",
+                    "text-faint": "#b5b2ad",
+                    "surface-variant": "#e0e3e3",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#3f4949",
+                    "on-secondary-container": "#633000",
+                    "success": "#437a22",
+                    "divider": "#e2dfd9",
+                    "surface-bright": "#f7fafa",
+                    "dark-primary": "#4f98a3",
+                    "on-secondary-fixed": "#301400",
+                    "text": "#1a1a1a",
+                    "dark-background": "#141412",
+                    "surface-tint": "#01696f",
+                    "on-primary": "#ffffff",
+                    "dark-surface": "#1c1b18",
+                    "accent-highlight": "#fde8cc",
+                    "surface-dim": "#d7dbda",
+                    "secondary-fixed": "#ffdcc5",
+                    "accent": "#da7101",
+                    "on-tertiary-fixed-variant": "#6e3815",
+                    "on-primary-container": "#97e6ec",
+                    "outline": "#6f797a",
+                    "text-muted": "#6b6762",
+                    "on-primary-fixed-variant": "#004f54",
+                    "surface": "#ffffff",
+                    "tertiary": "#6e3815",
+                    "on-primary-fixed": "#002022",
+                    "background": "#f7f6f2",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e0e3e3",
+                    "secondary": "#944b00",
+                    "tertiary-container": "#8b4f2a",
+                    "primary-active": "#0f3638",
+                    "error": "#c0392b",
+                    "inverse-surface": "#2d3131",
+                    "secondary-container": "#fc8b27",
+                    "accent-hover": "#c55700",
+                    "surface-2": "#f3f0ec",
+                    "tertiary-fixed": "#ffdbc9",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "on-background": "#181c1d",
+                    "on-secondary-fixed-variant": "#703700",
+                    "inverse-primary": "#85d3da",
+                    "surface-container-high": "#e6e9e9",
+                    "on-surface": "#181c1d",
+                    "error-container": "#ffdad6",
+                    "primary": "#004f54",
+                    "primary-container": "#01696f",
+                    "surface-container-low": "#f1f4f4",
+                    "outline-variant": "#bec8c9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xxl": "48px",
+                    "xl": "32px",
+                    "page-margin-desktop": "32px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "page-margin-mobile": "16px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "price-original": ["Plus Jakarta Sans"],
+                    "h3": ["Plus Jakarta Sans"],
+                    "h2": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"],
+                    "price": ["Plus Jakarta Sans"],
+                    "h1": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "display": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["1rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "price-original": ["0.9375rem", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "h3": ["1.125rem", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "h2": ["1.25rem", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "label": ["0.875rem", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "price": ["1.375rem", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "h1": ["1.5rem", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "body-md": ["0.9375rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["0.75rem", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["0.875rem", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display": ["2rem", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text font-body-md antialiased flex h-screen overflow-hidden">
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-full py-6 w-60 fixed left-0 top-0 border-r border-stone-200/60 dark:border-stone-800 bg-[#f7f6f2] dark:bg-stone-950 font-['Plus_Jakarta_Sans'] antialiased shadow-none z-50">
+<!-- Header -->
+<div class="px-6 mb-8 flex items-center gap-3">
+<img alt="Ceylon Brews" class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="A modern, warm, artisanal coffee cup logo with subtle latte art on a dark saucer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE4giQmecedoYXVbrm5py0vebE-CYgkenIeVwIM-K_WMTn4-i1Ut8BjBmhvoxxY_74Ej9_NxR0xp3inPlIFMkNBbOrMkttHakZXQ-bTcec7ogEa8oUJ008TegITpwxm4GNLIM45OOJl0XlLJiDWHQABau2qXkyIvg7H_bN0z2T6LJ2jaamLUVXsnYPK9uWa5QefxqieskW3RowseVvYLIOqVDxQFBVoIO1VFJS6Q0Azr8MwPmXAHfsdxdIgjh0txmEE1jqvCZTTWY"/>
+<div>
+<h2 class="text-sm font-bold text-[#01696f] dark:text-teal-400">Ceylon Brews</h2>
+<p class="text-xs text-stone-500">Verified Merchant</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 px-4 space-y-1">
+<!-- Dashboard -->
+<button class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-stone-500 dark:text-stone-400 font-medium hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors active:scale-[0.97] duration-120">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span>Dashboard</span>
+</button>
+<!-- Finance -->
+<button class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-stone-500 dark:text-stone-400 font-medium hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors active:scale-[0.97] duration-120">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">payments</span>
+<span>Finance</span>
+</button>
+<!-- Analytics (ACTIVE) -->
+<button class="w-full flex items-center gap-3 px-3 py-2 rounded-lg border-l-[3px] border-[#01696f] bg-teal-50/50 dark:bg-teal-900/20 text-[#01696f] dark:text-teal-300 font-semibold hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors active:scale-[0.97] duration-120">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<span>Analytics</span>
+</button>
+<!-- Settings -->
+<button class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-stone-500 dark:text-stone-400 font-medium hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors active:scale-[0.97] duration-120">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span>Settings</span>
+</button>
+</nav>
+<!-- Footer Link -->
+<div class="px-4 mt-auto">
+<button class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-stone-500 dark:text-stone-400 font-medium hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors active:scale-[0.97] duration-120">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help</span>
+<span>Support</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col h-full md:ml-60 relative w-full">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-40 flex justify-between items-center px-6 py-4 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-stone-100 dark:border-stone-800 shadow-[0_2px_15px_-3px_rgba(30,27,20,0.04)]">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 -ml-2 text-[#01696f] hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] text-sm font-semibold text-[#01696f] dark:text-teal-400">Operations Overview</h1>
+</div>
+<div class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity active:scale-95 duration-150">
+<span class="text-sm font-medium text-text hidden sm:block">Admin User</span>
+<div class="w-8 h-8 rounded-full bg-primary-highlight flex items-center justify-center text-primary-container font-bold text-xs shadow-sm">
+                    AU
+                </div>
+</div>
+</header>
+<!-- Scrollable Dashboard Content -->
+<div class="flex-1 overflow-y-auto p-page-margin-mobile md:p-page-margin-desktop pb-32 md:pb-8">
+<div class="max-w-6xl mx-auto space-y-lg">
+<!-- Page Title -->
+<div>
+<h2 class="font-display text-display text-text">Performance</h2>
+<p class="font-body-md text-text-muted mt-1">Track your rescue impact and revenue generation.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+<!-- Primary Metric: Bags Rescued (Col Span 4) -->
+<div class="col-span-1 md:col-span-4 bg-surface rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(30,27,20,0.05)] flex flex-col justify-between h-48 relative overflow-hidden group">
+<div class="absolute -right-6 -top-6 w-32 h-32 bg-accent-highlight rounded-full blur-3xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-accent text-xl">shopping_bag</span>
+<h3 class="font-label-caps text-label-caps text-text-muted uppercase tracking-wider">Bags Rescued</h3>
+</div>
+<p class="font-price text-price text-text text-4xl mt-1">1,248</p>
+</div>
+<div class="flex items-center gap-2 text-success font-label text-label">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12% this month</span>
+</div>
+</div>
+<!-- Revenue Trend (Col Span 8) -->
+<div class="col-span-1 md:col-span-8 bg-surface rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(30,27,20,0.05)] flex flex-col justify-between h-48">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary-container text-xl">account_balance_wallet</span>
+<h3 class="font-label-caps text-label-caps text-text-muted uppercase tracking-wider">Recovered Revenue</h3>
+</div>
+<p class="font-price text-price text-text text-3xl">Rs. 450,200</p>
+</div>
+<select class="bg-surface-2 border-none rounded-lg text-sm font-medium text-text py-1.5 px-3 focus:ring-2 focus:ring-primary-container outline-none cursor-pointer">
+<option>This Month</option>
+<option>Last Month</option>
+<option>Year to Date</option>
+</select>
+</div>
+<!-- Simulated Sparkline/Bar Chart -->
+<div class="flex items-end gap-2 h-16 w-full pt-2">
+<div class="flex-1 bg-surface-dim rounded-t-sm h-[30%] hover:bg-primary-container transition-colors cursor-pointer rounded-sm"></div>
+<div class="flex-1 bg-surface-dim rounded-t-sm h-[45%] hover:bg-primary-container transition-colors cursor-pointer rounded-sm"></div>
+<div class="flex-1 bg-surface-dim rounded-t-sm h-[35%] hover:bg-primary-container transition-colors cursor-pointer rounded-sm"></div>
+<div class="flex-1 bg-primary-highlight rounded-t-sm h-[60%] hover:bg-primary-container transition-colors cursor-pointer rounded-sm"></div>
+<div class="flex-1 bg-surface-dim rounded-t-sm h-[50%] hover:bg-primary-container transition-colors cursor-pointer rounded-sm"></div>
+<div class="flex-1 bg-surface-dim rounded-t-sm h-[75%] hover:bg-primary-container transition-colors cursor-pointer rounded-sm"></div>
+<div class="flex-1 bg-primary-container rounded-t-sm h-[90%] shadow-sm rounded-sm"></div>
+</div>
+</div>
+<!-- Impact Card (Col Span 6) -->
+<div class="col-span-1 md:col-span-6 bg-primary-container rounded-2xl p-6 shadow-[0_8px_30px_-6px_rgba(1,105,111,0.2)] flex items-center gap-6 relative overflow-hidden">
+<div class="absolute right-0 top-0 w-full h-full bg-gradient-to-l from-primary-hover to-transparent opacity-40"></div>
+<div class="relative z-10 w-16 h-16 rounded-full bg-on-primary-container/20 flex items-center justify-center shrink-0 border border-on-primary-container/30">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div class="relative z-10">
+<h3 class="font-h3 text-h3 text-white mb-1">CO2 Emissions Prevented</h3>
+<p class="font-body-md text-body-md text-on-primary-container/80 mb-2">Equivalent to charging 14,200 smartphones.</p>
+<div class="flex items-baseline gap-1 text-white">
+<span class="font-price text-price text-3xl">312</span>
+<span class="font-label text-label opacity-80">kg</span>
+</div>
+</div>
+</div>
+<!-- Top Items / Insight (Col Span 6) -->
+<div class="col-span-1 md:col-span-6 bg-surface rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(30,27,20,0.05)]">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-h3 text-h3 text-text">Top Performing Categories</h3>
+<button class="text-primary-container hover:text-primary-hover text-sm font-medium flex items-center gap-1 transition-colors">
+                                View All
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Item 1 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-accent-highlight flex items-center justify-center text-accent">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">bakery_dining</span>
+</div>
+<div>
+<p class="font-label text-label text-text">Pastries &amp; Breads</p>
+<p class="font-body-sm text-body-sm text-text-muted">450 bags</p>
+</div>
+</div>
+<span class="font-label text-label text-text bg-surface-2 px-2 py-1 rounded">36%</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-highlight flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div>
+<p class="font-label text-label text-text">Hot Meals</p>
+<p class="font-body-sm text-body-sm text-text-muted">320 bags</p>
+</div>
+</div>
+<span class="font-label text-label text-text bg-surface-2 px-2 py-1 rounded">25%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-2xl md:hidden bg-white/95 dark:bg-stone-900/95 backdrop-blur-lg border-t border-stone-100 dark:border-stone-800 shadow-[0_-4px_20px_rgba(30,27,20,0.06)] flex justify-around items-center h-16 px-4 pb-safe">
+<!-- Home -->
+<button class="flex flex-col items-center gap-1 text-stone-400 dark:text-stone-500 font-['Plus_Jakarta_Sans'] text-[11px] font-medium active:bg-stone-50 dark:active:bg-stone-800 active:scale-[0.97] transition-all duration-120 p-2 rounded-xl">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 0;">home</span>
+<span>Home</span>
+</button>
+<!-- Finance -->
+<button class="flex flex-col items-center gap-1 text-stone-400 dark:text-stone-500 font-['Plus_Jakarta_Sans'] text-[11px] font-medium active:bg-stone-50 dark:active:bg-stone-800 active:scale-[0.97] transition-all duration-120 p-2 rounded-xl">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 0;">account_balance_wallet</span>
+<span>Finance</span>
+</button>
+<!-- Stats (ACTIVE) -->
+<button class="flex flex-col items-center gap-1 text-[#01696f] dark:text-teal-400 font-['Plus_Jakarta_Sans'] text-[11px] font-medium active:bg-stone-50 dark:active:bg-stone-800 active:scale-[0.97] transition-all duration-120 p-2 rounded-xl relative">
+<div class="absolute -top-1 w-10 h-1 bg-primary-container rounded-full"></div>
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+<span class="font-bold">Stats</span>
+</button>
+<!-- Settings -->
+<button class="flex flex-col items-center gap-1 text-stone-400 dark:text-stone-500 font-['Plus_Jakarta_Sans'] text-[11px] font-medium active:bg-stone-50 dark:active:bg-stone-800 active:scale-[0.97] transition-all duration-120 p-2 rounded-xl">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span>Settings</span>
+</button>
+</nav>
+</body></html>

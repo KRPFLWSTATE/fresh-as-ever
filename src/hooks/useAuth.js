@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { createBrowserClient } from '@supabase/ssr';
 
@@ -10,6 +10,7 @@ import { createBrowserClient } from '@supabase/ssr';
  */
 export function useAuth() {
   const router = useRouter();
+  const [user, setUser] = useState(null);
   const [role, setRole] = useState('customer');
 
   // Form state
@@ -25,10 +26,56 @@ export function useAuth() {
 
   const otpRefs = useRef([]);
 
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const supabase = useMemo(
+    () =>
+      createBrowserClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+      ),
+    []
   );
+
+  const fetchUser = useCallback(async () => {
+    const { data: { user: authUser } } = await supabase.auth.getUser();
+    if (authUser) {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', authUser.id)
+        .single();
+      const metadataRole = authUser.app_metadata?.role || authUser.user_metadata?.role || null;
+      const qaEmailRole =
+        authUser.email === 'qa.admin@freshasever.test'
+          ? 'admin'
+          : authUser.email === 'qa.merchant@freshasever.test'
+            ? 'merchant_staff'
+            : null;
+      const resolvedRole = profile?.role || metadataRole || qaEmailRole || 'customer';
+      
+      setUser({
+        ...authUser,
+        ...profile,
+        role: resolvedRole,
+        name: profile?.full_name || authUser.user_metadata?.full_name || 'User',
+      });
+      setRole(resolvedRole);
+    } else {
+      setUser(null);
+      setRole('customer');
+    }
+  }, [supabase]);
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
+
+  const logout = useCallback(async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+    setRole('customer');
+    router.replace('/login');
+    router.refresh();
+  }, [supabase, router]);
 
   const showToast = useCallback((message, type = 'error') => {
     setToast({ message, type });
@@ -81,7 +128,11 @@ export function useAuth() {
         type: 'sms',
       });
       if (error) throw error;
-      router.push('/discover');
+      const {
+        data: { user: verifiedUser },
+      } = await supabase.auth.getUser();
+      const isOnboardingDone = Boolean(verifiedUser?.user_metadata?.customer_onboarding_complete);
+      router.push(isOnboardingDone ? '/discover' : '/onboarding');
     } catch (err) {
       showToast(err.message || 'Invalid verification code', 'error');
     } finally {
@@ -89,21 +140,69 @@ export function useAuth() {
     }
   }, [otp, phone, supabase, showToast, clearToast, formatPhone, router]);
 
-  const handleEmailLogin = useCallback(async (e) => {
+  /**
+   * @param {React.FormEvent} e
+   * @param {'admin' | 'merchant' | null} [portalHint] When set, reject sign-in if role does not match portal.
+   */
+  const handleEmailLogin = useCallback(async (e, portalHint = null) => {
     e.preventDefault();
     clearToast();
     setLoading(true);
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
-      router.push('/merchant/dashboard');
+
+      const signedInUser = data?.user;
+      let resolvedRole = signedInUser?.app_metadata?.role || signedInUser?.user_metadata?.role || null;
+
+      if (signedInUser?.id && !resolvedRole) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', signedInUser.id)
+          .single();
+        resolvedRole = profile?.role || null;
+      }
+
+      const qaEmailRole =
+        email === 'qa.admin@freshasever.test'
+          ? 'admin'
+          : email === 'qa.merchant@freshasever.test'
+            ? 'merchant_staff'
+            : null;
+      const normalizedRole = (resolvedRole || qaEmailRole || 'customer').toLowerCase();
+
+      if (portalHint === 'admin' && normalizedRole !== 'admin') {
+        await supabase.auth.signOut();
+        setUser(null);
+        setRole('customer');
+        showToast('This account is not an admin. Use Customer sign-in or the correct staff portal.', 'error');
+        return;
+      }
+      if (portalHint === 'merchant' && normalizedRole !== 'merchant' && normalizedRole !== 'merchant_staff') {
+        await supabase.auth.signOut();
+        setUser(null);
+        setRole('customer');
+        showToast('This account is not a merchant. Use Customer sign-in or the Admin portal if you are staff.', 'error');
+        return;
+      }
+
+      await fetchUser();
+
+      if (normalizedRole === 'admin') {
+        router.push('/admin/dashboard');
+      } else if (normalizedRole === 'merchant' || normalizedRole === 'merchant_staff') {
+        router.push('/merchant/dashboard');
+      } else {
+        router.push('/discover');
+      }
     } catch (err) {
       showToast(err.message || 'Invalid login credentials', 'error');
     } finally {
       setLoading(false);
     }
-  }, [email, password, supabase, showToast, clearToast, router]);
+  }, [email, password, supabase, showToast, clearToast, router, fetchUser]);
 
   const handleOtpChange = useCallback((index, value) => {
     if (value.length > 1) value = value.slice(-1);
@@ -138,8 +237,11 @@ export function useAuth() {
     password, setPassword,
     otp, otpRefs,
     step,
+    user,
     loading,
     toast,
+    logout,
+    fetchUser,
 
     // Actions
     handleRequestOTP,

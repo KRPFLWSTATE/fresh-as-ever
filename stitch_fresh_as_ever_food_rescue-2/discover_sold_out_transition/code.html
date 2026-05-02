@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Discover</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#fc8b27",
+                        "on-primary-fixed": "#002022",
+                        "primary-highlight": "#d0e8e6",
+                        "primary-active": "#0f3638",
+                        "on-background": "#181c1d",
+                        "outline": "#6f797a",
+                        "on-tertiary-fixed": "#331200",
+                        "inverse-on-surface": "#eef1f1",
+                        "on-primary": "#ffffff",
+                        "surface": "#ffffff",
+                        "dark-surface-2": "#252420",
+                        "surface-variant": "#e0e3e3",
+                        "surface-container-lowest": "#ffffff",
+                        "accent-highlight": "#fde8cc",
+                        "text-faint": "#b5b2ad",
+                        "surface-container": "#ebeeee",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e6e9e9",
+                        "secondary-fixed-dim": "#ffb783",
+                        "primary-container": "#01696f",
+                        "secondary-fixed": "#ffdcc5",
+                        "primary-fixed": "#a1f0f6",
+                        "surface-2": "#f3f0ec",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "on-primary-fixed-variant": "#004f54",
+                        "inverse-surface": "#2d3131",
+                        "accent": "#da7101",
+                        "on-surface-variant": "#3f4949",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#85d3da",
+                        "divider": "#e2dfd9",
+                        "error": "#c0392b",
+                        "text-muted": "#6b6762",
+                        "dark-primary": "#4f98a3",
+                        "on-secondary-container": "#633000",
+                        "accent-hover": "#c55700",
+                        "on-secondary-fixed": "#301400",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-tint": "#01696f",
+                        "outline-variant": "#bec8c9",
+                        "tertiary-container": "#8b4f2a",
+                        "success": "#437a22",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#6e3815",
+                        "secondary": "#944b00",
+                        "primary-hover": "#0c4e54",
+                        "background": "#f7f6f2",
+                        "on-secondary-fixed-variant": "#703700",
+                        "primary": "#004f54",
+                        "surface-container-low": "#f1f4f4",
+                        "on-tertiary-container": "#ffceb5",
+                        "on-surface": "#181c1d",
+                        "dark-accent": "#fdab43",
+                        "surface-bright": "#f7fafa",
+                        "inverse-primary": "#85d3da",
+                        "surface-container-highest": "#e0e3e3",
+                        "dark-background": "#141412",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d7dbda",
+                        "on-primary-container": "#97e6ec",
+                        "error-container": "#ffdad6",
+                        "text": "#1a1a1a",
+                        "dark-surface": "#1c1b18"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xxl": "48px",
+                        "sm": "8px",
+                        "page-margin-desktop": "32px",
+                        "page-margin-mobile": "16px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "price": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "price-original": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-[80px]">
+<!-- TopAppBar -->
+<header class="bg-[#f7f6f2] dark:bg-zinc-900 border-none shadow-[0_2px_15px_-3px_rgba(30,27,20,0.07)] flex items-center justify-between px-4 h-16 w-full sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-2 flex-shrink-0">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="close up portrait of a young professional woman with warm natural lighting and soft background focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOzE0TPM4_Tt0MiVfl0G7tkTtpCL4JKVCLhAxhOMxLZiA1Ai1a11ECaMxYmAezKMXLf2dBJCxvuzQUJoRDp8DWC7so8U7IZKYhSNKSwS21hKPCz1dMG2ywAnizB1SAjwhOmJifhi3693NeQLGyXGqGyPKjVUrkbNJ2fjxM-5ofrD9gO78FpXyycNQMby8SnIfYovNq_P39OIPhBCj0xAfiSR20NBgWyK1Ryc5bLcc6BdInDrUr40rXatZlHrsoaR10pD_du1tCGvA"/>
+</div>
+<span class="font-['Plus_Jakarta_Sans'] text-lg font-extrabold text-[#01696f] tracking-tighter">Fresh As Ever</span>
+</div>
+<button class="text-[#01696f] dark:text-teal-400 hover:opacity-80 transition-opacity active:scale-[0.97] duration-120 p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="p-page-margin-mobile md:p-page-margin-desktop max-w-7xl mx-auto space-y-lg">
+<!-- Header Section -->
+<section class="mb-lg">
+<h1 class="font-h1 text-h1 text-on-background mb-xs">Discover Rescues</h1>
+<p class="font-body-md text-body-md text-text-muted">Save premium food in Colombo. Grab them before they're gone.</p>
+</section>
+<!-- Filter Chips -->
+<div class="flex gap-sm overflow-x-auto pb-sm snap-x no-scrollbar" style="scrollbar-width: none;">
+<button class="snap-start flex-shrink-0 bg-primary-container text-on-primary px-4 py-2 rounded-full font-label text-label active:scale-[0.97] transition-transform shadow-[0_2px_10px_-2px_rgba(30,27,20,0.1)]">All</button>
+<button class="snap-start flex-shrink-0 bg-surface text-on-surface border border-outline-variant px-4 py-2 rounded-full font-label text-label hover:bg-surface-2 active:scale-[0.97] transition-transform">Baked Goods</button>
+<button class="snap-start flex-shrink-0 bg-surface text-on-surface border border-outline-variant px-4 py-2 rounded-full font-label text-label hover:bg-surface-2 active:scale-[0.97] transition-transform">Meals</button>
+<button class="snap-start flex-shrink-0 bg-surface text-on-surface border border-outline-variant px-4 py-2 rounded-full font-label text-label hover:bg-surface-2 active:scale-[0.97] transition-transform">Groceries</button>
+</div>
+<!-- Bento Grid Layout for Discover Feed -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Active Card 1 -->
+<article class="bg-surface rounded-xl shadow-[0_4px_20px_-4px_rgba(30,27,20,0.08)] overflow-hidden flex flex-col group transition-transform hover:-translate-y-1 duration-300">
+<div class="relative w-full aspect-video bg-surface-2 overflow-hidden">
+<img alt="Assorted pastries" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="close up of artisan croissants and pastries on a wooden tray with warm morning light from a bakery window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZuULzaiHiWxCto8DkCGTrqHdzqw5F6e-IRrRPR7ZqZXehvMpVBf75Ok2-sGic5aU0fWT0J1_9r91s62e-rjZ7jHaGgTicuoOXDlkGCb8lLeikM-zeffdt27l7FrJcDz7nUd7Q5k4ChhhSfdN46WiTnlfa7UOQH5bYKR5B3L46QEhRmBGe96J0-FyScQjPZPkfq7lj8iPsORFXE9q4VNXw3F6q4BI1OeXXWzGJRo0UhNI-R1w0Mt2qZ06xOpVb9PWNTa4rnJI4Uw0"/>
+<div class="absolute top-sm right-sm bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-accent font-label-caps text-label-caps font-bold shadow-sm">
+                        2 Left
+                    </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex items-center gap-xs mb-xs text-text-muted">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">bakery_dining</span>
+<span class="font-label text-label">Baked Goods</span>
+<span class="mx-1">•</span>
+<span class="font-label text-label">Colombo 03</span>
+</div>
+<p class="font-label text-label text-text-muted mb-1">Café Kumbuk</p>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm">Morning Pastry Surprise</h3>
+<div class="flex items-center gap-2 mb-md bg-surface-container-low p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 0;">schedule</span>
+<span class="font-body-sm text-body-sm text-on-surface">Pickup: 2:00 PM - 4:00 PM</span>
+</div>
+<div class="mt-auto flex items-end justify-between">
+<div>
+<p class="font-price-original text-price-original text-text-muted line-through mb-1">LKR 1,800</p>
+<p class="font-price text-price text-accent">LKR 600</p>
+</div>
+<button class="bg-primary-container text-on-primary px-6 py-3 rounded-lg font-label text-label shadow-sm hover:opacity-90 active:scale-[0.97] transition-all duration-120">
+                            Reserve
+                        </button>
+</div>
+</div>
+</article>
+<!-- SOLD OUT CARD - The specific request -->
+<article class="bg-surface rounded-xl shadow-[0_2px_10px_-2px_rgba(30,27,20,0.05)] overflow-hidden flex flex-col relative grayscale-[0.4] opacity-80 transition-all duration-300 pointer-events-none">
+<!-- Sold Out Overlay Badge -->
+<div class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+<div class="bg-surface/80 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border border-divider transform rotate-[-5deg] scale-110">
+<span class="font-h3 text-h3 text-on-surface uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted">block</span>
+                            Just Sold Out
+                        </span>
+</div>
+</div>
+<div class="relative w-full aspect-video bg-surface-2 overflow-hidden opacity-70">
+<img alt="Sourdough bread" class="w-full h-full object-cover" data-alt="artisan sourdough bread loaf on dark slate surface with scattered flour dramatic overhead lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAul657bJ4vbWhW2wQXr2jBL9QyxQ5HzgTwn6wg_SOLWi-vQBGwjRN2LZqwpPEaNp8TiMiuwf-jmKhWFBi2D59nqmiWDXKi1aVyh3q5CuhMvxW6DXu0mPuoA_yIiNYSmdcF1Z5QrCcgIeeW3-Y7wtCzOYvajW5X5O0PX_HGc4HQlKCXc3uC93ROTkfimK1-NewQ2-JavUnhzyP07JSeqfP0xJICSL24NrCFTcx25rD0MghRftDGZYFtptsgjD0iz1GICV6TSsxjbFI"/>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex items-center gap-xs mb-xs text-text-muted">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">bakery_dining</span>
+<span class="font-label text-label">Baked Goods</span>
+<span class="mx-1">•</span>
+<span class="font-label text-label">Colombo 07</span>
+</div>
+<p class="font-label text-label text-text-muted mb-1">The Bread Company</p>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm">End of Day Sourdough</h3>
+<div class="flex items-center gap-2 mb-md bg-surface-container-low p-2 rounded-lg opacity-60">
+<span class="material-symbols-outlined text-text-muted" style="font-variation-settings: 'FILL' 0;">schedule</span>
+<span class="font-body-sm text-body-sm text-text-muted">Pickup: 6:00 PM - 8:00 PM</span>
+</div>
+<div class="mt-auto flex items-end justify-between opacity-60">
+<div>
+<p class="font-price-original text-price-original text-text-muted line-through mb-1">LKR 1,200</p>
+<p class="font-price text-price text-text-muted">LKR 400</p>
+</div>
+<button class="bg-surface-variant text-text-muted border border-outline-variant px-6 py-3 rounded-lg font-label text-label cursor-not-allowed" disabled="">
+                            Sold Out
+                        </button>
+</div>
+</div>
+</article>
+<!-- Active Card 3 -->
+<article class="bg-surface rounded-xl shadow-[0_4px_20px_-4px_rgba(30,27,20,0.08)] overflow-hidden flex flex-col group transition-transform hover:-translate-y-1 duration-300">
+<div class="relative w-full aspect-video bg-surface-2 overflow-hidden">
+<img alt="Healthy salad bowl" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="fresh healthy grain bowl with avocado and roasted vegetables top down view bright natural lighting on wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClWuSW0frXy27R9zWUn0llczGLO2uCwAUat_XoD5i_ch_UkveIq63WGRwy8Ro06GyV5OMh1oTnX2LvLXUZ4my4M0Vg1AJnzfOFVxsFXMTCkobDOl0vWwRt0ERGpPGJpWQaavfmAlLfvicLbtWESIQEm0sfr8nhdHAanTpmnP70PBwBm0VRRy9irv7y--dA5i6sMMmrum1LH2G4rvLTo8zyO-mVdYLY_fk2RdEDjwuzXZABmrddHpq2eze-y4qRXiiTN97GrzpwRk4"/>
+<div class="absolute top-sm right-sm bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-accent font-label-caps text-label-caps font-bold shadow-sm">
+                        5 Left
+                    </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex items-center gap-xs mb-xs text-text-muted">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">restaurant</span>
+<span class="font-label text-label">Meals</span>
+<span class="mx-1">•</span>
+<span class="font-label text-label">Colombo 02</span>
+</div>
+<p class="font-label text-label text-text-muted mb-1">Life Food</p>
+<h3 class="font-h3 text-h3 text-on-surface mb-sm">Daily Fresh Bowl</h3>
+<div class="flex items-center gap-2 mb-md bg-surface-container-low p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 0;">schedule</span>
+<span class="font-body-sm text-body-sm text-on-surface">Pickup: 3:30 PM - 5:00 PM</span>
+</div>
+<div class="mt-auto flex items-end justify-between">
+<div>
+<p class="font-price-original text-price-original text-text-muted line-through mb-1">LKR 2,500</p>
+<p class="font-price text-price text-accent">LKR 950</p>
+</div>
+<button class="bg-primary-container text-on-primary px-6 py-3 rounded-lg font-label text-label shadow-sm hover:opacity-90 active:scale-[0.97] transition-all duration-120">
+                            Reserve
+                        </button>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-t border-stone-100 dark:border-zinc-800 shadow-[0_-4px_20px_-4px_rgba(30,27,20,0.1)] fixed bottom-0 left-0 w-full h-[64px] z-50 flex justify-around items-center px-6 pb-safe rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-[#01696f] dark:text-teal-400 hover:bg-stone-50 dark:hover:bg-zinc-900 active:scale-[0.97] transition-all duration-120 ease-out p-2 rounded-lg w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-semibold uppercase tracking-widest mt-1">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-zinc-600 hover:bg-stone-50 dark:hover:bg-zinc-900 active:scale-[0.97] transition-all duration-120 ease-out p-2 rounded-lg w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">confirmation_number</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-semibold uppercase tracking-widest mt-1">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-zinc-600 hover:bg-stone-50 dark:hover:bg-zinc-900 active:scale-[0.97] transition-all duration-120 ease-out p-2 rounded-lg w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-semibold uppercase tracking-widest mt-1">Saved</span>
+</button>
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-zinc-600 hover:bg-stone-50 dark:hover:bg-zinc-900 active:scale-[0.97] transition-all duration-120 ease-out p-2 rounded-lg w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-semibold uppercase tracking-widest mt-1">Profile</span>
+</button>
+</nav>
+</body></html>

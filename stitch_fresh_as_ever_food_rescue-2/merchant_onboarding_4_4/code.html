@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Merchant Onboarding - Final Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#301400",
+                    "error": "#c0392b",
+                    "primary-fixed": "#a1f0f6",
+                    "surface-container-high": "#e6e9e9",
+                    "primary": "#004f54",
+                    "on-primary": "#ffffff",
+                    "primary-active": "#0f3638",
+                    "primary-highlight": "#d0e8e6",
+                    "tertiary": "#6e3815",
+                    "on-primary-fixed-variant": "#004f54",
+                    "dark-primary": "#4f98a3",
+                    "surface-container-low": "#f1f4f4",
+                    "surface-bright": "#f7fafa",
+                    "inverse-primary": "#85d3da",
+                    "on-primary-container": "#97e6ec",
+                    "tertiary-container": "#8b4f2a",
+                    "dark-background": "#141412",
+                    "surface": "#ffffff",
+                    "dark-surface": "#1c1b18",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "on-tertiary-fixed-variant": "#6e3815",
+                    "on-error": "#ffffff",
+                    "dark-accent": "#fdab43",
+                    "secondary-fixed-dim": "#ffb783",
+                    "on-secondary-fixed-variant": "#703700",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#85d3da",
+                    "surface-tint": "#01696f",
+                    "success": "#437a22",
+                    "secondary-container": "#fc8b27",
+                    "on-secondary-container": "#633000",
+                    "accent-highlight": "#fde8cc",
+                    "text-faint": "#b5b2ad",
+                    "on-background": "#181c1d",
+                    "outline": "#6f797a",
+                    "surface-container": "#ebeeee",
+                    "on-tertiary-container": "#ffceb5",
+                    "background": "#f7f6f2",
+                    "text-muted": "#6b6762",
+                    "outline-variant": "#bec8c9",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#ffdcc5",
+                    "surface-container-highest": "#e0e3e3",
+                    "on-surface": "#181c1d",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#3f4949",
+                    "tertiary-fixed": "#ffdbc9",
+                    "surface-2": "#f3f0ec",
+                    "secondary": "#944b00",
+                    "accent-hover": "#c55700",
+                    "inverse-on-surface": "#eef1f1",
+                    "on-primary-fixed": "#002022",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#331200",
+                    "text": "#1a1a1a",
+                    "inverse-surface": "#2d3131",
+                    "on-tertiary": "#ffffff",
+                    "primary-hover": "#0c4e54",
+                    "surface-dim": "#d7dbda",
+                    "divider": "#e2dfd9",
+                    "accent": "#da7101",
+                    "primary-container": "#01696f",
+                    "surface-variant": "#e0e3e3",
+                    "dark-surface-2": "#252420"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xxl": "48px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "page-margin-desktop": "32px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "page-margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "h1": ["Plus Jakarta Sans"],
+                    "price": ["Plus Jakarta Sans"],
+                    "h3": ["Plus Jakarta Sans"],
+                    "h2": ["Plus Jakarta Sans"],
+                    "price-original": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label": ["0.875rem", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "body-md": ["0.9375rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display": ["2rem", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-sm": ["0.875rem", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-caps": ["0.75rem", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h1": ["1.5rem", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "price": ["1.375rem", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "h3": ["1.125rem", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "h2": ["1.25rem", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "price-original": ["0.9375rem", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "body-lg": ["1rem", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text font-body-md antialiased min-h-screen pb-24 md:pb-12">
+<!-- Transactional Header: Suppressing global nav for focused onboarding flow -->
+<header class="fixed top-0 left-0 w-full bg-surface/90 backdrop-blur-md border-b border-divider z-50 h-16 flex items-center justify-between px-page-margin-mobile md:px-page-margin-desktop transition-all duration-200">
+<button aria-label="Go back" class="w-10 h-10 -ml-2 flex items-center justify-center text-text hover:bg-surface-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-text-muted uppercase">Step 4 of 4</span>
+<span class="font-label text-label text-text">Final Review</span>
+</div>
+<div class="w-10"></div> <!-- Balancing spacer -->
+</header>
+<main class="pt-24 px-page-margin-mobile md:px-page-margin-desktop max-w-4xl mx-auto space-y-lg">
+<!-- Page Title & Context -->
+<div class="mb-xl">
+<h1 class="font-h1 text-h1 text-text mb-2">Review your application</h1>
+<p class="font-body-md text-body-md text-text-muted max-w-2xl">
+                Please ensure all business, outlet, and bank details are correct. You can edit any section before final submission.
+            </p>
+</div>
+<!-- Bento Grid Layout for Summary Data -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md md:gap-lg relative">
+<!-- Section 1: Business Details (Spans full width) -->
+<section class="md:col-span-12 bg-surface rounded-xl p-md md:p-lg shadow-[0_4px_24px_rgba(30,27,20,0.03)] border border-outline-variant/30 flex flex-col relative overflow-hidden group">
+<div class="flex justify-between items-start mb-6 pb-4 border-b border-divider/50">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-highlight/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">corporate_fare</span>
+</div>
+<div>
+<h2 class="font-h3 text-h3 text-text">Business Entity</h2>
+<p class="font-body-sm text-body-sm text-text-muted">Registered corporate information</p>
+</div>
+</div>
+<button class="font-label text-label text-primary hover:bg-primary-highlight/50 px-3 py-1.5 rounded transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+<span class="hidden sm:inline">Edit</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-8">
+<div class="space-y-1">
+<span class="block font-label-caps text-label-caps text-text-muted uppercase">Legal Name</span>
+<span class="block font-body-md text-body-md text-text font-medium">Fresh Foods Lanka (Pvt) Ltd.</span>
+</div>
+<div class="space-y-1">
+<span class="block font-label-caps text-label-caps text-text-muted uppercase">Trading Name</span>
+<span class="block font-body-md text-body-md text-text font-medium">Fresh As Ever</span>
+</div>
+<div class="space-y-1">
+<span class="block font-label-caps text-label-caps text-text-muted uppercase">Registration No.</span>
+<span class="block font-body-md text-body-md text-text font-medium">PV 102938</span>
+</div>
+<div class="space-y-1">
+<span class="block font-label-caps text-label-caps text-text-muted uppercase">Tax ID (TIN)</span>
+<span class="block font-body-md text-body-md text-text font-medium">893475920V</span>
+</div>
+</div>
+</section>
+<!-- Section 2: Outlet Details (Left column on desktop) -->
+<section class="md:col-span-7 bg-surface rounded-xl p-md md:p-lg shadow-[0_4px_24px_rgba(30,27,20,0.03)] border border-outline-variant/30 flex flex-col relative overflow-hidden">
+<!-- Abstract Map Background Hint -->
+<div class="absolute right-0 top-0 w-1/2 h-full opacity-[0.03] pointer-events-none mix-blend-multiply">
+<img class="w-full h-full object-cover" data-alt="minimalist abstract street map lines in light gray neutral tones forming a subtle background pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXqbooYC4zCn3IfV7uLPX1lwLbiVYNcaWQ2CLXjytVhxTRmhqUAYqQYq66InxMHS4b5giEVJVhST5jQjhtq8YeRph6fa6glS12ti3idQLpbBIAz_nvWbzgZgeD66_togXvDVI-ORgVRHGQMpRWfCiuwCrNWrmmoF0peELOp5YiWakZgn15AjhTfyyVAYAPaVAPdoKEXkAwumM7nJes6CrJI7NdiAwAwNMONLHAR783GMf86qFFqDL4QxSeyv1cpQI0t8INAoK2Zrk"/>
+</div>
+<div class="flex justify-between items-start mb-6 z-10 relative">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-accent-highlight/50 flex items-center justify-center text-accent">
+<span class="material-symbols-outlined text-[24px]">storefront</span>
+</div>
+<div>
+<h2 class="font-h3 text-h3 text-text">Primary Outlet</h2>
+<p class="font-body-sm text-body-sm text-text-muted">Main pickup location</p>
+</div>
+</div>
+<button class="font-label text-label text-primary hover:bg-primary-highlight/50 px-3 py-1.5 rounded transition-colors z-10 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+<span class="hidden sm:inline">Edit</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 z-10 relative">
+<div class="space-y-1">
+<span class="block font-label-caps text-label-caps text-text-muted uppercase">Outlet Name</span>
+<span class="block font-body-md text-body-md text-text font-medium">Colombo 03 Branch</span>
+</div>
+<div class="space-y-1">
+<span class="block font-label-caps text-label-caps text-text-muted uppercase">Contact Number</span>
+<span class="block font-body-md text-body-md text-text font-medium">+94 77 123 4567</span>
+</div>
+<div class="space-y-1 sm:col-span-2">
+<span class="block font-label-caps text-label-caps text-text-muted uppercase">Physical Address</span>
+<span class="block font-body-md text-body-md text-text font-medium">No. 45, Galle Road,<br/>Colombo 03, Western Province</span>
+</div>
+<div class="space-y-1 sm:col-span-2">
+<span class="block font-label-caps text-label-caps text-text-muted uppercase">Default Pickup Window</span>
+<div class="flex items-center gap-2 mt-1 text-text font-medium bg-surface-2 w-max px-3 py-1.5 rounded border border-outline-variant/20">
+<span class="material-symbols-outlined text-[16px] text-text-muted">schedule</span>
+<span class="font-body-md text-body-md">17:00 - 19:30</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Bank Details (Right column on desktop) -->
+<section class="md:col-span-5 bg-surface rounded-xl p-md md:p-lg shadow-[0_4px_24px_rgba(30,27,20,0.03)] border border-outline-variant/30 flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-active border border-outline-variant/20">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<div>
+<h2 class="font-h3 text-h3 text-text">Payout Details</h2>
+<p class="font-body-sm text-body-sm text-text-muted">For revenue transfers</p>
+</div>
+</div>
+<button class="font-label text-label text-primary hover:bg-primary-highlight/50 px-3 py-1.5 rounded transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+<!-- Bank Card Visual Rep -->
+<div class="bg-gradient-to-br from-surface-2 to-surface-container-low rounded-lg p-4 mb-6 border border-divider">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-8 h-8 bg-surface rounded shadow-sm flex items-center justify-center text-primary font-h3 font-bold border border-outline-variant/10">C</div>
+<div>
+<span class="block font-label text-label text-text">Commercial Bank of Ceylon</span>
+<span class="block font-body-sm text-body-sm text-text-muted">Kollupitiya Branch (012)</span>
+</div>
+</div>
+<div class="space-y-1">
+<span class="block font-label-caps text-label-caps text-text-muted uppercase">Account Number</span>
+<span class="block font-h3 text-h3 text-text tracking-[0.1em] font-medium">1234 5678 9012</span>
+</div>
+</div>
+<div class="space-y-1 mt-auto">
+<span class="block font-label-caps text-label-caps text-text-muted uppercase">Registered Account Name</span>
+<span class="block font-body-md text-body-md text-text font-medium">Fresh Foods Lanka (Pvt) Ltd</span>
+</div>
+</section>
+</div>
+<!-- Desktop Action Area (Inline with content flow) -->
+<div class="hidden md:flex flex-col items-end pt-8 mt-8 border-t border-divider">
+<button class="w-auto px-8 h-12 bg-primary text-on-primary font-label text-label rounded flex items-center justify-center gap-2 active:scale-[0.97] transition-transform duration-120 hover:bg-primary-hover shadow-sm">
+                Submit Application
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<p class="font-body-sm text-body-sm text-text-muted mt-3 max-w-sm text-right">
+                By submitting, you agree to our Merchant Terms of Service and Privacy Policy.
+            </p>
+</div>
+</main>
+<!-- Mobile Sticky Action Bar -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface border-t border-divider p-page-margin-mobile z-50 shadow-[0_-8px_24px_rgba(30,27,20,0.06)] pb-[calc(1rem+env(safe-area-inset-bottom))]">
+<button class="w-full h-12 bg-primary text-on-primary font-label text-label rounded flex items-center justify-center gap-2 active:scale-[0.97] transition-transform duration-120 hover:bg-primary-hover shadow-sm">
+            Submit Application
+        </button>
+<p class="text-center font-body-sm text-body-sm text-text-muted mt-3 text-[11px]">
+            By submitting, you agree to the Terms of Service.
+        </p>
+</div>
+</body></html>

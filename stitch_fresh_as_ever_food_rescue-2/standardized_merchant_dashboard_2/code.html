@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Merchant Dashboard - Fresh As Ever</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#85d3da",
+                    "divider": "#e2dfd9",
+                    "accent-hover": "#c55700",
+                    "accent-highlight": "#fde8cc",
+                    "success": "#437a22",
+                    "on-tertiary-container": "#ffceb5",
+                    "inverse-on-surface": "#eef1f1",
+                    "surface-container-highest": "#e0e3e3",
+                    "error-container": "#ffdad6",
+                    "dark-primary": "#4f98a3",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "tertiary-container": "#8b4f2a",
+                    "primary-fixed": "#a1f0f6",
+                    "accent": "#da7101",
+                    "tertiary-fixed": "#ffdbc9",
+                    "secondary-container": "#fc8b27",
+                    "secondary": "#944b00",
+                    "inverse-primary": "#85d3da",
+                    "surface": "#ffffff",
+                    "text": "#1a1a1a",
+                    "background": "#f7f6f2",
+                    "secondary-fixed-dim": "#ffb783",
+                    "secondary-fixed": "#ffdcc5",
+                    "surface-bright": "#f7fafa",
+                    "outline-variant": "#bec8c9",
+                    "surface-tint": "#01696f",
+                    "surface-container": "#ebeeee",
+                    "dark-background": "#141412",
+                    "dark-accent": "#fdab43",
+                    "on-background": "#181c1d",
+                    "outline": "#6f797a",
+                    "surface-container-high": "#e6e9e9",
+                    "on-secondary-fixed-variant": "#703700",
+                    "on-primary-container": "#97e6ec",
+                    "on-primary-fixed": "#002022",
+                    "on-secondary-fixed": "#301400",
+                    "surface-2": "#f3f0ec",
+                    "surface-variant": "#e0e3e3",
+                    "on-tertiary-fixed-variant": "#6e3815",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#181c1d",
+                    "primary": "#004f54",
+                    "inverse-surface": "#2d3131",
+                    "primary-container": "#01696f",
+                    "on-tertiary-fixed": "#331200",
+                    "on-secondary-container": "#633000",
+                    "dark-surface-2": "#252420",
+                    "primary-hover": "#0c4e54",
+                    "primary-highlight": "#d0e8e6",
+                    "text-muted": "#6b6762",
+                    "text-faint": "#b5b2ad",
+                    "primary-active": "#0f3638",
+                    "dark-surface": "#1c1b18",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#d7dbda",
+                    "on-primary-fixed-variant": "#004f54",
+                    "on-error": "#ffffff",
+                    "tertiary": "#6e3815",
+                    "on-surface-variant": "#3f4949",
+                    "surface-container-low": "#f1f4f4",
+                    "on-tertiary": "#ffffff",
+                    "error": "#c0392b",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xxl": "48px",
+                    "xs": "4px",
+                    "page-margin-desktop": "32px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "page-margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "price-original": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "h1": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "h3": ["Plus Jakarta Sans"],
+                    "price": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"],
+                    "h2": ["Plus Jakarta Sans"],
+                    "display": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                    "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                    "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }],
+                    "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                    "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                    "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                    "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                    "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                    "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                    "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex antialiased">
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-screen z-40 bg-white dark:bg-stone-900 h-full w-[240px] border-r border-stone-200 dark:border-stone-800">
+<div class="p-4 border-b border-stone-100 dark:border-stone-800 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-2 overflow-hidden flex-shrink-0">
+<img alt="Restaurant interior" class="w-full h-full object-cover" data-alt="Warmly lit cozy cafe interior with wooden tables and green plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQU_qH8NWS8RvX2P3Fd7Z0CjexfBi4qru0dG8vGQHM0BRdFQCoNBaHFXHWQD306DrVJ9jma7Xy0TZW3LlRCoWZMzTpw5cKO3kXYrXhR6kucncRHYzut6hV8wi0sICKp2xCORsU_8FhSknu_Mn8PIMHgNSRJMCur1S6fLu1H4QXe2JuufsLM1oRHiXEMrEx5y-irW-duU5-CiJa_AzvE3HvObuYN6af2w8zUFCq7DsCjPSzByJ9Nl66UPVfF65u9JNhPO8hNhxVN3k"/>
+</div>
+<div>
+<h2 class="text-[#01696f] font-extrabold text-lg leading-tight font-h3 text-h3">Ceylon Delights</h2>
+<p class="font-label-caps text-label-caps text-text-muted mt-0.5">Merchant Admin</p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 bg-[#01696f]/5 dark:bg-teal-900/20 text-[#01696f] dark:text-teal-400 border-l-[3px] border-[#01696f] px-4 py-3 font-semibold hover:bg-stone-50 dark:hover:bg-stone-800 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                Inventory
+            </a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+                Orders
+            </a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all duration-200 ease-in-out font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</div>
+</nav>
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden flex justify-between items-center px-4 h-16 w-full fixed w-full top-0 z-50 bg-[#f7f6f2] dark:bg-stone-950 border-b border-stone-200 dark:border-stone-800">
+<button class="text-[#01696f] dark:text-teal-400 p-2 -ml-2 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors scale-95 duration-150 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<img alt="Fresh As Ever Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uie60JdkzC900B8W6Lq2tvLovHTvtcRuIWGVDUAlqSD5xMuoBKopz9pTUoK3n2SYBCuTf0VXarGG4NLD031Vafgnl7lxPbdQqPHAFv3ecBEO28tcGBPcV_GrQWjS0-oumHN4Kim9wFJ6i-EO84YkjK0dALtFlrl_0bVjHeWrj7vN1PXXrztAd767sD5bqFr5xx5Ntt3qPBmfTjNH038oWQTJnEKh7miF99TY487BnyhyZrW5RGE_A5bkleTXJhZnP4YDs_XclcD8Q"/>
+<div class="w-8 h-8 rounded-full bg-surface-2 overflow-hidden border border-outline-variant">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="Warmly lit cozy cafe interior with wooden tables and green plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs_gqnL_0m4hrV5XGbxH3ct306wHAv6wPQVpv9QV7n9U9NO4rx5UVegTBHa5K8aQQwvQM5zG1lfmB-PL0eHfSjLpfF2URbMGxhozAwM9kyIOmvO06NiZIy0RaOz8F5OgaZlwJPCVLriPza8EUSO0VftrLOA4rnu4MP-aH6GoJqti9vg_Km1zUXzppoQx4oyfGSs7JZNnnxm0ZuntkKOKUac_Xy6qwg6OHe4i9bny9A8lATXlf2YBZR_vaisbcoODGpBigDO0jt7_Q"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 pt-16 md:pt-0 pb-[80px] md:pb-0 md:ml-[240px] p-page-margin-mobile md:p-page-margin-desktop w-full">
+<!-- Page Header -->
+<div class="mb-lg mt-sm md:mt-0">
+<h1 class="font-h1 text-h1 text-on-surface">Green Garden Cafe</h1>
+<p class="font-body-md text-body-md text-text-muted mt-1">Today's Overview</p>
+</div>
+<!-- Quick Actions -->
+<div class="grid grid-cols-2 gap-md mb-xl">
+<button class="bg-primary-container text-on-primary-container hover:bg-primary-hover active:scale-[0.97] transition-all duration-120 h-12 rounded-xl flex items-center justify-center gap-2 shadow-[0_2px_8px_rgba(30,27,20,0.04)]">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span class="font-label text-label">List New Bag</span>
+</button>
+<button class="bg-primary-container text-on-primary-container hover:bg-primary-hover active:scale-[0.97] transition-all duration-120 h-12 rounded-xl flex items-center justify-center gap-2 shadow-[0_2px_8px_rgba(30,27,20,0.04)]">
+<span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+<span class="font-label text-label">Scan Code</span>
+</button>
+</div>
+<!-- Stats Bento Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-md mb-xl">
+<!-- Revenue Card (Spans full width on mobile) -->
+<div class="col-span-2 md:col-span-1 bg-surface rounded-xl p-md shadow-[0_4px_20px_rgba(30,27,20,0.03)] border border-divider/50 flex flex-col justify-between min-h-[120px]">
+<div class="flex justify-between items-start mb-4">
+<span class="font-body-sm text-body-sm text-text-muted">Revenue</span>
+<div class="w-8 h-8 rounded-full bg-accent-highlight flex items-center justify-center text-accent-hover">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+</div>
+<div>
+<h3 class="font-price text-price text-accent">Rs. 12,400</h3>
+</div>
+</div>
+<!-- Active Bags Card -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_20px_rgba(30,27,20,0.03)] border border-divider/50 flex flex-col justify-between min-h-[120px]">
+<div class="flex justify-between items-start mb-4">
+<span class="font-body-sm text-body-sm text-text-muted">Active Bags</span>
+<div class="w-8 h-8 rounded-full bg-primary-highlight flex items-center justify-center text-primary-active">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+</div>
+</div>
+<div>
+<h3 class="font-display text-display text-on-surface">5</h3>
+</div>
+</div>
+<!-- Pickups Card -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_20px_rgba(30,27,20,0.03)] border border-divider/50 flex flex-col justify-between min-h-[120px]">
+<div class="flex justify-between items-start mb-4">
+<span class="font-body-sm text-body-sm text-text-muted">Pickups</span>
+<div class="w-8 h-8 rounded-full bg-surface-2 flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined text-[18px]">directions_walk</span>
+</div>
+</div>
+<div>
+<h3 class="font-display text-display text-on-surface">8</h3>
+</div>
+</div>
+</div>
+<!-- Recent Orders -->
+<div>
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-h2 text-h2 text-on-surface">Recent Orders</h2>
+<a class="font-label text-label text-primary-container hover:text-primary-hover" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Order Item 1 -->
+<div class="bg-surface rounded-xl p-md shadow-[0_2px_10px_rgba(30,27,20,0.02)] border border-divider/40 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex w-12 h-12 rounded-lg bg-surface-2 items-center justify-center text-text-muted">
+<span class="material-symbols-outlined">receipt</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-h3 text-h3 text-on-surface">#ORD-4092</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">1x Pastry Rescue Bag • 14:30</p>
+</div>
+</div>
+<div class="bg-primary-highlight text-primary-active px-3 py-1 rounded-full font-label-caps text-label-caps inline-flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-primary-active"></div>
+                        Live
+                    </div>
+</div>
+<!-- Order Item 2 -->
+<div class="bg-surface rounded-xl p-md shadow-[0_2px_10px_rgba(30,27,20,0.02)] border border-divider/40 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex w-12 h-12 rounded-lg bg-surface-2 items-center justify-center text-text-muted">
+<span class="material-symbols-outlined">receipt</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-h3 text-h3 text-on-surface">#ORD-4091</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">2x Lunch Box • 13:15</p>
+</div>
+</div>
+<div class="bg-accent-highlight text-accent-hover px-3 py-1 rounded-full font-label-caps text-label-caps inline-flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-accent-hover"></div>
+                        Pending
+                    </div>
+</div>
+<!-- Order Item 3 -->
+<div class="bg-surface rounded-xl p-md shadow-[0_2px_10px_rgba(30,27,20,0.02)] border border-divider/40 flex items-center justify-between opacity-70">
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex w-12 h-12 rounded-lg bg-surface-2 items-center justify-center text-text-faint">
+<span class="material-symbols-outlined">receipt</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-h3 text-h3 text-on-surface">#ORD-4088</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">1x Breads Bag • 11:00</p>
+</div>
+</div>
+<div class="bg-surface-2 text-text-muted px-3 py-1 rounded-full font-label-caps text-label-caps inline-flex items-center gap-1">
+                        Picked Up
+                    </div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe bg-white dark:bg-stone-900 fixed bottom-0 w-full h-[64px] border-t border-stone-100 dark:border-stone-800 shadow-[0_-4px_20px_rgba(30,27,20,0.04)]">
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 font-['Plus_Jakarta_Sans'] text-[11px] font-medium active:scale-95 transition-transform scale-97 duration-120 w-16 h-full pt-1">
+<span class="material-symbols-outlined mb-1 text-[24px]">explore</span>
+<span>Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 font-['Plus_Jakarta_Sans'] text-[11px] font-medium active:scale-95 transition-transform scale-97 duration-120 w-16 h-full pt-1">
+<span class="material-symbols-outlined mb-1 text-[24px]">shopping_bag</span>
+<span>Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 font-['Plus_Jakarta_Sans'] text-[11px] font-medium active:scale-95 transition-transform scale-97 duration-120 w-16 h-full pt-1">
+<span class="material-symbols-outlined mb-1 text-[24px]">favorite</span>
+<span>Saved</span>
+</button>
+<!-- Active State applied to Profile -->
+<button class="flex flex-col items-center justify-center text-[#01696f] dark:text-teal-400 font-['Plus_Jakarta_Sans'] text-[11px] font-medium active:scale-95 transition-transform scale-97 duration-120 w-16 h-full pt-1">
+<span class="material-symbols-outlined mb-1 text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
+<span>Profile</span>
+</button>
+</nav>
+</body></html>

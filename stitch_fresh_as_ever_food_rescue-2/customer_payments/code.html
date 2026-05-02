@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Payments</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#ffceb5",
+                      "surface-dim": "#d7dbda",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed": "#331200",
+                      "error": "#c0392b",
+                      "surface-container-low": "#f1f4f4",
+                      "outline": "#6f797a",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#ffb68d",
+                      "text-faint": "#b5b2ad",
+                      "dark-surface": "#1c1b18",
+                      "primary-hover": "#0c4e54",
+                      "on-primary-container": "#97e6ec",
+                      "secondary-container": "#fc8b27",
+                      "inverse-primary": "#85d3da",
+                      "secondary": "#944b00",
+                      "surface-bright": "#f7fafa",
+                      "on-tertiary-fixed-variant": "#6e3815",
+                      "on-error-container": "#93000a",
+                      "on-background": "#181c1d",
+                      "divider": "#e2dfd9",
+                      "inverse-surface": "#2d3131",
+                      "surface-variant": "#e0e3e3",
+                      "dark-primary": "#4f98a3",
+                      "tertiary": "#6e3815",
+                      "tertiary-container": "#8b4f2a",
+                      "dark-accent": "#fdab43",
+                      "primary": "#004f54",
+                      "on-surface": "#181c1d",
+                      "surface-container-highest": "#e0e3e3",
+                      "accent-hover": "#c55700",
+                      "primary-active": "#0f3638",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#ffdbc9",
+                      "primary-container": "#01696f",
+                      "accent-highlight": "#fde8cc",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#ebeeee",
+                      "surface-tint": "#01696f",
+                      "surface-container-high": "#e6e9e9",
+                      "primary-fixed-dim": "#85d3da",
+                      "on-primary-fixed-variant": "#004f54",
+                      "success": "#437a22",
+                      "on-secondary-container": "#633000",
+                      "on-secondary-fixed-variant": "#703700",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#ffb783",
+                      "on-surface-variant": "#3f4949",
+                      "surface-container-lowest": "#ffffff",
+                      "outline-variant": "#bec8c9",
+                      "on-primary-fixed": "#002022",
+                      "secondary-fixed": "#ffdcc5",
+                      "dark-background": "#141412",
+                      "background": "#f7f6f2",
+                      "primary-highlight": "#d0e8e6",
+                      "inverse-on-surface": "#eef1f1",
+                      "accent": "#da7101",
+                      "dark-surface-2": "#252420",
+                      "text-muted": "#6b6762",
+                      "primary-fixed": "#a1f0f6",
+                      "on-secondary-fixed": "#301400",
+                      "surface": "#ffffff",
+                      "text": "#1a1a1a",
+                      "surface-2": "#f3f0ec"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "page-margin-desktop": "32px",
+                      "xxl": "48px",
+                      "xs": "4px",
+                      "page-margin-mobile": "16px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "h1": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "price": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-caps": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "h3": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "h2": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "price-original": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "h1": [
+                              "1.5rem",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "1rem",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "price": [
+                              "1.375rem",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label": [
+                              "0.875rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display": [
+                              "2rem",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-sm": [
+                              "0.875rem",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "0.75rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h3": [
+                              "1.125rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "0.9375rem",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h2": [
+                              "1.25rem",
+                              {
+                                      "lineHeight": "1.35",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "price-original": [
+                              "0.9375rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text font-body-md h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- Sidebar (Desktop) -->
+<aside class="hidden md:flex flex-col h-full w-[280px] border-r border-divider shadow-xl bg-background divide-y divide-divider flex-shrink-0 z-10">
+<div class="px-md py-lg flex items-center gap-sm">
+<img alt="User Avatar" class="w-12 h-12 rounded-full object-cover" data-alt="close up headshot portrait of a man with short dark hair wearing a neutral shirt against a soft blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVfOzJMCe0ppMaFR92AZUnfWmuq3HGK6OqDRIMkllATS4yGqjGO_DPaT69wWN9tC7gjwyGtdlW3-mrBZS6tRNz6Cd-vp1DbrgmyBAm_fbdh8F1u1ibgAblppb6e32uvmpPANXUURSoWJDBYvIWpIBYl3UX5EVLE3nuubfXIM8DvVqZStQeD-oWTiFWvvskBwVm7Fj0_NIJv3TRfqQHW-ipyjLiejXHN88JGwN2hgzzJilOQxncZCsF1jgw5gDAHlDCiczHsQpYNFk"/>
+<div>
+<p class="font-h3 text-h3 text-primary-container">Sahan Perera</p>
+<p class="font-body-sm text-body-sm text-text-muted">Premium Member</p>
+<p class="font-label-caps text-label-caps text-text-muted uppercase mt-xs">Colombo, LK</p>
+</div>
+</div>
+<nav class="flex-1 py-lg flex flex-col gap-xs px-sm">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-text-muted hover:bg-surface-2 transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>Personal Profile</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-primary-highlight text-primary-container border-l-4 border-primary-container font-label text-label font-semibold transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span>Payments</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-text-muted hover:bg-surface-2 transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span>Notifications</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-text-muted hover:bg-surface-2 transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined" data-icon="headset_mic">headset_mic</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-text-muted hover:bg-surface-2 transition-all duration-200 ease-in-out font-label text-label mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="store">store</span>
+<span>Merchant Portal</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-text-muted hover:bg-surface-2 transition-all duration-200 ease-in-out font-label text-label" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Admin Console</span>
+</a>
+</nav>
+</aside>
+<div class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-md h-16 bg-background border-b border-divider md:hidden flex-shrink-0 z-10">
+<button class="text-primary-container hover:bg-surface-2 p-2 rounded-full active:scale-95 transition-transform duration-120">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-h1 text-h1 text-primary-container text-xl font-bold tracking-tighter">Fresh As Ever</h1>
+<button class="text-primary-container hover:bg-surface-2 p-2 rounded-full active:scale-95 transition-transform duration-120">
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full object-cover" data-alt="close up headshot portrait of a man with short dark hair wearing a neutral shirt against a soft blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVFQeUZoZ_jFeMT1f_vqJULMLzijh_BNOe4D61oNL0OoQiZ-HaGqkxeB4WMzyOy2vI7bWyHk9Fer09u0ILDOZTYqC9XnxLCGUxC06-YXaOoD_LAX2kDmuz9H1QsR0E9xECXBN_DLCOv4_M3_jP8W1j1KVOS8F8UBOb8PEkJacohHBYrJ8SVtJXXY5A_1bTiIAJcFj2zZiNZX7pTX_U_wS3zlD2738h3bQ_3I5sg7rYeyIEORhhOwXY4MHDHAu9PAbdGWLowahBgxE"/>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto px-page-margin-mobile md:px-page-margin-desktop py-lg bg-background">
+<div class="max-w-3xl mx-auto space-y-xl pb-xxl">
+<header class="mb-lg">
+<h2 class="font-display text-display text-text">Payments</h2>
+<p class="font-body-lg text-body-lg text-text-muted mt-sm">Manage your payment methods and view billing history.</p>
+</header>
+<!-- Saved Cards Section -->
+<section class="space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-h2 text-h2 text-text">Saved Cards</h3>
+<span class="material-symbols-outlined text-text-muted" data-icon="lock">lock</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Card 1 -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_12px_rgba(30,27,20,0.04)] border border-transparent hover:border-divider transition-all duration-200 cursor-pointer relative group">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-12 h-8 bg-surface-2 rounded flex items-center justify-center">
+<span class="font-label-caps text-label-caps text-primary-container font-bold">VISA</span>
+</div>
+<span class="bg-primary-highlight text-primary-container font-label-caps text-label-caps px-2 py-1 rounded-full uppercase">Default</span>
+</div>
+<div class="space-y-xs">
+<p class="font-h3 text-h3 text-text tracking-widest">**** **** **** 4242</p>
+<p class="font-body-sm text-body-sm text-text-muted">Expires 12/25</p>
+</div>
+<div class="absolute top-md right-md opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-text-faint hover:text-error transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_12px_rgba(30,27,20,0.04)] border border-transparent hover:border-divider transition-all duration-200 cursor-pointer relative group">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-12 h-8 bg-surface-2 rounded flex items-center justify-center">
+<div class="flex">
+<div class="w-4 h-4 rounded-full bg-error/80 mix-blend-multiply"></div>
+<div class="w-4 h-4 rounded-full bg-secondary-container/80 mix-blend-multiply -ml-2"></div>
+</div>
+</div>
+</div>
+<div class="space-y-xs">
+<p class="font-h3 text-h3 text-text tracking-widest">**** **** **** 8891</p>
+<p class="font-body-sm text-body-sm text-text-muted">Expires 08/26</p>
+</div>
+<div class="absolute top-md right-md opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-text-faint hover:text-error transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Add Card Button -->
+<button class="bg-surface-2 hover:bg-surface-dim border border-dashed border-divider rounded-xl p-md flex flex-col items-center justify-center gap-sm min-h-[140px] transition-colors duration-200 active:scale-95 group">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center group-hover:bg-primary-hover transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</div>
+<span class="font-label text-label text-text-muted group-hover:text-text transition-colors">Add New Card</span>
+</button>
+</div>
+</section>
+<!-- Recent Transactions Skeleton -->
+<section class="space-y-md mt-xl">
+<div class="flex items-center justify-between">
+<h3 class="font-h2 text-h2 text-text">Recent Transactions</h3>
+<a class="font-label text-label text-primary-container hover:text-primary-hover transition-colors" href="#">View All</a>
+</div>
+<div class="bg-surface rounded-xl p-xs shadow-[0_4px_12px_rgba(30,27,20,0.04)] divide-y divide-divider">
+<!-- Skeleton Item 1 -->
+<div class="p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-2 animate-pulse flex-shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 bg-surface-2 rounded w-1/3 animate-pulse"></div>
+<div class="h-3 bg-surface-2 rounded w-1/4 animate-pulse"></div>
+</div>
+<div class="h-5 bg-surface-2 rounded w-16 animate-pulse"></div>
+</div>
+<!-- Skeleton Item 2 -->
+<div class="p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-2 animate-pulse flex-shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 bg-surface-2 rounded w-2/5 animate-pulse"></div>
+<div class="h-3 bg-surface-2 rounded w-1/5 animate-pulse"></div>
+</div>
+<div class="h-5 bg-surface-2 rounded w-14 animate-pulse"></div>
+</div>
+<!-- Skeleton Item 3 -->
+<div class="p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-2 animate-pulse flex-shrink-0"></div>
+<div class="flex-1 space-y-2">
+<div class="h-4 bg-surface-2 rounded w-1/4 animate-pulse"></div>
+<div class="h-3 bg-surface-2 rounded w-1/3 animate-pulse"></div>
+</div>
+<div class="h-5 bg-surface-2 rounded w-20 animate-pulse"></div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

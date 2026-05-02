@@ -9,6 +9,7 @@ import { createBrowserClient } from '@supabase/ssr';
  * Extracted from: src/app/(customer)/bags/[id]/page.js
  */
 export function useBagDetail(bagId) {
+  const DEFAULT_VENUE_RATING = 4.2;
   const router = useRouter();
   const [bag, setBag] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -37,7 +38,14 @@ export function useBagDetail(bagId) {
         .single();
 
       if (error) throw error;
-      setBag(data);
+      setBag({
+        ...data,
+        outlet: {
+          ...(data?.outlet || {}),
+          average_rating: data?.outlet?.average_rating || DEFAULT_VENUE_RATING,
+          total_reviews: data?.outlet?.total_reviews || 0,
+        },
+      });
     } catch (err) {
       console.error('Error fetching bag details:', err);
       setError('Bag not found or no longer available.');

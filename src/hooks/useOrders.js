@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createClient } from '@/lib/supabase/client';
+import { isActiveOrderStatus, normalizeOrderStatus } from '@/lib/utils';
 
 /**
  * Orders list hook — fetches customer orders, splits active/past.
@@ -36,7 +37,11 @@ export function useOrders() {
         .order('created_at', { ascending: false });
 
       if (fetchError) throw fetchError;
-      setOrders(data || []);
+      const normalizedOrders = (data || []).map((order) => ({
+        ...order,
+        order_status: normalizeOrderStatus(order.order_status),
+      }));
+      setOrders(normalizedOrders);
     } catch (err) {
       console.error('Fetch orders error:', err);
       setError('Could not load orders. Please try again.');
@@ -50,12 +55,12 @@ export function useOrders() {
   }, [fetchOrders]);
 
   const activeOrders = useMemo(
-    () => orders.filter(o => o.order_status === 'reserved'),
+    () => orders.filter((order) => isActiveOrderStatus(order.order_status)),
     [orders]
   );
 
   const pastOrders = useMemo(
-    () => orders.filter(o => o.order_status !== 'reserved'),
+    () => orders.filter((order) => !isActiveOrderStatus(order.order_status)),
     [orders]
   );
 

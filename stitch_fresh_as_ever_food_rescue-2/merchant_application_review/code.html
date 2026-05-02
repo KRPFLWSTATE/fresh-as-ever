@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Merchant Application</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdbc9",
+                        "tertiary": "#6e3815",
+                        "primary-fixed-dim": "#85d3da",
+                        "on-tertiary-container": "#ffceb5",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#fc8b27",
+                        "accent-highlight": "#fde8cc",
+                        "divider": "#e2dfd9",
+                        "primary": "#004f54",
+                        "primary-fixed": "#a1f0f6",
+                        "dark-accent": "#fdab43",
+                        "surface-container-highest": "#e0e3e3",
+                        "outline-variant": "#bec8c9",
+                        "success": "#437a22",
+                        "on-secondary-fixed-variant": "#703700",
+                        "on-surface": "#181c1d",
+                        "inverse-primary": "#85d3da",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "surface-tint": "#01696f",
+                        "primary-container": "#01696f",
+                        "primary-highlight": "#d0e8e6",
+                        "on-tertiary-fixed": "#331200",
+                        "on-surface-variant": "#3f4949",
+                        "dark-primary": "#4f98a3",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#ebeeee",
+                        "primary-hover": "#0c4e54",
+                        "dark-background": "#141412",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#301400",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#004f54",
+                        "text-muted": "#6b6762",
+                        "accent-hover": "#c55700",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "dark-surface-2": "#252420",
+                        "text-faint": "#b5b2ad",
+                        "tertiary-container": "#8b4f2a",
+                        "secondary-fixed": "#ffdcc5",
+                        "on-primary-fixed": "#002022",
+                        "on-primary-container": "#97e6ec",
+                        "accent": "#da7101",
+                        "error": "#c0392b",
+                        "background": "#f7f6f2",
+                        "on-background": "#181c1d",
+                        "secondary": "#944b00",
+                        "inverse-surface": "#2d3131",
+                        "surface-variant": "#e0e3e3",
+                        "surface-bright": "#f7fafa",
+                        "dark-surface": "#1c1b18",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "primary-active": "#0f3638",
+                        "surface-container-high": "#e6e9e9",
+                        "inverse-on-surface": "#eef1f1",
+                        "surface-2": "#f3f0ec",
+                        "surface": "#ffffff",
+                        "secondary-fixed-dim": "#ffb783",
+                        "text": "#1a1a1a",
+                        "surface-dim": "#d7dbda",
+                        "outline": "#6f797a",
+                        "surface-container-low": "#f1f4f4",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#633000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "page-margin-desktop": "32px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "page-margin-mobile": "16px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "price-original": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "price": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for bento cards if needed */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen">
+<!-- TopAppBar (Transactional context, using JSON base styles) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-[#f7f6f2] dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800">
+<div class="flex items-center gap-4">
+<button class="text-[#01696f] dark:text-teal-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors active:scale-95 transition-transform duration-120 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<span class="text-xl font-extrabold text-[#01696f] tracking-tight">Fresh As Ever</span>
+</div>
+<div class="flex items-center">
+<img alt="Admin Profile" class="w-8 h-8 rounded-full object-cover border border-stone-200" data-alt="Close up portrait of a smiling male professional with short dark hair in a well-lit office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA3mLnhFAM4K2mE2QIYIjMQ42fUqYG_mTr6pSSZ6LioE-ixAt6qNSs6CfGgnTs_hYn4DSdZqSxTzSekrmABg2tRtX12PpOle569XW1zDNCiXPBF5SopwN6V7pefKaaRYIVbu2ToVoUOHCRgGFDTdcHE5KjX1pUf19DQW44RmRaGgUbXIiyWQ4IqjjuK-ItcRB_DVUHUtundPcl0fbFbTl463oJhEyn9FgLwLvSXtpA_oOEv4AY7eij_xtpJGXz-oG-zLL38blRn3s"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[88px] px-page-margin-mobile md:px-page-margin-desktop pb-[120px] md:pb-xxl max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="mb-xl flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<div class="inline-flex items-center gap-xs px-3 py-1 rounded-full bg-accent-highlight text-secondary font-label-caps text-label-caps mb-sm">
+<span class="material-symbols-outlined text-[14px]">pending_actions</span>
+                    Pending Review
+                </div>
+<h1 class="font-display text-display text-on-surface tracking-tight mt-xs">The Artisan Bakery</h1>
+<p class="font-body-lg text-body-lg text-text-muted mt-xs flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">tag</span> APP-2023-0892 
+                    <span class="text-divider px-1">|</span> 
+                    Submitted Oct 24, 2023
+                </p>
+</div>
+<!-- Desktop Action Buttons -->
+<div class="hidden md:flex items-center gap-sm">
+<button class="h-12 px-6 rounded-md bg-surface text-error border-[1.5px] border-error font-label text-label flex items-center gap-2 hover:bg-error-container/20 active:scale-[0.97] transition-all duration-120">
+<span class="material-symbols-outlined text-[20px]">close</span> Reject
+                </button>
+<button class="h-12 px-6 rounded-md bg-surface text-primary border-[1.5px] border-primary font-label text-label flex items-center gap-2 hover:bg-primary-highlight/30 active:scale-[0.97] transition-all duration-120">
+<span class="material-symbols-outlined text-[20px]">info</span> Request Info
+                </button>
+<button class="h-12 px-8 rounded-md bg-success text-on-primary font-label text-label flex items-center gap-2 shadow-[0_4px_12px_rgba(67,122,34,0.2)] hover:bg-[#38661c] active:scale-[0.97] transition-all duration-120">
+<span class="material-symbols-outlined text-[20px]">check_circle</span> Approve
+                </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Business Info Card (Spans 2 cols on lg) -->
+<div class="bg-surface rounded-xl shadow-[0_4px_24px_rgba(30,27,20,0.04)] p-md md:p-lg lg:col-span-2 flex flex-col h-full">
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-weight="fill">storefront</span>
+</div>
+<h2 class="font-h2 text-h2 text-on-surface">Business Details</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-lg gap-x-md">
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Legal Entity Name</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">Artisan Bakers Columbo Pvt Ltd</p>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Registration Number</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">PV 10928374</p>
+</div>
+<div class="sm:col-span-2">
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Registered Address</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">45/2 Independence Avenue, Colombo 07, Sri Lanka</p>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Tax Identification Number (TIN)</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">TIN-992-001-44</p>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Business Category</p>
+<div class="inline-flex items-center gap-1 bg-surface-container px-2 py-1 rounded-md mt-1">
+<span class="material-symbols-outlined text-[14px] text-primary">bakery_dining</span>
+<span class="font-label-caps text-label-caps text-primary">Bakery &amp; Cafe</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Contact Person Card -->
+<div class="bg-surface rounded-xl shadow-[0_4px_24px_rgba(30,27,20,0.04)] p-md md:p-lg flex flex-col h-full">
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-weight="fill">person</span>
+</div>
+<h2 class="font-h2 text-h2 text-on-surface">Primary Contact</h2>
+</div>
+<div class="flex flex-col gap-lg">
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Full Name</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">Amal Perera</p>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Designation / Role</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">Operations Manager</p>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Phone Number</p>
+<p class="font-body-md text-body-md text-on-surface font-medium text-primary hover:underline cursor-pointer">+94 77 123 4567</p>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Email Address</p>
+<p class="font-body-md text-body-md text-on-surface font-medium text-primary hover:underline cursor-pointer">amal@artisanbakery.lk</p>
+</div>
+</div>
+</div>
+<!-- Bank Details Card -->
+<div class="bg-surface rounded-xl shadow-[0_4px_24px_rgba(30,27,20,0.04)] p-md md:p-lg flex flex-col h-full">
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-weight="fill">account_balance</span>
+</div>
+<h2 class="font-h2 text-h2 text-on-surface">Bank Information</h2>
+</div>
+<div class="flex flex-col gap-lg bg-surface-container-low p-md rounded-lg border border-divider/50">
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Bank Name</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">Commercial Bank of Ceylon</p>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Account Name</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">Artisan Bakers Pvt Ltd</p>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Account Number</p>
+<p class="font-body-md text-body-md font-mono text-on-surface tracking-wider bg-surface px-2 py-1 rounded inline-block mt-1">100 234 567 890</p>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Branch</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">Cinnamon Gardens</p>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-text-muted mb-xs">Branch Code</p>
+<p class="font-body-md text-body-md text-on-surface font-medium">014</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Outlet Photos Card (Spans 2 cols on lg) -->
+<div class="bg-surface rounded-xl shadow-[0_4px_24px_rgba(30,27,20,0.04)] p-md md:p-lg lg:col-span-2 flex flex-col h-full">
+<div class="flex items-center justify-between mb-lg">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-weight="fill">image</span>
+</div>
+<h2 class="font-h2 text-h2 text-on-surface">Outlet Atmosphere</h2>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted">3 Photos uploaded</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-sm h-full">
+<div class="sm:col-span-2 rounded-lg overflow-hidden h-48 sm:h-auto">
+<img alt="Bakery interior" class="w-full h-full object-cover" data-alt="Warmly lit artisan bakery interior with wooden shelves displaying fresh loaves of bread, glass pastry cases, and soft natural sunlight coming through the front window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-deqeldalal8bClBrsRvi9lJ2V_o-pym7U7b83D_VZX0cfG7MXJ_cPFlTs3R18nn_dHVUHgyR7Il7kG_vvDokCeGVdjpMT4EGf0TAY6RKDhncfncWeu7YqPfA2dJ5AsoCwGsa6yTiOhpKmEvXL-zRKZfAwIlhV42WHPrKLlqwCGYlo3PFkVkw62LUgkftNzpS5XL9Xj-OBP1g7IWOVBACTXbYNYa-EDVJxOlnHYsLEVEeQwjVa0JxLWHBPrKSCL1Tyy4Qugud6sI"/>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-1 gap-sm h-32 sm:h-auto">
+<div class="rounded-lg overflow-hidden h-full">
+<img alt="Storefront" class="w-full h-full object-cover" data-alt="Modern bakery storefront exterior with dark green awning, clean glass windows, and a warm inviting glow from inside during early evening" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJk1WmZbLOWjsIy1pX5QJH0b0SDngu5GcHtbRnzc1tDVzlL6BOMy2mSSAI22NcwxrpTj7qL-ZkEbr_puaoZGAHspFL-Z_IabR2_MvtWD2eiO_-Odv_1MHRa7otRVLjfb6Bi7NfKMR84ixfzM-SDKSS8i1kLdWYhLLFXJR4zjC0C6zBPa37OFiFbuQyw0ZAshos-hjArCjZhMI7tPRyTG6n_83fgv5N9KysgkiqWbUDiMHb-XEFswH7DTIdZJ6elo-4ni5D9QE3EKU"/>
+</div>
+<div class="rounded-lg overflow-hidden h-full">
+<img alt="Pastry display" class="w-full h-full object-cover" data-alt="Close up of artisan croissants and danishes neatly arranged on a dark slate display board under warm accent lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkYeF0lfEht9UwvIvFoO6FdQENIAVczDXmfNp397M0caoBa94rRuiUbN26dxe28Dj-sOFFP1Ooz38DyxKHPsXm6Y7Ixb-n--JzitmBwS_KHKizHycDtDaQXtThgj0VwgP2_9rd2qq-7fIZPnxeA-JPvlqyY0_dzt5lneQ8s423soYgkDhYCA818aqIxa4h_QaiMYcZLK0BrO4j2TGVpv2084I7oMLOph8n1oJ74RZi7JZCmMTHieJ0gpFOxix09Kjpn4LNz6x5Mfo"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Action Bar (Sticky Bottom) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface/95 backdrop-blur-md border-t border-divider p-md z-40 shadow-[0_-8px_24px_rgba(30,27,20,0.06)] flex flex-col gap-sm pb-safe">
+<button class="w-full h-[48px] rounded-md bg-success text-on-primary font-label text-label flex items-center justify-center gap-2 active:scale-[0.97] transition-all duration-120 shadow-[0_4px_12px_rgba(67,122,34,0.2)]">
+<span class="material-symbols-outlined text-[20px]">check_circle</span> Approve Application
+        </button>
+<div class="flex gap-sm w-full">
+<button class="flex-1 h-[48px] rounded-md bg-surface text-error border-[1.5px] border-error font-label text-label flex items-center justify-center gap-2 active:scale-[0.97] transition-all duration-120">
+                Reject
+            </button>
+<button class="flex-1 h-[48px] rounded-md bg-surface text-primary border-[1.5px] border-primary font-label text-label flex items-center justify-center gap-2 active:scale-[0.97] transition-all duration-120">
+                Request Info
+            </button>
+</div>
+</div>
+</body></html>

@@ -1,39 +1,32 @@
 import './globals.css';
+import 'leaflet/dist/leaflet.css';
 import { Plus_Jakarta_Sans } from 'next/font/google';
+import { CapacitorNativeShell } from '@/components/CapacitorNativeShell';
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-plus-jakarta',
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
 });
 
 export const metadata = {
   title: 'Fresh As Ever — Rescue Food. Save Money.',
   description: "Colombo's first surplus food rescue marketplace. Buy same-day Rescue Bags from your favourite bakeries, cafés, and restaurants at up to 60% off before closing time.",
-  keywords: ['surplus food', 'food rescue', 'Colombo', 'Sri Lanka', 'food waste', 'rescue bags'],
-  authors: [{ name: 'Fresh As Ever' }],
-  openGraph: {
-    title: 'Fresh As Ever — Rescue Food. Save Money.',
-    description: "Buy same-day Rescue Bags from Colombo outlets at up to 60% off.",
-    type: 'website',
-    locale: 'en_LK',
-    siteName: 'Fresh As Ever',
-  },
-  manifest: '/manifest.json',
 };
 
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#01696f',
+  themeColor: '#004f54', // Canonical Primary
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className={plusJakarta.className}>
+    <html lang="en" suppressHydrationWarning className={plusJakarta.variable}>
+      <body suppressHydrationWarning className="antialiased min-h-screen font-jakarta bg-background text-text">
+        <CapacitorNativeShell />
         {children}
       </body>
     </html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Bag Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#703700",
+                      "surface-container-high": "#e6e9e9",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#6e3815",
+                      "tertiary-container": "#8b4f2a",
+                      "surface-variant": "#e0e3e3",
+                      "tertiary-fixed-dim": "#ffb68d",
+                      "on-primary": "#ffffff",
+                      "outline": "#6f797a",
+                      "dark-surface": "#1c1b18",
+                      "on-secondary-container": "#633000",
+                      "tertiary-fixed": "#ffdbc9",
+                      "inverse-surface": "#2d3131",
+                      "inverse-primary": "#85d3da",
+                      "background": "#f7f6f2",
+                      "secondary-fixed": "#ffdcc5",
+                      "surface-container": "#ebeeee",
+                      "secondary": "#944b00",
+                      "outline-variant": "#bec8c9",
+                      "accent": "#da7101",
+                      "text": "#1a1a1a",
+                      "secondary-fixed-dim": "#ffb783",
+                      "surface-container-highest": "#e0e3e3",
+                      "on-surface": "#181c1d",
+                      "text-muted": "#6b6762",
+                      "dark-background": "#141412",
+                      "accent-hover": "#c55700",
+                      "surface-2": "#f3f0ec",
+                      "primary-fixed": "#a1f0f6",
+                      "surface-tint": "#01696f",
+                      "on-surface-variant": "#3f4949",
+                      "primary-highlight": "#d0e8e6",
+                      "secondary-container": "#fc8b27",
+                      "error-container": "#ffdad6",
+                      "error": "#c0392b",
+                      "dark-surface-2": "#252420",
+                      "primary-active": "#0f3638",
+                      "tertiary": "#6e3815",
+                      "divider": "#e2dfd9",
+                      "on-tertiary-container": "#ffceb5",
+                      "surface": "#ffffff",
+                      "primary-container": "#01696f",
+                      "primary-fixed-dim": "#85d3da",
+                      "on-background": "#181c1d",
+                      "on-primary-container": "#97e6ec",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-secondary-fixed": "#301400",
+                      "surface-bright": "#f7fafa",
+                      "dark-primary": "#4f98a3",
+                      "on-error-container": "#93000a",
+                      "text-faint": "#b5b2ad",
+                      "dark-accent": "#fdab43",
+                      "on-primary-fixed": "#002022",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-on-surface": "#eef1f1",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#331200",
+                      "accent-highlight": "#fde8cc",
+                      "success": "#437a22",
+                      "surface-dim": "#d7dbda",
+                      "primary": "#004f54",
+                      "primary-hover": "#0c4e54",
+                      "surface-container-low": "#f1f4f4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xxl": "48px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "page-margin-mobile": "16px",
+                      "xs": "4px",
+                      "page-margin-desktop": "32px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "display": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "h3": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "price-original": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "price": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "h2": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-caps": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "h1": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "display": [
+                              "2rem",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h3": [
+                              "1.125rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "0.9375rem",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "price-original": [
+                              "0.9375rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "price": [
+                              "1.375rem",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-sm": [
+                              "0.875rem",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h2": [
+                              "1.25rem",
+                              {
+                                      "lineHeight": "1.35",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-caps": [
+                              "0.75rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "1rem",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label": [
+                              "0.875rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h1": [
+                              "1.5rem",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-dark-background text-on-surface antialiased min-h-screen pb-[100px]">
+<nav class="flex justify-between items-center h-16 px-4 w-full fixed top-0 z-50 bg-[#f7f6f2] dark:bg-stone-950 font-['Plus_Jakarta_Sans'] font-bold tracking-tight docked full-width top-0 border-b border-stone-200 dark:border-stone-800 flat no shadows">
+<button class="w-10 h-10 flex items-center justify-center text-[#01696f] dark:text-[#02b3be] hover:bg-stone-100 dark:hover:bg-stone-900 rounded-full transition-transform duration-120 hover:scale-95">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="text-lg font-extrabold text-[#01696f] dark:text-[#02b3be]">Fresh As Ever</div>
+<button class="h-10 px-3 flex items-center justify-center text-[#01696f] dark:text-[#02b3be] hover:bg-stone-100 dark:hover:bg-stone-900 rounded-full font-label text-label transition-transform duration-120 hover:scale-95">
+            Colombo 07
+        </button>
+</nav>
+<main class="mt-16 max-w-3xl mx-auto w-full">
+<div class="relative w-full aspect-[4/3] sm:aspect-video bg-dark-surface-2">
+<img alt="Assorted artisanal pastries and breads in a display case with warm cinematic lighting" class="w-full h-full object-cover" data-alt="Assorted artisanal pastries and breads in a display case with warm cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOwy0WjzfZ1mNIK1sNGM4_e8vPe4oqV2zEBNwaG5A9CEhEvnetjLSBajG5GaOxkeENZAE_dh2uKGOdIe6DMPsgr_k8LISkPqJUr3caPx1y9ZmJp3XFC5WMMqqDSjZ0PE81FXOY8YqUrgEujQO-eE4fcxI3wp-66m54LAwu8DMgzHc-2q9kXE2vLa1vzWLnocvgrx-jU1UaIPP_UPTb3MFS6MHKfg_OQWDPzDLM8KuVPHq8m1aEG_EOvA4SQra2KNdvBP-FcH46IQA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-dark-background/80 via-transparent to-transparent"></div>
+</div>
+<div class="px-page-margin-mobile sm:px-page-margin-desktop py-lg space-y-xl">
+<header class="space-y-sm">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-dark-surface-2 text-text-faint rounded font-label-caps text-label-caps uppercase tracking-wider">Baked Goods</span>
+<span class="text-dark-accent font-label text-label flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="local_fire_department" data-weight="fill">local_fire_department</span>
+                        Only 2 left
+                    </span>
+</div>
+<h1 class="font-h1 text-h1 text-on-primary">End of Day Pastry Selection</h1>
+<p class="font-body-lg text-body-lg text-text-faint">Café Kumbuk • Colombo 07</p>
+</header>
+<section class="bg-dark-surface rounded-xl p-md shadow-[0_4px_24px_rgba(30,27,20,0.4)]">
+<h2 class="font-h3 text-h3 text-on-primary mb-md">Pickup Information</h2>
+<div class="space-y-md">
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-full bg-dark-surface-2 flex items-center justify-center text-primary-fixed-dim shrink-0">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="font-label text-label text-on-primary">Today</p>
+<p class="font-body-md text-body-md text-text-faint">4:30 PM - 5:30 PM</p>
+</div>
+</div>
+<div class="w-full h-[1px] bg-divider/10"></div>
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-full bg-dark-surface-2 flex items-center justify-center text-primary-fixed-dim shrink-0">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div class="flex-1">
+<p class="font-label text-label text-on-primary">Café Kumbuk</p>
+<p class="font-body-md text-body-md text-text-faint mb-sm">3/1 Thambiah Avenue, Independence Ave, Colombo 00700</p>
+<div class="w-full h-32 bg-dark-surface-2 rounded-lg overflow-hidden relative">
+<img alt="Map showing location of Cafe Kumbuk in Colombo" class="w-full h-full object-cover opacity-60 mix-blend-luminosity" data-alt="Minimalist dark mode map showing street layout of Colombo 07" data-location="Colombo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdiVei7yxlIGGa9ApmwXkxu8YD6zfoNd9IzMZvxx0yhU8BHvkkAAG7otZO028eDtNtfXsUu92ylVIFS3XFlR7PwsQyX2C6cvKwOw6X1w2MMj-DMGtrg1N6O8YbhIGQTpifNBEFbUWcT3JDCUv0N9qLt0zj1pP3XQOLnCbxJ3hoKyz-bdq79vvxGhfC6BFCZzYWV-2m1AhXr_7d6s23Eq1CLppwRKArY2ehZBQVp5JOEbB7sLYzGRmvXCBXKqyHBcARgvendClCoyU"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-dark-surface rounded-xl p-md shadow-[0_4px_24px_rgba(30,27,20,0.4)]">
+<h2 class="font-h3 text-h3 text-on-primary mb-sm">What you could get</h2>
+<p class="font-body-md text-body-md text-text-faint">
+                    A surprise mix of today's unsold baked goods. Could include croissants, muffins, sourdough slices, or savory tarts. Contents depend entirely on what is left at the end of the day.
+                </p>
+</section>
+</div>
+</main>
+<div class="fixed bottom-0 left-0 w-full z-50 bg-stone-900/95 backdrop-blur-md h-24 border-t border-stone-800 shadow-[0_-4px_24px_rgba(0,0,0,0.4)] pb-safe px-6 flex items-center justify-between gap-4">
+<div class="flex flex-col">
+<span class="font-price-original text-price-original text-text-faint line-through">LKR 3,500</span>
+<span class="font-price text-price text-dark-accent">LKR 1,200</span>
+</div>
+<button class="flex-1 max-w-[240px] h-12 bg-dark-primary text-on-primary rounded-lg font-label text-label hover:bg-primary-hover active:scale-97 transition-all duration-120 flex items-center justify-center gap-2">
+            Reserve Now
+        </button>
+</div>
+</body></html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Search - Empty State</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "text-faint": "#b5b2ad",
+                    "on-tertiary-fixed-variant": "#6e3815",
+                    "on-surface": "#181c1d",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#fc8b27",
+                    "primary-container": "#01696f",
+                    "text-muted": "#6b6762",
+                    "surface-variant": "#e0e3e3",
+                    "dark-primary": "#4f98a3",
+                    "surface-container-low": "#f1f4f4",
+                    "dark-surface": "#1c1b18",
+                    "primary-fixed": "#a1f0f6",
+                    "secondary": "#944b00",
+                    "on-tertiary-container": "#ffceb5",
+                    "outline-variant": "#bec8c9",
+                    "on-secondary": "#ffffff",
+                    "accent": "#da7101",
+                    "dark-background": "#141412",
+                    "dark-accent": "#fdab43",
+                    "accent-highlight": "#fde8cc",
+                    "secondary-fixed-dim": "#ffb783",
+                    "inverse-surface": "#2d3131",
+                    "surface-container": "#ebeeee",
+                    "on-primary-container": "#97e6ec",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#eef1f1",
+                    "surface": "#ffffff",
+                    "inverse-primary": "#85d3da",
+                    "surface-bright": "#f7fafa",
+                    "secondary-fixed": "#ffdcc5",
+                    "surface-tint": "#01696f",
+                    "primary": "#004f54",
+                    "dark-surface-2": "#252420",
+                    "on-primary-fixed-variant": "#004f54",
+                    "surface-container-high": "#e6e9e9",
+                    "surface-container-highest": "#e0e3e3",
+                    "success": "#437a22",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#703700",
+                    "accent-hover": "#c55700",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#3f4949",
+                    "on-secondary-container": "#633000",
+                    "on-tertiary-fixed": "#331200",
+                    "surface-dim": "#d7dbda",
+                    "surface-2": "#f3f0ec",
+                    "error-container": "#ffdad6",
+                    "text": "#1a1a1a",
+                    "primary-fixed-dim": "#85d3da",
+                    "divider": "#e2dfd9",
+                    "tertiary": "#6e3815",
+                    "primary-highlight": "#d0e8e6",
+                    "background": "#f7f6f2",
+                    "error": "#c0392b",
+                    "tertiary-container": "#8b4f2a",
+                    "primary-active": "#0f3638",
+                    "outline": "#6f797a",
+                    "tertiary-fixed": "#ffdbc9",
+                    "on-background": "#181c1d",
+                    "on-secondary-fixed": "#301400",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "primary-hover": "#0c4e54",
+                    "on-primary-fixed": "#002022"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "page-margin-desktop": "32px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "page-margin-mobile": "16px",
+                    "xxl": "48px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "label": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "h1": ["Plus Jakarta Sans"],
+                    "display": ["Plus Jakarta Sans"],
+                    "price-original": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "h3": ["Plus Jakarta Sans"],
+                    "h2": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "price": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label": ["0.875rem", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "body-lg": ["1rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-sm": ["0.875rem", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h1": ["1.5rem", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "display": ["2rem", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "price-original": ["0.9375rem", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "label-caps": ["0.75rem", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h3": ["1.125rem", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "h2": ["1.25rem", {"lineHeight": "1.35", "fontWeight": "600"}],
+                    "body-md": ["0.9375rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "price": ["1.375rem", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-[80px] font-sans antialiased">
+<!-- TopAppBar & Search Container -->
+<header class="docked full-width top-0 sticky border-b border-stone-200 dark:border-zinc-800 flat no shadows flex justify-between items-center w-full px-4 h-16 max-w-screen-xl mx-auto bg-[#f7f6f2] dark:bg-zinc-900 z-40">
+<div class="flex items-center gap-3 w-full">
+<span class="material-symbols-outlined text-[#01696f] dark:text-teal-400 active:scale-[0.97] duration-120">search</span>
+<!-- Search Input acting as Headline -->
+<input autofocus="" class="bg-transparent border-none focus:ring-0 w-full font-['Plus_Jakarta_Sans'] font-semibold text-lg text-[#01696f] tracking-tight placeholder-[#01696f]/50 p-0 outline-none" placeholder="Search for meals, bakeries..." type="text"/>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden shrink-0 ml-4 shadow-sm border border-divider/50">
+<img class="w-full h-full object-cover" data-alt="close up portrait of a young professional smiling warmly in natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVWoLQaAeqbTfrpjAA5vIiVFxjo5HRkFXdYYXBRHbZmxVxCOZtMVElQUCnQrw37r88AUut9agZDQUf8s19_rw_ChHMwnxHwtJylW9IkS3FGBdVuLM5T1lE_z7PMRyqol0AC4FfWp0uoVCR3NUrULDAh8CSgSUkDkpNTJqyugWPonuGlyUMsxFn0O4YebggwExFuLFEfho22C0k1U9Y5X_GBJMbo9MZCoM2JLFVMvxStlGLyDXxKzE7zW2kBa5B9Mp9XI1X71rP79I"/>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="max-w-screen-md mx-auto w-full">
+<!-- Recent Searches Section -->
+<section class="px-page-margin-mobile py-lg">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-h3 text-h3 text-on-surface">Recent Searches</h2>
+<button class="font-label text-label text-primary-container active:scale-[0.97] transition-transform duration-120 hover:text-primary-hover">Clear</button>
+</div>
+<ul class="flex flex-col gap-sm">
+<!-- History Item 1 -->
+<li class="flex items-center justify-between py-2 group active:scale-[0.98] transition-all duration-120 cursor-pointer rounded-lg hover:bg-surface-container-low px-2 -mx-2">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-text-muted text-[22px] font-light">history</span>
+<span class="font-body-md text-body-md text-on-surface">Artisan Sourdough</span>
+</div>
+<span class="material-symbols-outlined text-text-faint text-[18px] opacity-0 group-hover:opacity-100 transition-opacity">north_west</span>
+</li>
+<!-- History Item 2 -->
+<li class="flex items-center justify-between py-2 group active:scale-[0.98] transition-all duration-120 cursor-pointer rounded-lg hover:bg-surface-container-low px-2 -mx-2">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-text-muted text-[22px] font-light">history</span>
+<span class="font-body-md text-body-md text-on-surface">Colombo Cafe Corner</span>
+</div>
+<span class="material-symbols-outlined text-text-faint text-[18px] opacity-0 group-hover:opacity-100 transition-opacity">north_west</span>
+</li>
+<!-- History Item 3 -->
+<li class="flex items-center justify-between py-2 group active:scale-[0.98] transition-all duration-120 cursor-pointer rounded-lg hover:bg-surface-container-low px-2 -mx-2">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-text-muted text-[22px] font-light">history</span>
+<span class="font-body-md text-body-md text-on-surface">Vegan Pastries</span>
+</div>
+<span class="material-symbols-outlined text-text-faint text-[18px] opacity-0 group-hover:opacity-100 transition-opacity">north_west</span>
+</li>
+</ul>
+</section>
+<!-- Divider -->
+<div class="px-page-margin-mobile">
+<div class="h-px w-full bg-divider/60"></div>
+</div>
+<!-- Popular Categories Section -->
+<section class="px-page-margin-mobile py-lg">
+<h2 class="font-h3 text-h3 text-on-surface mb-md">Popular Categories</h2>
+<div class="grid grid-cols-2 gap-sm">
+<!-- Category 1 -->
+<div class="flex items-center gap-3 bg-surface p-2.5 rounded-xl shadow-[0_2px_12px_rgba(30,27,20,0.03)] border border-divider/40 active:scale-[0.97] transition-all duration-120 cursor-pointer hover:border-primary-container/30">
+<img class="w-12 h-12 rounded-full object-cover shadow-sm bg-surface-variant shrink-0" data-alt="freshly baked golden croissants displayed beautifully on a wooden surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEq5_1lTSCkTSkK35MpLfW5w_1QI5p-Y1J5czoptEpPloisz49pynMvs87L46SATEb4gf5L5r2omR7Og2R6xHYIVMNSor8U5ZN2dloKRatVXPUFr2N1EukDIa-vj4JihkqAEi7ujIg3wTnHJ4YWba0iAFkOHyTminJTZkTBFwDbokkngqsRljNqSyTws6ch1VCMOVsl1p39HjlMXgcUcLi3DzxwCvMFovX1Q-8vri1RseLSuRRExhDh6X1pmaf9UYkJtEF6_Rfar8"/>
+<span class="font-label text-label text-on-surface line-clamp-1">Bakeries</span>
+</div>
+<!-- Category 2 -->
+<div class="flex items-center gap-3 bg-surface p-2.5 rounded-xl shadow-[0_2px_12px_rgba(30,27,20,0.03)] border border-divider/40 active:scale-[0.97] transition-all duration-120 cursor-pointer hover:border-primary-container/30">
+<img class="w-12 h-12 rounded-full object-cover shadow-sm bg-surface-variant shrink-0" data-alt="healthy fresh green salad bowl with mixed vegetables and seeds" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgUdq88ag8ZQNOhjY9FOnhqoQehSd_NcdUq3copfH0XxwSyAcg5b5Fxs8gv_fETOSd8yTtXYUGh6Dr086LB6OMujU8FEbKzMv5TViMX8GQ4AQP-KXxulzGZGF7Mscd6MbWcqzkmU8-gczBIHihcEAunAvPtsqCHsFV6PWM8u9axCQLlQllpkoXOwa8LWSol2OQo4Tm7Y8U6JaAMaXGZIVt-42jPGt7GL7DZzsOcLcp_YM8PP9HsHN0RYnJVpRyezjgwUrTBoz1hHU"/>
+<span class="font-label text-label text-on-surface line-clamp-1">Healthy</span>
+</div>
+<!-- Category 3 -->
+<div class="flex items-center gap-3 bg-surface p-2.5 rounded-xl shadow-[0_2px_12px_rgba(30,27,20,0.03)] border border-divider/40 active:scale-[0.97] transition-all duration-120 cursor-pointer hover:border-primary-container/30">
+<img class="w-12 h-12 rounded-full object-cover shadow-sm bg-surface-variant shrink-0" data-alt="close up of a juicy beef burger with melted cheese and fresh lettuce" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDy6Es9m_qg9CX9i-5HKPrTUMTbKlIcLY2ZRQ53la9oVrd_hhEUqHfOod-ACyUZYE69MO7P-q238O93zuSZbbPTHR2AdbAT72tpLtohePjBTWI19YnfkPxeLzL1qKFTGq9r5g_10T0Vz9EcgI-ZenrHp-eQnx2fXZCHYlGxiCMb3Zmh31dNdsfQYsLyEem1R7B7tJL2u9IP_K0meZTQcyXTLpuEWcejJaXJW71dRz0B-bEfoI5YHPnMF8isyJeHouJ0tHxdFKCwYM"/>
+<span class="font-label text-label text-on-surface line-clamp-1">Fast Food</span>
+</div>
+<!-- Category 4 -->
+<div class="flex items-center gap-3 bg-surface p-2.5 rounded-xl shadow-[0_2px_12px_rgba(30,27,20,0.03)] border border-divider/40 active:scale-[0.97] transition-all duration-120 cursor-pointer hover:border-primary-container/30">
+<img class="w-12 h-12 rounded-full object-cover shadow-sm bg-surface-variant shrink-0" data-alt="perfectly poured latte art in a ceramic cup on a wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgyS5HmqcEONgZB4C2u1Ln0SkA9doX2ItfYElKYoInk1GtFZed9omkLiFXE9ZLhNoXm80XoMCf5lCNzfcUK_lmvL0U1bUllfknXCJdqI-ptSX-yBhk8g9eFZkkmw6PvYgGR-BHk3RzJ4LCOkXt_9DySJP2zTgTU8xs9KOHiIPqfdZVSRFEI9XprGHpSIdaUnP6RAbajU6pwfFTgkLk24IWvYBR8HeQ-j3mu3xKvLoQSAYZWtvdpEH6lM9bgdpbto-HMJna8ZDXUM0"/>
+<span class="font-label text-label text-on-surface line-clamp-1">Cafes</span>
+</div>
+<!-- Category 5 -->
+<div class="flex items-center gap-3 bg-surface p-2.5 rounded-xl shadow-[0_2px_12px_rgba(30,27,20,0.03)] border border-divider/40 active:scale-[0.97] transition-all duration-120 cursor-pointer hover:border-primary-container/30">
+<img class="w-12 h-12 rounded-full object-cover shadow-sm bg-surface-variant shrink-0" data-alt="colorful assorted fresh sushi rolls beautifully plated on dark slate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHP6BtGQlerHLlkl4b9loiAlDkJlaHFbcmoj4YnEt0quHMApIviaHrhp165VdUthgTKcqPCQ3LPBtzS3qbiYDXzb5sPwoDv4iLQ8xSvuij8jBW1Cg3IShocSxaWs4irnnH3-rqWOngtxhSJRyIqw6CE3YgjAml8_HPXd6oQI79CBwWWinTZzVIwdtNJI2oYT-vlxcMTclpaqbYOrUQpy_VqYi6rekTBwl_OTnq2jvzss_3yIWqQpwLH42SGUfXuSN0hMobO1lUO70"/>
+<span class="font-label text-label text-on-surface line-clamp-1">Sushi</span>
+</div>
+<!-- Category 6 -->
+<div class="flex items-center gap-3 bg-surface p-2.5 rounded-xl shadow-[0_2px_12px_rgba(30,27,20,0.03)] border border-divider/40 active:scale-[0.97] transition-all duration-120 cursor-pointer hover:border-primary-container/30">
+<img class="w-12 h-12 rounded-full object-cover shadow-sm bg-surface-variant shrink-0" data-alt="decadent chocolate cake slice with rich dark chocolate ganache drip" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzbCxp42UkK_t8I9N9-MmlVb_rEygXalevhw2Sn4qqzYz85c_HP2B27_uK01NaCV7rGeanaHlJMQkDTwSsFqjbkuu5aVF85TIB8kHmwqROR9xe2cvpR_0CioNXtc8eA70BTcIxKF-D308GGtaNeqw7J_W68xHJ8QR_WcbLXNcOVLRM2ljOtEFdHyQ3ScAppllb6AGMAQnDHWMKSgwUCI7nvEPcV6har6ar6I_i40e14xRNldEcaiV07AxUNKfOG6oulYMO54PlRpA"/>
+<span class="font-label text-label text-on-surface line-clamp-1">Desserts</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 h-16 border-t border-t border-stone-200 dark:border-zinc-800 shadow-[0_-4px_20px_rgba(30,27,20,0.04)] fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-safe bg-white dark:bg-zinc-950 md:hidden">
+<!-- Discover (Active) -->
+<button class="flex flex-col items-center justify-center text-[#01696f] dark:text-teal-400 p-2 active:scale-[0.97] transition-all duration-120 w-16">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-wider text-[#01696f] font-black mt-1">Discover</span>
+</button>
+<!-- Rescue Bags (Inactive) -->
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-zinc-500 p-2 hover:bg-stone-50 dark:hover:bg-zinc-900 active:scale-[0.97] transition-all duration-120 rounded-lg w-16">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-wider mt-1">Rescue Bags</span>
+</button>
+<!-- Orders (Inactive) -->
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-zinc-500 p-2 hover:bg-stone-50 dark:hover:bg-zinc-900 active:scale-[0.97] transition-all duration-120 rounded-lg w-16">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-wider mt-1">Orders</span>
+</button>
+<!-- Profile (Inactive) -->
+<button class="flex flex-col items-center justify-center text-stone-400 dark:text-zinc-500 p-2 hover:bg-stone-50 dark:hover:bg-zinc-900 active:scale-[0.97] transition-all duration-120 rounded-lg w-16">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-wider mt-1">Profile</span>
+</button>
+</nav>
+</body></html>

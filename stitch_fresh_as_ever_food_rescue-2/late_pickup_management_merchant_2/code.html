@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Late Pickup Alerts - Merchant Operations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#633000",
+                      "text-muted": "#6b6762",
+                      "text-faint": "#b5b2ad",
+                      "inverse-surface": "#2d3131",
+                      "surface-container": "#ebeeee",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-2": "#f3f0ec",
+                      "accent-hover": "#c55700",
+                      "primary-hover": "#0c4e54",
+                      "primary-container": "#01696f",
+                      "on-secondary-fixed": "#301400",
+                      "error": "#c0392b",
+                      "on-surface-variant": "#3f4949",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#8b4f2a",
+                      "surface-dim": "#d7dbda",
+                      "primary-highlight": "#d0e8e6",
+                      "dark-surface": "#1c1b18",
+                      "on-tertiary": "#ffffff",
+                      "dark-background": "#141412",
+                      "inverse-on-surface": "#eef1f1",
+                      "surface-container-low": "#f1f4f4",
+                      "primary-fixed-dim": "#85d3da",
+                      "surface-container-highest": "#e0e3e3",
+                      "secondary": "#944b00",
+                      "primary": "#004f54",
+                      "secondary-fixed-dim": "#ffb783",
+                      "on-primary-container": "#97e6ec",
+                      "dark-surface-2": "#252420",
+                      "tertiary": "#6e3815",
+                      "on-primary": "#ffffff",
+                      "primary-active": "#0f3638",
+                      "accent": "#da7101",
+                      "secondary-container": "#fc8b27",
+                      "primary-fixed": "#a1f0f6",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#703700",
+                      "on-tertiary-container": "#ffceb5",
+                      "dark-accent": "#fdab43",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-background": "#181c1d",
+                      "surface-container-high": "#e6e9e9",
+                      "secondary-fixed": "#ffdcc5",
+                      "on-secondary": "#ffffff",
+                      "accent-highlight": "#fde8cc",
+                      "on-tertiary-fixed-variant": "#6e3815",
+                      "surface-tint": "#01696f",
+                      "background": "#f7f6f2",
+                      "text": "#1a1a1a",
+                      "surface-bright": "#f7fafa",
+                      "on-error": "#ffffff",
+                      "divider": "#e2dfd9",
+                      "surface-variant": "#e0e3e3",
+                      "on-tertiary-fixed": "#331200",
+                      "success": "#437a22",
+                      "tertiary-fixed-dim": "#ffb68d",
+                      "outline-variant": "#bec8c9",
+                      "dark-primary": "#4f98a3",
+                      "tertiary-fixed": "#ffdbc9",
+                      "surface": "#ffffff",
+                      "outline": "#6f797a",
+                      "on-surface": "#181c1d",
+                      "inverse-primary": "#85d3da",
+                      "on-primary-fixed": "#002022"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "page-margin-mobile": "16px",
+                      "md": "16px",
+                      "xxl": "48px",
+                      "xs": "4px",
+                      "page-margin-desktop": "32px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "display": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "h2": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "price": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "h1": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-caps": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "h3": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "price-original": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "display": [
+                              "2rem",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h2": [
+                              "1.25rem",
+                              {
+                                      "lineHeight": "1.35",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label": [
+                              "0.875rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-sm": [
+                              "0.875rem",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "0.9375rem",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "price": [
+                              "1.375rem",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h1": [
+                              "1.5rem",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "1rem",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "0.75rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h3": [
+                              "1.125rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "price-original": [
+                              "0.9375rem",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen pb-20 md:pb-0 md:pl-60 pt-16 md:pt-0">
+<!-- TopAppBar (Mobile) / Also active on desktop but structural rules differ -->
+<header class="fixed top-0 left-0 w-full z-40 flex items-center justify-between px-4 h-16 bg-[#f7f6f2] dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 md:hidden transition-all duration-120 active:scale-95">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-sm">storefront</span>
+</div>
+<h1 class="font-['Plus_Jakarta_Sans'] font-semibold tracking-tight text-[#01696f] dark:text-teal-400">Merchant Operations</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-stone-100 dark:hover:bg-stone-800 text-[#01696f] dark:text-teal-400">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full py-6 z-50 bg-white dark:bg-stone-950 border-r border-stone-100 dark:border-stone-800 shadow-sm dark:shadow-none docked left-0 h-full w-60 rounded-none transition-all duration-120 ease-in-out">
+<img alt="Fresh As Ever Logo" class="h-8 w-auto mb-8 px-4 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uie60JdkzC900B8W6Lq2tvLovHTvtcRuIWGVDUAlqSD5xMuoBKopz9pTUoK3n2SYBCuTf0VXarGG4NLD031Vafgnl7lxPbdQqPHAFv3ecBEO28tcGBPcV_GrQWjS0-oumHN4Kim9wFJ6i-EO84YkjK0dALtFlrl_0bVjHeWrj7vN1PXXrztAd767sD5bqFr5xx5Ntt3qPBmfTjNH038oWQTJnEKh7miF99TY487BnyhyZrW5RGE_A5bkleTXJhZnP4YDs_XclcD8Q"/>
+<ul class="flex flex-col w-full font-['Plus_Jakarta_Sans'] text-sm font-medium">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:text-stone-900 hover:bg-stone-50 dark:hover:bg-stone-900" href="#">
+<span class="material-symbols-outlined" data-icon="receipt">receipt</span>
+                    Live Orders
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:text-stone-900 hover:bg-stone-50 dark:hover:bg-stone-900" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+                    Dispute Center
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-[#01696f] bg-teal-50/50 dark:bg-teal-900/20 border-l-4 border-[#01696f]" href="#">
+<span class="material-symbols-outlined" data-icon="alarm_on">alarm_on</span>
+                    Pickup Alerts
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:text-stone-900 hover:bg-stone-50 dark:hover:bg-stone-900" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                    Store History
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="p-page-margin-mobile md:p-page-margin-desktop max-w-5xl mx-auto">
+<!-- Header Section -->
+<div class="mb-lg">
+<div class="flex items-center justify-between mb-sm">
+<div>
+<h2 class="font-h1 text-h1 text-on-surface">Late Pickups</h2>
+<p class="font-body-md text-body-md text-text-muted mt-1">Orders past their scheduled collection window.</p>
+</div>
+<div class="bg-surface px-4 py-2 rounded-lg shadow-[0_2px_8px_rgba(30,27,20,0.04)] border border-divider flex flex-col items-center">
+<span class="font-h2 text-h2 text-accent">3</span>
+<span class="font-label-caps text-label-caps text-text-muted">URGENT</span>
+</div>
+</div>
+<!-- Filter/Status Bar -->
+<div class="flex gap-2 overflow-x-auto pb-2 -mx-page-margin-mobile px-page-margin-mobile md:mx-0 md:px-0">
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-accent-highlight text-accent-hover font-label text-label border border-accent/20 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                    Critical (&gt;30m)
+                </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-surface text-text-muted font-label text-label border border-divider hover:bg-surface-container transition-colors">
+                    Late (15-30m)
+                </button>
+</div>
+</div>
+<!-- Alerts Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Alert Card 1 - Extreme Late -->
+<article class="bg-surface rounded-xl shadow-[0_4px_16px_rgba(30,27,20,0.06)] overflow-hidden flex flex-col border-l-4 border-accent">
+<div class="p-md flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="bg-accent text-on-primary px-2 py-1 rounded font-label-caps text-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                                45m LATE
+                            </span>
+<span class="font-label text-label text-text-muted">Code: A82-F9</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted">Due 14:30</span>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<img alt="Fresh salad bowl" class="w-16 h-16 rounded-md object-cover bg-surface-container" data-alt="close up of fresh vibrant grain bowl with avocado and greens in natural window light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1Wa4rDVp3QkAxKaQiQ9NDFws2Q5A6ISaii24jlHdnU6tQ6NEIlyamplhhB9WBro-IjoHbvYxJ0iGiTrxR2N8BzkjLEDL2q7MsrOUxXoURhGbTZetGQWKR9FNsi22W1P2KieYgP8Xl_-ML7kt9_K5w_vQ_hV2-eVlU7zkNtuRclSRZ5b9s-0GV27CfQJHAnR_1HUvCW7exIx5boMFSc0AJXjgnTNmlblz8XvyiJIQbr5r847AoRMhX_9A4UOYtPiCIrCYnxYHUaxc"/>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Surprise Bag - Veg</h3>
+<p class="font-body-md text-body-md text-text-muted mt-0.5">Customer: Nimal P.</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-bright border-t border-divider p-md flex gap-sm">
+<button class="flex-1 flex items-center justify-center gap-2 h-12 rounded-lg border-1.5 border-primary text-primary font-label text-label hover:bg-primary-highlight transition-all active:scale-[0.97]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">call</span>
+                        Call Customer
+                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 h-12 rounded-lg bg-surface-container text-error font-label text-label hover:bg-error-container transition-all active:scale-[0.97]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">delete</span>
+                        Cancel &amp; Waste
+                    </button>
+</div>
+</article>
+<!-- Alert Card 2 - Moderate Late -->
+<article class="bg-surface rounded-xl shadow-[0_4px_16px_rgba(30,27,20,0.06)] overflow-hidden flex flex-col border-l-4 border-accent">
+<div class="p-md flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="bg-accent text-on-primary px-2 py-1 rounded font-label-caps text-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                                32m LATE
+                            </span>
+<span class="font-label text-label text-text-muted">Code: K44-P2</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted">Due 14:45</span>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<img alt="Bakery items" class="w-16 h-16 rounded-md object-cover bg-surface-container" data-alt="rustic sourdough artisan bread loaf on wooden cutting board with warm cafe lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK8JYz6jm4WngvpFBu4R0Qm9nrjKi3DYvXUiNL329Fs35rT4-OWHKrossJLyw1qpaYOB_IwbiN-Z741KbGCK_tDwvBuwwp6XpT5VLuTo5cWp8w7Q_yxqaZ1aGBOrH3wTZMalAQ3y5MezXQ-_DUq29pXSDUaezJl-VSfG1aeYerVkUDG7RPWP6ptF39hf7sAguCtcwiiFEuqMtua7LKy2Pc911MBGrArBLZJ3i5ENFpZ5KjSxkWbtZBpEIN4u5xTgbuz--_JDSXP-k"/>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Bakery Mix Box</h3>
+<p class="font-body-md text-body-md text-text-muted mt-0.5">Customer: Sarah W.</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-bright border-t border-divider p-md flex gap-sm">
+<button class="flex-1 flex items-center justify-center gap-2 h-12 rounded-lg border-1.5 border-primary text-primary font-label text-label hover:bg-primary-highlight transition-all active:scale-[0.97]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">call</span>
+                        Call Customer
+                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 h-12 rounded-lg bg-surface-container text-error font-label text-label hover:bg-error-container transition-all active:scale-[0.97]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">delete</span>
+                        Cancel &amp; Waste
+                    </button>
+</div>
+</article>
+<!-- Alert Card 3 - Just Late -->
+<article class="bg-surface rounded-xl shadow-[0_4px_16px_rgba(30,27,20,0.06)] overflow-hidden flex flex-col border-l-4 border-secondary-container">
+<div class="p-md flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="bg-secondary-container text-on-secondary px-2 py-1 rounded font-label-caps text-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                18m LATE
+                            </span>
+<span class="font-label text-label text-text-muted">Code: M11-X9</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted">Due 15:00</span>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<img alt="Rice and Curry" class="w-16 h-16 rounded-md object-cover bg-surface-container" data-alt="traditional sri lankan rice and curry meal wrapped in banana leaf overhead shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP2gHwcwGPkWITZpfzJUT1Xbi4mcgCY1CU_o6LCeB-jTPo1viFqh_kTMwDRKeP1Wmu2l6ICExOWMMndnh4NcgYOmI0XaWG19I7zom_cANvO0bFfZ_pVb2XZVEj8qswrLyKi29_FpZ4phIyLrYMad-DUo1f7ad9oZ90jhJFU3xeaRXr28TlYvA2Z94Inw0VddV_BPyjonvVkVzvj3iBkkoh_Lfws82LVMHgzn_yLilKzGqf-lgNBxbOm_UGwl-Bgj7w_CI6OFXTzbM"/>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Lunch Pack - Chicken</h3>
+<p class="font-body-md text-body-md text-text-muted mt-0.5">Customer: Amila K.</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-bright border-t border-divider p-md flex gap-sm">
+<button class="flex-1 flex items-center justify-center gap-2 h-12 rounded-lg border-1.5 border-primary text-primary font-label text-label hover:bg-primary-highlight transition-all active:scale-[0.97]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">call</span>
+                        Call Customer
+                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 h-12 rounded-lg bg-surface-container text-error font-label text-label hover:bg-error-container transition-all active:scale-[0.97]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">delete</span>
+                        Cancel &amp; Waste
+                    </button>
+</div>
+</article>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 h-16 md:hidden bg-white/90 dark:bg-stone-950/90 backdrop-blur-md border-t border-stone-200 dark:border-stone-800 shadow-[0_-4px_12px_rgba(30,27,20,0.04)] docked full-width bottom-0 rounded-t-xl transition-transform duration-120 active:scale-[0.97]">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 py-2 active:bg-stone-50 dark:active:bg-stone-900 w-full font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="shopping_bag">shopping_bag</span>
+            Orders
+        </a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 py-2 active:bg-stone-50 dark:active:bg-stone-900 w-full font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="report_problem">report_problem</span>
+            Disputes
+        </a>
+<a class="flex flex-col items-center justify-center text-[#01696f] py-2 active:bg-stone-50 dark:active:bg-stone-900 w-full font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="schedule" style="font-variation-settings: 'FILL' 1;">schedule</span>
+            Late
+        </a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 py-2 active:bg-stone-50 dark:active:bg-stone-900 w-full font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="list_alt">list_alt</span>
+            History
+        </a>
+</nav>
+</body></html>

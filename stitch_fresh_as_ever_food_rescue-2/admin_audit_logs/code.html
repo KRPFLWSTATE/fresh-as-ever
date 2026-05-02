@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Admin Audit Logs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2d3131",
+                        "dark-background": "#141412",
+                        "on-secondary-fixed": "#301400",
+                        "inverse-on-surface": "#eef1f1",
+                        "dark-primary": "#4f98a3",
+                        "text": "#1a1a1a",
+                        "surface-container-high": "#e6e9e9",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-error": "#ffffff",
+                        "primary-active": "#0f3638",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "on-error-container": "#93000a",
+                        "text-faint": "#b5b2ad",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#85d3da",
+                        "divider": "#e2dfd9",
+                        "tertiary-container": "#8b4f2a",
+                        "surface-dim": "#d7dbda",
+                        "on-secondary-container": "#633000",
+                        "error": "#c0392b",
+                        "on-surface-variant": "#3f4949",
+                        "secondary-fixed-dim": "#ffb783",
+                        "outline": "#6f797a",
+                        "surface-container": "#ebeeee",
+                        "surface-container-low": "#f1f4f4",
+                        "error-container": "#ffdad6",
+                        "primary": "#004f54",
+                        "dark-accent": "#fdab43",
+                        "dark-surface": "#1c1b18",
+                        "accent": "#da7101",
+                        "surface-variant": "#e0e3e3",
+                        "primary-hover": "#0c4e54",
+                        "primary-fixed-dim": "#85d3da",
+                        "accent-highlight": "#fde8cc",
+                        "tertiary": "#6e3815",
+                        "surface-2": "#f3f0ec",
+                        "on-tertiary-fixed": "#331200",
+                        "on-primary-container": "#97e6ec",
+                        "secondary-container": "#fc8b27",
+                        "surface-bright": "#f7fafa",
+                        "on-tertiary-container": "#ffceb5",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "primary-container": "#01696f",
+                        "dark-surface-2": "#252420",
+                        "secondary-fixed": "#ffdcc5",
+                        "primary-highlight": "#d0e8e6",
+                        "on-primary-fixed": "#002022",
+                        "background": "#f7f6f2",
+                        "primary-fixed": "#a1f0f6",
+                        "surface-tint": "#01696f",
+                        "on-secondary-fixed-variant": "#703700",
+                        "on-background": "#181c1d",
+                        "on-surface": "#181c1d",
+                        "success": "#437a22",
+                        "text-muted": "#6b6762",
+                        "accent-hover": "#c55700",
+                        "outline-variant": "#bec8c9",
+                        "secondary": "#944b00",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#ffffff",
+                        "surface-container-highest": "#e0e3e3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "page-margin-mobile": "16px",
+                        "page-margin-desktop": "32px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "price-original": ["Plus Jakarta Sans"],
+                        "price": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #f7f6f2; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col md:flex-row">
+<!-- Sidebar Navigation (Desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 w-60 border-r border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 font-['Plus_Jakarta_Sans'] text-sm font-medium tracking-tight">
+<div class="p-6 border-b border-stone-200 dark:border-stone-800 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-lg">
+                A
+            </div>
+<div class="flex flex-col">
+<span class="text-lg font-bold text-teal-800 dark:text-teal-200">Admin Console</span>
+<span class="text-xs text-stone-500">Food Rescue HQ</span>
+</div>
+</div>
+<ul class="flex flex-col flex-1 py-4">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors scale-97 duration-120ms ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-teal-700 dark:text-teal-300 bg-teal-50/50 dark:bg-teal-900/20 border-l-[3px] border-teal-600 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors scale-97 duration-120ms ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span>Audit Logs</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors scale-97 duration-120ms ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Payouts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors scale-97 duration-120ms ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span>Merchants</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors scale-97 duration-120ms ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-60 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-6 py-4 sticky top-0 z-30 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-800">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-teal-700 dark:text-teal-400 hover:opacity-80 scale-97 duration-120ms">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] text-xl font-bold tracking-tight text-teal-700 dark:text-teal-400">Operational Overview</h1>
+</div>
+<div class="flex items-center">
+<img alt="Admin Avatar" class="w-8 h-8 rounded-full border border-stone-200" data-alt="close-up portrait of a professional male in a light shirt, soft lighting, neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBalI_CzKV4v9vxbM4KEvFkDVZwN7YbeF4rkY9eFsx9VvzmOQMgMwR7HWpm_90biTfZXUUgSMJbShEqZWvbhvisXlChxidDB4KZTrS5kfMhpnr19-spIXDYhSujW-ra1-dHUETJGQREcZQRz0MmUefcuFUCPnU5OZnWon3f0DE12X6RTqye5jOH-k78MdRQP4GBs1IvBq7KlFlmg9g7pWFWDY4PqWPsGdublkN7ONEgZiRV_kUEcSnNCjMHEq-kfX-No35EnUN0eng"/>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-page-margin-mobile md:p-page-margin-desktop flex-1">
+<div class="mb-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div>
+<h2 class="font-h1 text-h1 text-on-surface">Audit Logs</h2>
+<p class="font-body-sm text-body-sm text-text-muted mt-1">Detailed history of system operations and administrative actions.</p>
+</div>
+<!-- Filters/Search (Simplified representation) -->
+<div class="flex gap-2 w-full sm:w-auto">
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-sm" data-icon="search">search</span>
+<input class="w-full pl-9 pr-4 py-2 bg-surface border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm focus:border-primary focus:ring-2 focus:ring-primary-highlight outline-none transition-shadow" placeholder="Search logs..." type="text"/>
+</div>
+<button class="px-4 py-2 border border-outline-variant rounded-DEFAULT bg-surface text-on-surface font-label text-label flex items-center gap-2 hover:bg-surface-2 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                        Filter
+                    </button>
+</div>
+</div>
+<!-- High-Density Log List (Glassmorphism inspired card container) -->
+<div class="bg-surface rounded-lg shadow-[0_4px_20px_rgba(30,27,20,0.03)] border border-divider overflow-hidden">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 p-4 border-b border-divider bg-surface-bright font-label-caps text-label-caps text-text-muted uppercase tracking-wider">
+<div class="col-span-1 hidden sm:block">Type</div>
+<div class="col-span-8 sm:col-span-5">Action / Details</div>
+<div class="col-span-2 hidden md:block">User</div>
+<div class="col-span-4 sm:col-span-3">Timestamp</div>
+<div class="col-span-12 sm:col-span-1 text-right"></div>
+</div>
+<!-- Log Entries -->
+<div class="flex flex-col">
+<!-- Entry 1: Merchant Approval -->
+<div class="grid grid-cols-12 gap-4 p-4 border-b border-divider hover:bg-surface-bright transition-colors items-center">
+<div class="col-span-1 hidden sm:flex justify-center">
+<div class="w-8 h-8 rounded-full bg-primary-highlight flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+<div class="col-span-8 sm:col-span-5 flex flex-col">
+<span class="font-label text-label text-on-surface">Merchant Approved</span>
+<span class="font-body-sm text-body-sm text-text-muted truncate">Colombo Bakehouse application approved.</span>
+</div>
+<div class="col-span-2 hidden md:flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center font-label-caps text-[10px] text-on-surface-variant">SD</div>
+<span class="font-body-sm text-body-sm text-on-surface">Sarah D.</span>
+</div>
+<div class="col-span-4 sm:col-span-3 font-body-sm text-body-sm text-text-muted flex flex-col">
+<span>Today, 14:32</span>
+</div>
+<div class="col-span-12 sm:col-span-1 text-right mt-2 sm:mt-0">
+<a class="font-label text-label text-primary hover:text-primary-hover transition-colors" href="#">View</a>
+</div>
+</div>
+<!-- Entry 2: Bag Creation -->
+<div class="grid grid-cols-12 gap-4 p-4 border-b border-divider hover:bg-surface-bright transition-colors items-center">
+<div class="col-span-1 hidden sm:flex justify-center">
+<div class="w-8 h-8 rounded-full bg-surface-2 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="add_circle">add_circle</span>
+</div>
+</div>
+<div class="col-span-8 sm:col-span-5 flex flex-col">
+<span class="font-label text-label text-on-surface">Rescue Bag Created</span>
+<span class="font-body-sm text-body-sm text-text-muted truncate">System auto-generated 5 'Pastry Surprise' bags.</span>
+</div>
+<div class="col-span-2 hidden md:flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center font-label-caps text-[10px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[12px]" data-icon="smart_toy">smart_toy</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface">System</span>
+</div>
+<div class="col-span-4 sm:col-span-3 font-body-sm text-body-sm text-text-muted flex flex-col">
+<span>Today, 10:00</span>
+</div>
+<div class="col-span-12 sm:col-span-1 text-right mt-2 sm:mt-0">
+<a class="font-label text-label text-primary hover:text-primary-hover transition-colors" href="#">View</a>
+</div>
+</div>
+<!-- Entry 3: Deletion -->
+<div class="grid grid-cols-12 gap-4 p-4 border-b border-divider hover:bg-surface-bright transition-colors items-center">
+<div class="col-span-1 hidden sm:flex justify-center">
+<div class="w-8 h-8 rounded-full bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</div>
+</div>
+<div class="col-span-8 sm:col-span-5 flex flex-col">
+<span class="font-label text-label text-on-surface">User Account Suspended</span>
+<span class="font-body-sm text-body-sm text-text-muted truncate">Account ID #49281 suspended due to TOS violation.</span>
+</div>
+<div class="col-span-2 hidden md:flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center font-label-caps text-[10px] text-on-surface-variant">MR</div>
+<span class="font-body-sm text-body-sm text-on-surface">Mike R.</span>
+</div>
+<div class="col-span-4 sm:col-span-3 font-body-sm text-body-sm text-text-muted flex flex-col">
+<span>Yesterday, 16:45</span>
+</div>
+<div class="col-span-12 sm:col-span-1 text-right mt-2 sm:mt-0">
+<a class="font-label text-label text-primary hover:text-primary-hover transition-colors" href="#">View</a>
+</div>
+</div>
+<!-- Entry 4: Payout Processed -->
+<div class="grid grid-cols-12 gap-4 p-4 hover:bg-surface-bright transition-colors items-center">
+<div class="col-span-1 hidden sm:flex justify-center">
+<div class="w-8 h-8 rounded-full bg-[#e8f5e9] flex items-center justify-center text-success">
+<span class="material-symbols-outlined text-sm" data-icon="payments">payments</span>
+</div>
+</div>
+<div class="col-span-8 sm:col-span-5 flex flex-col">
+<span class="font-label text-label text-on-surface">Batch Payout Initiated</span>
+<span class="font-body-sm text-body-sm text-text-muted truncate">Weekly merchant payouts processed. Total: LKR 145,000.</span>
+</div>
+<div class="col-span-2 hidden md:flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center font-label-caps text-[10px] text-on-surface-variant">SD</div>
+<span class="font-body-sm text-body-sm text-on-surface">Sarah D.</span>
+</div>
+<div class="col-span-4 sm:col-span-3 font-body-sm text-body-sm text-text-muted flex flex-col">
+<span>Yesterday, 09:15</span>
+</div>
+<div class="col-span-12 sm:col-span-1 text-right mt-2 sm:mt-0">
+<a class="font-label text-label text-primary hover:text-primary-hover transition-colors" href="#">View</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-6 flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-text-muted">Showing 1-4 of 1,248 entries</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-outline-variant rounded-DEFAULT text-text-muted hover:bg-surface disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="px-3 py-1 border border-outline-variant rounded-DEFAULT text-on-surface hover:bg-surface transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-16 bg-white/90 dark:bg-stone-900/90 backdrop-blur-lg rounded-t-2xl border-t border-stone-100 dark:border-stone-800 shadow-[0_-4px_20px_rgba(30,27,20,0.04)] font-['Plus_Jakarta_Sans'] text-[11px] font-semibold">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 py-2 active:bg-stone-50 dark:active:bg-stone-800 scale-95 duration-120ms" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-teal-700 dark:text-teal-400 py-2 active:bg-stone-50 dark:active:bg-stone-800 scale-95 duration-120ms" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+<span>Logs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 py-2 active:bg-stone-50 dark:active:bg-stone-800 scale-95 duration-120ms" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Payouts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 py-2 active:bg-stone-50 dark:active:bg-stone-800 scale-95 duration-120ms" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="more_horiz">more_horiz</span>
+<span>More</span>
+</a>
+</nav>
+</body></html>

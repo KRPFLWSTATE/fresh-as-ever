@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Finance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#ffceb5",
+                    "surface-dim": "#d7dbda",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#331200",
+                    "error": "#c0392b",
+                    "surface-container-low": "#f1f4f4",
+                    "outline": "#6f797a",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#ffb68d",
+                    "text-faint": "#b5b2ad",
+                    "dark-surface": "#1c1b18",
+                    "primary-hover": "#0c4e54",
+                    "on-primary-container": "#97e6ec",
+                    "secondary-container": "#fc8b27",
+                    "inverse-primary": "#85d3da",
+                    "secondary": "#944b00",
+                    "surface-bright": "#f7fafa",
+                    "on-tertiary-fixed-variant": "#6e3815",
+                    "on-error-container": "#93000a",
+                    "on-background": "#181c1d",
+                    "divider": "#e2dfd9",
+                    "inverse-surface": "#2d3131",
+                    "surface-variant": "#e0e3e3",
+                    "dark-primary": "#4f98a3",
+                    "tertiary": "#6e3815",
+                    "tertiary-container": "#8b4f2a",
+                    "dark-accent": "#fdab43",
+                    "primary": "#004f54",
+                    "on-surface": "#181c1d",
+                    "surface-container-highest": "#e0e3e3",
+                    "accent-hover": "#c55700",
+                    "primary-active": "#0f3638",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdbc9",
+                    "primary-container": "#01696f",
+                    "accent-highlight": "#fde8cc",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#ebeeee",
+                    "surface-tint": "#01696f",
+                    "surface-container-high": "#e6e9e9",
+                    "primary-fixed-dim": "#85d3da",
+                    "on-primary-fixed-variant": "#004f54",
+                    "success": "#437a22",
+                    "on-secondary-container": "#633000",
+                    "on-secondary-fixed-variant": "#703700",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb783",
+                    "on-surface-variant": "#3f4949",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#bec8c9",
+                    "on-primary-fixed": "#002022",
+                    "secondary-fixed": "#ffdcc5",
+                    "dark-background": "#141412",
+                    "background": "#f7f6f2",
+                    "primary-highlight": "#d0e8e6",
+                    "inverse-on-surface": "#eef1f1",
+                    "accent": "#da7101",
+                    "dark-surface-2": "#252420",
+                    "text-muted": "#6b6762",
+                    "primary-fixed": "#a1f0f6",
+                    "on-secondary-fixed": "#301400",
+                    "surface": "#ffffff",
+                    "text": "#1a1a1a",
+                    "surface-2": "#f3f0ec"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "page-margin-desktop": "32px",
+                    "xxl": "48px",
+                    "xs": "4px",
+                    "page-margin-mobile": "16px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "h1": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "price": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "label": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "display": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-sm": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "label-caps": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "h3": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "h2": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "price-original": [
+                            "Plus Jakarta Sans"
+                    ]
+            },
+            "fontSize": {
+                    "h1": [
+                            "1.5rem",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "1rem",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "price": [
+                            "1.375rem",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label": [
+                            "0.875rem",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display": [
+                            "2rem",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-sm": [
+                            "0.875rem",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-caps": [
+                            "0.75rem",
+                            {
+                                    "lineHeight": "1.4",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "h3": [
+                            "1.125rem",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "0.9375rem",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "h2": [
+                            "1.25rem",
+                            {
+                                    "lineHeight": "1.35",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "price-original": [
+                            "0.9375rem",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text font-body-md min-h-screen flex flex-col md:flex-row">
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-full w-[280px] border-r border-divider bg-[#f7f6f2] dark:bg-stone-950 shadow-xl dark:shadow-none divide-y divide-stone-100 dark:divide-stone-800 py-6 shrink-0 fixed top-0 left-0 bottom-0 z-40">
+<div class="px-6 pb-6">
+<h1 class="font-h1 text-h1 text-[#01696f] font-bold">Fresh As Ever</h1>
+</div>
+<div class="flex items-center gap-4 px-6 py-4">
+<img alt="User Avatar" class="w-10 h-10 rounded-full" data-alt="professional headshot of a man with a warm smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPzDVkh_j03J6DRnpYVXZfAzcTMmrsS4QYpRE86oUjvFFIE0DM3zN_4m4jtXEWmMuHiPWwpvaKiD-Biem-urFmSCPMyrA57PDdij-N7QMNkg0ezWmRQWM0NIJE-xGkJ9qDonT0VWXRlZENjGBh0RikzDVBTWLGu_srY1JpbTbL67JPg-u2gYxmIY71Dg5wG3vJYTfiCosWxUQpIQgKCZe80HdLpCrYpc7-Lh2eUAqqkCq5sj6uiiafzodlwiNtPgE42a-g8fkf0ug"/>
+<div>
+<p class="font-label text-label text-on-surface">Sahan Perera</p>
+<p class="font-body-sm text-body-sm text-text-muted">Premium Member</p>
+<p class="font-body-sm text-body-sm text-text-faint">Colombo, LK</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label text-label">Personal Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md bg-teal-50/50 dark:bg-teal-900/20 text-[#01696f] dark:text-teal-400 border-l-4 border-[#01696f] font-semibold transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+<span class="font-label text-label">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+<span class="font-label text-label">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">headset_mic</span>
+<span class="font-label text-label">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">store</span>
+<span class="font-label text-label">Merchant Portal</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-900 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">admin_panel_settings</span>
+<span class="font-label text-label">Admin Console</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[280px] pb-20 md:pb-0">
+<!-- TopAppBar (Mobile & Desktop) -->
+<header class="flex justify-between items-center w-full px-4 h-16 bg-[#f7f6f2] dark:bg-stone-950 border-b border-stone-200 dark:border-stone-800 docked full-width top-0 z-30 sticky md:hidden">
+<button class="text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 active:scale-95 transition-transform duration-120 p-2 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="text-xl font-bold text-[#01696f] dark:text-teal-400 tracking-tighter">Fresh As Ever</span>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="professional headshot of a man with a warm smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuWyfiQU55slbStEGyfPRgVFuXjaT1XoKxecHJ9pT8FZc_3JRxFWb8VE4FeA5sGt0l1vs_jzyB3VQkP5oIut1yDGk7CT2Ozy8AQtUZaQa2j63mReskNNPj_fgfQ-GbC7dcgvp0gid9zHXDBV7moNnPHy5ZmjUkGcUpZJlpJgG7lTf919ueqvVSUDXKltBuwqM1j_DwLPmBySMuQQFAVOo73n_-fDkUxH72g92s1ypRUFJky1ft9IWRlJ5k_fWDIZ9mtKZmXSfFjIg"/>
+</div>
+</header>
+<div class="p-page-margin-mobile md:p-page-margin-desktop max-w-5xl mx-auto space-y-lg">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface">Finance</h1>
+<p class="font-body-md text-body-md text-text-muted mt-1">Overview and payout history</p>
+</div>
+</div>
+<!-- Stats Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Total Earnings -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_12px_rgba(30,27,20,0.03)] border border-surface-variant/50 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="flex items-center gap-2 mb-sm text-text-muted">
+<span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+<h3 class="font-label text-label">Total Earnings</h3>
+</div>
+<div class="font-price text-price text-on-surface">Rs 145,250.00</div>
+<p class="font-body-sm text-body-sm text-success mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        +12% from last month
+                    </p>
+</div>
+<!-- Platform Commission -->
+<div class="bg-surface rounded-xl p-md shadow-[0_4px_12px_rgba(30,27,20,0.03)] border border-surface-variant/50 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="flex items-center gap-2 mb-sm text-text-muted">
+<span class="material-symbols-outlined text-xl">percent</span>
+<h3 class="font-label text-label">Platform Commission (15%)</h3>
+</div>
+<div class="font-price text-price text-on-surface">Rs 21,787.50</div>
+<p class="font-body-sm text-body-sm text-text-faint mt-2">Deducted automatically</p>
+</div>
+<!-- Next Payout -->
+<div class="bg-primary-container text-on-primary-container rounded-xl p-md shadow-[0_8px_16px_rgba(1,105,111,0.15)] relative overflow-hidden group">
+<div class="absolute right-0 bottom-0 opacity-10 translate-x-1/4 translate-y-1/4">
+<span class="material-symbols-outlined text-9xl">payments</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-sm text-primary-highlight">
+<span class="material-symbols-outlined text-xl">event</span>
+<h3 class="font-label text-label">Next Payout</h3>
+</div>
+<div class="font-price text-price text-on-primary">Rs 45,800.00</div>
+<p class="font-body-sm text-body-sm text-primary-highlight mt-2 flex items-center gap-1">
+                            Scheduled for Oct 25
+                        </p>
+</div>
+</div>
+</div>
+<!-- Recent Payouts -->
+<div class="mt-xl">
+<h2 class="font-h2 text-h2 text-on-surface mb-md">Recent Payouts</h2>
+<div class="bg-surface rounded-xl shadow-[0_4px_12px_rgba(30,27,20,0.03)] border border-surface-variant/50 overflow-hidden">
+<div class="divide-y divide-surface-variant/50">
+<!-- Payout Item -->
+<div class="p-md flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface">Payout for Oct 10 - Oct 17</p>
+<p class="font-body-sm text-body-sm text-text-faint">Bank Transfer • **** 4589</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-price-original text-price-original font-semibold text-on-surface">Rs 38,450.00</p>
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent-highlight/30 text-accent font-label-caps text-label-caps mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                                    Processing
+                                </span>
+</div>
+</div>
+<!-- Payout Item -->
+<div class="p-md flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface">Payout for Oct 03 - Oct 10</p>
+<p class="font-body-sm text-body-sm text-text-faint">Bank Transfer • **** 4589</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-price-original text-price-original font-semibold text-on-surface">Rs 42,100.00</p>
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 text-success font-label-caps text-label-caps mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                                    Paid
+                                </span>
+</div>
+</div>
+<!-- Payout Item -->
+<div class="p-md flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="font-label text-label text-on-surface">Payout for Sep 26 - Oct 03</p>
+<p class="font-body-sm text-body-sm text-text-faint">Bank Transfer • **** 4589</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-price-original text-price-original font-semibold text-on-surface">Rs 35,600.00</p>
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-success/10 text-success font-label-caps text-label-caps mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                                    Paid
+                                </span>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-surface-variant/50 bg-surface-bright text-center">
+<button class="font-label text-label text-primary hover:text-primary-hover transition-colors">View All Payouts</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-white dark:bg-stone-900 docked full-width bottom-0 rounded-t-lg border-t border-stone-100 dark:border-stone-800 shadow-[0_-4px_12px_rgba(30,27,20,0.04)] md:hidden">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-teal-700 active:scale-[0.97] transition-all duration-120 w-16 h-full" href="#">
+<span class="material-symbols-outlined mb-1">storefront</span>
+<span class="font-plus-jakarta text-[10px] font-medium">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-teal-700 active:scale-[0.97] transition-all duration-120 w-16 h-full" href="#">
+<span class="material-symbols-outlined mb-1">receipt</span>
+<span class="font-plus-jakarta text-[10px] font-medium">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-teal-700 active:scale-[0.97] transition-all duration-120 w-16 h-full" href="#">
+<span class="material-symbols-outlined mb-1">bar_chart</span>
+<span class="font-plus-jakarta text-[10px] font-medium">Analytics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#01696f] dark:text-teal-400 transition-colors hover:text-teal-700 active:scale-[0.97] duration-120 w-16 h-full relative" href="#">
+<div class="absolute top-0 w-8 h-1 bg-[#01696f] rounded-b-full"></div>
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-plus-jakarta text-[10px] font-medium">Finance</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-teal-700 active:scale-[0.97] transition-all duration-120 w-16 h-full" href="#">
+<span class="material-symbols-outlined mb-1">settings</span>
+<span class="font-plus-jakarta text-[10px] font-medium">Settings</span>
+</a>
+</nav>
+</body></html>

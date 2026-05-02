@@ -1,0 +1,513 @@
+File: reservation_success_state/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_orders_verification/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: standardized_merchant_dashboard_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_analytics_refined/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: your_environmental_impact/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: order_detail_light_mode_1/code.html
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_management_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: customer_payments/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: search_empty_state/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: standardized_merchant_dashboard_3/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: admin_dashboard_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: customer_support_3/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: live_merchant_monitor_rush_hour/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Warning: Contains Material Design 3 token bloat
+
+File: customer_onboarding_1_3/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Warning: Contains Material Design 3 token bloat
+
+File: profile_light_mode_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: discover_light_mode/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: no_bags_nearby/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_finance_refined_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: customer_support_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_onboarding_1_4/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_analytics/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Warning: Contains Material Design 3 token bloat
+
+File: platform_orders_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: landing_page_marketing_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: discover_sold_out_transition/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: late_pickup_management_merchant_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: admin_dashboard_colombo_local_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_dashboard/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: standardized_discover_feed_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Warning: Contains Material Design 3 token bloat
+
+File: edit_profile/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: landing_page_marketing_3/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: rescue_confirmed/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: waitlist_success/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: customer_notifications/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: settlements_management_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: customer_onboarding_2_3_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Warning: Contains Material Design 3 token bloat
+
+File: brand_loading_animation_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Warning: Contains Material Design 3 token bloat
+
+File: review_pending_orders/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: customer_onboarding_3_3_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: bag_detail_local_refinement/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Warning: Contains Material Design 3 token bloat
+
+File: favourites/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: no_results_found/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Warning: Contains Material Design 3 token bloat
+
+File: admin_settings/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_onboarding_2_4/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: checkout_light_mode_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: discover_refined_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: standardized_merchant_dashboard_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: order_detail_light_mode_2/code.html
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: discover_colombo_local/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: login_authentication/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: edit_rescue_bag/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: promo_management/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Warning: Contains Material Design 3 token bloat
+
+File: payout_detail_merchant/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_management_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_settings/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_finance_refined_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_settings_refined/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_bags_inventory/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: admin_dashboard_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: profile_light_mode_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: bag_detail_dark_mode/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: platform_configuration_refined/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: orders_light_mode/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: discover_dark_mode/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_onboarding_3_4/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: platform_orders_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: bag_detail_light_mode/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: create_rescue_bag/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_application_review/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: discover_skeleton_loader/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Warning: Contains Material Design 3 token bloat
+
+File: customer_support_1/code.html
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: settlements_management_4/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: prototype_journey_map/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: settlements_management_3/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: admin_dashboard_colombo_local_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: landing_page_marketing_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: standardized_discover_feed_3/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Warning: Contains Material Design 3 token bloat
+
+File: sold_out_feed_state/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: late_pickup_management_merchant_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: settlements_management_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: settlements_management_5/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: standardized_discover_feed_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Warning: Contains Material Design 3 token bloat
+
+File: dispute_resolution_merchant/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_onboarding_4_4/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: connection_error/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: bag_detail_refined/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: leave_review/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: customer_onboarding_3_3_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: customer_onboarding_2_3_1/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: admin_audit_logs/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Warning: Contains Material Design 3 token bloat
+
+File: brand_loading_animation_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Warning: Contains Material Design 3 token bloat
+
+File: allergen_dietary_information/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: discover_refined_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: merchant_finance/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: complaints_management/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Contains unlinked '#' hrefs
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+
+File: checkout_light_mode_2/code.html
+  - Violation: Uses Material Symbols instead of Phosphor Icons
+  - Violation: Uses rounded-xl instead of rounded-lg/md
+  - Warning: Contains Material Design 3 token bloat
+

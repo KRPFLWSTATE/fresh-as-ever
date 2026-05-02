@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Merchant List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#ebeeee",
+                        "primary-container": "#01696f",
+                        "on-primary-fixed": "#002022",
+                        "background": "#f7f6f2",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#8b4f2a",
+                        "surface-container-highest": "#e0e3e3",
+                        "primary": "#004f54",
+                        "dark-primary": "#4f98a3",
+                        "divider": "#e2dfd9",
+                        "text-muted": "#6b6762",
+                        "secondary-container": "#fc8b27",
+                        "accent-highlight": "#fde8cc",
+                        "on-primary-fixed-variant": "#004f54",
+                        "secondary-fixed": "#ffdcc5",
+                        "accent": "#da7101",
+                        "surface": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#ffceb5",
+                        "primary-fixed-dim": "#85d3da",
+                        "dark-background": "#141412",
+                        "secondary": "#944b00",
+                        "text": "#1a1a1a",
+                        "primary-active": "#0f3638",
+                        "outline-variant": "#bec8c9",
+                        "secondary-fixed-dim": "#ffb783",
+                        "surface-container-low": "#f1f4f4",
+                        "primary-highlight": "#d0e8e6",
+                        "surface-variant": "#e0e3e3",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "on-surface-variant": "#3f4949",
+                        "tertiary": "#6e3815",
+                        "surface-dim": "#d7dbda",
+                        "on-secondary-fixed-variant": "#703700",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#85d3da",
+                        "on-tertiary-fixed": "#331200",
+                        "accent-hover": "#c55700",
+                        "outline": "#6f797a",
+                        "on-secondary-container": "#633000",
+                        "surface-bright": "#f7fafa",
+                        "on-primary": "#ffffff",
+                        "text-faint": "#b5b2ad",
+                        "error": "#c0392b",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "on-background": "#181c1d",
+                        "tertiary-fixed": "#ffdbc9",
+                        "dark-surface": "#1c1b18",
+                        "dark-surface-2": "#252420",
+                        "surface-container-high": "#e6e9e9",
+                        "primary-hover": "#0c4e54",
+                        "inverse-surface": "#2d3131",
+                        "success": "#437a22",
+                        "on-primary-container": "#97e6ec",
+                        "surface-tint": "#01696f",
+                        "surface-2": "#f3f0ec",
+                        "on-secondary-fixed": "#301400",
+                        "on-surface": "#181c1d",
+                        "inverse-on-surface": "#eef1f1",
+                        "dark-accent": "#fdab43",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#a1f0f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "4px",
+                        "page-margin-mobile": "16px",
+                        "lg": "24px",
+                        "page-margin-desktop": "32px",
+                        "xl": "32px",
+                        "xxl": "48px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "price": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "price-original": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.text');
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[style*="FILL' 1"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col md:flex-row">
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden fixed top-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-[#f7f6f2] dark:bg-stone-950 border-b border-stone-200/60 dark:border-stone-800">
+<button class="text-[#01696f] dark:text-teal-500 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors active:scale-95 transition-transform duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="text-xl font-bold text-[#01696f] dark:text-teal-400 tracking-tighter">
+            Fresh As Ever
+        </div>
+<button class="text-[#01696f] dark:text-teal-500 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors active:scale-95 transition-transform duration-150 p-1 rounded-full flex items-center justify-center">
+<img alt="user_profile_photo" class="w-8 h-8 rounded-full" data-alt="Portrait of a professional man in a casual shirt, smiling slightly, with a blurred background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaSh8c4xmzLAAK1JstWS3DUTqNqN5SJ43vl7nvca_qJakuuxGwkxLWB9PEYIqJ3Y-5klj0YBHYKRkac8fAA5kFuDtSKDTKLO4YLRF4jUzUEOfABB_AOp3kSElJD2MTQeQsUGJTREVzmKKcb48rs7zNzvjOqjtwrDLA454gAg3uoNdzDNGF0c4TP5gGAkTVxM3xFR4S7Txjrg5gb7SbosnBTUR-NdGr8TVssrRfFDUPnGnnD5sAr3KyWna3LK6rCUdZl2VI07zLBxQ"/>
+</button>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 w-[280px] bg-white dark:bg-stone-900 border-r border-stone-200 dark:border-stone-800">
+<div class="text-[#01696f] font-black text-xl px-6 py-8">
+            Fresh As Ever
+        </div>
+<div class="px-6 pb-6 flex items-center gap-3 border-b border-divider">
+<img alt="Admin User" class="w-10 h-10 rounded-full" data-alt="Portrait of a professional man in a casual shirt, smiling slightly, with a blurred background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2ABE_Zwt7yF9VeTV8xwDdZTx_Q0bG5zhvH9y8E9Okkj7J6aPPRaQxHGQBdG0Z9Ya5jfoyaBwYfbWm0_1EQMD9cWgJLT-JNqRCsQpZPGbUrw9-z9VL-_LnkZ3uHHdqYyhnqoKm5_PUcrh4s_u_BXdzyp-DdH33hpYkJgZYMS1O7PyOhOl7rZVfrHTgGCzlc-BUOGP-3tUXuPUdD1yzcXwgUO0wn_oaznpUOT4HUyG1-qzmj_u_jWW36H8zNwIZc1rp70IzyfDynTs"/>
+<div>
+<p class="font-label text-label text-text">Platform Admin</p>
+<p class="font-body-sm text-body-sm text-text-muted">Fresh As Ever HQ</p>
+</div>
+</div>
+<nav class="flex-1 py-4 flex flex-col gap-1 px-3">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all active:scale-[0.98] duration-120 font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md bg-teal-50/50 dark:bg-teal-900/20 text-[#01696f] border-l-4 border-[#01696f] transition-all active:scale-[0.98] duration-120 font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+                Merchant List
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all active:scale-[0.98] duration-120 font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+                Platform Orders
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all active:scale-[0.98] duration-120 font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all active:scale-[0.98] duration-120 font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-[280px] pt-16 md:pt-0 pb-20 md:pb-0 px-page-margin-mobile md:px-page-margin-desktop py-lg md:py-xl max-w-7xl mx-auto w-full">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+<div>
+<h1 class="font-h1 text-h1 text-text">Merchants</h1>
+<p class="font-body-md text-body-md text-text-muted mt-1">Manage and monitor platform partners.</p>
+</div>
+<button class="bg-primary hover:bg-primary-hover text-on-primary font-label text-label px-4 py-2 rounded-md transition-colors active:scale-95 duration-120 flex items-center gap-2 w-full md:w-auto justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                Add Merchant
+            </button>
+</div>
+<!-- Filters & Search -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+<div class="flex gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-hide">
+<button class="px-4 py-1.5 rounded-full border border-primary-container bg-primary-container text-on-primary font-label text-label whitespace-nowrap transition-colors">
+                    All
+                </button>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant bg-surface text-text-muted hover:bg-surface-container font-label text-label whitespace-nowrap transition-colors">
+                    Pending Approval
+                </button>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant bg-surface text-text-muted hover:bg-surface-container font-label text-label whitespace-nowrap transition-colors">
+                    Suspended
+                </button>
+</div>
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface border border-outline-variant rounded-md font-body-sm text-body-sm text-text focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search merchants..." type="text"/>
+</div>
+</div>
+<!-- Data Table (Desktop) / Cards (Mobile) -->
+<div class="bg-surface rounded-xl shadow-[0_4px_24px_rgba(30,27,20,0.03)] overflow-hidden border border-divider/50">
+<!-- Desktop Table View -->
+<div class="hidden md:block overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-divider bg-surface-bright">
+<th class="px-6 py-4 font-label text-label text-text-muted font-medium">Merchant Name</th>
+<th class="px-6 py-4 font-label text-label text-text-muted font-medium">Status</th>
+<th class="px-6 py-4 font-label text-label text-text-muted font-medium text-right">Total Rescues</th>
+<th class="px-6 py-4 font-label text-label text-text-muted font-medium">Date Joined</th>
+<th class="px-6 py-4 font-label text-label text-text-muted font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-divider/50">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-md overflow-hidden bg-surface-container shrink-0">
+<img alt="Colombo Cafe" class="w-full h-full object-cover" data-alt="Exterior of a cozy cafe with warm lighting and wooden accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbBQH-vaJY2WGwVl4Uoiustrxwzu_CqfEZDpi6Sx4VLxcVrD3_U79cpPHPdA54KF7jCdamEFDlksJUGt8HOcY9RRbgHxFhXdJ7998uJwpJkSX21GVoU7PIJnBsmYixMQO1R02ckEO7iB9wT5cSZz6-M8kOOl_eBIu4dhRz-ip1nlXX39V0Ko0_uL2-T5oLCwzcY9ead-rQnL0QKb3Fg2LgdcOtpA95fj75oqRkJ1lSxrgAARCfstkkwG-Cp7QnCgIcufFGo5cMLwk"/>
+</div>
+<div>
+<p class="font-h3 text-h3 text-text">Colombo Cafe</p>
+<p class="font-body-sm text-body-sm text-text-muted">Bakery &amp; Pastries • Kollupitiya</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-highlight/50 text-primary-active font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                    Live
+                                </span>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-text text-right">1,245</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-text-muted">Oct 12, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-muted hover:text-primary transition-colors p-1 rounded-md hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-md overflow-hidden bg-surface-container shrink-0 flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</div>
+<div>
+<p class="font-h3 text-h3 text-text">Spice Route Diner</p>
+<p class="font-body-sm text-body-sm text-text-muted">Sri Lankan Curry • Bambalapitiya</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-accent-highlight/50 text-secondary font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                                    Pending
+                                </span>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-text text-right">0</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-text-muted">Nov 02, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-muted hover:text-primary transition-colors p-1 rounded-md hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-md overflow-hidden bg-surface-container shrink-0">
+<img alt="The Green Grocer" class="w-full h-full object-cover" data-alt="Fresh vegetables displayed neatly in wooden crates at a market." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwdLb-lzvYolC0VIfJv9bP2xh6fy2KRazpW4_telhhnt2E_axUa8K8IYm6aXL81zbEbpHMq6Ck6tgn2ztGF67Lcfin4VaHksXvTAUC0aAS3fG5LzP14rl0-iuSDqQDfX5fKoYCYaKA-9FgTRodRjTZOq6xoFea_I4UGmWvk-uoR5gUvCjQ_4_4Mo7ai5P0A63rTr_4PvXjPkqIorevpWdOVN8czRL5x0HjbqhGczh2eGXOUMU5SpWnss8XjWYPcbi5xf7fym7YrTM"/>
+</div>
+<div>
+<p class="font-h3 text-h3 text-text">The Green Grocer</p>
+<p class="font-body-sm text-body-sm text-text-muted">Fresh Produce • Cinnamon Gardens</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                    Suspended
+                                </span>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md text-text text-right">342</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-text-muted">Aug 15, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-muted hover:text-primary transition-colors p-1 rounded-md hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Mobile Card View -->
+<div class="md:hidden flex flex-col divide-y divide-divider/50">
+<!-- Mobile Card 1 -->
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-md overflow-hidden bg-surface-container shrink-0">
+<img alt="Colombo Cafe" class="w-full h-full object-cover" data-alt="Exterior of a cozy cafe with warm lighting and wooden accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxVZt7Q7OtC1mMVHaP_FF7R426Fj_NPu4q5Z9S33VMwMhAtx_AA4IC1rTjjuohQEahl0cp1WQVWQvcqA09rPcp1NnkZ2qGEm1gtjj-c0vb-8y6CdEc3CrnN6WAR7gJ22UsnS-V4kpOQ8pbMuY-goIUPkSWcSYzGydHlbR84cMxSM5gj5HJtaHRUPMjmMFMUzxNaSnfNce1Fh5zAvbSGxTSvtcFBnSaVdyQ_GE0xU6BIw4FoOe-JKySLqBoE2Zw1KOzd-Ghkfn8yO0"/>
+</div>
+<div>
+<p class="font-h3 text-h3 text-text">Colombo Cafe</p>
+<p class="font-body-sm text-body-sm text-text-muted">Bakery &amp; Pastries • Kollupitiya</p>
+</div>
+</div>
+<button class="text-text-muted p-1">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="flex justify-between items-center mt-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-highlight/50 text-primary-active font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                            Live
+                        </span>
+<div class="text-right">
+<p class="font-label text-label text-text">1,245 rescues</p>
+<p class="font-body-sm text-body-sm text-text-faint">Joined Oct '23</p>
+</div>
+</div>
+</div>
+<!-- Mobile Card 2 -->
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-md overflow-hidden bg-surface-container shrink-0 flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</div>
+<div>
+<p class="font-h3 text-h3 text-text">Spice Route Diner</p>
+<p class="font-body-sm text-body-sm text-text-muted">Sri Lankan Curry • Bambalapitiya</p>
+</div>
+</div>
+<button class="text-text-muted p-1">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="flex justify-between items-center mt-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-accent-highlight/50 text-secondary font-label-caps text-label-caps">
+<span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                            Pending
+                        </span>
+<div class="text-right">
+<p class="font-label text-label text-text">0 rescues</p>
+<p class="font-body-sm text-body-sm text-text-faint">Joined Nov '23</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination Footer -->
+<div class="px-6 py-4 border-t border-divider bg-surface-bright flex justify-between items-center">
+<p class="font-body-sm text-body-sm text-text-muted">Showing 1 to 3 of 42 merchants</p>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 border border-outline-variant rounded-md text-text-muted hover:bg-surface-container transition-colors disabled:opacity-50">
+                        Prev
+                    </button>
+<button class="px-3 py-1.5 border border-outline-variant rounded-md text-text hover:bg-surface-container transition-colors">
+                        Next
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

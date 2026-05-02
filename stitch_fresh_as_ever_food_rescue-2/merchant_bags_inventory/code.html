@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Merchant Bags List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "text": "#1a1a1a",
+                        "surface-container-high": "#e6e9e9",
+                        "on-primary-fixed-variant": "#004f54",
+                        "dark-primary": "#4f98a3",
+                        "primary-active": "#0f3638",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eef1f1",
+                        "dark-background": "#141412",
+                        "inverse-surface": "#2d3131",
+                        "on-secondary-fixed": "#301400",
+                        "surface-container": "#ebeeee",
+                        "on-secondary-container": "#633000",
+                        "error": "#c0392b",
+                        "tertiary-container": "#8b4f2a",
+                        "surface-dim": "#d7dbda",
+                        "secondary-fixed-dim": "#ffb783",
+                        "outline": "#6f797a",
+                        "on-surface-variant": "#3f4949",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#85d3da",
+                        "divider": "#e2dfd9",
+                        "text-faint": "#b5b2ad",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e0e3e3",
+                        "primary-hover": "#0c4e54",
+                        "primary": "#004f54",
+                        "dark-accent": "#fdab43",
+                        "dark-surface": "#1c1b18",
+                        "accent": "#da7101",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f1f4f4",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "secondary-container": "#fc8b27",
+                        "surface-bright": "#f7fafa",
+                        "on-tertiary-container": "#ffceb5",
+                        "tertiary": "#6e3815",
+                        "on-primary-container": "#97e6ec",
+                        "surface-2": "#f3f0ec",
+                        "on-tertiary-fixed": "#331200",
+                        "primary-fixed-dim": "#85d3da",
+                        "accent-highlight": "#fde8cc",
+                        "primary-fixed": "#a1f0f6",
+                        "primary-highlight": "#d0e8e6",
+                        "on-primary-fixed": "#002022",
+                        "background": "#f7f6f2",
+                        "primary-container": "#01696f",
+                        "secondary-fixed": "#ffdcc5",
+                        "dark-surface-2": "#252420",
+                        "success": "#437a22",
+                        "on-surface": "#181c1d",
+                        "surface-tint": "#01696f",
+                        "on-secondary-fixed-variant": "#703700",
+                        "on-background": "#181c1d",
+                        "secondary": "#944b00",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#bec8c9",
+                        "text-muted": "#6b6762",
+                        "accent-hover": "#c55700",
+                        "surface-container-highest": "#e0e3e3",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#ffffff",
+                        "tertiary-fixed": "#ffdbc9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "page-margin-mobile": "16px",
+                        "page-margin-desktop": "32px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "price-original": ["Plus Jakarta Sans"],
+                        "price": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text antialiased min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-4 h-16 sticky top-0 z-40 bg-[#f7f6f2] dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden flex items-center justify-center">
+<img alt="Merchant Logo" class="w-full h-full object-cover" data-alt="close up of a stylish modern cafe logo on a warm textured background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIHi9bIEi_AoARdpEWh1io9VV8ric0dr7n51xZKT86uYMwt2G6t8JpR_RkTjhf7CHTjpDuMzCBW6NOi-juMtvhr4DPjITPcU68tKNgTCXfxdnUBqeiaFkqq60271Z6H43X2_UXaJQI-aGzskCf0vOojutsyiaMVNKtb5YCihoKHDKh817DhAZyYl64vZTgvRK1kC0_sw2Xj--rJ0YdxEMA-oI8EI8-7aWPTRtET3jxayLJaF5sY_BD45P6brUxhPhQ5yBkvrG6Qfc"/>
+</div>
+<span class="font-['Plus_Jakarta_Sans'] font-semibold tracking-tight text-xl font-bold text-[#01696f] dark:text-[#028b94]">Fresh As Ever</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-stone-100 dark:hover:bg-stone-800 active:scale-[0.97] transition-all duration-120 text-[#01696f] dark:text-[#028b94]">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<div class="flex h-[calc(100vh-4rem)]">
+<!-- NavigationDrawer -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-screen z-50 w-60 border-r rounded-none bg-white dark:bg-stone-950 border-r border-stone-100 dark:border-stone-800">
+<div class="p-6 border-b border-stone-100 dark:border-stone-800 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant">
+<img alt="Merchant Profile" class="w-full h-full object-cover" data-alt="close up of a stylish modern cafe logo on a warm textured background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzKQ_cfN6yd_aIpDlNnQGVV8gvxeGSA8IAc7vOyWBeTILSidUYtfPJXLpXv0KyYU5tIbSy5VSEA6FcBXzM7rT9925MsjzJ0HMiKo6Qcv56_Lrk9IJZLNtP1OcAxVMASXbBKB1snA60xeCojmCHP1hzdPirEspUl_9RogBxfH7Mv_NBXANBDvK7QvOogDIyp3mTI2cASI7StF-kgqRytTUVViu-UxgsVfMj_flwMnaMxOhWxglwWls8WaY0evmLJlMW_gtmCPPNNhk"/>
+</div>
+<div class="flex flex-col">
+<span class="font-['Plus_Jakarta_Sans'] text-sm font-bold text-text truncate">Green Garden Cafe</span>
+<span class="font-['Plus_Jakarta_Sans'] text-xs text-text-faint">Colombo 07</span>
+</div>
+</div>
+<nav class="flex-1 py-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 text-stone-600 dark:text-stone-400 py-3 px-4 hover:bg-stone-50 dark:hover:bg-stone-900 transition-colors duration-150 font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 text-stone-600 dark:text-stone-400 py-3 px-4 hover:bg-stone-50 dark:hover:bg-stone-900 transition-colors duration-150 font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+                    Orders
+                </a>
+<a class="flex items-center gap-3 bg-[#01696f]/5 dark:bg-[#01696f]/10 text-[#01696f] border-l-4 border-[#01696f] py-3 px-4 font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+                    Rescue Bags
+                </a>
+<a class="flex items-center gap-3 text-stone-600 dark:text-stone-400 py-3 px-4 hover:bg-stone-50 dark:hover:bg-stone-900 transition-colors duration-150 font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+                    Analytics
+                </a>
+<a class="flex items-center gap-3 text-stone-600 dark:text-stone-400 py-3 px-4 hover:bg-stone-50 dark:hover:bg-stone-900 transition-colors duration-150 font-['Plus_Jakarta_Sans'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    Settings
+                </a>
+</nav>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 md:ml-60 p-page-margin-mobile md:p-page-margin-desktop overflow-y-auto">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h1 class="font-h1 text-h1 text-text mb-sm">Rescue Bags</h1>
+<p class="font-body-md text-body-md text-text-muted">Manage your daily inventory and surplus.</p>
+</div>
+<button class="h-[48px] px-6 bg-primary text-on-primary rounded font-label text-label flex items-center justify-center gap-2 hover:bg-primary-hover active:scale-[0.97] transition-all duration-120 shadow-[0_4px_12px_rgba(30,27,20,0.08)]">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                    Create Bag
+                </button>
+</div>
+<!-- Tabs/Filters -->
+<div class="flex gap-4 border-b border-divider mb-lg overflow-x-auto pb-xs">
+<button class="pb-2 px-2 border-b-2 border-primary font-label text-label text-text whitespace-nowrap">All Bags (12)</button>
+<button class="pb-2 px-2 border-b-2 border-transparent font-label text-label text-text-muted hover:text-text whitespace-nowrap">Live (4)</button>
+<button class="pb-2 px-2 border-b-2 border-transparent font-label text-label text-text-muted hover:text-text whitespace-nowrap">Drafts (3)</button>
+<button class="pb-2 px-2 border-b-2 border-transparent font-label text-label text-text-muted hover:text-text whitespace-nowrap">Sold Out (5)</button>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md pb-[80px] md:pb-0">
+<!-- Card 1: Live -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0_4px_16px_rgba(30,27,20,0.04)] flex flex-col group relative">
+<div class="absolute top-3 right-3 z-10 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+<div class="w-2 h-2 rounded-full bg-success"></div>
+<span class="font-label-caps text-label-caps text-text">Live • 4 Left</span>
+</div>
+<div class="h-[180px] w-full relative overflow-hidden bg-surface-variant">
+<img alt="Bakery Mix" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="assortment of fresh baked artisanal breads and pastries on a rustic wooden table with morning sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm4FeLH92TrO99wKiI4cHaY2KJOnfc_TLj1deK0OMHOT1N-r3lpNoDO2uRgkrPclwo2YaoCm8Sa6Cb8-CMlIv29b-7VdCziQhZGW7Y3A5Bcp8J9eLzh2zyF-rwKoxOF8yGeOyEJuheKpaL9WqJZ0_xl6KdhmtwdY_Xc6jVcadXUEqbP4v1rUjKvkoQql8naomSzuL65_N7btpjJqchtULUFZWn8-YTOHI9xMjfMb_lx19lPSpl-ntUn_DKeVLbDGYpX7cpIqQKnPo"/>
+</div>
+<div class="p-md flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-block px-2 py-1 bg-surface-2 rounded text-text-muted font-label-caps text-[10px] tracking-wide uppercase">Baked Goods</span>
+</div>
+<h3 class="font-h3 text-h3 text-text mb-1 line-clamp-1">Morning Pastry Mix</h3>
+<div class="flex items-center gap-1 text-text-faint mb-4">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-body-sm text-body-sm">Pickup: 2:00 PM - 4:00 PM</span>
+</div>
+<div class="mt-auto pt-4 border-t border-divider/50 flex justify-between items-end">
+<div>
+<p class="font-price-original text-price-original text-text-faint line-through mb-0.5">LKR 2,500</p>
+<p class="font-price text-price text-accent">LKR 850</p>
+</div>
+<button class="w-10 h-10 rounded bg-surface-container-low flex items-center justify-center text-text hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2: Draft -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0_4px_16px_rgba(30,27,20,0.04)] flex flex-col group relative opacity-80 hover:opacity-100 transition-opacity">
+<div class="absolute top-3 right-3 z-10 bg-surface-container/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5 border border-outline-variant/30">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<span class="font-label-caps text-label-caps text-text-muted">Draft</span>
+</div>
+<div class="h-[180px] w-full relative overflow-hidden bg-surface-variant">
+<img alt="Salad Bowl" class="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 transition-transform duration-500" data-alt="vibrant fresh salad bowl with mixed greens, cherry tomatoes, and grilled chicken in bright clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOg5XTSyZj2R7TrVKpzl0eMAy98DvJyVwx_FCWUKmPu5Ao-aBuXMOdvO1IDqKva_SaEkjpZx4l2ziPMSj6LNN1N3VuUyqu_KG67aFbtr1hFQZ7AC4D7D7xLK6NORTOCyCSVEAYOJbPOJEkyVs_oiZg0GcZ14T2E5JpksmQonDo74xonT0dbuuklT4NXsBW3_FeKsNlQpIbxEZUzqBjIfaAaGQhSucskKx5mHfGlq_UBskRvb8bijhP8ZqVWzB4t9c8UqAwyVKKNfM"/>
+</div>
+<div class="p-md flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-block px-2 py-1 bg-surface-2 rounded text-text-muted font-label-caps text-[10px] tracking-wide uppercase">Meals</span>
+</div>
+<h3 class="font-h3 text-h3 text-text mb-1 line-clamp-1">Surprise Salad Bowls</h3>
+<div class="flex items-center gap-1 text-text-faint mb-4">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-body-sm text-body-sm">Pickup: Not set</span>
+</div>
+<div class="mt-auto pt-4 border-t border-divider/50 flex justify-between items-end">
+<div>
+<p class="font-price-original text-price-original text-text-faint line-through mb-0.5">LKR 1,800</p>
+<p class="font-price text-price text-text-muted">LKR 600</p>
+</div>
+<button class="h-10 px-4 rounded bg-surface-2 text-text font-label text-label flex items-center justify-center hover:bg-surface-variant transition-colors">
+                                Edit Draft
+                            </button>
+</div>
+</div>
+</article>
+<!-- Card 3: Sold Out -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0_4px_16px_rgba(30,27,20,0.04)] flex flex-col group relative">
+<div class="absolute inset-0 bg-surface/40 z-20 pointer-events-none"></div>
+<div class="absolute top-3 right-3 z-30 bg-error-container/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1.5">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="font-label-caps text-label-caps text-on-error-container">Sold Out</span>
+</div>
+<div class="h-[180px] w-full relative overflow-hidden bg-surface-variant">
+<img alt="Cafe Drinks" class="w-full h-full object-cover" data-alt="iced coffees and lattes on a marble counter in a sunny aesthetic cafe setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCriZvOhpjRplX2xcF3SpVRSEc00pBtvip9gH20krXgFuERs8B7EUQIGnokqOuzaYU5MF9K0B36dYLc98Sa1UE1mjxWoW9LOGbz9ue93GuAKDIFRF0Z770bW40kYihHvvzhFWIwjKBEMDOvb3Na0kcedZteCA9tcg6S-vDsq08y1XvpzW5ZXCYfar2F4vi8Y9F-vFVqVkDq8uTcRRpiKcGNwM7_HFfnr9Xf9i21acRDI0_88VSvkA5s-BjYojC9Vzg7XMMcnjI21Xc"/>
+</div>
+<div class="p-md flex-1 flex flex-col relative z-10">
+<div class="flex justify-between items-start mb-2">
+<span class="inline-block px-2 py-1 bg-surface-2 rounded text-text-muted font-label-caps text-[10px] tracking-wide uppercase">Beverages</span>
+</div>
+<h3 class="font-h3 text-h3 text-text mb-1 line-clamp-1">Iced Beverage Overstock</h3>
+<div class="flex items-center gap-1 text-text-faint mb-4">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-body-sm text-body-sm">Pickup: Ended at 1:00 PM</span>
+</div>
+<div class="mt-auto pt-4 border-t border-divider/50 flex justify-between items-end">
+<div>
+<p class="font-price-original text-price-original text-text-faint line-through mb-0.5">LKR 1,200</p>
+<p class="font-price text-price text-text-muted">LKR 450</p>
+</div>
+<button class="h-10 px-4 rounded border-[1.5px] border-outline-variant text-text font-label text-label flex items-center justify-center hover:bg-surface-variant transition-colors">
+                                Duplicate
+                            </button>
+</div>
+</div>
+</article>
+</div>
+</main>
+</div>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 pb-safe z-50 bg-white/90 dark:bg-stone-950/90 backdrop-blur-md shadow-[0_-4px_12px_rgba(30,27,20,0.04)]">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 py-2 active:bg-stone-50 active:scale-[0.95] transition-transform duration-120 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 py-2 active:bg-stone-50 active:scale-[0.95] transition-transform duration-120 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="list_alt">list_alt</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#01696f] dark:text-[#028b94] py-2 active:bg-stone-50 active:scale-[0.95] transition-transform duration-120 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="local_mall">local_mall</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold">Bags</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 py-2 active:bg-stone-50 active:scale-[0.95] transition-transform duration-120 w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold">Settings</span>
+</a>
+</nav>
+</body></html>

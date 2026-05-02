@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Allergen &amp; Dietary Information</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e0e3e3",
+                        "outline-variant": "#bec8c9",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eef1f1",
+                        "dark-accent": "#fdab43",
+                        "surface-container-low": "#f1f4f4",
+                        "primary-fixed": "#a1f0f6",
+                        "on-surface": "#181c1d",
+                        "on-primary-fixed-variant": "#004f54",
+                        "primary": "#004f54",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#ffceb5",
+                        "accent-highlight": "#fde8cc",
+                        "surface-bright": "#f7fafa",
+                        "secondary-fixed": "#ffdcc5",
+                        "dark-background": "#141412",
+                        "surface-container-high": "#e6e9e9",
+                        "secondary-fixed-dim": "#ffb783",
+                        "primary-fixed-dim": "#85d3da",
+                        "on-surface-variant": "#3f4949",
+                        "on-secondary-fixed-variant": "#703700",
+                        "tertiary-fixed": "#ffdbc9",
+                        "tertiary-container": "#8b4f2a",
+                        "on-secondary": "#ffffff",
+                        "primary-hover": "#0c4e54",
+                        "on-background": "#181c1d",
+                        "on-secondary-fixed": "#301400",
+                        "surface-container-highest": "#e0e3e3",
+                        "tertiary": "#6e3815",
+                        "on-secondary-container": "#633000",
+                        "success": "#437a22",
+                        "inverse-surface": "#2d3131",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#fc8b27",
+                        "text-faint": "#b5b2ad",
+                        "outline": "#6f797a",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#01696f",
+                        "text": "#1a1a1a",
+                        "primary-highlight": "#d0e8e6",
+                        "dark-surface": "#1c1b18",
+                        "surface-container": "#ebeeee",
+                        "surface": "#ffffff",
+                        "text-muted": "#6b6762",
+                        "on-tertiary-fixed": "#331200",
+                        "on-primary": "#ffffff",
+                        "accent-hover": "#c55700",
+                        "surface-2": "#f3f0ec",
+                        "dark-surface-2": "#252420",
+                        "surface-dim": "#d7dbda",
+                        "divider": "#e2dfd9",
+                        "surface-tint": "#01696f",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "primary-active": "#0f3638",
+                        "inverse-primary": "#85d3da",
+                        "accent": "#da7101",
+                        "on-primary-container": "#97e6ec",
+                        "background": "#f7f6f2",
+                        "secondary": "#944b00",
+                        "error": "#c0392b",
+                        "error-container": "#ffdad6",
+                        "dark-primary": "#4f98a3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "page-margin-mobile": "16px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "xxl": "48px",
+                        "lg": "24px",
+                        "page-margin-desktop": "32px",
+                        "sm": "8px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "price-original": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "price": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen font-body-md text-text flex items-end justify-center sm:items-center relative">
+<!-- Scrim / Backdrop -->
+<div aria-hidden="true" class="fixed inset-0 bg-dark-background/40 transition-opacity"></div>
+<!-- Bottom Sheet / Modal -->
+<div class="w-full max-w-md bg-surface rounded-t-[24px] sm:rounded-xl shadow-[0_-8px_32px_-8px_rgba(30,27,20,0.12)] sm:shadow-[0_8px_32px_-8px_rgba(30,27,20,0.12)] relative z-10 flex flex-col max-h-[795px] overflow-hidden transform transition-transform">
+<!-- Drag Handle (Mobile) -->
+<div class="w-full flex justify-center pt-4 pb-2 sm:hidden">
+<div class="w-12 h-1.5 bg-surface-variant rounded-full"></div>
+</div>
+<!-- Header -->
+<div class="px-page-margin-mobile pt-2 sm:pt-page-margin-desktop pb-md flex items-center justify-between sticky top-0 bg-surface z-20">
+<div>
+<h2 class="font-h2 text-h2 text-text">Allergen &amp; Dietary Info</h2>
+<p class="font-body-sm text-body-sm text-text-muted mt-1">Please review carefully before reserving.</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-2 transition-colors text-text-muted active:scale-[0.97] duration-120">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Content Scrollable Area -->
+<div class="px-page-margin-mobile pb-page-margin-desktop overflow-y-auto">
+<!-- Warning Banner -->
+<div class="bg-surface-2 rounded-lg p-md mb-lg flex items-start gap-md border border-divider">
+<span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    As rescue bags contain surplus food, we cannot guarantee items are entirely free from cross-contamination. Consume at your own discretion.
+                </p>
+</div>
+<div class="space-y-lg">
+<!-- Potential Allergens Section -->
+<section>
+<h3 class="font-label-caps text-label-caps text-text-muted uppercase mb-md">Contains or may contain</h3>
+<div class="grid grid-cols-1 gap-sm">
+<!-- Allergen Item: Wheat/Gluten -->
+<div class="flex items-center gap-md p-md bg-surface border border-surface-variant rounded-lg">
+<div class="w-10 h-10 rounded-full bg-surface-2 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">grass</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label text-label text-text">Wheat &amp; Gluten</h4>
+</div>
+</div>
+<!-- Allergen Item: Dairy -->
+<div class="flex items-center gap-md p-md bg-surface border border-surface-variant rounded-lg">
+<div class="w-10 h-10 rounded-full bg-surface-2 flex items-center justify-center text-primary-hover">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label text-label text-text">Dairy</h4>
+</div>
+</div>
+<!-- Allergen Item: Nuts -->
+<div class="flex items-center gap-md p-md bg-surface border border-surface-variant rounded-lg">
+<div class="w-10 h-10 rounded-full bg-surface-2 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">eco</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label text-label text-text">Tree Nuts &amp; Peanuts</h4>
+</div>
+</div>
+<!-- Allergen Item: Eggs -->
+<div class="flex items-center gap-md p-md bg-surface border border-surface-variant rounded-lg">
+<div class="w-10 h-10 rounded-full bg-surface-2 flex items-center justify-center text-dark-accent">
+<span class="material-symbols-outlined">egg</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label text-label text-text">Eggs</h4>
+</div>
+</div>
+<!-- Allergen Item: Soy -->
+<div class="flex items-center gap-md p-md bg-surface border border-surface-variant rounded-lg">
+<div class="w-10 h-10 rounded-full bg-surface-2 flex items-center justify-center text-success">
+<span class="material-symbols-outlined">nutrition</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label text-label text-text">Soy</h4>
+</div>
+</div>
+</div>
+</section>
+<hr class="border-t border-divider"/>
+<!-- Dietary Preferences Section -->
+<section>
+<h3 class="font-label-caps text-label-caps text-text-muted uppercase mb-md">Dietary Suitability</h3>
+<div class="flex flex-wrap gap-sm">
+<div class="px-4 py-2 bg-surface-2 rounded-full font-label text-label text-text border border-surface-variant opacity-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">close</span>
+                             Not Vegan
+                        </div>
+<div class="px-4 py-2 bg-surface-2 rounded-full font-label text-label text-text border border-surface-variant opacity-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">close</span>
+                             Not Vegetarian
+                        </div>
+<div class="px-4 py-2 bg-surface-2 rounded-full font-label text-label text-text border border-surface-variant opacity-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">close</span>
+                             Not Halal Certified
+                        </div>
+</div>
+</section>
+</div>
+</div>
+<!-- Sticky Bottom Action -->
+<div class="p-page-margin-mobile border-t border-divider bg-surface">
+<button class="w-full h-[48px] bg-primary text-on-primary font-label text-label rounded-DEFAULT flex items-center justify-center active:scale-[0.97] transition-transform duration-120 shadow-[0_2px_8px_-2px_rgba(0,79,84,0.3)]">
+                I Understand
+            </button>
+</div>
+</div>
+</body></html>

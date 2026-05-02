@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Merchant Orders &amp; Verification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "text": "#1a1a1a",
+                        "surface-container-high": "#e6e9e9",
+                        "on-primary-fixed-variant": "#004f54",
+                        "dark-primary": "#4f98a3",
+                        "primary-active": "#0f3638",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eef1f1",
+                        "dark-background": "#141412",
+                        "inverse-surface": "#2d3131",
+                        "on-secondary-fixed": "#301400",
+                        "surface-container": "#ebeeee",
+                        "on-secondary-container": "#633000",
+                        "error": "#c0392b",
+                        "tertiary-container": "#8b4f2a",
+                        "surface-dim": "#d7dbda",
+                        "secondary-fixed-dim": "#ffb783",
+                        "outline": "#6f797a",
+                        "on-surface-variant": "#3f4949",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#85d3da",
+                        "divider": "#e2dfd9",
+                        "text-faint": "#b5b2ad",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e0e3e3",
+                        "primary-hover": "#0c4e54",
+                        "primary": "#004f54",
+                        "dark-accent": "#fdab43",
+                        "dark-surface": "#1c1b18",
+                        "accent": "#da7101",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f1f4f4",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "secondary-container": "#fc8b27",
+                        "surface-bright": "#f7fafa",
+                        "on-tertiary-container": "#ffceb5",
+                        "tertiary": "#6e3815",
+                        "on-primary-container": "#97e6ec",
+                        "surface-2": "#f3f0ec",
+                        "on-tertiary-fixed": "#331200",
+                        "primary-fixed-dim": "#85d3da",
+                        "accent-highlight": "#fde8cc",
+                        "primary-fixed": "#a1f0f6",
+                        "primary-highlight": "#d0e8e6",
+                        "on-primary-fixed": "#002022",
+                        "background": "#f7f6f2",
+                        "primary-container": "#01696f",
+                        "secondary-fixed": "#ffdcc5",
+                        "dark-surface-2": "#252420",
+                        "success": "#437a22",
+                        "on-surface": "#181c1d",
+                        "surface-tint": "#01696f",
+                        "on-secondary-fixed-variant": "#703700",
+                        "on-background": "#181c1d",
+                        "secondary": "#944b00",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#bec8c9",
+                        "text-muted": "#6b6762",
+                        "accent-hover": "#c55700",
+                        "surface-container-highest": "#e0e3e3",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#ffffff",
+                        "tertiary-fixed": "#ffdbc9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "page-margin-mobile": "16px",
+                        "page-margin-desktop": "32px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "price-original": ["Plus Jakarta Sans"],
+                        "price": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col md:flex-row">
+<!-- Sidebar Navigation (Desktop) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-screen z-50 w-60 border-r border-stone-100 bg-white">
+<div class="p-6 border-b border-stone-100 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-2 overflow-hidden flex-shrink-0">
+<img alt="Green Garden Cafe Logo" class="w-full h-full object-cover" data-alt="close-up of a modern minimalist cafe logo featuring a green leaf and warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAroIY4DvpnZoiy3ONx-erXYSXY_ob8uM-UfwOpO05pebKnn-dkHPt1JkPp0s31GoZC4SzE4ENPqIA-64_tI3ppxZgImxObhfM12u7e1Y4tii31YYD7tua54OVn7fT3zimY03yFbIcogLBvG4iLEcKEQTar47c1Tswb6t04BKXZWMOSfW6z4Mtm2BvA3IYUFXvTUVBF1LOALwC8lOYT2fYBWNraL5SKcXv7m3SRn48ESAJNO1OGCErG9wWvx3ToQRrHpnX_GbiRnR0"/>
+</div>
+<div>
+<h2 class="font-label text-label text-primary-container">Green Garden Cafe</h2>
+<p class="font-body-sm text-body-sm text-text-muted">Colombo 07</p>
+</div>
+</div>
+<div class="flex-1 py-4">
+<a class="flex items-center gap-3 text-stone-600 py-3 px-4 hover:bg-stone-50 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label text-label">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-[#01696f]/5 text-[#01696f] border-l-4 border-[#01696f] py-3 px-4 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label text-label">Orders</span>
+</a>
+<a class="flex items-center gap-3 text-stone-600 py-3 px-4 hover:bg-stone-50 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+<span class="font-label text-label">Rescue Bags</span>
+</a>
+<a class="flex items-center gap-3 text-stone-600 py-3 px-4 hover:bg-stone-50 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">bar_chart</span>
+<span class="font-label text-label">Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-stone-600 py-3 px-4 hover:bg-stone-50 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="font-label text-label">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Top App Bar (Mobile) -->
+<header class="md:hidden flex justify-between items-center w-full px-4 h-16 sticky top-0 z-40 bg-[#f7f6f2] border-b border-stone-200">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-2 overflow-hidden flex-shrink-0">
+<img alt="Merchant Logo" class="w-full h-full object-cover" data-alt="close-up of a modern minimalist cafe logo featuring a green leaf and warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwc4jbhHLLgMibYxghtRHrGk5qGkkl2SSChjW_f48mIGOHrcZ52Va_0daW8xI0lev5b_NxRZnKxRSAufqu4CNczkr60N3r4E9jZv6gFiYzh625MwuFhRfbkucSf6gk4KozadbUsQie1yODO9auislRPWT0Po3RkIxby94a9um8pXjicFaW4x0SJY_Wl24nWmAPE_kbnnGSr1cBBlb1hoj1b30WMGUWhaLnN0DIpDSFL_GmvolaEy9hYiTNTD05su2hJXOr2q7pyCQ"/>
+</div>
+<span class="font-['Plus_Jakarta_Sans'] font-semibold tracking-tight text-[#01696f] text-xl">Fresh As Ever</span>
+</div>
+<button class="text-stone-500 hover:bg-stone-100 active:scale-[0.97] transition-all duration-120 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:ml-60 pb-24 md:pb-8 pt-6 px-4 md:px-8 max-w-5xl mx-auto">
+<div class="mb-8">
+<h1 class="font-h1 text-h1 text-on-background mb-2">Orders</h1>
+<p class="font-body-md text-body-md text-text-muted">Manage handovers and verify customer pickups.</p>
+</div>
+<!-- Verification Input Section (Bento Style) -->
+<section class="bg-surface rounded-xl p-6 md:p-8 shadow-[0_4px_24px_rgba(30,27,20,0.04)] mb-8 flex flex-col md:flex-row gap-6 items-center">
+<div class="flex-1">
+<h2 class="font-h2 text-h2 text-on-background mb-2">Verify Customer Code</h2>
+<p class="font-body-sm text-body-sm text-text-muted mb-4">Enter the 6-digit code provided by the customer to authorize the handover of their Rescue Bag.</p>
+<div class="flex flex-col sm:flex-row gap-3">
+<div class="relative flex-1">
+<label class="sr-only" for="verification-code">Verification Code</label>
+<input class="w-full h-12 px-4 rounded-lg border border-outline-variant focus:border-primary-container focus:ring-2 focus:ring-primary-highlight outline-none font-body-lg text-body-lg tracking-[0.2em] placeholder:tracking-normal placeholder:text-text-faint transition-all" id="verification-code" placeholder="e.g. 849201" type="text"/>
+</div>
+<button class="h-12 px-6 bg-primary-container text-on-primary rounded-lg font-label text-label flex items-center justify-center gap-2 active:scale-[0.97] transition-transform duration-120 hover:bg-primary-hover whitespace-nowrap">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+                        Authorize Handover
+                    </button>
+</div>
+</div>
+<div class="w-full md:w-auto flex justify-center border-t md:border-t-0 md:border-l border-divider pt-6 md:pt-0 md:pl-8">
+<div class="text-center">
+<span class="block font-display text-display text-primary-container mb-1">12</span>
+<span class="font-label-caps text-label-caps text-text-muted uppercase">Pending Handovers</span>
+</div>
+</div>
+</section>
+<!-- Filter Tabs -->
+<div class="flex border-b border-divider mb-6">
+<button class="px-6 py-3 font-label text-label text-primary-container border-b-2 border-primary-container">
+                Pending Pickup
+            </button>
+<button class="px-6 py-3 font-label text-label text-text-muted hover:text-on-surface transition-colors">
+                Completed
+            </button>
+</div>
+<!-- Orders Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Order Card 1 -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(30,27,20,0.03)] border border-transparent hover:border-outline-variant transition-colors flex flex-col">
+<div class="h-32 relative w-full bg-surface-2">
+<img alt="Burger Meal" class="w-full h-full object-cover" data-alt="delicious classic cheeseburger with fries in a natural light setting, warm tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZfEnXmQFpvau5arrzs_4NjJWIHklpZhXQSPP1I-lE4Nd5ILhyjQ1gRBOAjPbalfSHlUzHhWGVLLHPxb8fiOBLYYWTATL0syVL10er5QlRN12VRVRqQwT_ouYaoKESr1GicESp3toEOc--25t6yNJqsWRSiZVpoKlOSCk0K5ogQCTyO2cwohnjqdiytjkKMqOp874XNh-wGA5Qds64etIUYBBKM2G68Fj_S_Kh2UGUJN-gN1KXbCgc456-IUWhRCkzaRUc2Lo-ScU"/>
+<div class="absolute top-3 right-3 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-text">
+                        #A842
+                    </div>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-h3 text-h3 text-on-background line-clamp-1">Classic Burger Combo</h3>
+<span class="font-price text-price text-accent">LKR 850</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mb-4">Customer: Dinuka P.</p>
+<div class="mt-auto pt-4 border-t border-divider flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-text-muted">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-body-sm text-body-sm">Today, 14:00 - 15:00</span>
+</div>
+<button class="text-primary-container hover:bg-primary-highlight/50 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Order Card 2 -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(30,27,20,0.03)] border border-transparent hover:border-outline-variant transition-colors flex flex-col">
+<div class="h-32 relative w-full bg-surface-2">
+<img alt="Pastry Box" class="w-full h-full object-cover" data-alt="assorted fresh pastries and croissants in a kraft paper box, overhead shot, morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0OUV1DpmncTfIy-dnI3ABf4yQcsEBa3rGnBtzph0enK8p8NNPrp3_khHrp3btoJmuyULJrRBxNwbGBwXrpX0M6SzqdtTP7BxUZVqTmtXbEjC5Ongcf2bS0Mcs4Lqz0qvKSxQqkZbjCYyOr-7gTIfK9629-SaqeIK2ikndo19wP3pfMyCrGVGieqhhYjfCvhCTQ_iALmJBiQsigdZh4EyekZYZglY6--nq3V2ekvB-EKJj5tCx-WGh_6Vch6RJ7tw0d7xiTOBfzU8"/>
+<div class="absolute top-3 right-3 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-text">
+                        #B109
+                    </div>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-h3 text-h3 text-on-background line-clamp-1">Morning Pastry Surprise</h3>
+<span class="font-price text-price text-accent">LKR 600</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mb-4">Customer: Sarah W.</p>
+<div class="mt-auto pt-4 border-t border-divider flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-text-muted">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-body-sm text-body-sm">Today, 15:30 - 16:30</span>
+</div>
+<button class="text-primary-container hover:bg-primary-highlight/50 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Order Card 3 -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(30,27,20,0.03)] border border-transparent hover:border-outline-variant transition-colors flex flex-col">
+<div class="h-32 relative w-full bg-surface-2">
+<img alt="Healthy Salad" class="w-full h-full object-cover" data-alt="fresh colorful garden salad in a takeaway bowl on wooden table, bright natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi_QyVpwgGvlMstGbDr1szRbd0ykWA60jGcbswDRutgTOwO5OFSQ6yEjkSq3gWEvSu7ttaqojaJBC0i4qfGRDBqcU29ilLUKLaVX0x3j1SGNB-KkwSoD8CRE-XCWKfFaJ34E95UNSa5m5u5pDipVdBi8dF19x-has2SD-sAUTETgimC3nvIvTqDfMrP_nsVk9wrDfadv4KkCcdjuhKFydcBln9MkBQFmGmXiv-Q3fKw765Ri27bq59QedVXGnUoQN8pp4urCsnli4"/>
+<div class="absolute top-3 right-3 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-text">
+                        #C552
+                    </div>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-h3 text-h3 text-on-background line-clamp-1">Garden Fresh Salad Bowl</h3>
+<span class="font-price text-price text-accent">LKR 750</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mb-4">Customer: Kavinda R.</p>
+<div class="mt-auto pt-4 border-t border-divider flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-error">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-body-sm text-body-sm font-medium">Overdue: 13:00 - 14:00</span>
+</div>
+<button class="text-primary-container hover:bg-primary-highlight/50 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 pb-safe z-50 bg-white/90 backdrop-blur-md">
+<a class="flex flex-col items-center justify-center text-stone-400 py-2 active:scale-[0.95] transition-transform duration-120 w-1/4" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#01696f] py-2 active:scale-[0.95] transition-transform duration-120 w-1/4 relative" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold mt-1">Orders</span>
+<div class="absolute top-1 right-6 w-2 h-2 rounded-full bg-accent"></div>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 py-2 active:scale-[0.95] transition-transform duration-120 w-1/4" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">local_mall</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold mt-1">Bags</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 py-2 active:scale-[0.95] transition-transform duration-120 w-1/4" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

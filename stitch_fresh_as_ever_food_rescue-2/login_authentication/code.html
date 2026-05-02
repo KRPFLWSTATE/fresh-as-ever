@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fresh As Ever - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#ebeeee",
+                        "surface-container-highest": "#e0e3e3",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#a1f0f6",
+                        "dark-background": "#141412",
+                        "accent-hover": "#c55700",
+                        "dark-primary": "#4f98a3",
+                        "primary-active": "#0f3638",
+                        "dark-surface-2": "#252420",
+                        "text": "#1a1a1a",
+                        "background": "#f7f6f2",
+                        "divider": "#e2dfd9",
+                        "secondary-fixed": "#ffdcc5",
+                        "surface-bright": "#f7fafa",
+                        "surface-container-low": "#f1f4f4",
+                        "surface": "#ffffff",
+                        "on-tertiary-fixed-variant": "#6e3815",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffdbc9",
+                        "text-faint": "#b5b2ad",
+                        "on-surface": "#181c1d",
+                        "on-secondary-container": "#633000",
+                        "on-error-container": "#93000a",
+                        "dark-accent": "#fdab43",
+                        "on-surface-variant": "#3f4949",
+                        "on-primary-fixed-variant": "#004f54",
+                        "inverse-on-surface": "#eef1f1",
+                        "tertiary-fixed-dim": "#ffb68d",
+                        "secondary": "#944b00",
+                        "text-muted": "#6b6762",
+                        "on-background": "#181c1d",
+                        "secondary-container": "#fc8b27",
+                        "on-tertiary-fixed": "#331200",
+                        "on-primary-container": "#97e6ec",
+                        "on-tertiary-container": "#ffceb5",
+                        "surface-tint": "#01696f",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-hover": "#0c4e54",
+                        "surface-dim": "#d7dbda",
+                        "accent": "#da7101",
+                        "outline": "#6f797a",
+                        "inverse-surface": "#2d3131",
+                        "accent-highlight": "#fde8cc",
+                        "on-secondary-fixed": "#301400",
+                        "primary-highlight": "#d0e8e6",
+                        "primary-fixed-dim": "#85d3da",
+                        "outline-variant": "#bec8c9",
+                        "on-tertiary": "#ffffff",
+                        "dark-surface": "#1c1b18",
+                        "on-primary": "#ffffff",
+                        "surface-2": "#f3f0ec",
+                        "primary": "#004f54",
+                        "on-secondary-fixed-variant": "#703700",
+                        "on-primary-fixed": "#002022",
+                        "success": "#437a22",
+                        "secondary-fixed-dim": "#ffb783",
+                        "surface-variant": "#e0e3e3",
+                        "tertiary": "#6e3815",
+                        "tertiary-container": "#8b4f2a",
+                        "error": "#c0392b",
+                        "surface-container-high": "#e6e9e9",
+                        "primary-container": "#01696f",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#85d3da"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "page-margin-mobile": "16px",
+                        "md": "16px",
+                        "xxl": "48px",
+                        "xl": "32px",
+                        "page-margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "price-original": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "price": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "h1": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "label": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "body-md": ["0.9375rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "price-original": ["0.9375rem", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "h3": ["1.125rem", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "price": ["1.375rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display": ["2rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-sm": ["0.875rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["1.25rem", { "lineHeight": "1.35", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.text'); }
+        .ambient-shadow { box-shadow: 0 8px 30px rgba(30, 27, 20, 0.06); }
+        .btn-scale { transition: transform 120ms ease; }
+        .btn-scale:active { transform: scale(0.97); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col justify-center items-center p-page-margin-mobile md:p-page-margin-desktop font-body-md">
+<!-- Top App Bar (Modified for transactional screen - minimal) -->
+<header class="fixed top-0 left-0 w-full flex justify-between items-center px-4 h-16 bg-[#f7f6f2] border-none z-50">
+<button aria-label="Go Back" class="text-[#01696f] hover:opacity-80 transition-opacity flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] font-semibold text-base text-[#01696f] tracking-tight">Fresh As Ever</h1>
+<button aria-label="Skip Login" class="font-['Plus_Jakarta_Sans'] font-semibold text-base text-[#01696f] hover:opacity-80 transition-opacity">
+            Skip
+        </button>
+</header>
+<main class="w-full max-w-md mt-16 pb-16">
+<div class="text-center mb-xl">
+<h2 class="font-display text-display text-text mb-sm">Welcome Back</h2>
+<p class="font-body-md text-body-md text-text-muted">Sign in to rescue delicious food.</p>
+</div>
+<!-- Card Container -->
+<div class="bg-surface rounded-xl p-md md:p-xl ambient-shadow">
+<!-- Tabs (Visual only for layout demonstration) -->
+<div class="flex border-b border-divider mb-lg">
+<button class="flex-1 pb-sm font-label text-label text-primary border-b-2 border-primary">Customer</button>
+<button class="flex-1 pb-sm font-label text-label text-text-faint hover:text-text-muted transition-colors">Merchant</button>
+</div>
+<!-- Customer Login Form (Active) -->
+<form class="space-y-lg" id="customer-login">
+<div class="space-y-xs">
+<label class="block font-label text-label text-on-surface-variant" for="phone">Phone Number</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-sm flex items-center pointer-events-none text-text-muted">
+<span class="material-symbols-outlined text-[20px]" data-icon="call">call</span>
+</span>
+<input class="block w-full pl-[40px] pr-md py-sm rounded-lg border border-outline-variant bg-surface text-text font-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-highlight focus:outline-none transition-shadow" id="phone" name="phone" placeholder="+94 77 123 4567" required="" type="tel"/>
+</div>
+</div>
+<button class="w-full h-[48px] bg-primary-container text-on-primary rounded-lg font-label text-label flex items-center justify-center btn-scale" type="submit">
+                    Send OTP
+                </button>
+<div class="text-center mt-lg">
+<p class="font-body-sm text-body-sm text-text-muted">
+                        Don't have an account? <a class="text-primary-container font-medium hover:underline" href="#">Sign up</a>
+</p>
+</div>
+</form>
+<!-- Divider -->
+<div class="relative flex py-lg items-center hidden">
+<div class="flex-grow border-t border-divider"></div>
+<span class="flex-shrink-0 mx-4 text-text-faint font-label text-label">or</span>
+<div class="flex-grow border-t border-divider"></div>
+</div>
+<!-- Merchant Login Form (Hidden by default in this view, included for structure) -->
+<form class="space-y-lg hidden" id="merchant-login">
+<div class="space-y-xs">
+<label class="block font-label text-label text-on-surface-variant" for="email">Email Address</label>
+<input class="block w-full px-md py-sm rounded-lg border border-outline-variant bg-surface text-text font-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-highlight focus:outline-none transition-shadow" id="email" name="email" placeholder="merchant@cafe.com" type="email"/>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="block font-label text-label text-on-surface-variant" for="password">Password</label>
+<a class="font-label text-label text-primary-container hover:underline" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<input class="block w-full px-md py-sm rounded-lg border border-outline-variant bg-surface text-text font-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-highlight focus:outline-none transition-shadow" id="password" name="password" placeholder="••••••••" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-sm flex items-center text-text-muted hover:text-text focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full h-[48px] bg-primary-container text-on-primary rounded-lg font-label text-label flex items-center justify-center btn-scale" type="submit">
+                    Sign In as Merchant
+                </button>
+</form>
+</div>
+<!-- Decorative subtle element -->
+<div class="mt-xl flex justify-center opacity-30">
+<img alt="Subtle background texture of coffee beans" class="h-24 w-24 object-cover rounded-full blur-sm" data-alt="close up macro shot of roasted coffee beans warm lighting abstract texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5oNgFP9CfJ50EXSoGTFvhNZKkBo9ZQ5ep7CSohjV6LMLYyQvajB8uomefU6koZCSGD_CSrolUqjsdGqeG5H7O7ayc_fS0r4ehxui6lsnjtJiwzQCFHh3rRb2W6cTZpRIK4rFkyr3eBHDRZMD4BI1UEZrzuwbrdum8NNF7d14_QHD_scEqsaCqZQtWYxzqbjNDmcNf_bIJy44YeF3YJFxytaYnfu3F8LJKR0658GvIUv6HEAv4zjltpgR3x3p29Gh1UfrXHO1Z1GY"/>
+</div>
+</main>
+</body></html>

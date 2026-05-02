@@ -5,8 +5,8 @@ export default function manifest() {
     description: 'Surplus food rescue marketplace in Colombo.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#ffffff',
-    theme_color: '#000000',
+    background_color: '#f7f6f2',
+    theme_color: '#01696f',
     icons: [
       {
         src: '/icon-192x192.png',
