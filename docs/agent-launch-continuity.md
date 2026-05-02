@@ -122,6 +122,16 @@ The native app is a **thin WebView shell** that loads the **same** Next.js app f
 
 When a Mac is available: `npx cap add ios`, Xcode signing, ATS / `WKAppBoundDomains` checklist, then repeat condensed customer + merchant WebView smokes. No App Store submission in the current phase.
 
+## GitHub → Vercel → Android WebView (intended release loop)
+
+1. **GitHub** hosts this repo; every **push to the branch Vercel watches** (usually `main`) triggers a Vercel **production** deploy (or PR previews if you enable them).
+2. **Vercel** builds and serves the Next.js app at a stable HTTPS URL (e.g. `https://your-app.vercel.app` or your custom domain).
+3. The **Android Capacitor shell** uses `CAPACITOR_SERVER_URL` pointing at that **same** HTTPS URL (set before `npm run cap:sync` / building the APK). The WebView loads that site live: **most UI, API routes, and content updates ship as soon as Vercel finishes the deploy** — no new Play upload for typical web-only changes.
+
+**When you still need a new APK or `cap sync`:** native dependency or permission changes, new third-party domains for `allowNavigation`, changing the canonical app URL, or Android/WebView-specific fixes.
+
+**Preview vs production:** Pointing the store APK at **production** keeps behavior predictable. Use **preview URLs** only for internal test builds (each preview hostname may need `CAPACITOR_EXTRA_ALLOW_NAVIGATION` if it is not already covered).
+
 ## Vercel URL swap (owner go-ahead only)
 
 Point `CAPACITOR_SERVER_URL` at the HTTPS deployment; **unset** `CAPACITOR_ANDROID_CLEARTEXT`; run `npm run cap:sync`; rebuild the APK/AAB; re-verify PayHere, Supabase session, maps tiles, and middleware redirects on that host.
