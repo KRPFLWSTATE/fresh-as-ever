@@ -3,7 +3,6 @@
 import { Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCheckout } from '@/hooks/useCheckout';
-import { PayHereScript } from '@/components/PayHereScript';
 import { ArrowLeft, Clock, CreditCard, Money, Leaf, CheckCircle } from '@phosphor-icons/react';
 import { formatPickupRangeLabel } from '@/lib/utils';
 function CheckoutContent() {
@@ -60,7 +59,6 @@ function CheckoutContent() {
 
   return (
     <div className="bg-background text-text min-h-screen pb-40 antialiased font-body-md">
-      <PayHereScript />
       {/* Top Header */}
       <header className="sticky top-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-divider flex items-center h-16 px-page-margin-mobile md:px-page-margin-desktop w-full">
         <button

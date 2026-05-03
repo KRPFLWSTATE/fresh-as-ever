@@ -66,7 +66,10 @@ export function useAuth() {
   }, [supabase]);
 
   useEffect(() => {
-    fetchUser();
+    const t = window.setTimeout(() => {
+      void fetchUser();
+    }, 0);
+    return () => window.clearTimeout(t);
   }, [fetchUser]);
 
   const logout = useCallback(async () => {

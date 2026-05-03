@@ -24,10 +24,6 @@ import {
 import { useDiscoverBags } from '@/hooks/useDiscoverBags';
 import { useAuth } from '@/hooks/useAuth';
 import { formatPickupRangeLabel, formatDistanceAwayLabel } from '@/lib/utils';
-import {
-  getCurrentPositionNativeOrWeb,
-  isGeolocationAvailable,
-} from '@/lib/native/getCurrentPosition';
 
 const DiscoverLeafletMap = dynamic(
   () => import('@/components/maps/DiscoverLeafletMap'),
@@ -108,7 +104,9 @@ function DiscoverContent() {
 
   useEffect(() => {
     if (!locationQuery.trim()) {
-      setLocationResults([]);
+      queueMicrotask(() => {
+        setLocationResults([]);
+      });
       return;
     }
 
@@ -141,40 +139,39 @@ function DiscoverContent() {
     });
   };
 
-  const requestCurrentLocation = async () => {
+  const useCurrentLocation = async () => {
     setLocationError('');
-    if (!isGeolocationAvailable()) {
+    if (!navigator.geolocation) {
       setLocationError('Current location is not available on this device.');
       return;
     }
 
-    try {
-      const position = await getCurrentPositionNativeOrWeb({
-        enableHighAccuracy: true,
-        timeout: 22000,
-        maximumAge: 0,
-      });
-      const lat = position.coords.latitude;
-      const lng = position.coords.longitude;
-      let label = 'Current location';
-      try {
-        const response = await fetch(`/api/location/reverse?lat=${lat}&lng=${lng}`);
-        const data = await response.json();
-        label = data?.label || label;
-      } catch (_error) {
-        // Keep default label on reverse geocode failures
-      }
-      await setLocationByCoords({
-        lat,
-        lng,
-        label,
-        status: 'granted',
-        accuracyM: position.coords.accuracy,
-      });
-      setLocationMenuOpen(false);
-    } catch {
-      setLocationError('Unable to get your current location. Check permissions and try again.');
-    }
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        let label = 'Current location';
+        try {
+          const response = await fetch(`/api/location/reverse?lat=${lat}&lng=${lng}`);
+          const data = await response.json();
+          label = data?.label || label;
+        } catch (_error) {
+          // Keep default label on reverse geocode failures
+        }
+        await setLocationByCoords({
+          lat,
+          lng,
+          label,
+          status: 'granted',
+          accuracyM: position.coords.accuracy,
+        });
+        setLocationMenuOpen(false);
+      },
+      () => {
+        setLocationError('Unable to get your current location. Check permissions and try again.');
+      },
+      { enableHighAccuracy: true, timeout: 22000, maximumAge: 0 }
+    );
   };
 
   return (
@@ -249,7 +246,7 @@ function DiscoverContent() {
 
           <button
             type="button"
-            onClick={requestCurrentLocation}
+            onClick={useCurrentLocation}
             className="w-full px-3 py-2 rounded-lg bg-primary text-white font-label text-sm font-bold"
           >
             Use Current Location

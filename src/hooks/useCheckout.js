@@ -87,15 +87,18 @@ export function useCheckout(bagId) {
   useEffect(() => {
     if (!bagId) {
       router.push('/discover');
-      return;
+      return undefined;
     }
-    fetchCheckout();
+    const t = window.setTimeout(() => {
+      void fetchCheckout();
+    }, 0);
+    return () => window.clearTimeout(t);
   }, [bagId, fetchCheckout, router]);
 
   useEffect(() => {
-    if (!cashAllowed && paymentMethod === 'cash') {
-      setPaymentMethod('card');
-    }
+    if (cashAllowed || paymentMethod !== 'cash') return undefined;
+    const t = window.setTimeout(() => setPaymentMethod('card'), 0);
+    return () => window.clearTimeout(t);
   }, [cashAllowed, paymentMethod]);
 
   const applyPromoCode = useCallback(async () => {

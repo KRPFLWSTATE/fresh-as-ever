@@ -1,7 +1,6 @@
 import './globals.css';
 import 'leaflet/dist/leaflet.css';
 import { Plus_Jakarta_Sans } from 'next/font/google';
-import { CapacitorNativeShell } from '@/components/CapacitorNativeShell';
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -26,7 +25,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className={plusJakarta.variable}>
       <body suppressHydrationWarning className="antialiased min-h-screen font-jakarta bg-background text-text">
-        <CapacitorNativeShell />
         {children}
       </body>
     </html>

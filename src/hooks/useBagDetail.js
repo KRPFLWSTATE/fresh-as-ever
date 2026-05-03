@@ -56,25 +56,34 @@ export function useBagDetail(bagId) {
 
   // Fetch + realtime subscription
   useEffect(() => {
-    if (!bagId) return;
-    fetchBagDetails();
+    if (!bagId) return undefined;
+    let channel = null;
+    const t = window.setTimeout(() => {
+      void fetchBagDetails();
+      channel = supabase
+        .channel(`bag-${bagId}`)
+        .on(
+          'postgres_changes',
+          { event: 'UPDATE', schema: 'public', table: 'rescue_bags', filter: `id=eq.${bagId}` },
+          (payload) => {
+            setBag((prev) =>
+              prev
+                ? {
+                    ...prev,
+                    quantity_remaining: payload.new.quantity_remaining,
+                    rescue_price: payload.new.rescue_price,
+                  }
+                : null
+            );
+          }
+        )
+        .subscribe();
+    }, 0);
 
-    const channel = supabase
-      .channel(`bag-${bagId}`)
-      .on(
-        'postgres_changes',
-        { event: 'UPDATE', schema: 'public', table: 'rescue_bags', filter: `id=eq.${bagId}` },
-        (payload) => {
-          setBag(prev => prev ? {
-            ...prev,
-            quantity_remaining: payload.new.quantity_remaining,
-            rescue_price: payload.new.rescue_price,
-          } : null);
-        }
-      )
-      .subscribe();
-
-    return () => { supabase.removeChannel(channel); };
+    return () => {
+      window.clearTimeout(t);
+      if (channel) supabase.removeChannel(channel);
+    };
   }, [bagId, fetchBagDetails, supabase]);
 
   const handleReserve = useCallback(() => {

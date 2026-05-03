@@ -13,6 +13,7 @@ export function useMerchantContext() {
   const supabase = useMemo(() => createClient(), []);
 
   const fetchContext = useCallback(async () => {
+    await Promise.resolve();
     try {
       setLoading(true);
       setError(null);
@@ -67,7 +68,10 @@ export function useMerchantContext() {
   }, [supabase]);
 
   useEffect(() => {
-    fetchContext();
+    const t = window.setTimeout(() => {
+      void fetchContext();
+    }, 0);
+    return () => window.clearTimeout(t);
   }, [fetchContext]);
 
   const activeOutlet = useMemo(

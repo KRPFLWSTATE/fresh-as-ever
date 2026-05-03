@@ -3,10 +3,6 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { parseOutletLatLng } from '@/lib/geo/parseOutletLatLng';
-import {
-  getCurrentPositionNativeOrWeb,
-  isGeolocationAvailable,
-} from '@/lib/native/getCurrentPosition';
 
 function outletCoordsFromRow(row) {
   const nested = parseOutletLatLng(
@@ -96,6 +92,33 @@ async function enrichBagsWithOutletLocations(supabase, bags) {
   });
 }
 
+// Category filtering (module scope so hooks don’t recreate objects each render).
+const CATEGORY_KEYWORDS = {
+  Bakery: ['bread', 'cake', 'croissant', 'pastry', 'bun', 'donut', 'muffin'],
+  'Café': ['coffee', 'latte', 'cafe', 'tea'],
+  Restaurant: ['meal', 'dinner', 'lunch', 'rice', 'curry', 'kottu', 'hoppers', 'string'],
+  Supermarket: ['groceries', 'vegetables', 'fruit', 'milk', 'egg'],
+  Hotel: ['premium', 'buffet', 'gourmet'],
+  'Mixed Meals': ['box', 'mixed', 'pack', 'combo'],
+  Groceries: ['pack', 'essentials', 'basket'],
+};
+const CATEGORY_ALIASES = {
+  Bakery: ['bakery'],
+  'Café': ['cafe'],
+  Restaurant: ['restaurant', 'mixed_meals'],
+  Supermarket: ['supermarket', 'groceries'],
+  'Mixed Meals': ['mixed_meals'],
+};
+
+function normalizeCategory(value) {
+  return String(value || '').toLowerCase().replace(/[^\w]/g, '');
+}
+
+function containsKeyword(text, keyword) {
+  const safeKeyword = String(keyword || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`\\b${safeKeyword}\\b`, 'i').test(String(text || ''));
+}
+
 function mapRowToDiscoverBag(row) {
   const coords = outletCoordsFromRow(row);
   return {
@@ -128,7 +151,6 @@ function mapRowToDiscoverBag(row) {
  */
 export function useDiscoverBags() {
   const [bags, setBags] = useState([]);
-  const [filteredBags, setFilteredBags] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -143,6 +165,7 @@ export function useDiscoverBags() {
   const [positionAccuracyM, setPositionAccuracyM] = useState(null);
 
   const fetchNearbyBags = useCallback(async (lat, lng) => {
+    await Promise.resolve();
     try {
       setLoading(true);
       setError(null);
@@ -192,7 +215,6 @@ export function useDiscoverBags() {
       nextBags = await enrichBagsWithOutletLocations(supabase, nextBags);
 
       setBags(nextBags);
-      setFilteredBags(nextBags);
     } catch (err) {
       console.error('Error fetching bags:', err);
       setError('Could not load bags. Please try again.');
@@ -201,40 +223,16 @@ export function useDiscoverBags() {
     }
   }, [supabase]);
 
-  // Category-based keyword filtering
-  const CATEGORY_KEYWORDS = {
-    Bakery: ['bread', 'cake', 'croissant', 'pastry', 'bun', 'donut', 'muffin'],
-    'Café': ['coffee', 'latte', 'cafe', 'tea'],
-    Restaurant: ['meal', 'dinner', 'lunch', 'rice', 'curry', 'kottu', 'hoppers', 'string'],
-    Supermarket: ['groceries', 'vegetables', 'fruit', 'milk', 'egg'],
-    Hotel: ['premium', 'buffet', 'gourmet'],
-    'Mixed Meals': ['box', 'mixed', 'pack', 'combo'],
-    Groceries: ['pack', 'essentials', 'basket'],
-  };
-  const CATEGORY_ALIASES = {
-    Bakery: ['bakery'],
-    'Café': ['cafe'],
-    Restaurant: ['restaurant', 'mixed_meals'],
-    Supermarket: ['supermarket', 'groceries'],
-    'Mixed Meals': ['mixed_meals'],
-  };
-
-  const normalizeCategory = (value) => String(value || '').toLowerCase().replace(/[^\w]/g, '');
-  const containsKeyword = (text, keyword) => {
-    const safeKeyword = String(keyword || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    return new RegExp(`\\b${safeKeyword}\\b`, 'i').test(String(text || ''));
-  };
-
-  // Apply search + category filters
-  useEffect(() => {
+  const filteredBags = useMemo(() => {
     let result = bags;
 
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
-      result = result.filter(b =>
-        b.title.toLowerCase().includes(q) ||
-        b.outlet_name?.toLowerCase().includes(q) ||
-        b.merchant_name?.toLowerCase().includes(q)
+      result = result.filter(
+        (b) =>
+          b.title.toLowerCase().includes(q) ||
+          b.outlet_name?.toLowerCase().includes(q) ||
+          b.merchant_name?.toLowerCase().includes(q)
       );
     }
 
@@ -243,63 +241,48 @@ export function useDiscoverBags() {
       const normalizedActiveCategory = normalizeCategory(activeCategory);
       const aliasCategories = (CATEGORY_ALIASES[activeCategory] || []).map(normalizeCategory);
       if (keywords.length > 0) {
-        result = result.filter(b =>
-          keywords.some(k => containsKeyword(b.title, k)) ||
-          aliasCategories.includes(normalizeCategory(b.category)) ||
-          normalizeCategory(b.category) === normalizedActiveCategory
+        result = result.filter(
+          (b) =>
+            keywords.some((k) => containsKeyword(b.title, k)) ||
+            aliasCategories.includes(normalizeCategory(b.category)) ||
+            normalizeCategory(b.category) === normalizedActiveCategory
         );
       } else {
-        // Fallback to exact category match if no keywords
-        result = result.filter(b => normalizeCategory(b.category) === normalizedActiveCategory);
+        result = result.filter((b) => normalizeCategory(b.category) === normalizedActiveCategory);
       }
     }
 
-    setFilteredBags(result);
+    return result;
   }, [searchQuery, activeCategory, bags]);
 
   // Geolocation init
   useEffect(() => {
-    let cancelled = false;
-
-    (async () => {
-      if (!isGeolocationAvailable()) {
-        if (!cancelled) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const coords = { lat: position.coords.latitude, lng: position.coords.longitude };
+          setLocation(coords);
+          setLocStatus('granted');
+          const acc = position.coords.accuracy;
+          setPositionAccuracyM(
+            typeof acc === 'number' && Number.isFinite(acc) ? acc : null
+          );
+          fetchNearbyBags(coords.lat, coords.lng);
+        },
+        () => {
           setLocStatus('denied');
           setPositionAccuracyM(null);
           fetchNearbyBags(6.9271, 79.8612);
-        }
-        return;
-      }
-      try {
-        const position = await getCurrentPositionNativeOrWeb({
-          enableHighAccuracy: true,
-          timeout: 22000,
-          maximumAge: 0,
-        });
-        if (cancelled) return;
-        const coords = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-        setLocation(coords);
-        setLocStatus('granted');
-        const acc = position.coords.accuracy;
-        setPositionAccuracyM(
-          typeof acc === 'number' && Number.isFinite(acc) ? acc : null
-        );
-        fetchNearbyBags(coords.lat, coords.lng);
-      } catch {
-        if (!cancelled) {
-          setLocStatus('denied');
-          setPositionAccuracyM(null);
-          fetchNearbyBags(6.9271, 79.8612);
-        }
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
+        },
+        { enableHighAccuracy: true, timeout: 22000, maximumAge: 0 }
+      );
+    } else {
+      void Promise.resolve().then(() => {
+        setLocStatus('denied');
+        setPositionAccuracyM(null);
+        return fetchNearbyBags(6.9271, 79.8612);
+      });
+    }
   }, [fetchNearbyBags]);
 
   const handleRefresh = useCallback(() => {

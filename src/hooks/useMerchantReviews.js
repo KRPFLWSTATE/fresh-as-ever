@@ -13,6 +13,7 @@ export function useMerchantReviews() {
   const [error, setError] = useState(null);
 
   const fetchReviews = useCallback(async () => {
+    await Promise.resolve();
     if (!outletScopeIds?.length) {
       setReviews([]);
       setLoading(false);
@@ -55,9 +56,11 @@ export function useMerchantReviews() {
   }, [outletScopeIds, supabase]);
 
   useEffect(() => {
-    if (!contextLoading) {
-      fetchReviews();
-    }
+    if (contextLoading) return undefined;
+    const t = window.setTimeout(() => {
+      void fetchReviews();
+    }, 0);
+    return () => window.clearTimeout(t);
   }, [contextLoading, fetchReviews]);
 
   return {

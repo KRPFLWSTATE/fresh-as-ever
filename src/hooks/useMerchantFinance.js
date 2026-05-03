@@ -24,6 +24,7 @@ export function useMerchantFinance() {
   const { activeOutlet, loading: contextLoading } = useMerchantContext();
 
   const fetchFinanceData = useCallback(async () => {
+    await Promise.resolve();
     if (!activeOutlet?.id) {
       setLoading(false);
       return;
@@ -65,9 +66,11 @@ export function useMerchantFinance() {
   }, [activeOutlet, supabase]);
 
   useEffect(() => {
-    if (!contextLoading) {
-      fetchFinanceData();
-    }
+    if (contextLoading) return undefined;
+    const t = window.setTimeout(() => {
+      void fetchFinanceData();
+    }, 0);
+    return () => window.clearTimeout(t);
   }, [fetchFinanceData, contextLoading]);
 
   const requestPayout = async () => {

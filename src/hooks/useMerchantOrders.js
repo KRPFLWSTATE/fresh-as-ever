@@ -28,6 +28,7 @@ export function useMerchantOrders() {
   };
 
   const fetchOrders = useCallback(async () => {
+    await Promise.resolve();
     if (!outletScopeIds?.length) {
       setOrders([]);
       setLoading(false);
@@ -82,6 +83,7 @@ export function useMerchantOrders() {
   }, [outletScopeIds, supabase]);
 
   const fetchRecentVerifications = useCallback(async () => {
+    await Promise.resolve();
     if (!outletScopeIds?.length) {
       setRecentVerifications([]);
       return;
@@ -124,10 +126,12 @@ export function useMerchantOrders() {
   }, [outletScopeIds, supabase]);
 
   useEffect(() => {
-    if (!contextLoading) {
-      fetchOrders();
-      fetchRecentVerifications();
-    }
+    if (contextLoading) return undefined;
+    const t = window.setTimeout(() => {
+      void fetchOrders();
+      void fetchRecentVerifications();
+    }, 0);
+    return () => window.clearTimeout(t);
   }, [fetchOrders, fetchRecentVerifications, contextLoading]);
 
   // Use this function to handle an actual scanned QR code (order ID)

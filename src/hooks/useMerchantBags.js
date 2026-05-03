@@ -13,6 +13,7 @@ export function useMerchantBags() {
   const { activeOutlet, loading: contextLoading } = useMerchantContext();
 
   const fetchBags = useCallback(async () => {
+    await Promise.resolve();
     if (!activeOutlet?.id) {
       setBags([]);
       setLoading(false);
@@ -53,9 +54,11 @@ export function useMerchantBags() {
   }, [activeOutlet, supabase]);
 
   useEffect(() => {
-    if (!contextLoading) {
-      fetchBags();
-    }
+    if (contextLoading) return undefined;
+    const t = window.setTimeout(() => {
+      void fetchBags();
+    }, 0);
+    return () => window.clearTimeout(t);
   }, [fetchBags, contextLoading]);
 
   const deleteBag = async (id) => {

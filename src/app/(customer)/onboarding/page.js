@@ -1,18 +1,13 @@
 'use client';
-import { Suspense, useEffect, useMemo, useState } from 'react';
+import { Suspense, useMemo, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ShoppingBag, Leaf, ForkKnife } from '@phosphor-icons/react';
 import { createClient } from '@/lib/supabase/client';
-function CustomerOnboardingContent() {
+
+function CustomerOnboardingInner({ safeInitialStep }) {
   const router = useRouter();
   const supabase = useMemo(() => createClient(), []);
-  const searchParams = useSearchParams();
-  const initialStep = Number(searchParams?.get('step') || '1');
-  const safeInitialStep = Number.isFinite(initialStep) ? Math.min(3, Math.max(1, initialStep)) : 1;
   const [step, setStep] = useState(safeInitialStep);
-  useEffect(() => {
-    setStep(safeInitialStep);
-  }, [safeInitialStep]);
 
   const setStepAndSyncUrl = (nextStep) => {
     setStep(nextStep);
@@ -66,6 +61,14 @@ function CustomerOnboardingContent() {
       </div>
     </main>
   );
+}
+
+function CustomerOnboardingContent() {
+  const searchParams = useSearchParams();
+  const initialStep = Number(searchParams?.get('step') || '1');
+  const safeInitialStep = Number.isFinite(initialStep) ? Math.min(3, Math.max(1, initialStep)) : 1;
+
+  return <CustomerOnboardingInner key={safeInitialStep} safeInitialStep={safeInitialStep} />;
 }
 
 export default function CustomerOnboardingPage() {

@@ -1,23 +1,17 @@
-# Fresh As Ever
-
-Rescue-food marketplace (Next.js App Router, Supabase, Capacitor Android shell).
-
-**Repository:** [github.com/KRPFLWSTATE/fresh-as-ever](https://github.com/KRPFLWSTATE/fresh-as-ever)
-
-Agent and launch notes: [`docs/agent-launch-continuity.md`](docs/agent-launch-continuity.md). Capacitor LAN dev: [`env.capacitor.example`](env.capacitor.example).
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-Run the development server:
+First, run the development server:
 
 ```bash
 npm run dev
-```
-
-For a **phone or emulator on the same Wi‑Fi** (Capacitor remote URL), use:
-
-```bash
-npm run dev:lan
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

@@ -107,7 +107,11 @@ export default function MerchantAnalyticsPage() {
                     <Star key={j} size={14} weight="fill" className={j < f.rating ? 'text-accent' : 'text-divider'} />
                   ))}
                 </div>
-                <p className="font-body-md text-text font-medium italic mb-3">"{f.comment || 'No additional comment'}"</p>
+                <p className="font-body-md text-text font-medium italic mb-3">
+                  {'\u201c'}
+                  {f.comment || 'No additional comment'}
+                  {'\u201d'}
+                </p>
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary">
                     {f.customerName?.[0] || 'C'}

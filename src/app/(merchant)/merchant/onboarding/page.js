@@ -1,19 +1,12 @@
 'use client';
 
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Storefront, MapPin, FileArrowUp, ArrowRight, Check, CaretLeft } from '@phosphor-icons/react';
 
-function MerchantOnboardingContent() {
+function MerchantOnboardingInner({ safeInitialStep }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const initialStep = Number(searchParams?.get('step') || '1');
-  const safeInitialStep = Number.isFinite(initialStep) ? Math.min(3, Math.max(1, initialStep)) : 1;
   const [step, setStep] = useState(safeInitialStep);
-
-  useEffect(() => {
-    setStep(safeInitialStep);
-  }, [safeInitialStep]);
 
   const setStepAndSyncUrl = (nextStep) => {
     setStep(nextStep);
@@ -149,6 +142,14 @@ function MerchantOnboardingContent() {
       </div>
     </main>
   );
+}
+
+function MerchantOnboardingContent() {
+  const searchParams = useSearchParams();
+  const initialStep = Number(searchParams?.get('step') || '1');
+  const safeInitialStep = Number.isFinite(initialStep) ? Math.min(3, Math.max(1, initialStep)) : 1;
+
+  return <MerchantOnboardingInner key={safeInitialStep} safeInitialStep={safeInitialStep} />;
 }
 
 export default function MerchantOnboardingPage() {

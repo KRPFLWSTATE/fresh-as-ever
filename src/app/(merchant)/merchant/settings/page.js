@@ -3,40 +3,44 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Storefront, Bell, ShieldCheck, MapPin, Phone, Envelope, Clock, Check, NavigationArrow } from '@phosphor-icons/react';
 import { useMerchantContext } from '@/hooks/useMerchantContext';
-import {
-  getCurrentPositionNativeOrWeb,
-  isGeolocationAvailable,
-} from '@/lib/native/getCurrentPosition';
 
 export default function MerchantSettingsPage() {
   const { merchant, activeOutlet, loading, updateMerchantSettings } = useMerchantContext();
-  const [storeName, setStoreName] = useState('');
-  const [address, setAddress] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [operatingHours, setOperatingHours] = useState('');
-  const [coverImageUrl, setCoverImageUrl] = useState('');
+  const formKey = `${merchant?.id ?? 'none'}-${activeOutlet?.id ?? 'none'}`;
+
+  return (
+    <MerchantSettingsForm
+      key={formKey}
+      merchant={merchant}
+      activeOutlet={activeOutlet}
+      loading={loading}
+      updateMerchantSettings={updateMerchantSettings}
+    />
+  );
+}
+
+function MerchantSettingsForm({ merchant, activeOutlet, loading, updateMerchantSettings }) {
+  const [storeName, setStoreName] = useState(() => merchant?.business_name || activeOutlet?.name || '');
+  const [address, setAddress] = useState(() => activeOutlet?.address || '');
+  const [phone, setPhone] = useState(() => activeOutlet?.phone || merchant?.phone || '');
+  const [email, setEmail] = useState(() => activeOutlet?.email || merchant?.email || '');
+  const [operatingHours, setOperatingHours] = useState(
+    () => activeOutlet?.operating_hours || merchant?.operating_hours || '08:00 - 20:00'
+  );
+  const [coverImageUrl, setCoverImageUrl] = useState(() => activeOutlet?.cover_image_url || '');
   const [locationQuery, setLocationQuery] = useState('');
   const [locationResults, setLocationResults] = useState([]);
   const [isSearchingLocation, setIsSearchingLocation] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [notice, setNotice] = useState('');
   const [error, setError] = useState('');
-  const [selectedLocation, setSelectedLocation] = useState(null);
-
-  useEffect(() => {
-    setStoreName(merchant?.business_name || activeOutlet?.name || '');
-    setAddress(activeOutlet?.address || '');
-    setPhone(activeOutlet?.phone || merchant?.phone || '');
-    setEmail(activeOutlet?.email || merchant?.email || '');
-    setOperatingHours(activeOutlet?.operating_hours || merchant?.operating_hours || '08:00 - 20:00');
-    setCoverImageUrl(activeOutlet?.cover_image_url || '');
-    setSelectedLocation(activeOutlet?.location || null);
-  }, [merchant, activeOutlet]);
+  const [selectedLocation, setSelectedLocation] = useState(() => activeOutlet?.location || null);
 
   useEffect(() => {
     if (!locationQuery.trim()) {
-      setLocationResults([]);
+      queueMicrotask(() => {
+        setLocationResults([]);
+      });
       return;
     }
 
@@ -63,36 +67,33 @@ export default function MerchantSettingsPage() {
     setLocationResults([]);
   };
 
-  const requestPreciseLocation = async () => {
+  const usePreciseLocation = () => {
     setError('');
-    if (!isGeolocationAvailable()) {
+    if (!navigator.geolocation) {
       setError('Precise location is not available on this device.');
       return;
     }
 
-    try {
-      const position = await getCurrentPositionNativeOrWeb({
-        enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 0,
-      });
-      const lat = position.coords.latitude;
-      const lng = position.coords.longitude;
-      let label = 'Current location';
-      try {
-        const response = await fetch(`/api/location/reverse?lat=${lat}&lng=${lng}`);
-        const data = await response.json();
-        label = data?.label || label;
-      } catch (_error) {
-        // Keep default label.
-      }
-      setAddress(label);
-      setSelectedLocation({ lat, lng, label });
-    } catch {
-      setError(
-        'Unable to get a precise location. Please allow location access or enter an address manually.'
-      );
-    }
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        let label = 'Current location';
+        try {
+          const response = await fetch(`/api/location/reverse?lat=${lat}&lng=${lng}`);
+          const data = await response.json();
+          label = data?.label || label;
+        } catch (_error) {
+          // Keep default label.
+        }
+        setAddress(label);
+        setSelectedLocation({ lat, lng, label });
+      },
+      () => {
+        setError('Unable to get a precise location. Please allow location access or enter an address manually.');
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    );
   };
 
   const onSave = async () => {
@@ -240,7 +241,7 @@ export default function MerchantSettingsPage() {
 
           <button
             type="button"
-            onClick={requestPreciseLocation}
+            onClick={usePreciseLocation}
             className="w-full h-12 bg-surface-2 border border-divider text-text font-label font-bold rounded-2xl transition-all active:scale-[0.98] flex items-center justify-center gap-2"
           >
             <NavigationArrow size={18} weight="bold" />

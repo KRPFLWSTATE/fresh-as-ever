@@ -16,6 +16,7 @@ export function useOrders() {
   const supabase = useMemo(() => createClient(), []);
 
   const fetchOrders = useCallback(async () => {
+    await Promise.resolve();
     try {
       setLoading(true);
       const { data: { user } } = await supabase.auth.getUser();
@@ -51,7 +52,10 @@ export function useOrders() {
   }, [supabase]);
 
   useEffect(() => {
-    fetchOrders();
+    const t = window.setTimeout(() => {
+      void fetchOrders();
+    }, 0);
+    return () => window.clearTimeout(t);
   }, [fetchOrders]);
 
   const activeOrders = useMemo(

@@ -21,6 +21,7 @@ export function useMerchantDashboard() {
   const { outletScopeIds, loading: contextLoading } = useMerchantContext();
 
   const fetchDashboardData = useCallback(async () => {
+    await Promise.resolve();
     if (!outletScopeIds?.length) {
       setLoading(false);
       return;
@@ -95,9 +96,11 @@ export function useMerchantDashboard() {
   }, [outletScopeIds, supabase]);
 
   useEffect(() => {
-    if (!contextLoading) {
-      fetchDashboardData();
-    }
+    if (contextLoading) return undefined;
+    const t = window.setTimeout(() => {
+      void fetchDashboardData();
+    }, 0);
+    return () => window.clearTimeout(t);
   }, [fetchDashboardData, contextLoading]);
 
   return {

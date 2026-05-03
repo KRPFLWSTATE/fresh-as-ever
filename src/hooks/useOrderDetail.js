@@ -17,6 +17,7 @@ export function useOrderDetail(orderId) {
   const supabase = useMemo(() => createClient(), []);
 
   const fetchOrderDetails = useCallback(async (isSilent = false) => {
+    await Promise.resolve();
     try {
       if (!isSilent) setLoading(true);
 
@@ -41,15 +42,18 @@ export function useOrderDetail(orderId) {
   }, [orderId, supabase]);
 
   useEffect(() => {
-    if (!orderId) return;
-    fetchOrderDetails();
-
-    // Poll for status updates every 10s
-    const interval = setInterval(() => {
-      fetchOrderDetails(true);
-    }, 10000);
-
-    return () => clearInterval(interval);
+    if (!orderId) return undefined;
+    let interval;
+    const t = window.setTimeout(() => {
+      void fetchOrderDetails();
+      interval = window.setInterval(() => {
+        void fetchOrderDetails(true);
+      }, 10000);
+    }, 0);
+    return () => {
+      window.clearTimeout(t);
+      if (interval) window.clearInterval(interval);
+    };
   }, [fetchOrderDetails, orderId]);
 
   const handleCancelOrder = useCallback(async () => {
