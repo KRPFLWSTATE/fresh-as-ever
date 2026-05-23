@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { createClient } from '@supabase/supabase-js';
+import { invokeTransactionalSms } from '@/lib/sms/invokeTransactionalSms';
 
 /**
  * PayHere notify_url webhook.
@@ -20,6 +21,7 @@ export async function POST(request) {
     const payhere_currency = params.get('payhere_currency');
     const status_code = params.get('status_code');
     const md5sig = params.get('md5sig');
+    const payment_id = params.get('payment_id');
 
     const original_secret = process.env.PAYHERE_SECRET || process.env.PAYHERE_MERCHANT_SECRET;
     if (!original_secret) {
@@ -58,7 +60,7 @@ export async function POST(request) {
       // Idempotency: PayHERE may retry notify; succeed if already marked paid.
       const { data: existing, error: readErr } = await supabase
         .from('orders')
-        .select('id, payment_status, order_status')
+        .select('id, payment_status, order_status, customer_id, reservation_code')
         .eq('id', order_id)
         .maybeSingle();
 
@@ -69,11 +71,26 @@ export async function POST(request) {
 
       const { error } = await supabase
         .from('orders')
-        .update({ payment_status: 'paid', order_status: 'paid' })
+        .update({
+          payment_status: 'paid',
+          order_status: 'paid',
+          ...(payment_id ? { payhere_payment_id: payment_id } : {}),
+        })
         .eq('id', order_id)
         .eq('order_status', 'reserved');
 
       if (error) throw error;
+
+      if (existing?.customer_id) {
+        void invokeTransactionalSms({
+          userId: String(existing.customer_id),
+          template: 'reservation_confirmed',
+          orderId: String(order_id),
+          payload: {
+            reservationCode: String(existing.reservation_code ?? ''),
+          },
+        });
+      }
     }
 
     return NextResponse.json({ success: true }, { status: 200 });

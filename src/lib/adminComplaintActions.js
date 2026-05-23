@@ -1,48 +1,21 @@
-import { createClient } from '@/lib/supabase/client';
-import { mapSupabaseError } from '@/lib/supabaseError';
+import { postOrderRefundClient } from '@/lib/orders/refundApiClient';
 
 /**
- * @param {import('@supabase/supabase-js').SupabaseClient} sb
+ * Issue refund via hosted API (PayHere + DB).
  */
-export async function issueComplaintRefund(sb, { complaintId, orderId, resolution, userId }) {
+export async function issueComplaintRefund(_sb, { complaintId, orderId, resolution }) {
   if (!orderId) {
     return { error: 'This complaint is not tied to an order.' };
   }
 
-  const { error: orderErr } = await sb
-    .from('orders')
-    .update({
-      order_status: 'cancelled',
-      payment_status: 'refunded',
-      cancelled_at: new Date().toISOString(),
-      cancellation_reason: 'Admin refund via complaint resolution',
-      cancelled_by: 'admin',
-    })
-    .eq('id', orderId);
-
-  if (orderErr) {
-    return { error: mapSupabaseError(orderErr, 'Refund failed.') };
+  const result = await postOrderRefundClient({
+    orderId,
+    complaintId,
+    reason: resolution?.trim() || 'Admin refund via complaint resolution',
+  });
+  if (result.error) {
+    return { error: result.error };
   }
-
-  const { error: complaintErr } = await sb
-    .from('complaints')
-    .update({
-      status: 'resolved',
-      resolved_at: new Date().toISOString(),
-      resolved_by: userId ?? null,
-      resolution: resolution?.trim() || 'Refunded and cancelled',
-    })
-    .eq('id', complaintId);
-
-  if (complaintErr) {
-    return {
-      error: mapSupabaseError(
-        complaintErr,
-        'Order refunded but complaint status could not be updated.',
-      ),
-    };
-  }
-
   return { ok: true };
 }
 
