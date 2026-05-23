@@ -43,6 +43,7 @@ $$;
 
 revoke all on function public.merchant_rescue_counts(uuid[]) from public;
 grant execute on function public.merchant_rescue_counts(uuid[]) to authenticated;
+revoke execute on function public.merchant_rescue_counts(uuid[]) from anon;
 
 create or replace function public.merchant_popular_bags(p_outlet_ids uuid[], p_limit int default 3)
 returns table (
@@ -73,3 +74,4 @@ $$;
 
 revoke all on function public.merchant_popular_bags(uuid[], int) from public;
 grant execute on function public.merchant_popular_bags(uuid[], int) to authenticated;
+revoke execute on function public.merchant_popular_bags(uuid[], int) from anon;
