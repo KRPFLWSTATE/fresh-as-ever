@@ -13,6 +13,7 @@ import {
   Shield,
 } from '@phosphor-icons/react';
 import { useAuth } from '@/hooks/useAuth';
+import { SocialAuthButtons } from '@/components/auth/SocialAuthButtons';
 
 function LoginForm() {
   const router = useRouter();
@@ -42,6 +43,8 @@ function LoginForm() {
     handleOtpChange,
     handleOtpKeyDown,
     resetToPhoneEntry,
+    handleSignInWithGoogle,
+    handleSignInWithApple,
   } = useAuth();
 
   const subtitle =
@@ -136,6 +139,12 @@ function LoginForm() {
               )}
 
               {activeTab === 'customer' && (
+                <>
+                  <SocialAuthButtons
+                    loading={loading}
+                    onGoogle={() => void handleSignInWithGoogle()}
+                    onApple={() => void handleSignInWithApple()}
+                  />
                 <form className="space-y-lg" onSubmit={handleRequestOTP}>
                   <div className="space-y-xs">
                     <label className="block font-label text-sm font-bold text-text" htmlFor="phone">
@@ -165,6 +174,7 @@ function LoginForm() {
                     {loading ? 'Sending...' : 'Send OTP'}
                   </button>
                 </form>
+                </>
               )}
 
               {(activeTab === 'merchant' || activeTab === 'admin') && (

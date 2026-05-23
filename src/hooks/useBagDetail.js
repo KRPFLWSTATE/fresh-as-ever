@@ -3,13 +3,13 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { createBrowserClient } from '@supabase/ssr';
+import { mapSupabaseError } from '@/lib/supabaseError';
 
 /**
  * Bag detail hook — fetch, realtime updates, reserve action.
  * Extracted from: src/app/(customer)/bags/[id]/page.js
  */
 export function useBagDetail(bagId) {
-  const DEFAULT_VENUE_RATING = 4.2;
   const router = useRouter();
   const [bag, setBag] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -42,13 +42,12 @@ export function useBagDetail(bagId) {
         ...data,
         outlet: {
           ...(data?.outlet || {}),
-          average_rating: data?.outlet?.average_rating || DEFAULT_VENUE_RATING,
-          total_reviews: data?.outlet?.total_reviews || 0,
+          average_rating: data?.outlet?.average_rating ?? null,
+          total_reviews: data?.outlet?.total_reviews ?? 0,
         },
       });
     } catch (err) {
-      console.error('Error fetching bag details:', err);
-      setError('Bag not found or no longer available.');
+      setError(mapSupabaseError(err, 'Bag not found or no longer available.'));
     } finally {
       setLoading(false);
     }

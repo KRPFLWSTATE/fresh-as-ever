@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createClient } from '@/lib/supabase/client';
+import { mapSupabaseError } from '@/lib/supabaseError';
 
 export function useMerchantContext() {
   const [merchant, setMerchant] = useState(null);
@@ -25,7 +26,8 @@ export function useMerchantContext() {
         return;
       }
 
-      // Fetch merchant
+      await supabase.rpc('link_merchant_staff_from_email');
+
       const { data: merchantRows, error: merchantError } = await supabase
         .from('merchants')
         .select('*')
@@ -34,7 +36,29 @@ export function useMerchantContext() {
 
       if (merchantError) throw merchantError;
 
-      const merchantData = merchantRows?.[0] || null;
+      let merchantData = merchantRows?.[0] || null;
+
+      if (!merchantData?.id) {
+        const { data: staffLink, error: staffErr } = await supabase
+          .from('merchant_staff')
+          .select('merchant_id')
+          .eq('user_id', user.id)
+          .eq('status', 'active')
+          .order('created_at', { ascending: true })
+          .limit(1)
+          .maybeSingle();
+        if (!staffErr && staffLink?.merchant_id) {
+          const { data: staffMerchant, error: smErr } = await supabase
+            .from('merchants')
+            .select('*')
+            .eq('id', String(staffLink.merchant_id))
+            .maybeSingle();
+          if (!smErr && staffMerchant) {
+            merchantData = staffMerchant;
+          }
+        }
+      }
+
       if (merchantData) {
         setMerchant(merchantData);
         // Fetch outlets
@@ -60,8 +84,7 @@ export function useMerchantContext() {
         setActiveOutletId(null);
       }
     } catch (err) {
-      console.error('Error fetching merchant context:', err);
-      setError('Failed to load merchant details');
+      setError(mapSupabaseError(err, 'Failed to load merchant details.'));
     } finally {
       setLoading(false);
     }

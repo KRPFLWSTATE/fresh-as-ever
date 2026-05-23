@@ -96,20 +96,19 @@ export default function MerchantDisputesPage() {
     try {
       setUpdatingId(orderId);
       setNotice('');
-      const { error } = await supabase
-        .from('orders')
-        .update({ order_status: 'collected', updated_at: new Date().toISOString() })
-        .eq('id', orderId)
-        .eq('outlet_id', activeOutlet?.id);
-
-      if (error) throw error;
-
       setDisputes((prev) =>
         prev.map((item) =>
-          item.orderId === orderId ? { ...item, status: 'resolved', reason: 'Collection mismatch inquiry resolved', updated: new Date().toLocaleString() } : item
-        )
+          item.orderId === orderId
+            ? {
+                ...item,
+                status: 'resolved',
+                reason: 'Dispute noted as resolved (no order status change)',
+                updated: new Date().toLocaleString(),
+              }
+            : item,
+        ),
       );
-      setNotice('Dispute marked as resolved.');
+      setNotice('Dispute marked as resolved locally. Use handover verification if collection is still pending.');
     } catch (_err) {
       setNotice('Could not resolve dispute right now.');
     } finally {

@@ -87,7 +87,7 @@ export default function FavouritesPage() {
                   <div className="flex-1 pt-1 min-w-0">
                     <div className="flex items-center gap-1.5 font-label text-[10px] font-bold text-text-muted uppercase tracking-widest mb-1.5">
                       <MapPin size={12} weight="fill" className="text-primary" />
-                      {fav.distance}
+                      {fav.distanceLabel ?? fav.distance}
                     </div>
                     <h3 className="font-h3 text-h3 text-text line-clamp-1 mb-1.5 group-hover:text-primary transition-colors">{fav.name}</h3>
                     <div className="flex items-center gap-2">

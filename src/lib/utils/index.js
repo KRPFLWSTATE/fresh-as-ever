@@ -240,6 +240,20 @@ export function isOrderEligibleForMerchantNoShow(normalizedStatus, pickupEndIso)
   return NO_SHOW_MERCHANT_STATUSES.includes(s) && isPickupNoShowGraceElapsed(pickupEndIso);
 }
 
+/** Collectible at counter: paid/ready_for_pickup or reserved with payment_status paid. */
+export function isOrderCollectible(order) {
+  const st = normalizeOrderStatus(order?.status ?? order?.order_status);
+  if (['paid', 'ready_for_pickup'].includes(st)) return true;
+  if (st === 'reserved' && order?.payment_status === 'paid') return true;
+  return false;
+}
+
+/** Normalize handover code: strip spaces, uppercase. Returns null if not exactly 6 chars. */
+export function normalizeHandoverCode(raw) {
+  const code = String(raw || '').replace(/\s/g, '').toUpperCase();
+  return code.length === 6 ? code : null;
+}
+
 /**
  * Bag status display data
  */

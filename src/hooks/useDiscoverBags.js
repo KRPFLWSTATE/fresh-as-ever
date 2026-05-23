@@ -3,6 +3,9 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { parseOutletLatLng } from '@/lib/geo/parseOutletLatLng';
+import { normalizeVenueRating } from '@/lib/venueRating';
+import { mapSupabaseError } from '@/lib/supabaseError';
+import { ERROR } from '@/lib/messages/errors';
 
 function outletCoordsFromRow(row) {
   const nested = parseOutletLatLng(
@@ -138,7 +141,7 @@ function mapRowToDiscoverBag(row) {
       row.outlet?.name ??
       'Local Merchant',
     outlet_name: row.outlet_name ?? row.outlet?.name ?? 'Outlet',
-    rating: row.rating ?? row.outlet?.average_rating ?? 4.2,
+    rating: normalizeVenueRating(row.rating ?? row.outlet?.average_rating),
     review_count: row.review_count ?? row.outlet?.total_reviews ?? 0,
     outlet_lat: coords?.lat ?? null,
     outlet_lng: coords?.lng ?? null,
@@ -216,8 +219,7 @@ export function useDiscoverBags() {
 
       setBags(nextBags);
     } catch (err) {
-      console.error('Error fetching bags:', err);
-      setError('Could not load bags. Please try again.');
+      setError(mapSupabaseError(err, ERROR.discover.loadBags));
     } finally {
       setLoading(false);
     }

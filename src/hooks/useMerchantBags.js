@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useMerchantContext } from './useMerchantContext';
+import { mapSupabaseError } from '@/lib/supabaseError';
 
 export function useMerchantBags() {
   const [bags, setBags] = useState([]);
@@ -46,8 +47,7 @@ export function useMerchantBags() {
       
       setBags(formatted);
     } catch (err) {
-      console.error('Fetch merchant bags error:', err);
-      setError('Could not load bags.');
+      setError(mapSupabaseError(err, 'Could not load bags.'));
     } finally {
       setLoading(false);
     }

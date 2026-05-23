@@ -2,22 +2,79 @@
 
 import { useState, useEffect, useCallback, useMemo, startTransition } from 'react';
 import { createClient } from '@/lib/supabase/client';
+import { mapSupabaseError } from '@/lib/supabaseError';
+import { ERROR } from '@/lib/messages/errors';
+import { distanceLabelFromOutlet } from '@/lib/geoDistance';
+import { normalizeVenueRating } from '@/lib/venueRating';
+
+function mapFavouriteRow(fav, userCoords) {
+  const out = fav.outlet;
+  if (!out?.id) return null;
+
+  const liveBags = (out.rescue_bags || []).filter(
+    (b) => b.status === 'live' || b.status === 'draft',
+  );
+  const bagsAvailable = liveBags.reduce(
+    (sum, b) => sum + (b.quantity_remaining || 0),
+    0,
+  );
+
+  let status = 'sold_out';
+  if (bagsAvailable > 0) status = 'selling_fast';
+  else if (liveBags.length > 0) status = 'sold_out_today';
+
+  const distanceLabel = distanceLabelFromOutlet(userCoords, out.location);
+
+  return {
+    id: out.id,
+    name: out.name,
+    rating: normalizeVenueRating(out.average_rating),
+    distanceLabel,
+    distance: distanceLabel,
+    image: out.cover_image_url || '/api/placeholder/400/200',
+    status,
+    bagsAvailable,
+  };
+}
 
 export function useFavourites() {
-  const DEFAULT_VENUE_RATING = 4.2;
   const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [userCoords, setUserCoords] = useState(null);
+  const [locStatus, setLocStatus] = useState('pending');
 
   const supabase = useMemo(() => createClient(), []);
+
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      if (typeof window === 'undefined' || !navigator.geolocation) {
+        setLocStatus('unavailable');
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setUserCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+          setLocStatus('granted');
+        },
+        () => setLocStatus('denied'),
+        { enableHighAccuracy: false, timeout: 12000, maximumAge: 60000 },
+      );
+    }, 0);
+    return () => window.clearTimeout(t);
+  }, []);
 
   const fetchFavourites = useCallback(async () => {
     try {
       setLoading(true);
-      const { data: { user } } = await supabase.auth.getUser();
+      setError(null);
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
 
       if (!user) {
-        setError('Please sign in to view favourites.');
+        setError(ERROR.favourites.signIn);
+        setFavourites([]);
         setLoading(false);
         return;
       }
@@ -31,6 +88,7 @@ export function useFavourites() {
             name,
             average_rating,
             cover_image_url,
+            location,
             rescue_bags (
               quantity_remaining,
               status
@@ -41,30 +99,19 @@ export function useFavourites() {
 
       if (fetchError) throw fetchError;
 
-      const formatted = (data || []).map(fav => {
-        const out = fav.outlet;
-        const liveBags = (out.rescue_bags || []).filter(b => b.status === 'live' || b.status === 'draft');
-        const bagsAvailable = liveBags.reduce((sum, b) => sum + (b.quantity_remaining || 0), 0);
-        
-        return {
-          id: out.id,
-          name: out.name,
-          rating: out.average_rating || DEFAULT_VENUE_RATING,
-          distance: 'Nearby', // Mock distance since we need user location to calculate
-          image: out.cover_image_url || '/api/placeholder/400/200',
-          status: bagsAvailable > 0 ? 'selling_fast' : 'sold_out',
-          bagsAvailable,
-        };
-      });
+      const formatted = (data || [])
+        .map((fav) => mapFavouriteRow(fav, userCoords))
+        .filter(Boolean);
 
       setFavourites(formatted);
     } catch (err) {
       console.error('Fetch favourites error:', err);
-      setError('Could not load favourites.');
+      setError(mapSupabaseError(err, ERROR.favourites.load));
+      setFavourites([]);
     } finally {
       setLoading(false);
     }
-  }, [supabase]);
+  }, [supabase, userCoords]);
 
   useEffect(() => {
     startTransition(() => {
@@ -74,7 +121,7 @@ export function useFavourites() {
 
   const savedOutletIds = useMemo(
     () => new Set((favourites || []).map((f) => f.id)),
-    [favourites]
+    [favourites],
   );
 
   const isSaved = useCallback((outletId) => savedOutletIds.has(outletId), [savedOutletIds]);
@@ -85,7 +132,10 @@ export function useFavourites() {
       data: { user },
     } = await supabase.auth.getUser();
     if (user) {
-      await supabase.from('favourite_outlets').delete().match({ customer_id: user.id, outlet_id: outletId });
+      await supabase
+        .from('favourite_outlets')
+        .delete()
+        .match({ customer_id: user.id, outlet_id: outletId });
       await fetchFavourites();
     }
   };
@@ -120,6 +170,7 @@ export function useFavourites() {
     favourites,
     loading,
     error,
+    locStatus,
     removeFavourite,
     addFavourite,
     toggleFavourite,

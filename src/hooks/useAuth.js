@@ -3,6 +3,8 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { createBrowserClient } from '@supabase/ssr';
+import { mapAuthError } from '@/lib/messages/auth';
+import { ERROR } from '@/lib/messages/errors';
 
 /**
  * Authentication hook — handles OTP (customer) and email/password (merchant) flows.
@@ -106,7 +108,7 @@ export function useAuth() {
       showToast('Verification code sent to your phone', 'success');
       setTimeout(() => otpRefs.current[0]?.focus(), 50);
     } catch (err) {
-      showToast(err.message || 'Failed to send verification code', 'error');
+      showToast(mapAuthError(err?.message, ERROR.auth.otpFailed), 'error');
     } finally {
       setLoading(false);
     }
@@ -137,7 +139,7 @@ export function useAuth() {
       const isOnboardingDone = Boolean(verifiedUser?.user_metadata?.customer_onboarding_complete);
       router.push(isOnboardingDone ? '/discover' : '/onboarding');
     } catch (err) {
-      showToast(err.message || 'Invalid verification code', 'error');
+      showToast(mapAuthError(err?.message, ERROR.auth.otpFailed), 'error');
     } finally {
       setLoading(false);
     }
@@ -201,7 +203,7 @@ export function useAuth() {
         router.push('/discover');
       }
     } catch (err) {
-      showToast(err.message || 'Invalid login credentials', 'error');
+      showToast(mapAuthError(err?.message), 'error');
     } finally {
       setLoading(false);
     }
@@ -232,6 +234,47 @@ export function useAuth() {
     clearToast();
   }, [clearToast]);
 
+  const oauthRedirectTo = useCallback(() => {
+    if (typeof window === 'undefined') {
+      return '';
+    }
+    return `${window.location.origin}/auth/callback`;
+  }, []);
+
+  const handleSignInWithGoogle = useCallback(async () => {
+    clearToast();
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: oauthRedirectTo() },
+      });
+      if (error) {
+        throw error;
+      }
+    } catch (err) {
+      showToast(mapAuthError(err?.message, ERROR.auth.oauthFailed), 'error');
+      setLoading(false);
+    }
+  }, [clearToast, oauthRedirectTo, showToast, supabase]);
+
+  const handleSignInWithApple = useCallback(async () => {
+    clearToast();
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'apple',
+        options: { redirectTo: oauthRedirectTo() },
+      });
+      if (error) {
+        throw error;
+      }
+    } catch (err) {
+      showToast(mapAuthError(err?.message, ERROR.auth.oauthFailed), 'error');
+      setLoading(false);
+    }
+  }, [clearToast, oauthRedirectTo, showToast, supabase]);
+
   return {
     // State
     role, setRole,
@@ -253,6 +296,8 @@ export function useAuth() {
     handleOtpChange,
     handleOtpKeyDown,
     resetToPhoneEntry,
+    handleSignInWithGoogle,
+    handleSignInWithApple,
     showToast,
     clearToast,
   };

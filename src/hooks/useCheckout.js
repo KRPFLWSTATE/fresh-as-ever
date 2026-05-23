@@ -3,6 +3,20 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { mapSupabaseError } from '@/lib/supabaseError';
+import { ERROR } from '@/lib/messages/errors';
+import { mapCheckoutError } from '@/lib/messages/rpc';
+
+function secureReservationCode(length = 6) {
+  const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  const bytes = new Uint8Array(length);
+  crypto.getRandomValues(bytes);
+  let out = '';
+  for (let i = 0; i < length; i += 1) {
+    out += alphabet[bytes[i] % alphabet.length];
+  }
+  return out;
+}
 
 /**
  * Checkout hook — bag fetch, promo codes, order creation, PayHere integration.
@@ -22,6 +36,7 @@ export function useCheckout(bagId) {
 
   const [promoCode, setPromoCode] = useState('');
   const [discount, setDiscount] = useState(0);
+  const [appliedPromoId, setAppliedPromoId] = useState(null);
 
   const cashAllowed = completedPickupCount >= 1;
 
@@ -78,7 +93,7 @@ export function useCheckout(bagId) {
       setCompletedPickupCount(count);
     } catch (err) {
       console.error(err);
-      setError('Could not load bag details.');
+      setError(mapSupabaseError(err, ERROR.checkout.loadBag));
     } finally {
       setLoading(false);
     }
@@ -102,20 +117,76 @@ export function useCheckout(bagId) {
   }, [cashAllowed, paymentMethod]);
 
   const applyPromoCode = useCallback(async () => {
-    if (promoCode.toUpperCase() === 'RESCUE200') {
-      setDiscount(200);
-      showToast('Promotion applied successfully.');
-    } else {
-      showToast('Invalid promo code.', 'error');
+    const code = promoCode.trim().toUpperCase();
+    if (!code) {
+      showToast('Enter a promo code.', 'error');
+      return;
     }
-  }, [promoCode, showToast]);
+    try {
+      const { data, error: promoErr } = await supabase
+        .from('promo_codes')
+        .select('id, code, discount_type, discount_value, min_order_value, max_uses, used_count, valid_from, valid_until, is_active')
+        .eq('code', code)
+        .eq('is_active', true)
+        .maybeSingle();
+      if (promoErr) throw promoErr;
+      if (!data) {
+        showToast('Invalid or expired promo code.', 'error');
+        return;
+      }
+      const now = Date.now();
+      if (data.valid_from && new Date(data.valid_from).getTime() > now) {
+        showToast('This promo is not active yet.', 'error');
+        return;
+      }
+      if (data.valid_until && new Date(data.valid_until).getTime() < now) {
+        showToast('This promo has expired.', 'error');
+        return;
+      }
+      const subtotal = Number(bag?.rescue_price ?? 0);
+      if (subtotal < Number(data.min_order_value ?? 0)) {
+        showToast(`Minimum order Rs. ${Number(data.min_order_value).toLocaleString()} required.`, 'error');
+        return;
+      }
+      if (data.max_uses != null && Number(data.used_count ?? 0) >= Number(data.max_uses)) {
+        showToast('This promo has reached its usage limit.', 'error');
+        return;
+      }
+      let amount = 0;
+      if (data.discount_type === 'percent') {
+        amount = Math.round((subtotal * Number(data.discount_value ?? 0)) / 100);
+      } else {
+        amount = Number(data.discount_value ?? 0);
+      }
+      setDiscount(Math.min(subtotal, amount));
+      setAppliedPromoId(data.id);
+      showToast('Promotion applied successfully.');
+    } catch (err) {
+      showToast(err?.message || 'Could not validate promo code.', 'error');
+    }
+  }, [bag, promoCode, showToast, supabase]);
 
   const initiatePayHere = useCallback(async (orderId, totalCost, user) => {
     try {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      const token = session?.access_token;
+      if (!token) {
+        throw new Error('Session expired. Sign in again.');
+      }
+
       const res = await fetch('/api/payhere/hash', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ order_id: orderId, amount: totalCost }),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          order_id: orderId,
+          amount: totalCost,
+          currency: 'LKR',
+        }),
       });
       const data = await res.json();
 
@@ -153,13 +224,13 @@ export function useCheckout(bagId) {
       };
       window.payhere.onError = (err) => {
         setProcessing(false);
-        setError('Payment error: ' + err);
+        setError(ERROR.checkout.paymentFailed);
       };
 
       window.payhere.startPayment(payment);
     } catch (err) {
       console.error('Payment initiation failed', err);
-      setError('Payment initiation failed.');
+      setError(ERROR.checkout.paymentFailed);
       setProcessing(false);
     }
   }, [bag, supabase, router, showToast]);
@@ -185,7 +256,7 @@ export function useCheckout(bagId) {
         throw new Error('Complete your first pickup to unlock cash at pickup.');
       }
 
-      const code = Math.random().toString(36).substring(2, 8).toUpperCase();
+      const code = secureReservationCode(6);
       const totalCost = bag.rescue_price - discount;
 
       const orderData = {
@@ -202,6 +273,7 @@ export function useCheckout(bagId) {
         order_status: 'reserved',
         reservation_code: code,
         discount_amount: discount,
+        ...(appliedPromoId ? { promo_code_id: appliedPromoId } : {}),
       };
 
       const { data: order, error: insertError } = await supabase
@@ -224,10 +296,10 @@ export function useCheckout(bagId) {
       }
     } catch (err) {
       console.error(err);
-      setError(err.message || 'Could not complete reservation.');
+      setError(mapCheckoutError(err, ERROR.checkout.reserveFailed));
       setProcessing(false);
     }
-  }, [bag, cashAllowed, discount, paymentMethod, supabase, router, initiatePayHere]);
+  }, [appliedPromoId, bag, cashAllowed, discount, paymentMethod, supabase, router, initiatePayHere]);
 
   const total = bag ? Math.max(0, bag.rescue_price - discount) : 0;
 

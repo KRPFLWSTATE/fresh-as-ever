@@ -1,8 +1,12 @@
 'use client';
 
+import { Suspense, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import { ReservationSuccessOverlay } from '@/components/celebration/ReservationSuccessOverlay';
 import { useOrderDetail } from '@/hooks/useOrderDetail';
-import { QrCode, HourglassHigh, CheckCircle, Check, XCircle, ArrowLeft, Clock, MapPin, Star } from '@phosphor-icons/react';
+import { QrCode, HourglassHigh, CheckCircle, Check, XCircle, ArrowLeft, Clock, MapPin, Star, MapPinLine } from '@phosphor-icons/react';
+import { OrderPickupQr } from '@/components/OrderPickupQr';
+import { ReportProblemSection } from '@/components/ReportProblemSection';
 import { formatPickupRangeLabel, normalizeOrderStatus } from '@/lib/utils';
 
 const statusConfig = {
@@ -16,8 +20,24 @@ const statusConfig = {
 export default function OrderDetailPage() {
   const resolvedParams = useParams();
   const router = useRouter();
-  const { order, loading, bag, outlet } = useOrderDetail(resolvedParams.id);
+  const {
+    order,
+    loading,
+    bag,
+    outlet,
+    collectible,
+    arrivalEligible,
+    arrivalBusy,
+    signalArrival,
+  } = useOrderDetail(resolvedParams.id);
+  const [arrivalError, setArrivalError] = useState(null);
   const normalizedStatus = normalizeOrderStatus(order?.order_status);
+
+  const handleArrival = async () => {
+    setArrivalError(null);
+    const result = await signalArrival();
+    if (result?.error) setArrivalError(result.error);
+  };
   const status = statusConfig[normalizedStatus] || statusConfig.reserved;
   const orderFlow = ['reserved', 'paid', 'ready_for_pickup', 'collected'];
   const currentStepIndex = Math.max(orderFlow.indexOf(normalizedStatus), 0);
@@ -38,6 +58,9 @@ export default function OrderDetailPage() {
 
   return (
     <div className="bg-background text-on-background min-h-screen pb-32">
+      <Suspense fallback={null}>
+        <ReservationSuccessOverlay orderId={resolvedParams.id} />
+      </Suspense>
       {/* Top App Bar */}
       <header className="sticky top-0 z-50 border-b border-divider flex justify-between items-center w-full px-4 h-16 bg-background">
         <button
@@ -118,14 +141,45 @@ export default function OrderDetailPage() {
           </div>
         </div>
 
+        {/* Customer arrival */}
+        {collectible && !['cancelled', 'collected'].includes(normalizedStatus) ? (
+          <div className="bg-surface rounded-xl p-md border border-divider space-y-sm">
+            {order?.customer_arrived_at ? (
+              <div className="flex items-center gap-md text-primary">
+                <MapPinLine weight="fill" className="w-6 h-6 shrink-0" />
+                <div>
+                  <p className="font-label font-bold">Outlet notified</p>
+                  <p className="font-body-sm text-text-muted">
+                    {new Date(order.customer_arrived_at).toLocaleString()}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <>
+                <p className="font-body-sm text-text-muted">
+                  {arrivalEligible
+                    ? 'Let the merchant know you have arrived for pickup.'
+                    : 'Available 15 minutes before your pickup window opens.'}
+                </p>
+                {arrivalError ? <p className="font-body-sm text-error">{arrivalError}</p> : null}
+                <button
+                  type="button"
+                  onClick={handleArrival}
+                  disabled={!arrivalEligible || arrivalBusy}
+                  className="w-full bg-primary text-white font-label py-3 rounded-xl disabled:bg-divider disabled:cursor-not-allowed"
+                >
+                  {arrivalBusy ? 'Notifying...' : "I'm at the outlet"}
+                </button>
+              </>
+            )}
+          </div>
+        ) : null}
+
         {/* QR Code (for active orders) */}
         {['reserved', 'paid', 'ready_for_pickup'].includes(normalizedStatus) && (
           <div className="bg-surface rounded-xl p-lg shadow-[0_4px_12px_rgba(30,27,20,0.04)] flex flex-col items-center">
             <h3 className="font-h3 text-h3 text-text mb-md">Show this at pickup</h3>
-            <div className="w-48 h-48 bg-surface-2 rounded-xl flex items-center justify-center border-2 border-dashed border-divider">
-              <QrCode weight="fill" className="w-16 h-16 text-text-faint" />
-            </div>
-            <p className="font-body-sm text-body-sm text-text-muted mt-md text-center">Present this QR code to the merchant to collect your rescue bag</p>
+            <OrderPickupQr code={order?.reservation_code} />
             <div className="mt-md w-full bg-primary/5 border border-primary/10 rounded-lg p-sm">
               <p className="font-label text-xs text-primary font-bold">Pickup tip</p>
               <p className="font-body-sm text-text-muted mt-1">
@@ -145,6 +199,8 @@ export default function OrderDetailPage() {
             Leave a Review
           </button>
         )}
+
+        <ReportProblemSection orderId={order?.id} orderStatus={normalizedStatus} />
       </main>
     </div>
   );

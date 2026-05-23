@@ -3,18 +3,28 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { normalizeOrderStatus, isOrderCollectible } from '@/lib/utils';
+import { isCustomerArrivalEligible } from '@/lib/pickupWindow';
+import { mapSupabaseError } from '@/lib/supabaseError';
+import { mapArrivalError } from '@/lib/messages/rpc';
 
 /**
- * Order detail hook — fetch single order, polling, cancel action.
- * Extracted from: src/app/(customer)/orders/[id]/page.js
+ * Order detail hook — fetch single order, polling, cancel action, customer arrival.
  */
 export function useOrderDetail(orderId) {
   const router = useRouter();
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [arrivalBusy, setArrivalBusy] = useState(false);
+  const [nowMs, setNowMs] = useState(() => Date.now());
 
   const supabase = useMemo(() => createClient(), []);
+
+  useEffect(() => {
+    const id = window.setInterval(() => setNowMs(Date.now()), 60_000);
+    return () => window.clearInterval(id);
+  }, []);
 
   const fetchOrderDetails = useCallback(async (isSilent = false) => {
     await Promise.resolve();
@@ -34,8 +44,7 @@ export function useOrderDetail(orderId) {
       if (fetchError) throw fetchError;
       setOrder(data);
     } catch (err) {
-      console.error(err);
-      setError('Could not load order details.');
+      setError(mapSupabaseError(err, 'Could not load order details.'));
     } finally {
       if (!isSilent) setLoading(false);
     }
@@ -56,14 +65,31 @@ export function useOrderDetail(orderId) {
     };
   }, [fetchOrderDetails, orderId]);
 
+  const shouldPollPayment =
+    order?.order_status === 'reserved' && order?.payment_status === 'paid';
+
+  useEffect(() => {
+    if (!shouldPollPayment || !orderId) return undefined;
+    const fast = window.setInterval(() => {
+      void fetchOrderDetails(true);
+    }, 5000);
+    return () => window.clearInterval(fast);
+  }, [shouldPollPayment, orderId, fetchOrderDetails]);
+
   const handleCancelOrder = useCallback(async () => {
     if (!confirm('Cancel this reservation? This cannot be undone.')) return;
 
     try {
       setLoading(true);
+      const stamp = new Date().toISOString();
       const { error: updateError } = await supabase
         .from('orders')
-        .update({ order_status: 'cancelled' })
+        .update({
+          order_status: 'cancelled',
+          cancelled_at: stamp,
+          cancelled_by: 'customer',
+          cancellation_reason: 'customer_cancelled',
+        })
         .eq('id', orderId);
 
       if (updateError) throw updateError;
@@ -76,10 +102,40 @@ export function useOrderDetail(orderId) {
     }
   }, [orderId, supabase, fetchOrderDetails]);
 
-  // Derived state
+  const signalArrival = useCallback(async () => {
+    if (!orderId) return { error: 'Missing order.' };
+    setArrivalBusy(true);
+    try {
+      const { error: rpcError } = await supabase.rpc('customer_signal_arrival', {
+        p_order_id: orderId,
+      });
+      if (rpcError) {
+        return {
+          error: mapArrivalError(rpcError.message, mapSupabaseError(rpcError)),
+        };
+      }
+      await fetchOrderDetails(true);
+      return {};
+    } finally {
+      setArrivalBusy(false);
+    }
+  }, [orderId, supabase, fetchOrderDetails]);
+
   const bag = order?.bag || {};
   const outlet = order?.outlet || {};
-  const isReserved = order?.order_status === 'reserved';
+  const normalizedStatus = normalizeOrderStatus(order?.order_status);
+  const isReserved = normalizedStatus === 'reserved';
+  const collectible = order
+    ? isOrderCollectible({
+        status: normalizedStatus,
+        order_status: order.order_status,
+        payment_status: order.payment_status,
+      })
+    : false;
+  const arrivalEligible =
+    collectible &&
+    !order?.customer_arrived_at &&
+    isCustomerArrivalEligible(nowMs, bag?.pickup_start, bag?.pickup_end);
 
   return {
     order,
@@ -88,6 +144,10 @@ export function useOrderDetail(orderId) {
     loading,
     error,
     isReserved,
+    collectible,
+    arrivalEligible,
+    arrivalBusy,
+    signalArrival,
     handleCancelOrder,
     goBack: () => router.back(),
   };

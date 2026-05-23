@@ -1,14 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Images, PlusCircle, Tag, Clock, Coins, Hash, TextColumns } from '@phosphor-icons/react';
 import { useMerchantBags } from '@/hooks/useMerchantBags';
+import { useMerchantContext } from '@/hooks/useMerchantContext';
+import { uploadBagImage } from '@/lib/uploadBagImage';
 
 export default function CreateBagPage() {
   const router = useRouter();
   const { createBag, activeOutlet } = useMerchantBags();
+  const { merchant } = useMerchantContext();
+  const fileInputRef = useRef(null);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
   const [form, setForm] = useState({
     title: '',
@@ -31,6 +36,20 @@ export default function CreateBagPage() {
   ];
 
   const onChange = (key, value) => setForm((prev) => ({ ...prev, [key]: value }));
+
+  const onPickImage = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file || !merchant?.id) return;
+    setUploading(true);
+    setError('');
+    const result = await uploadBagImage(file, String(merchant.id));
+    setUploading(false);
+    if (result.error) {
+      setError(result.error);
+      return;
+    }
+    onChange('image_url', result.publicUrl);
+  };
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -83,18 +102,41 @@ export default function CreateBagPage() {
       <form onSubmit={onSubmit} className="bg-surface rounded-[3rem] p-lg md:p-xl border border-divider shadow-elevation-sm space-y-xl">
         {/* Image Upload Area */}
         <div className="w-full aspect-video rounded-[2.5rem] border-2 border-dashed border-divider bg-surface-2 flex flex-col items-center justify-center transition-all group overflow-hidden relative">
-          <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity bg-[url('https://www.transparenttextures.com/patterns/graph-paper.png')]" />
-          <div className="relative z-10 flex flex-col items-center">
-            <div className="w-16 h-16 rounded-2xl bg-white/50 backdrop-blur-md flex items-center justify-center mb-md shadow-elevation-md group-hover:scale-110 transition-transform">
-              <Images size={32} weight="bold" className="text-primary" />
-            </div>
-            <p className="font-display text-xl font-bold text-text mb-1">Add Bag Media</p>
-            <p className="font-label text-xs font-bold text-text-faint uppercase tracking-wider">Paste image URL below</p>
-          </div>
+          {form.image_url ? (
+            <img src={form.image_url} alt="Bag preview" className="absolute inset-0 w-full h-full object-cover" />
+          ) : (
+            <>
+              <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity bg-[url('https://www.transparenttextures.com/patterns/graph-paper.png')]" />
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="w-16 h-16 rounded-2xl bg-white/50 backdrop-blur-md flex items-center justify-center mb-md shadow-elevation-md group-hover:scale-110 transition-transform">
+                  <Images size={32} weight="bold" className="text-primary" />
+                </div>
+                <p className="font-display text-xl font-bold text-text mb-1">Add Bag Media</p>
+                <p className="font-label text-xs font-bold text-text-faint uppercase tracking-wider">
+                  Upload a photo or paste a URL below
+                </p>
+              </div>
+            </>
+          )}
         </div>
         <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={onPickImage}
+        />
+        <button
+          type="button"
+          disabled={uploading || !merchant?.id}
+          onClick={() => fileInputRef.current?.click()}
+          className="w-full py-3 rounded-2xl border border-primary/30 bg-primary/5 font-label font-bold text-primary disabled:opacity-50"
+        >
+          {uploading ? 'Uploading…' : 'Upload from device'}
+        </button>
+        <input
           className="w-full bg-surface-2 border border-divider rounded-2xl py-3.5 px-4 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-body-md text-text shadow-inner placeholder:text-text-faint/50"
-          placeholder="https://example.com/bag-image.jpg"
+          placeholder="Or paste image URL (https://…)"
           value={form.image_url}
           onChange={(event) => onChange('image_url', event.target.value)}
         />

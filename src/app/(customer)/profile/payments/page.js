@@ -4,10 +4,12 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, CreditCard, Plus, X, Star, Trash } from '@phosphor-icons/react';
 import { usePaymentMethods } from '@/hooks/usePaymentMethods';
+import { useCustomerOrdersHistory } from '@/hooks/useCustomerOrdersHistory';
 
 export default function PaymentsPage() {
   const router = useRouter();
   const { methods, loading, addMethod, setDefault, removeMethod } = usePaymentMethods();
+  const { rows: orderHistory, loading: historyLoading, error: historyError } = useCustomerOrdersHistory();
   const [modalOpen, setModalOpen] = useState(false);
   const [saving, setSaving] = useState(false);
   const [formError, setFormError] = useState('');
@@ -129,6 +131,32 @@ export default function PaymentsPage() {
           <Plus size={20} weight="bold" />
           Add Payment Method
         </button>
+
+        <section className="mt-xl space-y-md">
+          <h2 className="font-h3 text-h3 text-text">Recent rescue purchases</h2>
+          {historyError ? <p className="font-body-sm text-error">{historyError}</p> : null}
+          {historyLoading ? (
+            <div className="h-24 bg-surface-2 animate-pulse rounded-xl border border-divider" />
+          ) : orderHistory.length === 0 ? (
+            <p className="font-body-sm text-text-muted">No paid orders yet.</p>
+          ) : (
+            <ul className="divide-y divide-divider bg-surface rounded-xl border border-divider">
+              {orderHistory.slice(0, 10).map((row) => (
+                <li key={row.id} className="p-md flex justify-between gap-md">
+                  <div>
+                    <p className="font-label font-bold text-text">{row.bag_title}</p>
+                    <p className="font-body-sm text-text-muted">
+                      {row.outlet_name} · {row.reservation_code || row.id.slice(0, 8)}
+                    </p>
+                  </div>
+                  <p className="font-label text-primary font-bold">
+                    Rs. {Math.round(row.total).toLocaleString()}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
       </main>
 
       {modalOpen && (

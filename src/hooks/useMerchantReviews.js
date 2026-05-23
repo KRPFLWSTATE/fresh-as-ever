@@ -5,7 +5,6 @@ import { createClient } from '@/lib/supabase/client';
 import { useMerchantContext } from './useMerchantContext';
 
 export function useMerchantReviews() {
-  const DEFAULT_VENUE_RATING = 4.2;
   const supabase = useMemo(() => createClient(), []);
   const { outletScopeIds, loading: contextLoading } = useMerchantContext();
   const [reviews, setReviews] = useState([]);
@@ -68,7 +67,7 @@ export function useMerchantReviews() {
     averageRating:
       reviews.length > 0
         ? reviews.reduce((sum, review) => sum + (review.rating || 0), 0) / reviews.length
-        : DEFAULT_VENUE_RATING,
+        : 0,
     loading: loading || contextLoading,
     error,
     refetch: fetchReviews,

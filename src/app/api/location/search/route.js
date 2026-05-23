@@ -17,7 +17,10 @@ export async function GET(request) {
     return NextResponse.json({ results: FALLBACK_LOCATIONS.slice(0, 5) });
   }
 
-  const apiKey = process.env.GOOGLE_MAPS_API_KEY || process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  const apiKey =
+    process.env.GOOGLE_MAPS_API_KEY ||
+    process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
+    process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
 
   if (!apiKey) {
     try {

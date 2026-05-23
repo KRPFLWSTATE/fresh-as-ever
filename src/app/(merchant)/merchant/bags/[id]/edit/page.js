@@ -1,18 +1,23 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, Image, Trash, Check, Tag, Clock, Coins, Hash, TextColumns, Camera } from '@phosphor-icons/react';
 import { createClient } from '@/lib/supabase/client';
 import { useMerchantBags } from '@/hooks/useMerchantBags';
+import { useMerchantContext } from '@/hooks/useMerchantContext';
+import { uploadBagImage } from '@/lib/uploadBagImage';
 
 export default function EditBagPage() {
   const resolvedParams = useParams();
   const router = useRouter();
   const supabase = useMemo(() => createClient(), []);
   const { updateBag, deleteBag } = useMerchantBags();
+  const { merchant } = useMerchantContext();
+  const fileInputRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
   const [form, setForm] = useState({
     title: '',
@@ -73,6 +78,20 @@ export default function EditBagPage() {
   }, [resolvedParams.id, supabase]);
 
   const onChange = (key, value) => setForm((prev) => ({ ...prev, [key]: value }));
+
+  const onPickImage = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file || !merchant?.id) return;
+    setUploading(true);
+    setError('');
+    const result = await uploadBagImage(file, String(merchant.id));
+    setUploading(false);
+    if (result.error) {
+      setError(result.error);
+      return;
+    }
+    onChange('image_url', result.publicUrl);
+  };
 
   const onSave = async () => {
     try {
@@ -137,14 +156,26 @@ export default function EditBagPage() {
               <Image size={80} weight="thin" className="text-text-faint opacity-30" />
             </div>
           )}
-          <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md px-6 py-3 rounded-2xl font-label text-sm font-bold text-primary shadow-elevation-md transition-all flex items-center gap-2 border border-divider">
-            <Camera size={20} weight="bold" />
-            Update Image URL Below
-          </div>
         </div>
         <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={onPickImage}
+        />
+        <button
+          type="button"
+          disabled={uploading || !merchant?.id}
+          onClick={() => fileInputRef.current?.click()}
+          className="w-full py-3 rounded-2xl border border-primary/30 bg-primary/5 font-label font-bold text-primary disabled:opacity-50 flex items-center justify-center gap-2"
+        >
+          <Camera size={20} weight="bold" />
+          {uploading ? 'Uploading…' : 'Upload new photo'}
+        </button>
+        <input
           className="w-full bg-surface-2 border border-divider rounded-2xl py-3.5 px-4 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-body-md text-text shadow-inner"
-          placeholder="https://example.com/bag-image.jpg"
+          placeholder="Or paste image URL (https://…)"
           value={form.image_url}
           onChange={(event) => onChange('image_url', event.target.value)}
         />

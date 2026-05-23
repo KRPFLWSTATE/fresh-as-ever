@@ -9,7 +9,10 @@ export async function GET(request) {
     return NextResponse.json({ label: 'Current location' });
   }
 
-  const apiKey = process.env.GOOGLE_MAPS_API_KEY || process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  const apiKey =
+    process.env.GOOGLE_MAPS_API_KEY ||
+    process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
+    process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
   if (!apiKey) {
     return NextResponse.json({ label: `Current location (${lat.toFixed(3)}, ${lng.toFixed(3)})` });
   }
