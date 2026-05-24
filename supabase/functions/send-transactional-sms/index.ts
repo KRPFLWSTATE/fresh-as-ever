@@ -12,6 +12,30 @@ type Payload = {
   payload?: Record<string, string>;
 };
 
+function resolveServiceRoleKey(): string {
+  const legacy = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')?.trim();
+  if (legacy) return legacy;
+
+  const raw = Deno.env.get('SUPABASE_SECRET_KEYS')?.trim();
+  if (!raw) return '';
+
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    if (typeof parsed === 'string' && parsed.trim()) return parsed.trim();
+    if (parsed && typeof parsed === 'object') {
+      const obj = parsed as Record<string, unknown>;
+      for (const key of ['service_role', 'SUPABASE_SERVICE_ROLE_KEY', 'service_role_key']) {
+        const v = obj[key];
+        if (typeof v === 'string' && v.trim()) return v.trim();
+      }
+    }
+  } catch {
+    return raw;
+  }
+
+  return '';
+}
+
 function templateBody(template: Payload['template'], payload: Record<string, string>): string {
   if (template === 'pickup_reminder') {
     const window = payload.pickupWindow ?? 'soon';
@@ -29,7 +53,13 @@ Deno.serve(async (req) => {
 
   try {
     const authHeader = req.headers.get('Authorization');
-    const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '';
+    const serviceKey = resolveServiceRoleKey();
+    if (!serviceKey) {
+      return new Response(JSON.stringify({ error: 'Service role not configured' }), {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
     if (!authHeader?.includes(serviceKey) && authHeader !== `Bearer ${serviceKey}`) {
       return new Response(JSON.stringify({ error: 'Unauthorized' }), {
         status: 401,

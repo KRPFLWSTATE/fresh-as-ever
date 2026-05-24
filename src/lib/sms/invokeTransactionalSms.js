@@ -1,3 +1,5 @@
+import { getServiceRoleKey } from '@/lib/supabase/serviceRoleKey';
+
 /**
  * Invoke Supabase Edge Function send-transactional-sms (service role).
  */
@@ -8,7 +10,7 @@ export async function invokeTransactionalSms({
   payload,
 }) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const serviceKey = getServiceRoleKey();
   if (!supabaseUrl || !serviceKey) {
     return { skipped: true, reason: 'missing_config' };
   }
