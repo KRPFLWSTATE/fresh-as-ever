@@ -12,6 +12,25 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/merchant/tabs/shelves',
+        destination: '/merchant/shelves',
+        permanent: false,
+      },
+      {
+        source: '/merchant/tabs/bags',
+        destination: '/merchant/bags',
+        permanent: false,
+      },
+      {
+        source: '/merchant/tabs/inventory',
+        destination: '/merchant/tabs/bags',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 const withSerwist = withSerwistInit({

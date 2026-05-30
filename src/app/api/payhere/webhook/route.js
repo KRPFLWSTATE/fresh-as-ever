@@ -57,10 +57,66 @@ export async function POST(request) {
 
       const supabase = createClient(supabaseUrl, supabaseKey);
 
-      // Idempotency: PayHERE may retry notify; succeed if already marked paid.
+      const { data: group, error: groupReadErr } = await supabase
+        .from('reservation_groups')
+        .select(
+          'id, customer_id, reservation_code, payment_status, order_status, bag_count, outlet:outlets(name)',
+        )
+        .eq('id', order_id)
+        .maybeSingle();
+
+      if (groupReadErr) throw groupReadErr;
+
+      if (group) {
+        if (String(group.payment_status ?? '').toLowerCase() === 'paid') {
+          return NextResponse.json({ success: true }, { status: 200 });
+        }
+
+        const { error: groupUpErr } = await supabase
+          .from('reservation_groups')
+          .update({
+            payment_status: 'paid',
+            order_status: 'paid',
+            ...(payment_id ? { payhere_payment_id: payment_id } : {}),
+          })
+          .eq('id', group.id)
+          .eq('order_status', 'reserved');
+
+        if (groupUpErr) throw groupUpErr;
+
+        const { error: childErr } = await supabase
+          .from('orders')
+          .update({
+            payment_status: 'paid',
+            order_status: 'paid',
+          })
+          .eq('group_id', group.id)
+          .eq('order_status', 'reserved');
+
+        if (childErr) throw childErr;
+
+        if (group.customer_id) {
+          const bagCount = Number(group.bag_count ?? 1);
+          const outletName =
+            group.outlet?.name != null ? String(group.outlet.name) : '';
+          void invokeTransactionalSms({
+            userId: String(group.customer_id),
+            template: 'reservation_confirmed',
+            orderId: String(group.id),
+            payload: {
+              reservationCode: String(group.reservation_code ?? ''),
+              bagCount: String(bagCount),
+              outletName,
+            },
+          });
+        }
+
+        return NextResponse.json({ success: true }, { status: 200 });
+      }
+
       const { data: existing, error: readErr } = await supabase
         .from('orders')
-        .select('id, payment_status, order_status, customer_id, reservation_code')
+        .select('id, payment_status, order_status, customer_id, reservation_code, shelf_id')
         .eq('id', order_id)
         .maybeSingle();
 
@@ -88,6 +144,8 @@ export async function POST(request) {
           orderId: String(order_id),
           payload: {
             reservationCode: String(existing.reservation_code ?? ''),
+            bagCount: '1',
+            ...(existing.shelf_id ? { orderKind: 'clearance' } : {}),
           },
         });
       }

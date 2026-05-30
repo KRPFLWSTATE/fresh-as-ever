@@ -9,8 +9,26 @@ function CheckoutContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const bagId = searchParams?.get('bag_id') || searchParams?.get('draft');
+  const groupRaw = searchParams?.get('group') ?? '';
+  const groupBagIds = groupRaw
+    ? groupRaw.split(',').map((id) => id.trim()).filter(Boolean).slice(0, 5)
+    : bagId
+      ? [bagId]
+      : [];
+  const shelfId = searchParams?.get('shelf');
+  const itemsRaw = searchParams?.get('items');
+  let shelfCheckout = null;
+  if (shelfId && itemsRaw) {
+    try {
+      shelfCheckout = { shelfId, items: JSON.parse(itemsRaw) };
+    } catch {
+      shelfCheckout = null;
+    }
+  }
   const {
     bag,
+    shelfLineItems,
+    isShelfCheckout,
     paymentMethod,
     setPaymentMethod,
     promoCode,
@@ -24,7 +42,7 @@ function CheckoutContent() {
     cashAllowed,
     toast,
     error,
-  } = useCheckout(bagId);
+  } = useCheckout(bagId, groupBagIds, shelfCheckout);
   const savings = (bag?.original_price || 0) - (bag?.rescue_price || 0) + (discount || 0);
 
   if (loading) {

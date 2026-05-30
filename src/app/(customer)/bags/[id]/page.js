@@ -17,9 +17,14 @@ import {
   Info,
   Heart
 } from '@phosphor-icons/react';
+import { OutletTrustBadge } from '@/components/OutletTrustBadge';
+import { ReservationCartBar } from '@/components/ReservationCartBar';
 import { useBagDetail } from '@/hooks/useBagDetail';
 import { useFavourites } from '@/hooks/useFavourites';
+import { useReservationCart } from '@/hooks/useReservationCart';
+import { isGroupReservationsEnabled } from '@/lib/groupReservations';
 import { parseOutletLatLng } from '@/lib/geo/parseOutletLatLng';
+import { co2eKgFromBagRescue } from '@/lib/co2Impact';
 
 const OutletLeafletMap = dynamic(
   () => import('@/components/maps/OutletLeafletMap'),
@@ -36,6 +41,8 @@ export default function BagDetailPage() {
   const router = useRouter();
   const { bag, loading, handleReserve } = useBagDetail(resolvedParams.id);
   const { isSaved, toggleFavourite } = useFavourites();
+  const groupReservationsEnabled = isGroupReservationsEnabled();
+  const cart = useReservationCart();
   const [showAllergens, setShowAllergens] = useState(false);
   const [favouriteBusy, setFavouriteBusy] = useState(false);
   const pickupStart = bag?.pickup_start;
@@ -70,6 +77,11 @@ export default function BagDetailPage() {
   const outletCoords = useMemo(
     () => parseOutletLatLng(bag?.outlet?.location),
     [bag?.outlet?.location]
+  );
+
+  const bagCo2Kg = useMemo(
+    () => (bag ? co2eKgFromBagRescue(bag, 1) : 0),
+    [bag],
   );
 
   const mapDirectionsUrl = useMemo(() => {
@@ -132,7 +144,7 @@ export default function BagDetailPage() {
   }
 
   return (
-    <div className="bg-background text-text font-body-md antialiased pb-32">
+    <div className={`bg-background text-text font-body-md antialiased ${groupReservationsEnabled && cart.count > 0 ? 'pb-40' : 'pb-32'}`}>
       {/* Hero Header */}
       <div className="relative w-full h-80 md:h-[500px] overflow-hidden">
         <img
@@ -202,6 +214,15 @@ export default function BagDetailPage() {
               <Storefront size={20} weight="fill" className="text-primary" />
               <span>{bag.outlet?.merchant?.business_name || bag.outlet?.name}</span>
             </div>
+            <OutletTrustBadge
+              size="sm"
+              trustScore={bag.outlet?.trust_score}
+              averageRating={bag.outlet?.average_rating}
+              totalReviews={bag.outlet?.total_reviews}
+              collectionRatePct={bag.outlet?.collection_rate_pct}
+              complaintRatePct={bag.outlet?.complaint_rate_pct}
+              noShowRatePct={bag.outlet?.no_show_rate_pct}
+            />
           </div>
 
           <div className="h-px bg-divider w-full"></div>
@@ -237,7 +258,9 @@ export default function BagDetailPage() {
           <div className="bg-primary/5 p-4 rounded-2xl space-y-sm border border-primary/10">
             <div className="flex items-center gap-3 text-primary">
               <Leaf size={24} weight="fill" />
-              <span className="font-label text-sm font-bold">Saving this bag rescues approx. 1.2kg of CO2</span>
+              <span className="font-label text-sm font-bold">
+                Saving this bag rescues approx. {bagCo2Kg} kg of CO₂
+              </span>
             </div>
           </div>
         </section>
@@ -335,6 +358,32 @@ export default function BagDetailPage() {
               <span className="text-sm font-bold text-accent uppercase">LKR</span>
               <span className="font-display text-3xl text-accent font-extrabold">{bag.rescue_price?.toLocaleString()}</span>
             </div>
+            {groupReservationsEnabled && outletId ? (
+              <button
+                type="button"
+                onClick={() => {
+                  const result = cart.addBag({
+                    id: bag.id,
+                    outletId,
+                    title: bag.title,
+                    rescuePrice: bag.rescue_price,
+                  });
+                  if (result.error === 'different_outlet') {
+                    if (window.confirm('Replace bags from the other outlet with this one?')) {
+                      cart.replaceOutletCart({
+                        id: bag.id,
+                        outletId,
+                        title: bag.title,
+                        rescuePrice: bag.rescue_price,
+                      });
+                    }
+                  }
+                }}
+                className="mt-1 text-left font-label text-sm font-bold text-primary hover:underline"
+              >
+                {cart.isInCart(bag.id) ? 'In group order' : 'Add to group order'}
+              </button>
+            ) : null}
           </div>
           <button
             onClick={handleReserve}
@@ -346,6 +395,27 @@ export default function BagDetailPage() {
           </button>
         </div>
       </div>
+
+      {groupReservationsEnabled && cart.count > 0 ? (
+        <div className="fixed bottom-[5.75rem] left-0 right-0 z-40 border-t border-primary/20 bg-primary/5 backdrop-blur-md px-page-margin-mobile py-3 md:px-page-margin-desktop">
+          <div className="max-w-3xl mx-auto flex items-center justify-between gap-4">
+            <p className="font-label text-sm font-semibold text-text">
+              Group order · {cart.count} bag{cart.count === 1 ? '' : 's'}
+            </p>
+            <button
+              type="button"
+              onClick={() =>
+                router.push(
+                  `/checkout?group=${cart.cart.bagIds.join(',')}&draft=${cart.cart.bagIds[0] ?? bag.id}`,
+                )
+              }
+              className="rounded-xl bg-primary px-4 py-2 font-label text-sm font-bold text-white"
+            >
+              Checkout group
+            </button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

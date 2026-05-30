@@ -12,6 +12,10 @@ type Payload = {
   payload?: Record<string, string>;
 };
 
+function isClearanceOrder(payload: Record<string, string>): boolean {
+  return payload.orderKind === 'clearance';
+}
+
 function resolveServiceRoleKey(): string {
   const legacy = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')?.trim();
   if (legacy) return legacy;
@@ -43,6 +47,15 @@ function templateBody(template: Payload['template'], payload: Record<string, str
     return `Fresh As Ever: Pickup window starts ${window}.${code ? ` Ref ${code}.` : ''} Show your QR in the app.`;
   }
   const code = payload.reservationCode ?? '';
+  const bagCount = Number(payload.bagCount ?? 1);
+  const outletName = payload.outletName?.trim() ?? '';
+  if (bagCount > 1) {
+    const at = outletName ? ` at ${outletName}` : '';
+    return `Fresh As Ever: ${bagCount} bags reserved${code ? ` (${code})` : ''}${at}. Show your QR at pickup.`;
+  }
+  if (isClearanceOrder(payload)) {
+    return `Fresh As Ever: Your Clearance Shelf order is confirmed${code ? ` (${code})` : ''}. See pickup details in the app.`;
+  }
   return `Fresh As Ever: Your rescue bag is reserved${code ? ` (${code})` : ''}. See pickup details in the app.`;
 }
 

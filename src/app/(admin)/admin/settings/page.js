@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import { ShieldCheck, Bell, GlobeHemisphereWest, SlidersHorizontal } from '@phosphor-icons/react';
+import { isClearanceShelvesEnabled } from '@/lib/clearanceShelves';
 import { createClient } from '@/lib/supabase/client';
 
 export default function AdminSettingsPage() {
@@ -137,6 +139,23 @@ export default function AdminSettingsPage() {
           );
         })}
       </section>
+
+      {isClearanceShelvesEnabled() ? (
+        <section className="bg-surface rounded-2xl border border-divider p-lg shadow-elevation-sm space-y-sm">
+          <h2 className="font-h3 text-h3">Clearance shelf ops</h2>
+          <p className="font-body-sm text-text-muted">
+            Feature flag is on for this environment. Manage shelves and the shared product catalog.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/admin/shelves" className="text-primary font-label font-bold">
+              Clearance shelves →
+            </Link>
+            <Link href="/admin/product-catalog" className="text-primary font-label font-bold">
+              Product catalog →
+            </Link>
+          </div>
+        </section>
+      ) : null}
 
       <section className="bg-surface rounded-2xl border border-divider p-lg shadow-elevation-sm flex items-center justify-between">
         <div className="flex items-center gap-3">

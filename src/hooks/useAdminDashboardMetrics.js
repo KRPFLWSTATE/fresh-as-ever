@@ -3,6 +3,8 @@
 import { useCallback, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { CLOSED_COMPLAINT_STATUSES } from '@/lib/adminComplaints';
+import { ERROR } from '@/lib/messages/errors.js';
+import { mapSupabaseError } from '@/lib/supabaseError';
 
 export const ADMIN_DASHBOARD_TREND_DAYS = 7;
 export const ADMIN_DASHBOARD_TREND_DAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -155,7 +157,7 @@ export function useAdminDashboardMetrics() {
       setTrend(buckets);
       setRevenueTrend(revenueBuckets);
     } catch (e) {
-      setError(e?.message ?? 'Could not load dashboard metrics.');
+      setError(mapSupabaseError(e, ERROR.admin.dashboard));
     } finally {
       setLoading(false);
     }

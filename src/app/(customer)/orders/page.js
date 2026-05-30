@@ -14,6 +14,7 @@ import {
 } from '@phosphor-icons/react';
 import { useOrders } from '@/hooks/useOrders';
 import { ORDER_STATUSES, formatPickupRangeLabel } from '@/lib/utils';
+import { orderDisplayTitle, orderPickupWindow } from '@/lib/orderDisplay';
 
 export default function OrdersPage() {
   const { activeOrders, pastOrders, loading } = useOrders();
@@ -93,6 +94,8 @@ export default function OrdersPage() {
             ) : (
               visibleActiveOrders.map((order) => {
                 const status = ORDER_STATUSES[order.order_status] || { label: order.order_status, color: 'text-text-muted', bg: 'bg-surface-2' };
+                const pickup = orderPickupWindow(order);
+                const isShelf = Boolean(order.shelf_id);
                 return (
                   <Link href={`/orders/${order.id}`} key={order.id} className="group">
                     <div className="bg-surface p-6 rounded-3xl shadow-elevation-sm border border-divider flex flex-col md:flex-row gap-6 items-start md:items-center hover:shadow-elevation-md transition-all duration-200 active:scale-[0.98]">
@@ -106,8 +109,13 @@ export default function OrdersPage() {
                           </span>
                           <span className="font-label text-[10px] text-text-faint font-bold tracking-widest uppercase">ID: {order.id?.slice(0, 8)}</span>
                         </div>
+                        {isShelf ? (
+                          <span className="inline-flex mb-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-accent/10 text-accent">
+                            Clearance shelf
+                          </span>
+                        ) : null}
                         <h3 className="font-display text-xl text-text mb-1.5 group-hover:text-primary transition-colors truncate font-bold">
-                          {order.bag?.title || 'Rescue Bag'}
+                          {orderDisplayTitle(order)}
                         </h3>
                         <div className="flex items-center gap-2 font-body-sm text-text-muted">
                           <Storefront size={18} weight="bold" className="text-primary/60" />
@@ -121,8 +129,8 @@ export default function OrdersPage() {
                         <div className="flex items-start gap-2 justify-end w-full">
                           <Clock size={20} weight="bold" className="text-primary shrink-0 mt-0.5" />
                           <span className="font-display text-sm sm:text-lg text-text font-bold leading-snug break-words">
-                            {formatPickupRangeLabel(order.bag?.pickup_start, order.bag?.pickup_end) ||
-                              `${order.bag?.pickup_start || '—'} – ${order.bag?.pickup_end || '—'}`}
+                            {formatPickupRangeLabel(pickup.start, pickup.end) ||
+                              `${pickup.start || '—'} – ${pickup.end || '—'}`}
                           </span>
                         </div>
                       </div>

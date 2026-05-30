@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { CheckCircle } from '@phosphor-icons/react';
 import { getCelebrationCopy } from '@/content/celebrationMoments';
+import { createClient } from '@/lib/supabase/client';
 
 const STORAGE_PREFIX = 'fae_celebration_seen_';
 
@@ -14,6 +15,22 @@ export function ReservationSuccessOverlay({ orderId }) {
   const copy = useMemo(() => getCelebrationCopy('reservation'), []);
 
   const [visible, setVisible] = useState(false);
+  const [lineItems, setLineItems] = useState([]);
+
+  useEffect(() => {
+    if (!orderId) return;
+    const sb = createClient();
+    void (async () => {
+      const { data } = await sb
+        .from('orders')
+        .select('shelf_id, order_items(name_snapshot, quantity, line_total)')
+        .eq('id', orderId)
+        .maybeSingle();
+      if (data?.shelf_id && data.order_items?.length) {
+        setLineItems(data.order_items);
+      }
+    })();
+  }, [orderId]);
 
   useEffect(() => {
     if (!paymentSuccess || !orderId || typeof window === 'undefined') return;
@@ -53,6 +70,21 @@ export function ReservationSuccessOverlay({ orderId }) {
         >
           {copy.subcopy}
         </p>
+        {lineItems.length > 0 ? (
+          <ul
+            className="text-left text-sm space-y-1 border border-divider rounded-lg p-3 animate-celebration-fade-up"
+            style={{ animationDelay: '180ms' }}
+          >
+            {lineItems.map((line, i) => (
+              <li key={i} className="flex justify-between gap-2">
+                <span>
+                  {line.name_snapshot} × {line.quantity}
+                </span>
+                <span>LKR {Number(line.line_total ?? 0).toLocaleString('en-LK')}</span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
         <div
           className="flex flex-col gap-sm pt-sm animate-celebration-fade-up"
           style={{ animationDelay: '240ms' }}

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useMemo } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { createBrowserClient } from '@supabase/ssr';
 import { 
@@ -13,28 +14,74 @@ import {
   Storefront, 
   SignOut,
   House,
-  User
+  User,
+  Package
 } from '@phosphor-icons/react';
+import { useMerchantContext } from '@/hooks/useMerchantContext';
+import { outletListingMode } from '@/lib/outletListingMode';
+import { merchantInventoryVisibility } from '@/lib/merchantInventoryVisibility';
 
-const navItems = [
+const baseNavItems = [
   { href: '/merchant/dashboard', icon: SquaresFour, label: 'Dashboard' },
   { href: '/merchant/orders', icon: Receipt, label: 'Orders' },
-  { href: '/merchant/bags', icon: ShoppingBag, label: 'Rescue Bags' },
   { href: '/merchant/analytics', icon: ChartBar, label: 'Analytics' },
   { href: '/merchant/finance', icon: Wallet, label: 'Finance' },
   { href: '/merchant/settings', icon: Gear, label: 'Settings' },
 ];
 
-const mobileNavItems = [
-  { href: '/merchant/dashboard', icon: House, label: 'Home' },
-  { href: '/merchant/orders', icon: Receipt, label: 'Orders' },
-  { href: '/merchant/bags', icon: ShoppingBag, label: 'Bags' },
-  { href: '/merchant/settings', icon: User, label: 'Settings' },
-];
-
 export default function MerchantSidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const { activeOutlet } = useMerchantContext();
+  const category = activeOutlet?.category;
+  const { mode, showShelves, showBags, isHybrid } = merchantInventoryVisibility(category);
+
+  const navItems = useMemo(() => {
+    const inventory = [];
+    if (showShelves) {
+      inventory.push({
+        href: '/merchant/shelves',
+        icon: Package,
+        label: mode === 'hybrid' ? "Today's shelf" : 'Clearance shelves',
+      });
+    }
+    if (showBags) {
+      inventory.push({
+        href: '/merchant/bags',
+        icon: ShoppingBag,
+        label: mode === 'hybrid' ? 'Rescue bags' : 'Rescue Bags',
+      });
+    }
+    return [
+      baseNavItems[0],
+      baseNavItems[1],
+      ...inventory,
+      ...baseNavItems.slice(2),
+    ];
+  }, [showBags, showShelves, mode]);
+
+  const mobileNavItems = useMemo(() => {
+    const items = [
+      { href: '/merchant/dashboard', icon: House, label: 'Home' },
+      { href: '/merchant/orders', icon: Receipt, label: 'Orders' },
+    ];
+    if (showBags) {
+      items.push({
+        href: '/merchant/bags',
+        icon: ShoppingBag,
+        label: isHybrid ? 'Bags' : 'Bags',
+      });
+    }
+    if (showShelves) {
+      items.push({
+        href: '/merchant/shelves',
+        icon: Package,
+        label: isHybrid ? 'Shelves' : 'Shelf',
+      });
+    }
+    items.push({ href: '/merchant/settings', icon: User, label: 'Settings' });
+    return items;
+  }, [isHybrid, showBags, showShelves]);
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY

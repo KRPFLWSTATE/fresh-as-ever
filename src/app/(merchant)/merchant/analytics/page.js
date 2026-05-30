@@ -38,6 +38,14 @@ export default function MerchantAnalyticsPage() {
       bg: 'bg-accent/10',
     },
     {
+      l: 'Surplus recovered',
+      v: loading ? '…' : snapshot?.surplusRecoveredLabel ?? 'LKR 0',
+      d: `Retail value · last ${windowDays} days`,
+      i: HandCoins,
+      c: 'text-accent',
+      bg: 'bg-accent/10',
+    },
+    {
       l: 'Waste prevented',
       v: loading ? '…' : `${snapshot?.wasteKg ?? 0} kg`,
       d: `CO₂ est. ${snapshot?.co2Kg ?? 0} kg`,

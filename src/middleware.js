@@ -25,7 +25,11 @@ export async function middleware(request) {
     '/discover/empty-search': '/discover?state=empty-search',
     '/discover/no-results': '/discover?state=no-results',
     '/discover/no-bags-nearby': '/discover?state=no-bags-nearby',
+    '/discover/no-listings-nearby': '/discover?state=no-listings-nearby',
+    '/discover/no-shelves-yet': '/discover?state=no-shelves-yet',
     '/discover/sold-out': '/discover?state=sold-out',
+    '/discover/search': '/discover/search',
+    '/outlet': '/discover',
   };
 
   if (directAliases[pathname]) {
@@ -40,6 +44,19 @@ export async function middleware(request) {
     url.pathname = `/bags/${bagMatch[1]}`;
     url.search = '';
     return NextResponse.redirect(url);
+  }
+
+  const shelfMatch = pathname.match(/^\/shelf\/([^/]+)$/);
+  if (shelfMatch) {
+    url.pathname = `/shelves/${shelfMatch[1]}`;
+    url.search = '';
+    return NextResponse.redirect(url);
+  }
+
+  const outletMatch = pathname.match(/^\/outlet\/([^/]+)$/);
+  if (outletMatch) {
+    url.pathname = `/outlet/${outletMatch[1]}`;
+    return NextResponse.next();
   }
 
   const merchantPayoutMatch = pathname.match(/^\/merchant\/finance\/payout\/([^/]+)$/);
@@ -79,6 +96,8 @@ export async function middleware(request) {
     pathname.startsWith('/bag/') ||
     pathname.startsWith('/discover') ||
     pathname.startsWith('/bags') ||
+    pathname.startsWith('/shelves') ||
+    pathname.startsWith('/outlet/') ||
     pathname.startsWith('/waitlist') ||
     pathname.startsWith('/onboarding') ||
     pathname === '/merchant/onboarding' ||

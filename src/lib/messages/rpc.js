@@ -26,7 +26,12 @@ export function mapArrivalError(message, fallback = ERROR.arrival.failed) {
 
 export function mapCheckoutError(message, fallback = ERROR.checkout.reserveFailed) {
   const m = lower(message);
-  if (m.includes('sold out') || m.includes('quantity')) return ERROR.checkout.soldOut;
+  if (m.includes('sold out') || m.includes('quantity') || m.includes('clearance_item_sold_out')) {
+    return ERROR.checkout.soldOut;
+  }
+  if (m.includes('shelf_pickup_ended')) return 'This shelf is closed for today.';
+  if (m.includes('shelf_not_published')) return 'This shelf is not available yet.';
+  if (m.includes('invalid_items_payload')) return 'Your basket changed — review items and try again.';
   if (m.includes('network') || m.includes('fetch')) return ERROR.common.network;
   return fallback;
 }

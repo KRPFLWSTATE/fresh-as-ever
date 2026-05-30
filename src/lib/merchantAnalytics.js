@@ -32,6 +32,17 @@ export function sumRevenue(rows) {
   return rows.reduce((sum, r) => sum + Number(r.total ?? 0), 0);
 }
 
+export function sumSurplusRecovered(rows) {
+  let total = 0;
+  for (const row of rows) {
+    const retail = Number(row.bag?.retail_value_estimate ?? 0);
+    if (!Number.isFinite(retail) || retail <= 0) continue;
+    const qty = Math.max(1, Number(row.quantity ?? 1) || 1);
+    total += retail * qty;
+  }
+  return Math.round(total);
+}
+
 export function retailToKgProxy(retail) {
   const r = Number(retail ?? 0);
   if (!Number.isFinite(r) || r <= 0) return 1;

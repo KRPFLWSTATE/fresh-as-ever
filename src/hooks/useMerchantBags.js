@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useMerchantContext } from './useMerchantContext';
 import { mapSupabaseError } from '@/lib/supabaseError';
+import { canPublishRescueBags } from '@/lib/outletListingMode';
 
 export function useMerchantBags() {
   const [bags, setBags] = useState([]);
@@ -13,9 +14,11 @@ export function useMerchantBags() {
   const supabase = useMemo(() => createClient(), []);
   const { activeOutlet, loading: contextLoading } = useMerchantContext();
 
+  const bagsAllowed = canPublishRescueBags(activeOutlet?.category);
+
   const fetchBags = useCallback(async () => {
     await Promise.resolve();
-    if (!activeOutlet?.id) {
+    if (!activeOutlet?.id || !bagsAllowed) {
       setBags([]);
       setLoading(false);
       return;
@@ -51,7 +54,7 @@ export function useMerchantBags() {
     } finally {
       setLoading(false);
     }
-  }, [activeOutlet, supabase]);
+  }, [activeOutlet, bagsAllowed, supabase]);
 
   useEffect(() => {
     if (contextLoading) return undefined;

@@ -29,6 +29,7 @@ export function useBagDetail(bagId) {
           *,
           outlet:outlets (
             id, name, address, landmark, location, average_rating, total_reviews,
+            trust_score, collection_rate_pct, complaint_rate_pct, no_show_rate_pct,
             merchant:merchants (
               business_name
             )

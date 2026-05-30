@@ -12,9 +12,11 @@ import {
   formatLkr,
   isCollectedOrder,
   peakHourLabel,
-  retailToKgProxy,
   sumRevenue,
+  sumSurplusRecovered,
 } from '@/lib/merchantAnalytics';
+import { co2eKgFromFoodKg, resolveBagFoodWeightKg } from '@/lib/co2Impact';
+import { ERROR } from '@/lib/messages/errors.js';
 import { mapSupabaseError } from '@/lib/supabaseError';
 
 export function useMerchantAnalytics(windowDays = 30) {
@@ -35,6 +37,8 @@ export function useMerchantAnalytics(windowDays = 30) {
         customerReach: 0,
         wasteKg: 0,
         co2Kg: 0,
+        surplusRecovered: 0,
+        surplusRecoveredLabel: formatLkr(0),
         hourBuckets: Array.from({ length: 24 }, (_, hour) => ({ hour, count: 0 })),
         peakHour: '—',
         topBags: [],
@@ -50,7 +54,7 @@ export function useMerchantAnalytics(windowDays = 30) {
         .from('orders')
         .select(
           `id, customer_id, bag_id, total, quantity, created_at, order_status,
-           bag:rescue_bags(title, retail_value_estimate)`,
+           bag:rescue_bags(title, estimated_weight_kg, retail_value_estimate)`,
         )
         .gte('created_at', cutoff)
         .limit(5000);
@@ -72,10 +76,11 @@ export function useMerchantAnalytics(windowDays = 30) {
       for (const r of collected) {
         const bagId = r.bag_id != null ? String(r.bag_id) : '';
         if (!bagId || weightMap.has(bagId)) continue;
-        weightMap.set(bagId, retailToKgProxy(r.bag?.retail_value_estimate));
+        weightMap.set(bagId, resolveBagFoodWeightKg(r.bag));
       }
       const wasteKg = estimateWasteKg(collected, weightMap);
-      const co2Kg = Math.round(wasteKg * 2.5 * 10) / 10;
+      const co2Kg = co2eKgFromFoodKg(wasteKg);
+      const surplusRecovered = sumSurplusRecovered(collected);
 
       setSnapshot({
         revenue,
@@ -83,12 +88,14 @@ export function useMerchantAnalytics(windowDays = 30) {
         customerReach: reach,
         wasteKg,
         co2Kg,
+        surplusRecovered,
+        surplusRecoveredLabel: formatLkr(surplusRecovered),
         hourBuckets,
         peakHour: peakHourLabel(hourBuckets),
         topBags,
       });
     } catch (e) {
-      setError(mapSupabaseError(e, 'Could not load analytics.'));
+      setError(mapSupabaseError(e, ERROR.merchant.analytics));
       setSnapshot(null);
     } finally {
       setLoading(false);

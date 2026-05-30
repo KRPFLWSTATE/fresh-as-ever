@@ -8,6 +8,7 @@ import { QrCode, HourglassHigh, CheckCircle, Check, XCircle, ArrowLeft, Clock, M
 import { OrderPickupQr } from '@/components/OrderPickupQr';
 import { ReportProblemSection } from '@/components/ReportProblemSection';
 import { formatPickupRangeLabel, normalizeOrderStatus } from '@/lib/utils';
+import { orderDisplayTitle, orderPickupWindow } from '@/lib/orderDisplay';
 
 const statusConfig = {
   reserved: { label: 'Reserved', bg: 'bg-primary-highlight', text: 'text-primary', icon: CheckCircle },
@@ -24,6 +25,9 @@ export default function OrderDetailPage() {
     order,
     loading,
     bag,
+    shelf,
+    orderItems,
+    isShelfOrder,
     outlet,
     collectible,
     arrivalEligible,
@@ -108,8 +112,22 @@ export default function OrderDetailPage() {
 
         {/* Order Details Card */}
         <div className="bg-surface rounded-xl p-md shadow-[0_4px_12px_rgba(30,27,20,0.04)] space-y-md">
-          <h3 className="font-h3 text-h3 text-text">{bag?.title || 'Rescue Bag'}</h3>
+          <h3 className="font-h3 text-h3 text-text">{orderDisplayTitle(order)}</h3>
           <p className="font-body-md text-body-md text-text-muted">{outlet?.merchant?.business_name || outlet?.name}</p>
+          {isShelfOrder && orderItems?.length > 0 ? (
+            <ul className="divide-y divide-divider border border-divider rounded-lg">
+              {orderItems.map((line) => (
+                <li key={line.id} className="flex justify-between gap-2 p-3 text-sm">
+                  <span>
+                    {line.name_snapshot} × {line.quantity}
+                  </span>
+                  <span className="font-semibold text-accent">
+                    LKR {Number(line.line_total ?? 0).toLocaleString('en-LK')}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
           <div className="flex justify-between items-center pt-sm border-t border-divider">
             <span className="font-label text-label text-text-muted">Amount Paid</span>
             <span className="font-price text-price text-accent">Rs. {order?.total?.toLocaleString() || order?.total_amount?.toLocaleString() || '0'}</span>
@@ -125,7 +143,10 @@ export default function OrderDetailPage() {
             </div>
             <div>
               <p className="font-label text-label">
-                {formatPickupRangeLabel(bag?.pickup_start, bag?.pickup_end) || 'Pickup time TBC'}
+                {formatPickupRangeLabel(
+                  orderPickupWindow(order).start,
+                  orderPickupWindow(order).end,
+                ) || 'Pickup time TBC'}
               </p>
               <p className="font-body-sm text-body-sm text-text-muted">Pickup window</p>
             </div>
@@ -200,7 +221,11 @@ export default function OrderDetailPage() {
           </button>
         )}
 
-        <ReportProblemSection orderId={order?.id} orderStatus={normalizedStatus} />
+        <ReportProblemSection
+          orderId={order?.id}
+          orderStatus={normalizedStatus}
+          isShelfOrder={isShelfOrder}
+        />
       </main>
     </div>
   );

@@ -21,7 +21,13 @@ import {
   SignIn,
   SignOut
 } from '@phosphor-icons/react';
+import { OutletTrustBadge } from '@/components/OutletTrustBadge';
+import { DiscoverShelfCard } from '@/components/DiscoverShelfCard';
+import { ReservationCartBar } from '@/components/ReservationCartBar';
+import { isClearanceShelvesEnabled } from '@/lib/clearanceShelves';
 import { useDiscoverBags } from '@/hooks/useDiscoverBags';
+import { useReservationCart, MAX_GROUP_BAGS } from '@/hooks/useReservationCart';
+import { isGroupReservationsEnabled } from '@/lib/groupReservations';
 import { useAuth } from '@/hooks/useAuth';
 import { formatPickupRangeLabel, formatDistanceAwayLabel } from '@/lib/utils';
 
@@ -54,6 +60,7 @@ function DiscoverContent() {
   const [locationError, setLocationError] = useState('');
   const {
     bags,
+    feedItems,
     loading,
     activeCategory,
     setActiveCategory,
@@ -66,6 +73,8 @@ function DiscoverContent() {
     positionAccuracyM,
   } = useDiscoverBags();
   const { user, logout } = useAuth();
+  const groupReservationsEnabled = isGroupReservationsEnabled();
+  const cart = useReservationCart();
   const role = String(user?.role || '').toLowerCase();
   const dashboardHref =
     role === 'admin'
@@ -87,19 +96,43 @@ function DiscoverContent() {
     { label: 'Nugegoda, Sri Lanka', lat: 6.8649, lng: 79.8997 },
   ]), []);
   const forcedState = searchParams?.get('state');
-  const hasForcedEmptyState = ['empty-search', 'no-results', 'no-bags-nearby', 'sold-out'].includes(forcedState);
-  const visibleBags = hasForcedEmptyState ? [] : bags;
+  const hasForcedEmptyState = [
+    'empty-search',
+    'no-results',
+    'no-bags-nearby',
+    'no-listings-nearby',
+    'no-shelves-yet',
+    'sold-out',
+  ].includes(forcedState);
+  const visibleFeed = hasForcedEmptyState ? [] : (feedItems?.length ? feedItems : bags.map((b) => ({ kind: 'bag', id: b.id, ...b })));
+  const visibleBags = useMemo(
+    () =>
+      visibleFeed
+        .filter((item) => item.kind !== 'shelf')
+        .map((item) => ({
+          ...item,
+          id: item.id,
+          outlet_lat: item.outlet_lat ?? item.payload?.outlet_lat,
+          outlet_lng: item.outlet_lng ?? item.payload?.outlet_lng,
+          outlet_name: item.outlet_name ?? item.payload?.outlet_name ?? item.outlet_name,
+        })),
+    [visibleFeed],
+  );
   const emptyStateTitleByType = {
-    'empty-search': 'Start searching for rescue bags',
+    'empty-search': 'Start searching for rescues',
     'no-results': 'No results for this filter',
     'no-bags-nearby': 'No bags nearby right now',
+    'no-listings-nearby': 'No bags or shelves nearby',
+    'no-shelves-yet': 'No clearance shelves yet',
     'sold-out': 'Everything is sold out for now',
   };
   const emptyStateBodyByType = {
     'empty-search': 'Try a food type, merchant name, or neighborhood to discover today\'s offers.',
     'no-results': 'Try a different category or clear filters to see more results.',
     'no-bags-nearby': 'Check again later. Merchants publish new rescue bags throughout the day.',
-    'sold-out': 'Great demand today. Check back soon for newly listed bags.',
+    'no-listings-nearby': 'Check again later for rescue bags and supermarket clearance shelves.',
+    'no-shelves-yet': 'Supermarkets publish daily shelves when stock is ready. Bags may still appear nearby.',
+    'sold-out': 'Great demand today. Check back soon for newly listed bags and shelves.',
   };
 
   useEffect(() => {
@@ -175,7 +208,7 @@ function DiscoverContent() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-text font-body-md antialiased pb-24">
+    <div className={`min-h-screen bg-background text-text font-body-md antialiased ${groupReservationsEnabled && cart.count > 0 ? 'pb-36' : 'pb-24'}`}>
       {/* TopAppBar - Fixed with proper height and blur */}
       <header className="bg-surface/80 backdrop-blur-xl border-b border-divider flex justify-between items-center h-16 px-page-margin-mobile md:px-page-margin-desktop w-full fixed top-0 z-50">
         <div className="flex items-center gap-sm">
@@ -369,8 +402,19 @@ function DiscoverContent() {
                   </div>
                 </div>
               ))
-            ) : visibleBags.length > 0 ? (
-              visibleBags.map((bag) => {
+            ) : visibleFeed.length > 0 ? (
+              visibleFeed.map((item) => {
+                if (item.kind === 'shelf' && isClearanceShelvesEnabled()) {
+                  return (
+                    <DiscoverShelfCard
+                      key={`shelf-${item.id}`}
+                      item={item}
+                      userLat={location.lat}
+                      userLng={location.lng}
+                    />
+                  );
+                }
+                const bag = item.kind === 'bag' ? item : item;
                 const distanceLabel = formatDistanceAwayLabel(
                   location.lat,
                   location.lng,
@@ -403,6 +447,17 @@ function DiscoverContent() {
                     <div className="p-xl flex flex-col flex-1 gap-sm">
                       <div className="space-y-1">
                         <p className="font-label-caps text-xs text-text-faint">{bag.merchant_name || 'Local Merchant'}</p>
+                        <div className="pt-1">
+                          <OutletTrustBadge
+                            size="sm"
+                            trustScore={bag.trust_score}
+                            averageRating={bag.average_rating}
+                            totalReviews={bag.total_reviews}
+                            collectionRatePct={bag.collection_rate_pct}
+                            complaintRatePct={bag.complaint_rate_pct}
+                            noShowRatePct={bag.no_show_rate_pct}
+                          />
+                        </div>
                         <h3 className="font-h3 text-h3 text-text line-clamp-1 group-hover:text-primary transition-colors">{bag.title}</h3>
                       </div>
                       
@@ -422,14 +477,53 @@ function DiscoverContent() {
                         </div>
                       ) : null}
 
-                      <div className="flex justify-between items-end mt-auto pt-4 border-t border-divider/50">
+                      <div className="flex justify-between items-end mt-auto pt-4 border-t border-divider/50 gap-2">
                         <div className="flex flex-col">
                           <span className="font-price-original text-text-faint text-sm line-through">LKR {bag.original_price?.toLocaleString()}</span>
                           <span className="font-price text-2xl text-accent">LKR {bag.rescue_price?.toLocaleString()}</span>
                         </div>
-                        <button className="bg-primary hover:bg-primary-hover active:scale-95 text-white transition-all duration-200 font-label font-bold px-8 py-3 rounded-xl shadow-elevation-md">
-                          Reserve
-                        </button>
+                        <div className="flex flex-col gap-2 items-stretch">
+                          {groupReservationsEnabled && cart.isInCart(bag.id) ? (
+                            <span className="text-center font-label text-xs font-bold text-primary">In group</span>
+                          ) : null}
+                          {groupReservationsEnabled ? (
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                const outletId = bag.outlet_id;
+                                if (!outletId) return;
+                                const result = cart.addBag({
+                                  id: bag.id,
+                                  outletId,
+                                  title: bag.title,
+                                  rescuePrice: bag.rescue_price,
+                                });
+                                if (result.error === 'different_outlet') {
+                                  if (window.confirm('Replace bags from the other outlet with this one?')) {
+                                    cart.replaceOutletCart({
+                                      id: bag.id,
+                                      outletId,
+                                      title: bag.title,
+                                      rescuePrice: bag.rescue_price,
+                                    });
+                                  }
+                                  return;
+                                }
+                                if (result.error === 'cart_full') {
+                                  window.alert(`Group orders are limited to ${MAX_GROUP_BAGS} bags.`);
+                                }
+                              }}
+                              className="bg-surface-2 hover:bg-surface border border-divider text-text transition-all duration-200 font-label font-bold px-4 py-2 rounded-xl text-sm"
+                            >
+                              {cart.isInCart(bag.id) ? 'Added' : 'Add to group'}
+                            </button>
+                          ) : null}
+                          <span className="bg-primary hover:bg-primary-hover active:scale-95 text-white transition-all duration-200 font-label font-bold px-8 py-3 rounded-xl shadow-elevation-md text-center">
+                            Reserve
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </article>
@@ -542,6 +636,7 @@ function DiscoverContent() {
           </div>
         </>
       )}
+      <ReservationCartBar />
     </div>
   );
 }

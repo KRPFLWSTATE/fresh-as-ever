@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { adminCollectOrder } from '@/lib/adminCollectOrder';
+import { orderDisplayTitle, orderListingKind } from '@/lib/orderDisplay';
 
 export const ADMIN_ORDERS_PAGE_SIZE = 20;
 
@@ -47,8 +48,11 @@ export function useAdminOrders({
           payment_status,
           total,
           created_at,
+          shelf_id,
           customer:profiles(full_name),
-          outlet:outlets(name, merchant:merchants(business_name))
+          outlet:outlets(name, merchant:merchants(business_name)),
+          bag:rescue_bags(title),
+          order_items(name_snapshot, quantity)
         `,
           { count: 'exact' },
         )
@@ -76,17 +80,27 @@ export function useAdminOrders({
       const { data, error: fetchError, count } = await req;
       if (fetchError) throw fetchError;
 
-      const formatted = (data || []).map((o) => ({
+      const formatted = (data || []).map((o) => {
+        const listingKind = orderListingKind(o);
+        const listingTitle = orderDisplayTitle({
+          shelf_id: o.shelf_id,
+          bag: o.bag,
+          order_items: o.order_items,
+        });
+        return {
         id: o.id,
         reservation_code: o.reservation_code,
         order_status: o.order_status,
         payment_status: o.payment_status,
         total: o.total,
         created_at: o.created_at,
+        listing_kind: listingKind,
+        listing_title: listingTitle,
         customer_name: o.customer?.full_name || 'Customer',
         outlet_name: o.outlet?.name || 'Outlet',
         merchant_name: o.outlet?.merchant?.business_name || o.outlet?.name || 'Merchant',
-      }));
+      };
+      });
 
       setRows(formatted);
       setTotalCount(count ?? formatted.length);

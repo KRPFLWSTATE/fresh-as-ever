@@ -179,7 +179,8 @@ export const CATEGORIES = {
   cafe: { label: 'Café', emoji: '☕' },
   restaurant: { label: 'Restaurant', emoji: '🍛' },
   supermarket: { label: 'Supermarket', emoji: '🛒' },
-  hotel: { label: 'Hotel', emoji: '🏨' },
+  /** Legacy DB value — displayed as café; listing mode handled in outletListingMode. */
+  hotel: { label: 'Café', emoji: '☕' },
   mixed_meals: { label: 'Mixed Meals', emoji: '🍱' },
   groceries: { label: 'Groceries', emoji: '🥬' },
   other: { label: 'Other', emoji: '🍽️' },

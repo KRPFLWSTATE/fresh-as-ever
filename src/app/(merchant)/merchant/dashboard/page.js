@@ -11,15 +11,37 @@ import {
   ChartLineUp, 
   User,
   ArrowRight,
-  Circle
+  Circle,
+  Package,
 } from '@phosphor-icons/react';
 import { useMerchantDashboard } from '@/hooks/useMerchantDashboard';
+import { useMerchantRecoveredRevenue } from '@/hooks/useMerchantRecoveredRevenue';
+import { useMerchantContext } from '@/hooks/useMerchantContext';
+import { outletListingMode } from '@/lib/outletListingMode';
+import { merchantInventoryVisibility } from '@/lib/merchantInventoryVisibility';
 
 export default function MerchantDashboardPage() {
   const { stats, recentOrders, loading } = useMerchantDashboard();
+  const recovered = useMerchantRecoveredRevenue();
+  const { activeOutlet } = useMerchantContext();
+  const category = activeOutlet?.category;
+  const { mode, showShelves, showBags, isHybrid, clearanceOn } =
+    merchantInventoryVisibility(category);
 
   const kpis = [
-    { label: 'Active Bags', value: stats?.active_bags || 0, icon: ShoppingBag, color: 'text-primary', bg: 'bg-primary/10', href: '/merchant/bags?view=active' },
+    {
+      label:
+        mode === 'clearance_shelf'
+          ? 'Shelf items'
+          : mode === 'hybrid'
+            ? 'Live listings'
+            : 'Active bags',
+      value: stats?.active_bags || 0,
+      icon: mode === 'clearance_shelf' ? Package : ShoppingBag,
+      color: 'text-primary',
+      bg: 'bg-primary/10',
+      href: showShelves && !showBags ? '/merchant/shelves' : '/merchant/bags?view=active',
+    },
     { label: "Today's Orders", value: stats?.today_orders || 0, icon: Receipt, color: 'text-accent', bg: 'bg-accent/10', href: '/merchant/orders?view=all&status=active' },
     { label: 'Revenue', value: `Rs. ${stats?.today_revenue?.toLocaleString() || '0'}`, icon: HandCoins, color: 'text-success', bg: 'bg-success/10', href: '/merchant/orders?view=all&status=paid' },
     { label: 'Pickup Rate', value: `${stats?.pickup_rate || 0}%`, icon: TrendUp, color: 'text-primary', bg: 'bg-primary/10', href: '/merchant/orders?view=verification&status=ready_for_pickup' },
@@ -32,7 +54,13 @@ export default function MerchantDashboardPage() {
         <div className="space-y-2">
           <p className="font-label-caps text-label-caps text-primary/60 uppercase tracking-widest mb-xs">Business Performance</p>
           <h1 className="font-display text-h1 md:text-display text-text">Merchant Dashboard</h1>
-          <p className="font-body-md text-text-muted max-w-md">Manage your rescue bags and track daily performance with real-time analytics.</p>
+          <p className="font-body-md text-text-muted max-w-md">
+            {showShelves && !showBags
+              ? 'Publish today\'s clearance shelf and track daily performance.'
+              : showShelves && showBags
+                ? 'Manage rescue bags and clearance shelves from one place.'
+                : 'Manage your rescue bags and track daily performance with real-time analytics.'}
+          </p>
         </div>
         <div className="flex items-center gap-sm bg-surface-2 px-4 py-2 rounded-full border border-divider shadow-sm w-fit">
           <Circle size={12} weight="fill" className="text-success animate-pulse" />
@@ -61,6 +89,28 @@ export default function MerchantDashboardPage() {
           );
         })}
       </section>
+
+      <Link
+        href="/merchant/analytics"
+        className="block bg-surface rounded-[2rem] p-lg md:p-xl border border-divider shadow-elevation-sm hover:shadow-elevation-md transition-all"
+        data-testid="merchant-surplus-recovered-card"
+      >
+        <p className="font-label-caps text-xs font-bold text-text-muted uppercase tracking-widest">
+          Surplus recovered this month
+        </p>
+        <p className="font-display text-h1 text-accent mt-2">
+          {recovered.loading ? '…' : recovered.thisMonthLabelFormatted}
+        </p>
+        <p className="font-body-sm text-text-muted mt-2">
+          Food you would have thrown away · {recovered.thisMonthLabel}
+        </p>
+        {recovered.trendPercent != null ? (
+          <span className="inline-flex mt-3 px-3 py-1 rounded-full bg-primary/10 text-primary font-label text-xs font-bold">
+            {recovered.trendPercent >= 0 ? '+' : ''}
+            {recovered.trendPercent}% vs last month
+          </span>
+        ) : null}
+      </Link>
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-lg md:gap-xl">
@@ -120,6 +170,22 @@ export default function MerchantDashboardPage() {
         <section className="space-y-md md:space-y-lg">
           <h2 className="font-h3 text-h3 text-text px-2">Quick Operations</h2>
           <div className="flex flex-col gap-md">
+            {showShelves ? (
+              <Link href="/merchant/shelves/today" className="group bg-primary hover:bg-primary-hover text-white p-8 rounded-[3rem] shadow-elevation-lg flex items-center gap-xl transition-all active:scale-[0.98]">
+                <div className="w-16 h-16 rounded-[1.5rem] bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                  <Plus size={32} weight="bold" />
+                </div>
+                <div>
+                  <p className="font-display text-2xl font-black tracking-tight">
+                    {mode === 'hybrid' ? "Today's shelf" : 'Publish shelf'}
+                  </p>
+                  <p className="text-white/60 font-label text-xs font-bold uppercase tracking-wider">
+                    Clearance shelf listing
+                  </p>
+                </div>
+              </Link>
+            ) : null}
+            {showBags ? (
             <Link href="/merchant/bags/new" className="group bg-primary hover:bg-primary-hover text-white p-8 rounded-[3rem] shadow-elevation-lg flex items-center gap-xl transition-all active:scale-[0.98]">
               <div className="w-16 h-16 rounded-[1.5rem] bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:rotate-90 transition-transform duration-500 shadow-inner">
                 <Plus size={32} weight="bold" />
@@ -129,6 +195,18 @@ export default function MerchantDashboardPage() {
                 <p className="text-white/60 font-label text-xs font-bold uppercase tracking-wider">New Rescue Listing</p>
               </div>
             </Link>
+            ) : null}
+            {showShelves ? (
+              <Link href="/merchant/shelves" className="group bg-surface hover:bg-surface-2 text-text border border-divider p-8 rounded-[3rem] shadow-elevation-sm flex items-center gap-xl transition-all active:scale-[0.98] hover:border-primary/20">
+                <div className="w-16 h-16 rounded-[1.5rem] bg-primary-highlight text-primary flex items-center justify-center group-hover:scale-110 transition-transform border border-primary/10">
+                  <Package size={32} weight="bold" />
+                </div>
+                <div>
+                  <p className="font-display text-2xl font-black tracking-tight">All shelves</p>
+                  <p className="text-text-muted font-label text-xs font-bold uppercase tracking-wider">History &amp; clone</p>
+                </div>
+              </Link>
+            ) : null}
             
             <Link href="/merchant/orders" className="group bg-surface hover:bg-surface-2 text-text border border-divider p-8 rounded-[3rem] shadow-elevation-sm flex items-center gap-xl transition-all active:scale-[0.98] hover:border-primary/20">
               <div className="w-16 h-16 rounded-[1.5rem] bg-primary-highlight text-primary flex items-center justify-center group-hover:scale-110 transition-transform border border-primary/10">

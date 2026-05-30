@@ -5,7 +5,7 @@ import { Warning, Camera, CheckCircle } from '@phosphor-icons/react';
 import { createClient } from '@/lib/supabase/client';
 import { isOpenComplaintStatus } from '@/lib/adminComplaints';
 import {
-  CUSTOMER_COMPLAINT_TYPE_OPTIONS,
+  customerComplaintTypeOptions,
   customerCanReportProblem,
   fetchCustomerComplaintForOrder,
   submitCustomerComplaint,
@@ -14,7 +14,7 @@ import {
 
 const MAX_PHOTOS = 3;
 
-export function ReportProblemSection({ orderId, orderStatus }) {
+export function ReportProblemSection({ orderId, orderStatus, isShelfOrder = false }) {
   const [userId, setUserId] = useState(null);
   const [existing, setExisting] = useState(null);
   const [type, setType] = useState('quality');
@@ -141,9 +141,9 @@ export function ReportProblemSection({ orderId, orderStatus }) {
 
           <fieldset className="space-y-sm">
             <legend className="font-label-caps text-text-muted text-xs mb-sm">Issue type</legend>
-            {CUSTOMER_COMPLAINT_TYPE_OPTIONS.map((opt) => (
+            {customerComplaintTypeOptions(isShelfOrder).map((opt, idx) => (
               <label
-                key={opt.value}
+                key={`${opt.value}-${idx}`}
                 className="flex items-center gap-sm p-sm rounded-lg border border-divider cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary-highlight"
               >
                 <input

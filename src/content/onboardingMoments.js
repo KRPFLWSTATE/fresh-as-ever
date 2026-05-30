@@ -20,7 +20,7 @@ export const ONBOARDING_STEPS = [
   {
     step: 1,
     title: 'Discover Nearby Deals',
-    body: 'Find high-quality surplus food from premium bakeries and cafes in your neighborhood before they close.',
+    body: 'Find rescue bags from bakeries and cafés, or browse clearance shelves at supermarkets — pick the items you want before they close.',
     layout: 'hero-copy-dots',
     heroSrc: ONBOARDING_HERO_PATHS[1],
     heroSrcRemote: HERO_STEP_1_REMOTE,
@@ -31,7 +31,7 @@ export const ONBOARDING_STEPS = [
   {
     step: 2,
     title: 'Reserve with Ease',
-    body: "Secure a delicious rescue bag with a single tap before they vanish. It's fast, rewarding, and saves perfect food.",
+    body: 'Reserve a surprise rescue bag in one tap, or build your own basket from a clearance shelf. Fast checkout, real savings.',
     layout: 'hero-dots-copy',
     heroSrc: ONBOARDING_HERO_PATHS[2],
     heroSrcRemote: HERO_STEP_2_REMOTE,
@@ -42,7 +42,7 @@ export const ONBOARDING_STEPS = [
   {
     step: 3,
     title: 'Quick Pickup',
-    body: 'Show your 6-digit code at the counter to collect your Rescue Bag — no queue required.',
+    body: 'Show your 6-digit code at the counter for rescue bags or shelf pickups — staff confirm your line items at handover.',
     layout: 'dots-hero-copy',
     heroSrc: ONBOARDING_HERO_PATHS[3],
     heroSrcRemote: HERO_STEP_3_REMOTE,
@@ -53,7 +53,7 @@ export const ONBOARDING_STEPS = [
   {
     step: 4,
     title: "You're set to rescue.",
-    body: "Turn on notifications and we'll tell you when fresh bags drop near you.",
+    body: "Turn on notifications and we'll tell you when new bags and clearance shelves go live near you.",
     layout: 'hero-dots-copy',
     heroSrc: ONBOARDING_HERO_PATHS[2],
     heroSrcRemote: HERO_STEP_2_REMOTE,

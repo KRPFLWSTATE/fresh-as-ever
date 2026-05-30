@@ -6,6 +6,8 @@ import { createClient } from '@/lib/supabase/client';
 import { mapSupabaseError } from '@/lib/supabaseError';
 import { ERROR } from '@/lib/messages/errors';
 import { mapCheckoutError } from '@/lib/messages/rpc';
+import { isGroupReservationsEnabled } from '@/lib/groupReservations';
+import { isClearanceShelvesEnabled } from '@/lib/clearanceShelves';
 
 function secureReservationCode(length = 6) {
   const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -22,9 +24,14 @@ function secureReservationCode(length = 6) {
  * Checkout hook — bag fetch, promo codes, order creation, PayHere integration.
  * Extracted from: src/app/(customer)/checkout/page.js
  */
-export function useCheckout(bagId) {
+export function useCheckout(bagId, groupBagIds = [], shelfCheckout = null) {
+  const isShelfCheckout = Boolean(shelfCheckout?.shelfId && shelfCheckout?.items?.length);
+  const isGroupCheckout = !isShelfCheckout && groupBagIds.length > 1;
   const router = useRouter();
   const [bag, setBag] = useState(null);
+  const [shelf, setShelf] = useState(null);
+  const [shelfLineItems, setShelfLineItems] = useState([]);
+  const [groupBags, setGroupBags] = useState([]);
   const [loading, setLoading] = useState(true);
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(null);
@@ -38,7 +45,7 @@ export function useCheckout(bagId) {
   const [discount, setDiscount] = useState(0);
   const [appliedPromoId, setAppliedPromoId] = useState(null);
 
-  const cashAllowed = completedPickupCount >= 1;
+  const cashAllowed = completedPickupCount >= 1 && !isGroupCheckout;
 
   const supabase = useMemo(() => createClient(), []);
 
@@ -51,16 +58,79 @@ export function useCheckout(bagId) {
     try {
       setLoading(true);
       setError(null);
-      const { data, error: bagError } = await supabase
+
+      if (isShelfCheckout && isClearanceShelvesEnabled()) {
+        const { data: shelfRow, error: shelfErr } = await supabase
+          .from('clearance_shelves')
+          .select(`
+            *,
+            outlet:outlets (id, name, merchant:merchants (business_name)),
+            items:clearance_shelf_items (*)
+          `)
+          .eq('id', shelfCheckout.shelfId)
+          .eq('status', 'published')
+          .maybeSingle();
+        if (shelfErr) throw shelfErr;
+        if (!shelfRow) throw new Error('shelf_not_found');
+        const byId = new Map((shelfRow.items ?? []).map((i) => [i.id, i]));
+        const lines = [];
+        let subtotal = 0;
+        for (const row of shelfCheckout.items) {
+          const item = byId.get(row.shelf_item_id);
+          const qty = Number(row.quantity ?? 0);
+          if (!item || qty < 1) {
+            throw new Error('clearance_item_sold_out');
+          }
+          if ((item.quantity_remaining ?? 0) < qty) {
+            throw new Error('clearance_item_sold_out');
+          }
+          const lineTotal = Number(item.rescue_price ?? 0) * qty;
+          subtotal += lineTotal;
+          lines.push({ ...item, quantity: qty, line_total: lineTotal });
+        }
+        setShelf(shelfRow);
+        setShelfLineItems(lines);
+        setBag({
+          id: shelfRow.id,
+          title: `Clearance shelf · ${lines.length} item${lines.length === 1 ? '' : 's'}`,
+          rescue_price: subtotal,
+          original_price: subtotal,
+          outlet_id: shelfRow.outlet_id,
+          outlet: shelfRow.outlet,
+          pickup_start: shelfRow.pickup_start,
+          pickup_end: shelfRow.pickup_end,
+        });
+        setGroupBags([]);
+
+        const { data: { user } } = await supabase.auth.getUser();
+        let count = 0;
+        if (user?.id) {
+          const { count: collectedCount } = await supabase
+            .from('orders')
+            .select('id', { count: 'exact', head: true })
+            .eq('customer_id', user.id)
+            .eq('order_status', 'collected');
+          if (typeof collectedCount === 'number') count = collectedCount;
+        }
+        setCompletedPickupCount(count);
+        return;
+      }
+
+      const ids = groupBagIds.length ? groupBagIds : bagId ? [bagId] : [];
+      const { data: rows, error: bagError } = await supabase
         .from('rescue_bags')
         .select(`
           *,
           outlet:outlets (id, name, address, merchant:merchants (business_name))
         `)
-        .eq('id', bagId)
-        .single();
+        .in('id', ids);
 
       if (bagError) throw bagError;
+      const list = rows ?? [];
+      if (list.length !== ids.length) {
+        throw new Error('One or more bags are no longer available.');
+      }
+      const data = list[0];
 
       const { data: { user } } = await supabase.auth.getUser();
       if (user?.id) {
@@ -77,6 +147,7 @@ export function useCheckout(bagId) {
         }
       }
 
+      setGroupBags(list);
       setBag(data);
 
       let count = 0;
@@ -97,10 +168,10 @@ export function useCheckout(bagId) {
     } finally {
       setLoading(false);
     }
-  }, [bagId, supabase, router]);
+  }, [bagId, groupBagIds, isShelfCheckout, shelfCheckout, supabase, router]);
 
   useEffect(() => {
-    if (!bagId) {
+    if (!bagId && groupBagIds.length === 0 && !isShelfCheckout) {
       router.push('/discover');
       return undefined;
     }
@@ -108,7 +179,7 @@ export function useCheckout(bagId) {
       void fetchCheckout();
     }, 0);
     return () => window.clearTimeout(t);
-  }, [bagId, fetchCheckout, router]);
+  }, [bagId, groupBagIds.length, fetchCheckout, isShelfCheckout, router]);
 
   useEffect(() => {
     if (cashAllowed || paymentMethod !== 'cash') return undefined;
@@ -166,7 +237,7 @@ export function useCheckout(bagId) {
     }
   }, [bag, promoCode, showToast, supabase]);
 
-  const initiatePayHere = useCallback(async (orderId, totalCost, user) => {
+  const initiatePayHere = useCallback(async (orderId, totalCost, user, options = {}) => {
     try {
       const {
         data: { session },
@@ -176,17 +247,17 @@ export function useCheckout(bagId) {
         throw new Error('Session expired. Sign in again.');
       }
 
+      const hashBody = options.groupCheckout
+        ? { group_id: orderId, amount: totalCost, currency: 'LKR' }
+        : { order_id: orderId, amount: totalCost, currency: 'LKR' };
+
       const res = await fetch('/api/payhere/hash', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          order_id: orderId,
-          amount: totalCost,
-          currency: 'LKR',
-        }),
+        body: JSON.stringify(hashBody),
       });
       const data = await res.json();
 
@@ -201,10 +272,14 @@ export function useCheckout(bagId) {
         sandbox: true,
         merchant_id: data.merchant_id,
         return_url: `${window.location.origin}/orders/${orderId}?payment=success`,
-        cancel_url: `${window.location.origin}/checkout?bag_id=${bag.id}&payment=cancelled`,
+        cancel_url: options.groupCheckout
+          ? `${window.location.origin}/checkout?group=${groupBagIds.join(',')}&payment=cancelled`
+          : `${window.location.origin}/checkout?bag_id=${bag.id}&payment=cancelled`,
         notify_url: `${window.location.origin}/api/payhere/webhook`,
         order_id: orderId,
-        items: bag.title,
+        items: options.groupCheckout
+          ? `${options.bagCount ?? groupBagIds.length} rescue bags`
+          : bag.title,
         amount: data.amount,
         currency: data.currency,
         hash: data.hash,
@@ -233,7 +308,7 @@ export function useCheckout(bagId) {
       setError(ERROR.checkout.paymentFailed);
       setProcessing(false);
     }
-  }, [bag, supabase, router, showToast]);
+  }, [bag, groupBagIds, supabase, router, showToast]);
 
   const handleConfirm = useCallback(async () => {
     try {
@@ -252,12 +327,96 @@ export function useCheckout(bagId) {
           .eq('order_status', 'collected');
         allowedCash = typeof count === 'number' && count >= 1;
       }
+      if (isGroupCheckout && paymentMethod === 'cash') {
+        throw new Error('Group reservations require card payment.');
+      }
+
       if (paymentMethod === 'cash' && !allowedCash) {
         throw new Error('Complete your first pickup to unlock cash at pickup.');
       }
 
+      const subtotal = isGroupCheckout
+        ? groupBags.reduce((sum, row) => sum + Number(row.rescue_price ?? 0), 0)
+        : Number(bag.rescue_price ?? 0);
+      const totalCost = Math.max(0, subtotal - discount);
+
+      if (isShelfCheckout) {
+        if (!isClearanceShelvesEnabled()) {
+          throw new Error('Clearance shelves are not available right now.');
+        }
+        const { data: reserveRows, error: shelfErr } = await supabase.rpc(
+          'create_clearance_reservation',
+          {
+            p_shelf_id: shelfCheckout.shelfId,
+            p_items: shelfCheckout.items,
+            p_payment_method: paymentMethod,
+            p_promo_code: promoCode?.trim() || null,
+          },
+        );
+        if (shelfErr) throw shelfErr;
+        const reserveRow = Array.isArray(reserveRows) ? reserveRows[0] : reserveRows;
+        const orderId = reserveRow?.order_id;
+        if (!orderId) throw new Error('Could not create shelf reservation.');
+
+        if (paymentMethod === 'cash' || totalCost <= 0) {
+          await supabase
+            .from('orders')
+            .update({ payment_status: 'paid', order_status: 'paid' })
+            .eq('id', orderId)
+            .eq('order_status', 'reserved');
+          router.push(`/orders/${orderId}`);
+          return;
+        }
+
+        await initiatePayHere(orderId, totalCost, user, { shelfCheckout: true });
+        return;
+      }
+
+      if (isGroupCheckout && !isGroupReservationsEnabled()) {
+        throw new Error('Group reservations are not available right now.');
+      }
+
+      if (isGroupCheckout) {
+        const { data: groupRows, error: groupErr } = await supabase.rpc(
+          'create_group_reservation',
+          {
+            p_bag_ids: groupBagIds,
+            p_payment_method: paymentMethod,
+            p_promo_code: promoCode?.trim() || null,
+          },
+        );
+        if (groupErr) throw groupErr;
+        const groupRow = Array.isArray(groupRows) ? groupRows[0] : groupRows;
+        const groupId = groupRow?.group_id;
+        if (!groupId) throw new Error('Could not create group reservation.');
+
+        if (paymentMethod === 'cash' || totalCost <= 0) {
+          await supabase
+            .from('reservation_groups')
+            .update({ payment_status: 'paid', order_status: 'paid' })
+            .eq('id', groupId);
+          await supabase
+            .from('orders')
+            .update({ payment_status: 'paid', order_status: 'paid' })
+            .eq('group_id', groupId);
+          const { data: child } = await supabase
+            .from('orders')
+            .select('id')
+            .eq('group_id', groupId)
+            .limit(1)
+            .maybeSingle();
+          router.push(`/orders/${child?.id ?? groupId}`);
+          return;
+        }
+
+        await initiatePayHere(groupId, totalCost, user, {
+          groupCheckout: true,
+          bagCount: groupBagIds.length,
+        });
+        return;
+      }
+
       const code = secureReservationCode(6);
-      const totalCost = bag.rescue_price - discount;
 
       const orderData = {
         bag_id: bag.id,
@@ -299,12 +458,33 @@ export function useCheckout(bagId) {
       setError(mapCheckoutError(err, ERROR.checkout.reserveFailed));
       setProcessing(false);
     }
-  }, [appliedPromoId, bag, cashAllowed, discount, paymentMethod, supabase, router, initiatePayHere]);
+  }, [
+    appliedPromoId,
+    bag,
+    cashAllowed,
+    discount,
+    groupBagIds,
+    groupBags,
+    isGroupCheckout,
+    isShelfCheckout,
+    shelfCheckout,
+    paymentMethod,
+    promoCode,
+    supabase,
+    router,
+    initiatePayHere,
+  ]);
 
-  const total = bag ? Math.max(0, bag.rescue_price - discount) : 0;
+  const subtotalDisplay = isGroupCheckout
+    ? groupBags.reduce((sum, row) => sum + Number(row.rescue_price ?? 0), 0)
+    : Number(bag?.rescue_price ?? 0);
+  const total = bag ? Math.max(0, subtotalDisplay - discount) : 0;
 
   return {
     bag,
+    shelf,
+    shelfLineItems,
+    isShelfCheckout,
     loading,
     processing,
     error,

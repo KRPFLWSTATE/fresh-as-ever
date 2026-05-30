@@ -2,7 +2,11 @@
   "crons": [
     {
       "path": "/api/cron/pickup-reminders",
-      "schedule": "*/15 * * * *"
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron/shelf-publish-notifications",
+      "schedule": "*/2 * * * *"
     }
   ]
 }

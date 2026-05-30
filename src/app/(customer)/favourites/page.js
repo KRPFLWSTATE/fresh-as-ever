@@ -9,6 +9,7 @@ import {
   MapPin,
   House
 } from '@phosphor-icons/react';
+import { OutletTrustBadge } from '@/components/OutletTrustBadge';
 import { useFavourites } from '@/hooks/useFavourites';
 
 export default function FavouritesPage() {
@@ -90,6 +91,17 @@ export default function FavouritesPage() {
                       {fav.distanceLabel ?? fav.distance}
                     </div>
                     <h3 className="font-h3 text-h3 text-text line-clamp-1 mb-1.5 group-hover:text-primary transition-colors">{fav.name}</h3>
+                    <div className="mb-2">
+                      <OutletTrustBadge
+                        size="sm"
+                        trustScore={fav.trustScore}
+                        averageRating={fav.averageRating}
+                        totalReviews={fav.totalReviews}
+                        collectionRatePct={fav.collectionRatePct}
+                        complaintRatePct={fav.complaintRatePct}
+                        noShowRatePct={fav.noShowRatePct}
+                      />
+                    </div>
                     <div className="flex items-center gap-2">
                       <span className={`inline-flex px-2.5 py-1 rounded-lg font-label text-[10px] font-bold uppercase tracking-wider ${
                         fav.bagsAvailable > 0 

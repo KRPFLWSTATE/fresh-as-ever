@@ -30,9 +30,11 @@ export function useOrders() {
       const { data, error: fetchError } = await supabase
         .from('orders')
         .select(`
-          id, quantity, total, order_status, created_at,
+          id, quantity, total, order_status, created_at, shelf_id,
           bag:rescue_bags(title, image_url, pickup_start, pickup_end),
-          outlet:outlets(name, address)
+          shelf:clearance_shelves(id, pickup_start, pickup_end),
+          outlet:outlets(name, address),
+          order_items (id, name_snapshot, quantity, line_total, unit_price)
         `)
         .eq('customer_id', user.id)
         .order('created_at', { ascending: false });

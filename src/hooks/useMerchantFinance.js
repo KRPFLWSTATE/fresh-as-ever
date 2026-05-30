@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useMerchantContext } from './useMerchantContext';
+import { ERROR } from '@/lib/messages/errors.js';
 import { mapSupabaseError } from '@/lib/supabaseError';
 
 const PENDING_STATUSES = new Set(['pending', 'processing']);
@@ -63,6 +64,25 @@ export function useMerchantFinance() {
       );
       const lifetimeSum = validOrders.reduce((sum, o) => sum + Number(o.total ?? 0), 0);
 
+      const now = new Date();
+      const thisStart = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+      const lastStart = new Date(now.getFullYear(), now.getMonth() - 1, 1).getTime();
+      let thisMonthSum = 0;
+      let lastMonthSum = 0;
+      for (const o of validOrders) {
+        const ts = typeof o.created_at === 'string' ? Date.parse(o.created_at) : NaN;
+        if (!Number.isFinite(ts)) continue;
+        const total = Number(o.total ?? 0);
+        if (ts >= thisStart) thisMonthSum += total;
+        else if (ts >= lastStart) lastMonthSum += total;
+      }
+      let trendPercent = null;
+      if (lastMonthSum > 0) {
+        trendPercent = Math.round(((thisMonthSum - lastMonthSum) / lastMonthSum) * 100);
+      } else if (thisMonthSum > 0) {
+        trendPercent = 100;
+      }
+
       const settlementRows = (settlementsRes.data ?? []).map((r) => ({
         id: String(r.id ?? ''),
         status: String(r.status ?? '').toLowerCase(),
@@ -83,7 +103,7 @@ export function useMerchantFinance() {
         pending: formatLkr(pendingSum),
         paidOut: formatLkr(paidOutSum),
         lifetime: formatLkr(lifetimeSum),
-        trendPercent: null,
+        trendPercent,
       });
 
       setHistory(
@@ -99,7 +119,7 @@ export function useMerchantFinance() {
         })),
       );
     } catch (err) {
-      setError(mapSupabaseError(err, 'Could not load finance data.'));
+      setError(mapSupabaseError(err, ERROR.merchant.finance));
     } finally {
       setLoading(false);
     }

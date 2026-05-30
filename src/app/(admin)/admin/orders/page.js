@@ -180,7 +180,10 @@ function PlatformOrdersContent() {
                       <Storefront size={16} weight="bold" />
                       {o.merchant_name}
                     </span>
-                    <span className="font-body-sm text-xs text-text-faint">{o.outlet_name}</span>
+                    <span className="font-body-sm text-xs text-text-faint">
+                      {o.listing_kind === 'shelf' ? 'Shelf · ' : 'Bag · '}
+                      {o.listing_title ?? o.outlet_name}
+                    </span>
                   </div>
 
                   <div className="hidden md:flex items-center gap-2 text-text-muted">

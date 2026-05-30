@@ -1,11 +1,32 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { ShoppingBag, Plus, Tag, Trash, PencilSimple, Circle } from '@phosphor-icons/react';
 import { useMerchantBags } from '@/hooks/useMerchantBags';
+import { useMerchantContext } from '@/hooks/useMerchantContext';
+import { canPublishRescueBags } from '@/lib/outletListingMode';
 
 export default function MerchantBagsPage() {
+  const router = useRouter();
+  const { activeOutlet } = useMerchantContext();
   const { bags, loading } = useMerchantBags();
+
+  useEffect(() => {
+    if (!activeOutlet?.category) return;
+    if (!canPublishRescueBags(activeOutlet.category)) {
+      router.replace('/merchant/shelves');
+    }
+  }, [activeOutlet?.category, router]);
+
+  if (activeOutlet?.category && !canPublishRescueBags(activeOutlet.category)) {
+    return (
+      <main className="p-xl">
+        <p>Redirecting to clearance shelves…</p>
+      </main>
+    );
+  }
 
   return (
     <main className="max-w-7xl mx-auto p-page-margin-mobile md:p-page-margin-desktop space-y-lg md:space-y-xl pb-24">

@@ -29,6 +29,8 @@ function MerchantOrdersContent() {
     error,
     markNoShow,
     authorizeHandoverByCode,
+    lookupHandoverByCode,
+    collectGroupHandover,
   } = useMerchantOrders();
   const view = searchParams?.get('view') || 'all';
   const statusFilter = searchParams?.get('status') || 'all';
@@ -36,6 +38,7 @@ function MerchantOrdersContent() {
   const [handoverCode, setHandoverCode] = useState('');
   const [handoverBusy, setHandoverBusy] = useState(false);
   const [handoverMsg, setHandoverMsg] = useState(null);
+  const [groupPreview, setGroupPreview] = useState(null);
 
   useEffect(() => {
     const id = window.setInterval(() => setNowMs(Date.now()), 60_000);
@@ -91,12 +94,49 @@ function MerchantOrdersContent() {
   const handleAuthorizeCode = async () => {
     setHandoverBusy(true);
     setHandoverMsg(null);
+    setGroupPreview(null);
+    const lookup = await lookupHandoverByCode(handoverCode);
+    if (lookup.error) {
+      setHandoverMsg({ type: 'error', text: lookup.error });
+      setHandoverBusy(false);
+      return;
+    }
+    if (lookup.type === 'group' && lookup.bags.length > 1) {
+      setGroupPreview(lookup);
+      setHandoverBusy(false);
+      return;
+    }
+    if (lookup.type === 'group') {
+      const result = await collectGroupHandover(lookup.groupId, lookup.code);
+      if (result?.error) {
+        setHandoverMsg({ type: 'error', text: result.error });
+      } else {
+        setHandoverMsg({ type: 'success', text: 'Handover completed.' });
+        setHandoverCode('');
+      }
+      setHandoverBusy(false);
+      return;
+    }
     const result = await authorizeHandoverByCode(handoverCode);
     if (result?.error) {
       setHandoverMsg({ type: 'error', text: result.error });
     } else {
       setHandoverMsg({ type: 'success', text: 'Handover completed.' });
       setHandoverCode('');
+    }
+    setHandoverBusy(false);
+  };
+
+  const confirmGroupHandover = async () => {
+    if (!groupPreview?.groupId) return;
+    setHandoverBusy(true);
+    const result = await collectGroupHandover(groupPreview.groupId, groupPreview.code);
+    if (result?.error) {
+      setHandoverMsg({ type: 'error', text: result.error });
+    } else {
+      setHandoverMsg({ type: 'success', text: `Collected ${groupPreview.bags.length} bags.` });
+      setHandoverCode('');
+      setGroupPreview(null);
     }
     setHandoverBusy(false);
   };
@@ -154,6 +194,36 @@ function MerchantOrdersContent() {
             <p className={`font-body-sm ${handoverMsg.type === 'error' ? 'text-error' : 'text-success'}`}>
               {handoverMsg.text}
             </p>
+          ) : null}
+          {groupPreview ? (
+            <div className="rounded-xl border border-divider bg-surface-2 p-md space-y-sm">
+              <p className="font-label font-bold text-text">
+                Group pickup · {groupPreview.bagCount ?? groupPreview.bags.length} bags
+              </p>
+              <p className="font-body-sm text-text-muted">{groupPreview.customerName}</p>
+              <ul className="space-y-1">
+                {groupPreview.bags.map((bag) => (
+                  <li key={bag.id} className="font-body-sm text-text">
+                    {bag.title}
+                  </li>
+                ))}
+              </ul>
+              <button
+                type="button"
+                onClick={confirmGroupHandover}
+                disabled={handoverBusy}
+                className="h-11 w-full rounded-xl bg-primary text-white font-label font-bold disabled:bg-divider"
+              >
+                {handoverBusy ? 'Collecting...' : `Collect all ${groupPreview.bags.length} bags`}
+              </button>
+              <button
+                type="button"
+                onClick={() => setGroupPreview(null)}
+                className="font-label text-sm text-text-muted hover:underline"
+              >
+                Cancel
+              </button>
+            </div>
           ) : null}
         </div>
       ) : null}

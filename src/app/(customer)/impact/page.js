@@ -4,7 +4,7 @@ import { Leaf, Coins, ShoppingBag } from '@phosphor-icons/react';
 import { useCustomerImpact } from '@/hooks/useCustomerImpact';
 
 export default function ImpactPage() {
-  const { bagsRescued, co2SavedKg, totalSavedRs, loading } = useCustomerImpact();
+  const { rescuesCount, co2SavedKg, totalSavedRs, loading } = useCustomerImpact();
 
   return (
     <main className="max-w-3xl mx-auto p-page-margin-mobile md:p-page-margin-desktop space-y-lg pb-24">
@@ -14,11 +14,11 @@ export default function ImpactPage() {
       </header>
 
       <section className="bg-primary text-white rounded-3xl p-xl shadow-elevation-md">
-        <p className="font-body-md text-white/80">Every rescue bag reduces food waste and supports local merchants.</p>
+        <p className="font-body-md text-white/80">Every rescue — bags and clearance shelves — cuts waste and supports local merchants.</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-md mt-lg">
           <div className="bg-white/10 rounded-2xl p-md">
-            <p className="font-label-caps text-[10px] text-white/70">Bags rescued</p>
-            <p className="font-display text-3xl">{loading ? '…' : bagsRescued}</p>
+            <p className="font-label-caps text-[10px] text-white/70">Rescues</p>
+            <p className="font-display text-3xl">{loading ? '…' : rescuesCount}</p>
             <ShoppingBag size={20} weight="fill" className="mt-2" />
           </div>
           <div className="bg-white/10 rounded-2xl p-md">

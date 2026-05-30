@@ -3,9 +3,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Storefront, Bell, ShieldCheck, MapPin, Phone, Envelope, Clock, Check, NavigationArrow } from '@phosphor-icons/react';
 import { useMerchantContext } from '@/hooks/useMerchantContext';
+import { MERCHANT_OUTLET_CATEGORIES } from '@/lib/outletListingMode';
+import { outletCategoryWarnings } from '@/lib/outletCategoryWarning';
 
 export default function MerchantSettingsPage() {
-  const { merchant, activeOutlet, loading, updateMerchantSettings } = useMerchantContext();
+  const { merchant, activeOutlet, loading, updateMerchantSettings, refetch } =
+    useMerchantContext();
   const formKey = `${merchant?.id ?? 'none'}-${activeOutlet?.id ?? 'none'}`;
 
   return (
@@ -15,12 +18,20 @@ export default function MerchantSettingsPage() {
       activeOutlet={activeOutlet}
       loading={loading}
       updateMerchantSettings={updateMerchantSettings}
+      refetchMerchantContext={refetch}
     />
   );
 }
 
-function MerchantSettingsForm({ merchant, activeOutlet, loading, updateMerchantSettings }) {
+function MerchantSettingsForm({
+  merchant,
+  activeOutlet,
+  loading,
+  updateMerchantSettings,
+  refetchMerchantContext,
+}) {
   const [storeName, setStoreName] = useState(() => merchant?.business_name || activeOutlet?.name || '');
+  const [category, setCategory] = useState(() => activeOutlet?.category || 'other');
   const [address, setAddress] = useState(() => activeOutlet?.address || '');
   const [phone, setPhone] = useState(() => activeOutlet?.phone || merchant?.phone || '');
   const [email, setEmail] = useState(() => activeOutlet?.email || merchant?.email || '');
@@ -35,6 +46,11 @@ function MerchantSettingsForm({ merchant, activeOutlet, loading, updateMerchantS
   const [notice, setNotice] = useState('');
   const [error, setError] = useState('');
   const [selectedLocation, setSelectedLocation] = useState(() => activeOutlet?.location || null);
+
+  const categoryWarnings = useMemo(
+    () => outletCategoryWarnings(storeName, category),
+    [storeName, category],
+  );
 
   useEffect(() => {
     if (!locationQuery.trim()) {
@@ -109,7 +125,9 @@ function MerchantSettingsForm({ merchant, activeOutlet, loading, updateMerchantS
         address,
         location: selectedLocation ? { lat: selectedLocation.lat, lng: selectedLocation.lng } : null,
         coverImageUrl: coverImageUrl.trim() || null,
+        category,
       });
+      await refetchMerchantContext();
       setNotice('Store settings updated successfully.');
     } catch (saveError) {
       setError(saveError?.message || 'Could not update store settings right now.');
@@ -165,6 +183,38 @@ function MerchantSettingsForm({ merchant, activeOutlet, loading, updateMerchantS
               placeholder="https://example.com/store-image.jpg"
             />
           </div>
+        </div>
+
+        <div className="space-y-2 group">
+          <label className="font-label text-xs font-bold text-text-muted uppercase tracking-widest ml-1">
+            Outlet category
+          </label>
+          <select
+            className="w-full bg-surface-2 border border-divider rounded-2xl py-3.5 px-4 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all font-body-md text-text shadow-inner"
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+          >
+            {MERCHANT_OUTLET_CATEGORIES.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+            {category === 'hotel' ? (
+              <option value="hotel">Legacy: hotel (bags + shelves)</option>
+            ) : null}
+          </select>
+          {categoryWarnings.length > 0 ? (
+            <ul className="space-y-2" role="status">
+              {categoryWarnings.map((msg) => (
+                <li
+                  key={msg}
+                  className="rounded-xl border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-text"
+                >
+                  {msg}
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
 
         {/* Form Fields */}

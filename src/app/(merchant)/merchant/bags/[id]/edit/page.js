@@ -7,6 +7,13 @@ import { createClient } from '@/lib/supabase/client';
 import { useMerchantBags } from '@/hooks/useMerchantBags';
 import { useMerchantContext } from '@/hooks/useMerchantContext';
 import { uploadBagImage } from '@/lib/uploadBagImage';
+import {
+  BagWeightFields,
+  resolveFormBagWeightKg,
+} from '@/components/merchant/BagWeightFields';
+import { BAG_WEIGHT_PRESETS_KG } from '@/lib/co2Impact';
+import { ERROR } from '@/lib/messages/errors.js';
+import { mapSupabaseError } from '@/lib/supabaseError';
 
 export default function EditBagPage() {
   const resolvedParams = useParams();
@@ -30,6 +37,8 @@ export default function EditBagPage() {
     pickup_end: '',
     image_url: '',
   });
+  const [weightPresetKg, setWeightPresetKg] = useState(1);
+  const [customWeightKg, setCustomWeightKg] = useState('');
 
   const categoryOptions = [
     { value: 'bakery', label: 'Bakery Surprise Bag' },
@@ -56,6 +65,17 @@ export default function EditBagPage() {
           .eq('id', resolvedParams.id)
           .single();
         if (loadError) throw loadError;
+        const wRaw = Number(data.estimated_weight_kg);
+        if (Number.isFinite(wRaw) && wRaw > 0) {
+          if (BAG_WEIGHT_PRESETS_KG.includes(wRaw)) {
+            setWeightPresetKg(wRaw);
+            setCustomWeightKg('');
+          } else {
+            setWeightPresetKg(null);
+            setCustomWeightKg(String(wRaw));
+          }
+        }
+
         setForm({
           title: data.title || '',
           description: data.notes || '',
@@ -67,8 +87,8 @@ export default function EditBagPage() {
           pickup_end: toLocalDateTime(data.pickup_end),
           image_url: data.image_url || '',
         });
-      } catch (_error) {
-        setError('Could not load bag details.');
+      } catch (loadErr) {
+        setError(mapSupabaseError(loadErr, ERROR.merchant.loadBag));
       } finally {
         setLoading(false);
       }
@@ -94,6 +114,12 @@ export default function EditBagPage() {
   };
 
   const onSave = async () => {
+    const estimatedWeightKg = resolveFormBagWeightKg(weightPresetKg, customWeightKg);
+    if (estimatedWeightKg == null) {
+      setError('Choose or enter estimated food weight (0.1–25 kg).');
+      return;
+    }
+
     try {
       setSaving(true);
       setError('');
@@ -101,6 +127,7 @@ export default function EditBagPage() {
         title: form.title,
         notes: form.description,
         category: form.category,
+        estimated_weight_kg: estimatedWeightKg,
         retail_value_estimate: Number(form.retail_value_estimate),
         rescue_price: Number(form.rescue_price),
         quantity_total: Number(form.quantity_remaining),
@@ -182,6 +209,18 @@ export default function EditBagPage() {
 
         {/* Form Fields Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+          <BagWeightFields
+            selectedKg={weightPresetKg}
+            customKg={customWeightKg}
+            onSelectPreset={(kg) => {
+              setWeightPresetKg(kg);
+              setCustomWeightKg('');
+            }}
+            onCustomChange={(value) => {
+              setCustomWeightKg(value);
+              if (value.trim()) setWeightPresetKg(null);
+            }}
+          />
           {[
               { l: 'Bag Title', i: Tag, full: true },
               { l: 'Description', i: TextColumns, ta: true, full: true },

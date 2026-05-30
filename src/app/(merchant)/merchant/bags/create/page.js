@@ -1,16 +1,36 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { canPublishRescueBags } from '@/lib/outletListingMode';
 import { ArrowLeft, Images, PlusCircle, Tag, Clock, Coins, Hash, TextColumns } from '@phosphor-icons/react';
 import { useMerchantBags } from '@/hooks/useMerchantBags';
 import { useMerchantContext } from '@/hooks/useMerchantContext';
 import { uploadBagImage } from '@/lib/uploadBagImage';
+import {
+  BagWeightFields,
+  resolveFormBagWeightKg,
+} from '@/components/merchant/BagWeightFields';
 
 export default function CreateBagPage() {
   const router = useRouter();
   const { createBag, activeOutlet } = useMerchantBags();
   const { merchant } = useMerchantContext();
+
+  useEffect(() => {
+    if (!activeOutlet?.category) return;
+    if (!canPublishRescueBags(activeOutlet.category)) {
+      router.replace('/merchant/shelves');
+    }
+  }, [activeOutlet?.category, router]);
+
+  if (activeOutlet?.category && !canPublishRescueBags(activeOutlet.category)) {
+    return (
+      <main className="p-xl">
+        <p>Redirecting to clearance shelves…</p>
+      </main>
+    );
+  }
   const fileInputRef = useRef(null);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -26,6 +46,8 @@ export default function CreateBagPage() {
     pickup_end: '',
     image_url: '',
   });
+  const [weightPresetKg, setWeightPresetKg] = useState(1);
+  const [customWeightKg, setCustomWeightKg] = useState('');
 
   const categoryOptions = [
     { value: 'bakery', label: 'Bakery Surprise Bag' },
@@ -60,12 +82,19 @@ export default function CreateBagPage() {
       return;
     }
 
+    const estimatedWeightKg = resolveFormBagWeightKg(weightPresetKg, customWeightKg);
+    if (estimatedWeightKg == null) {
+      setError('Choose or enter estimated food weight (0.1–25 kg).');
+      return;
+    }
+
     try {
       setSaving(true);
       await createBag({
         title: form.title,
         notes: form.description,
         category: form.category,
+        estimated_weight_kg: estimatedWeightKg,
         retail_value_estimate: Number(form.retail_value_estimate),
         rescue_price: Number(form.rescue_price),
         quantity_total: Number(form.quantity_remaining),
@@ -143,6 +172,18 @@ export default function CreateBagPage() {
 
         {/* Form Fields Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+          <BagWeightFields
+            selectedKg={weightPresetKg}
+            customKg={customWeightKg}
+            onSelectPreset={(kg) => {
+              setWeightPresetKg(kg);
+              setCustomWeightKg('');
+            }}
+            onCustomChange={(value) => {
+              setCustomWeightKg(value);
+              if (value.trim()) setWeightPresetKg(null);
+            }}
+          />
           {[
             { l: 'Bag Title', p: 'e.g. Evening Pastry Surprise', i: Tag, full: true },
             { l: 'Description', p: 'What might be in the bag? (Estimated contents)', i: TextColumns, ta: true, full: true },

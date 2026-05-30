@@ -44,6 +44,20 @@ export const SUPPORT_FAQS = [
       'Failed card attempts should not debit you. Approved refunds for cancelled or disputed orders are processed back to the original card where possible — timing depends on your bank.',
   },
   {
+    id: 'clearance-shelf',
+    category: 'order',
+    question: 'How do clearance shelves work?',
+    answer:
+      'At participating supermarkets you browse today\'s shelf, add individual discounted items to your basket, and checkout like a normal order. Pick up inside the window and show your code — staff confirm each line item.',
+  },
+  {
+    id: 'clearance-missing-item',
+    category: 'order',
+    question: 'A shelf item was missing at pickup',
+    answer:
+      'Open Report a problem on the order and choose the missing-item option. List what was not in your bag and we will follow up with the store.',
+  },
+  {
     id: 'support-email',
     category: 'general',
     question: 'How do I reach support?',

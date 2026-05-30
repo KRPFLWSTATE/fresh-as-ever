@@ -7,6 +7,16 @@ export const CUSTOMER_COMPLAINT_TYPE_OPTIONS = [
   { value: 'other', label: 'Something else' },
 ];
 
+export function customerComplaintTypeOptions(isShelfOrder = false) {
+  if (!isShelfOrder) return CUSTOMER_COMPLAINT_TYPE_OPTIONS;
+  return [
+    { value: 'quality', label: 'Missing shelf item(s)' },
+    { value: 'quality', label: 'Quality issue' },
+    { value: 'no_show_merchant', label: "Couldn't collect / outlet issue" },
+    { value: 'other', label: 'Something else' },
+  ];
+}
+
 export async function fetchCustomerComplaintForOrder(orderId, reporterId) {
   const sb = createClient();
   const { data, error } = await sb

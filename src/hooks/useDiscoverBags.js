@@ -6,6 +6,7 @@ import { parseOutletLatLng } from '@/lib/geo/parseOutletLatLng';
 import { normalizeVenueRating } from '@/lib/venueRating';
 import { mapSupabaseError } from '@/lib/supabaseError';
 import { ERROR } from '@/lib/messages/errors';
+import { fetchPublishedShelves, mergeDiscoverFeed } from '@/lib/discoverFeed';
 
 function outletCoordsFromRow(row) {
   const nested = parseOutletLatLng(
@@ -141,8 +142,16 @@ function mapRowToDiscoverBag(row) {
       row.outlet?.name ??
       'Local Merchant',
     outlet_name: row.outlet_name ?? row.outlet?.name ?? 'Outlet',
+    outlet_category: row.outlet?.category ?? row.outlet_category ?? null,
     rating: normalizeVenueRating(row.rating ?? row.outlet?.average_rating),
     review_count: row.review_count ?? row.outlet?.total_reviews ?? 0,
+    trust_score:
+      row.trust_score ?? row.outlet?.trust_score ?? null,
+    average_rating: row.outlet?.average_rating ?? null,
+    total_reviews: row.outlet?.total_reviews ?? row.review_count ?? 0,
+    collection_rate_pct: row.outlet?.collection_rate_pct ?? null,
+    complaint_rate_pct: row.outlet?.complaint_rate_pct ?? null,
+    no_show_rate_pct: row.outlet?.no_show_rate_pct ?? null,
     outlet_lat: coords?.lat ?? null,
     outlet_lng: coords?.lng ?? null,
   };
@@ -154,6 +163,7 @@ function mapRowToDiscoverBag(row) {
  */
 export function useDiscoverBags() {
   const [bags, setBags] = useState([]);
+  const [shelves, setShelves] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -199,8 +209,13 @@ export function useDiscoverBags() {
             outlet:outlets (
               id,
               name,
+              category,
               average_rating,
               total_reviews,
+              trust_score,
+              collection_rate_pct,
+              complaint_rate_pct,
+              no_show_rate_pct,
               location,
               merchant:merchants (business_name)
             )
@@ -217,7 +232,9 @@ export function useDiscoverBags() {
 
       nextBags = await enrichBagsWithOutletLocations(supabase, nextBags);
 
+      const nextShelves = await fetchPublishedShelves(supabase);
       setBags(nextBags);
+      setShelves(nextShelves);
     } catch (err) {
       setError(mapSupabaseError(err, ERROR.discover.loadBags));
     } finally {
@@ -314,8 +331,15 @@ export function useDiscoverBags() {
     return 'Cuisine';
   }, []);
 
+  const feedItems = useMemo(
+    () => mergeDiscoverFeed(filteredBags, shelves),
+    [filteredBags, shelves],
+  );
+
   return {
     bags: filteredBags,
+    shelves,
+    feedItems,
     allBags: bags,
     loading,
     error,

@@ -36,6 +36,10 @@ export function useOrderDetail(orderId) {
         .select(`
           *,
           bag:rescue_bags(title, image_url, pickup_start, pickup_end),
+          shelf:clearance_shelves(id, pickup_start, pickup_end),
+          order_items (
+            id, name_snapshot, image_url_snapshot, quantity, unit_price, line_total, allergens_snapshot
+          ),
           outlet:outlets(name, address, location, merchant:merchants(business_name))
         `)
         .eq('id', orderId)
@@ -122,7 +126,12 @@ export function useOrderDetail(orderId) {
   }, [orderId, supabase, fetchOrderDetails]);
 
   const bag = order?.bag || {};
+  const shelf = order?.shelf || {};
   const outlet = order?.outlet || {};
+  const orderItems = order?.order_items ?? [];
+  const isShelfOrder = Boolean(order?.shelf_id);
+  const pickupStart = isShelfOrder ? shelf?.pickup_start : bag?.pickup_start;
+  const pickupEnd = isShelfOrder ? shelf?.pickup_end : bag?.pickup_end;
   const normalizedStatus = normalizeOrderStatus(order?.order_status);
   const isReserved = normalizedStatus === 'reserved';
   const collectible = order
@@ -135,11 +144,14 @@ export function useOrderDetail(orderId) {
   const arrivalEligible =
     collectible &&
     !order?.customer_arrived_at &&
-    isCustomerArrivalEligible(nowMs, bag?.pickup_start, bag?.pickup_end);
+    isCustomerArrivalEligible(nowMs, pickupStart, pickupEnd);
 
   return {
     order,
     bag,
+    shelf,
+    orderItems,
+    isShelfOrder,
     outlet,
     loading,
     error,
